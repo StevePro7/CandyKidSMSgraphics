@@ -12,6 +12,7 @@ void engine_screen_manager_init()
 
 void engine_screen_manager_update()
 {
+	const unsigned char max = 8;
 	unsigned char x = 32;
 	unsigned char y = 32;
 	unsigned int tile = 256;
@@ -19,12 +20,11 @@ void engine_screen_manager_update()
 	unsigned char r = 0;
 	unsigned char c = 0;
 	
-	for( r = 0; r < 8; r++ )
+	for( r = 0; r < max; r++ )
 	{
-		for( c = 0; c < 8; c++ )
+		for( c = 0; c < max; c++ )
 		{
-			devkit_SMS_addSprite( x + c * 8, y + r * 8, tile + ( r * 8 + c ) );
+			devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
 		}
 	}
-	
 }

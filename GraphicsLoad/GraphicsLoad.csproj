@@ -60,6 +60,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="app.manifest" />
   </ItemGroup>
