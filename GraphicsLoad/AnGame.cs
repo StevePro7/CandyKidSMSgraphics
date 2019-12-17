@@ -1,6 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using System.Configuration;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 
 namespace GraphicsLoad
 {
@@ -11,10 +14,44 @@ namespace GraphicsLoad
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D image;
+        RenderTarget2D renderTarget;
+
+        const int size = 16;
+        int index = 0;
+        float scale = 1.0f;
+        bool saves = false;
+        bool twice = false;
+
+        int wide;
+        int high;
 
         public AnGame()
         {
+            if(null != ConfigurationManager.AppSettings["index"])
+            {
+                index = Convert.ToInt32(ConfigurationManager.AppSettings["index"]);
+            }
+            if(null != ConfigurationManager.AppSettings["scale"])
+            {
+                scale = Convert.ToSingle(ConfigurationManager.AppSettings["scale"]);
+            }
+            if(null != ConfigurationManager.AppSettings["saves"])
+            {
+                saves = Convert.ToBoolean(ConfigurationManager.AppSettings["saves"]);
+            }
+            if(null != ConfigurationManager.AppSettings["twice"])
+            {
+                twice = Convert.ToBoolean(ConfigurationManager.AppSettings["twice"]);
+            }
+
+            int y = twice ? 2 : 1;
+            wide = (int)(size * scale);
+            high = (int)(y * size * scale);
+
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = wide;
+            graphics.PreferredBackBufferHeight = high;
             Content.RootDirectory = "Content";
         }
 
@@ -27,10 +64,10 @@ namespace GraphicsLoad
         protected override void Initialize()
         {
             IsMouseVisible = true;
-
             base.Initialize();
         }
 
+        
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -39,8 +76,12 @@ namespace GraphicsLoad
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            image = Content.Load<Texture2D>("sprites");
 
-            // TODO: use this.Content to load your game content here
+            PresentationParameters pp = GraphicsDevice.PresentationParameters;
+            wide = pp.BackBufferWidth;
+            high = pp.BackBufferHeight;
+            renderTarget = new RenderTarget2D(GraphicsDevice, wide, high, false, SurfaceFormat.Color, DepthFormat.Depth24);
         }
 
         /// <summary>
@@ -49,7 +90,7 @@ namespace GraphicsLoad
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            Content.Unload();
         }
 
         /// <summary>
@@ -60,10 +101,10 @@ namespace GraphicsLoad
         protected override void Update(GameTime gameTime)
         {
             if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
                 Exit();
-
-            // TODO: Add your update logic here
-
+            }
+                
             base.Update(gameTime);
         }
 
@@ -73,11 +114,54 @@ namespace GraphicsLoad
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            if (saves)
+            {
+                GraphicsDevice.SetRenderTarget(renderTarget);
+                GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1, 0);
 
-            // TODO: Add your drawing code here
+                Draw();
+                base.Draw(gameTime);
 
-            base.Draw(gameTime);
+                GraphicsDevice.SetRenderTarget(null);
+                Texture2D resolvedTexture = (Texture2D)renderTarget;
+
+                string file = $"Index{index}_Scale{scale}.bmp";
+                Stream stream = File.Create(file);
+                
+                resolvedTexture.SaveAsPng(stream, wide, high);
+                Exit();
+            }
+            else
+            {
+                Draw();
+                base.Draw(gameTime);
+            }
+        }
+
+        private void Draw()
+        {
+            GraphicsDevice.Clear(Color.Black);
+            spriteBatch.Begin();
+
+            Rectangle dest = GetRectangle(index);
+            spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
+
+            if(twice)
+            {
+                dest = GetRectangle(index + 1);
+                spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
+
+            }
+
+            spriteBatch.End();
+        }
+
+        private Rectangle GetRectangle(int index)
+        {
+            int h = index / 4;
+            int w = index % 4;
+            Rectangle dest = new Rectangle(w * size, h * size, size, size);
+            return dest;
         }
     }
 }
