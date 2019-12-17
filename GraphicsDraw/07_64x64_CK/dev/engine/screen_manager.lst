@@ -43,12 +43,12 @@
                              43 ; code
                              44 ;--------------------------------------------------------
                              45 	.area _CODE
-                             46 ;screen_manager.c:8: void engine_screen_manager_init()
+                             46 ;screen_manager.c:11: void engine_screen_manager_init()
                              47 ;	---------------------------------
                              48 ; Function engine_screen_manager_init
                              49 ; ---------------------------------
    0000                      50 _engine_screen_manager_init::
-                             51 ;screen_manager.c:10: engine_font_manager_draw_text( SPRITE_TILES_TEXT, 2, 0 );
+                             51 ;screen_manager.c:13: engine_font_manager_draw_text( SPRITE_TILES_TEXT, 2, 0 );
    0000 21 02 00      [10]   52 	ld	hl, #0x0002
    0003 E5            [11]   53 	push	hl
    0004 21r0Er00      [10]   54 	ld	hl, #___str_0
@@ -63,67 +63,135 @@
         20 4C 4F 41 44 45
         44 2E 2E 2E
    0024 00                   62 	.db 0x00
-                             63 ;screen_manager.c:13: void engine_screen_manager_update()
+                             63 ;screen_manager.c:16: void engine_screen_manager_update()
                              64 ;	---------------------------------
                              65 ; Function engine_screen_manager_update
                              66 ; ---------------------------------
    0025                      67 _engine_screen_manager_update::
-   0025 DD E5         [15]   68 	push	ix
-   0027 DD 21 00 00   [14]   69 	ld	ix,#0
-   002B DD 39         [15]   70 	add	ix,sp
-   002D 3B            [ 6]   71 	dec	sp
-                             72 ;screen_manager.c:22: for( r = 0; r < 8; r++ )
-   002E 0E 00         [ 7]   73 	ld	c, #0x00
-                             74 ;screen_manager.c:24: for( c = 0; c < 8; c++ )
-   0030                      75 00109$:
-   0030 79            [ 4]   76 	ld	a, c
-   0031 07            [ 4]   77 	rlca
-   0032 07            [ 4]   78 	rlca
-   0033 07            [ 4]   79 	rlca
-   0034 E6 F8         [ 7]   80 	and	a, #0xf8
-   0036 C6 20         [ 7]   81 	add	a, #0x20
-   0038 DD 77 FF      [19]   82 	ld	-1 (ix), a
-   003B 06 00         [ 7]   83 	ld	b, #0x00
-   003D                      84 00103$:
-                             85 ;screen_manager.c:26: devkit_SMS_addSprite( x + c * 8, y + r * 8, tile + ( r * 8 + c ) );
-   003D 69            [ 4]   86 	ld	l, c
-   003E 26 00         [ 7]   87 	ld	h, #0x00
-   0040 29            [11]   88 	add	hl, hl
-   0041 29            [11]   89 	add	hl, hl
-   0042 29            [11]   90 	add	hl, hl
-   0043 58            [ 4]   91 	ld	e, b
-   0044 16 00         [ 7]   92 	ld	d, #0x00
-   0046 19            [11]   93 	add	hl, de
-   0047 11 00 01      [10]   94 	ld	de, #0x0100
-   004A 19            [11]   95 	add	hl, de
-   004B 78            [ 4]   96 	ld	a, b
-   004C 07            [ 4]   97 	rlca
-   004D 07            [ 4]   98 	rlca
-   004E 07            [ 4]   99 	rlca
-   004F E6 F8         [ 7]  100 	and	a, #0xf8
-   0051 C6 20         [ 7]  101 	add	a, #0x20
-   0053 5F            [ 4]  102 	ld	e, a
-   0054 C5            [11]  103 	push	bc
-   0055 E5            [11]  104 	push	hl
-   0056 DD 56 FF      [19]  105 	ld	d, -1 (ix)
-   0059 D5            [11]  106 	push	de
-   005A CDr00r00      [17]  107 	call	_devkit_SMS_addSprite
-   005D F1            [10]  108 	pop	af
-   005E F1            [10]  109 	pop	af
-   005F C1            [10]  110 	pop	bc
-                            111 ;screen_manager.c:24: for( c = 0; c < 8; c++ )
-   0060 04            [ 4]  112 	inc	b
-   0061 78            [ 4]  113 	ld	a, b
-   0062 D6 08         [ 7]  114 	sub	a, #0x08
-   0064 38 D7         [12]  115 	jr	C,00103$
-                            116 ;screen_manager.c:22: for( r = 0; r < 8; r++ )
-   0066 0C            [ 4]  117 	inc	c
-   0067 79            [ 4]  118 	ld	a, c
-   0068 D6 08         [ 7]  119 	sub	a, #0x08
-   006A 38 C4         [12]  120 	jr	C,00109$
-   006C 33            [ 6]  121 	inc	sp
-   006D DD E1         [14]  122 	pop	ix
-   006F C9            [10]  123 	ret
-                            124 	.area _CODE
-                            125 	.area _INITIALIZER
-                            126 	.area _CABS (ABS)
+                             68 ;screen_manager.c:18: draw_sprites();
+   0025 CDr2Br00      [17]   69 	call	_draw_sprites
+                             70 ;screen_manager.c:19: draw_adriana();
+   0028 C3r92r00      [10]   71 	jp  _draw_adriana
+                             72 ;screen_manager.c:22: static void draw_sprites()
+                             73 ;	---------------------------------
+                             74 ; Function draw_sprites
+                             75 ; ---------------------------------
+   002B                      76 _draw_sprites:
+   002B DD E5         [15]   77 	push	ix
+   002D DD 21 00 00   [14]   78 	ld	ix,#0
+   0031 DD 39         [15]   79 	add	ix,sp
+   0033 F5            [11]   80 	push	af
+                             81 ;screen_manager.c:32: for( r = 0; r < max - 2; r++ )
+   0034 0E 00         [ 7]   82 	ld	c, #0x00
+   0036                      83 00107$:
+   0036 79            [ 4]   84 	ld	a, c
+   0037 1E 00         [ 7]   85 	ld	e, #0x00
+   0039 D6 06         [ 7]   86 	sub	a, #0x06
+   003B 7B            [ 4]   87 	ld	a, e
+   003C 17            [ 4]   88 	rla
+   003D 3F            [ 4]   89 	ccf
+   003E 1F            [ 4]   90 	rra
+   003F DE 80         [ 7]   91 	sbc	a, #0x80
+   0041 30 4A         [12]   92 	jr	NC,00109$
+                             93 ;screen_manager.c:34: for( c = 0; c < max; c++ )
+   0043 69            [ 4]   94 	ld	l, c
+   0044 26 00         [ 7]   95 	ld	h, #0x00
+   0046 29            [11]   96 	add	hl, hl
+   0047 29            [11]   97 	add	hl, hl
+   0048 29            [11]   98 	add	hl, hl
+   0049 E3            [19]   99 	ex	(sp), hl
+   004A 69            [ 4]  100 	ld	l, c
+   004B 29            [11]  101 	add	hl, hl
+   004C 29            [11]  102 	add	hl, hl
+   004D 29            [11]  103 	add	hl, hl
+   004E 7D            [ 4]  104 	ld	a, l
+   004F C6 20         [ 7]  105 	add	a, #0x20
+   0051 47            [ 4]  106 	ld	b, a
+   0052 1E 00         [ 7]  107 	ld	e, #0x00
+   0054                     108 00104$:
+   0054 7B            [ 4]  109 	ld	a, e
+   0055 D6 08         [ 7]  110 	sub	a, #0x08
+   0057 30 31         [12]  111 	jr	NC,00108$
+                            112 ;screen_manager.c:36: devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
+   0059 53            [ 4]  113 	ld	d, e
+   005A 26 00         [ 7]  114 	ld	h, #0x00
+   005C DD 7E FE      [19]  115 	ld	a, -2 (ix)
+   005F 82            [ 4]  116 	add	a, d
+   0060 6F            [ 4]  117 	ld	l, a
+   0061 DD 7E FF      [19]  118 	ld	a, -1 (ix)
+   0064 8C            [ 4]  119 	adc	a, h
+   0065 67            [ 4]  120 	ld	h, a
+   0066 FD 21 00 01   [14]  121 	ld	iy, #0x0100
+   006A C5            [11]  122 	push	bc
+   006B 4D            [ 4]  123 	ld	c, l
+   006C 44            [ 4]  124 	ld	b, h
+   006D FD 09         [15]  125 	add	iy, bc
+   006F C1            [10]  126 	pop	bc
+   0070 D5            [11]  127 	push	de
+   0071 6B            [ 4]  128 	ld	l, e
+   0072 29            [11]  129 	add	hl, hl
+   0073 29            [11]  130 	add	hl, hl
+   0074 29            [11]  131 	add	hl, hl
+   0075 D1            [10]  132 	pop	de
+   0076 7D            [ 4]  133 	ld	a, l
+   0077 C6 40         [ 7]  134 	add	a, #0x40
+   0079 57            [ 4]  135 	ld	d, a
+   007A C5            [11]  136 	push	bc
+   007B D5            [11]  137 	push	de
+   007C FD E5         [15]  138 	push	iy
+   007E 4A            [ 4]  139 	ld	c, d
+   007F C5            [11]  140 	push	bc
+   0080 CDr00r00      [17]  141 	call	_devkit_SMS_addSprite
+   0083 F1            [10]  142 	pop	af
+   0084 F1            [10]  143 	pop	af
+   0085 D1            [10]  144 	pop	de
+   0086 C1            [10]  145 	pop	bc
+                            146 ;screen_manager.c:34: for( c = 0; c < max; c++ )
+   0087 1C            [ 4]  147 	inc	e
+   0088 18 CA         [12]  148 	jr	00104$
+   008A                     149 00108$:
+                            150 ;screen_manager.c:32: for( r = 0; r < max - 2; r++ )
+   008A 0C            [ 4]  151 	inc	c
+   008B 18 A9         [12]  152 	jr	00107$
+   008D                     153 00109$:
+   008D DD F9         [10]  154 	ld	sp, ix
+   008F DD E1         [14]  155 	pop	ix
+   0091 C9            [10]  156 	ret
+                            157 ;screen_manager.c:40: static void draw_adriana()
+                            158 ;	---------------------------------
+                            159 ; Function draw_adriana
+                            160 ; ---------------------------------
+   0092                     161 _draw_adriana:
+                            162 ;screen_manager.c:46: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+   0092 21 40 01      [10]  163 	ld	hl, #0x0140
+   0095 E5            [11]  164 	push	hl
+   0096 26 A0         [ 7]  165 	ld	h, #0xa0
+   0098 E5            [11]  166 	push	hl
+   0099 CDr00r00      [17]  167 	call	_devkit_SMS_addSprite
+   009C F1            [10]  168 	pop	af
+                            169 ;screen_manager.c:47: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+   009D 21 41 01      [10]  170 	ld	hl, #0x0141
+   00A0 E3            [19]  171 	ex	(sp),hl
+   00A1 21 48 A0      [10]  172 	ld	hl, #0xa048
+   00A4 E5            [11]  173 	push	hl
+   00A5 CDr00r00      [17]  174 	call	_devkit_SMS_addSprite
+   00A8 F1            [10]  175 	pop	af
+                            176 ;screen_manager.c:48: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+   00A9 21 42 01      [10]  177 	ld	hl, #0x0142
+   00AC E3            [19]  178 	ex	(sp),hl
+   00AD 21 40 A8      [10]  179 	ld	hl, #0xa840
+   00B0 E5            [11]  180 	push	hl
+   00B1 CDr00r00      [17]  181 	call	_devkit_SMS_addSprite
+   00B4 F1            [10]  182 	pop	af
+                            183 ;screen_manager.c:49: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+   00B5 21 43 01      [10]  184 	ld	hl, #0x0143
+   00B8 E3            [19]  185 	ex	(sp),hl
+   00B9 21 48 A8      [10]  186 	ld	hl, #0xa848
+   00BC E5            [11]  187 	push	hl
+   00BD CDr00r00      [17]  188 	call	_devkit_SMS_addSprite
+   00C0 F1            [10]  189 	pop	af
+   00C1 F1            [10]  190 	pop	af
+   00C2 C9            [10]  191 	ret
+                            192 	.area _CODE
+                            193 	.area _INITIALIZER
+                            194 	.area _CABS (ABS)
