@@ -1,0 +1,129 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.9 #9960 (MINGW64)
+                              4 ;--------------------------------------------------------
+                              5 	.module screen_manager
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _devkit_SMS_addSprite
+                             12 	.globl _engine_font_manager_draw_text
+                             13 	.globl _engine_screen_manager_init
+                             14 	.globl _engine_screen_manager_update
+                             15 ;--------------------------------------------------------
+                             16 ; special function registers
+                             17 ;--------------------------------------------------------
+                             18 ;--------------------------------------------------------
+                             19 ; ram data
+                             20 ;--------------------------------------------------------
+                             21 	.area _DATA
+                             22 ;--------------------------------------------------------
+                             23 ; ram data
+                             24 ;--------------------------------------------------------
+                             25 	.area _INITIALIZED
+                             26 ;--------------------------------------------------------
+                             27 ; absolute external ram data
+                             28 ;--------------------------------------------------------
+                             29 	.area _DABS (ABS)
+                             30 ;--------------------------------------------------------
+                             31 ; global & static initialisations
+                             32 ;--------------------------------------------------------
+                             33 	.area _HOME
+                             34 	.area _GSINIT
+                             35 	.area _GSFINAL
+                             36 	.area _GSINIT
+                             37 ;--------------------------------------------------------
+                             38 ; Home
+                             39 ;--------------------------------------------------------
+                             40 	.area _HOME
+                             41 	.area _HOME
+                             42 ;--------------------------------------------------------
+                             43 ; code
+                             44 ;--------------------------------------------------------
+                             45 	.area _CODE
+                             46 ;screen_manager.c:8: void engine_screen_manager_init()
+                             47 ;	---------------------------------
+                             48 ; Function engine_screen_manager_init
+                             49 ; ---------------------------------
+   0000                      50 _engine_screen_manager_init::
+                             51 ;screen_manager.c:10: engine_font_manager_draw_text( SPRITE_TILES_TEXT, 2, 0 );
+   0000 21 02 00      [10]   52 	ld	hl, #0x0002
+   0003 E5            [11]   53 	push	hl
+   0004 21r0Er00      [10]   54 	ld	hl, #___str_0
+   0007 E5            [11]   55 	push	hl
+   0008 CDr00r00      [17]   56 	call	_engine_font_manager_draw_text
+   000B F1            [10]   57 	pop	af
+   000C F1            [10]   58 	pop	af
+   000D C9            [10]   59 	ret
+   000E                      60 ___str_0:
+   000E 53 50 52 49 54 45    61 	.ascii "SPRITE TILES LOADED..."
+        20 54 49 4C 45 53
+        20 4C 4F 41 44 45
+        44 2E 2E 2E
+   0024 00                   62 	.db 0x00
+                             63 ;screen_manager.c:13: void engine_screen_manager_update()
+                             64 ;	---------------------------------
+                             65 ; Function engine_screen_manager_update
+                             66 ; ---------------------------------
+   0025                      67 _engine_screen_manager_update::
+   0025 DD E5         [15]   68 	push	ix
+   0027 DD 21 00 00   [14]   69 	ld	ix,#0
+   002B DD 39         [15]   70 	add	ix,sp
+   002D 3B            [ 6]   71 	dec	sp
+                             72 ;screen_manager.c:22: for( r = 0; r < 8; r++ )
+   002E 0E 00         [ 7]   73 	ld	c, #0x00
+                             74 ;screen_manager.c:24: for( c = 0; c < 8; c++ )
+   0030                      75 00109$:
+   0030 79            [ 4]   76 	ld	a, c
+   0031 07            [ 4]   77 	rlca
+   0032 07            [ 4]   78 	rlca
+   0033 07            [ 4]   79 	rlca
+   0034 E6 F8         [ 7]   80 	and	a, #0xf8
+   0036 C6 20         [ 7]   81 	add	a, #0x20
+   0038 DD 77 FF      [19]   82 	ld	-1 (ix), a
+   003B 06 00         [ 7]   83 	ld	b, #0x00
+   003D                      84 00103$:
+                             85 ;screen_manager.c:26: devkit_SMS_addSprite( x + c * 8, y + r * 8, tile + ( r * 8 + c ) );
+   003D 69            [ 4]   86 	ld	l, c
+   003E 26 00         [ 7]   87 	ld	h, #0x00
+   0040 29            [11]   88 	add	hl, hl
+   0041 29            [11]   89 	add	hl, hl
+   0042 29            [11]   90 	add	hl, hl
+   0043 58            [ 4]   91 	ld	e, b
+   0044 16 00         [ 7]   92 	ld	d, #0x00
+   0046 19            [11]   93 	add	hl, de
+   0047 11 00 01      [10]   94 	ld	de, #0x0100
+   004A 19            [11]   95 	add	hl, de
+   004B 78            [ 4]   96 	ld	a, b
+   004C 07            [ 4]   97 	rlca
+   004D 07            [ 4]   98 	rlca
+   004E 07            [ 4]   99 	rlca
+   004F E6 F8         [ 7]  100 	and	a, #0xf8
+   0051 C6 20         [ 7]  101 	add	a, #0x20
+   0053 5F            [ 4]  102 	ld	e, a
+   0054 C5            [11]  103 	push	bc
+   0055 E5            [11]  104 	push	hl
+   0056 DD 56 FF      [19]  105 	ld	d, -1 (ix)
+   0059 D5            [11]  106 	push	de
+   005A CDr00r00      [17]  107 	call	_devkit_SMS_addSprite
+   005D F1            [10]  108 	pop	af
+   005E F1            [10]  109 	pop	af
+   005F C1            [10]  110 	pop	bc
+                            111 ;screen_manager.c:24: for( c = 0; c < 8; c++ )
+   0060 04            [ 4]  112 	inc	b
+   0061 78            [ 4]  113 	ld	a, b
+   0062 D6 08         [ 7]  114 	sub	a, #0x08
+   0064 38 D7         [12]  115 	jr	C,00103$
+                            116 ;screen_manager.c:22: for( r = 0; r < 8; r++ )
+   0066 0C            [ 4]  117 	inc	c
+   0067 79            [ 4]  118 	ld	a, c
+   0068 D6 08         [ 7]  119 	sub	a, #0x08
+   006A 38 C4         [12]  120 	jr	C,00109$
+   006C 33            [ 6]  121 	inc	sp
+   006D DD E1         [14]  122 	pop	ix
+   006F C9            [10]  123 	ret
+                            124 	.area _CODE
+                            125 	.area _INITIALIZER
+                            126 	.area _CABS (ABS)
