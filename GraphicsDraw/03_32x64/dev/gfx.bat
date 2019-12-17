@@ -6,7 +6,8 @@ cd gfx
 ::bmp2tile.exe raw\tree_avoid.bmp -savetiles "tree_avoid (tiles).psgcompr" -noremovedupes -planar -tileoffset 64 -savetilemap "tree_avoid (tilemap).bin" -savepalette "tree_avoid (palette).bin" -fullpalette -exit
 
 :: Sprites
-bmp2tile.exe raw\sprites.bmp -savetiles "sprites (tiles).psgcompr" -removedupes -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
+:: https://github.com/maxim-zhao/bmp2tile
+bmp2tile.exe raw\sprites.bmp -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette
 
 cd ..
 cd dev
