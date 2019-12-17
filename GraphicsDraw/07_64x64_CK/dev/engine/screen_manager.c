@@ -29,9 +29,14 @@ static void draw_sprites()
 	unsigned char r = 0;
 	unsigned char c = 0;
 
-	for( r = 0; r < max - 2; r++ )
+	c = 2; 	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
+	c = 3; 	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
+	c = 4; 	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
+	c = 5; 	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
+
+	for( r = 1; r < max - 0; r++ )
 	{
-		for( c = 0; c < max; c++ )
+		for( c = 1; c < max - 1; c++ )
 		{
 			devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
 		}
@@ -39,8 +44,8 @@ static void draw_sprites()
 }
 static void draw_adriana()
 {
-	unsigned char x = 64;
-	unsigned char y = 160;
+	unsigned char x = 176;
+	unsigned char y = 32;
 	unsigned int tile = 256 + 64;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );

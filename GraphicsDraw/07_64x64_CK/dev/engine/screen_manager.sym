@@ -9,7 +9,7 @@ Symbol Table
     .__.H$L.                                                    =  0000 L
   0 ___str_0                                                       000E R
     _devkit_SMS_addSprite                                          **** GX
-  0 _draw_adriana                                                  0092 R
+  0 _draw_adriana                                                  00CD R
   0 _draw_sprites                                                  002B R
     _engine_font_manager_draw_text                                 **** GX
   0 _engine_screen_manager_init                                    0000 GR
@@ -21,7 +21,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   C3   flags    0
+   0 _CODE                                      size   FF   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8
