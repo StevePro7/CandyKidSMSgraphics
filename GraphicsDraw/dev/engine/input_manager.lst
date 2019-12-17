@@ -1,6 +1,6 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
-                              3 ; Version 3.6.0 #9615 (MINGW64)
+                              3 ; Version 3.6.9 #9960 (MINGW64)
                               4 ;--------------------------------------------------------
                               5 	.module input_manager
                               6 	.optsdcc -mz80
@@ -69,11 +69,11 @@
                              69 ; ---------------------------------
    0000                      70 _engine_input_manager_update::
                              71 ;input_manager.c:15: prev_joypad1 = curr_joypad1;
-   0000 2Ar00r00      [16]   72 	ld	hl,(_curr_joypad1)
-   0003 22r02r00      [16]   73 	ld	(_prev_joypad1),hl
+   0000 2Ar00r00      [16]   72 	ld	hl, (_curr_joypad1)
+   0003 22r02r00      [16]   73 	ld	(_prev_joypad1), hl
                              74 ;input_manager.c:16: curr_joypad1 = devkit_SMS_getKeysStatus();
    0006 CDr00r00      [17]   75 	call	_devkit_SMS_getKeysStatus
-   0009 22r00r00      [16]   76 	ld	(_curr_joypad1),hl
+   0009 22r00r00      [16]   76 	ld	(_curr_joypad1), hl
    000C C9            [10]   77 	ret
                              78 ;input_manager.c:20: unsigned char engine_input_manager_hold_up()
                              79 ;	---------------------------------
@@ -214,32 +214,32 @@
    0079                     214 _engine_input_manager_hold:
                             215 ;input_manager.c:74: return curr_joypad1 & data && !( prev_joypad1 & data );
    0079 3Ar00r00      [13]  216 	ld	a,(#_curr_joypad1 + 0)
-   007C FD 21 02 00   [14]  217 	ld	iy,#2
-   0080 FD 39         [15]  218 	add	iy,sp
+   007C FD 21 02 00   [14]  217 	ld	iy, #2
+   0080 FD 39         [15]  218 	add	iy, sp
    0082 FD A6 00      [19]  219 	and	a, 0 (iy)
-   0085 4F            [ 4]  220 	ld	c,a
+   0085 4F            [ 4]  220 	ld	c, a
    0086 3Ar01r00      [13]  221 	ld	a,(#_curr_joypad1 + 1)
-   0089 FD 21 02 00   [14]  222 	ld	iy,#2
-   008D FD 39         [15]  223 	add	iy,sp
+   0089 FD 21 02 00   [14]  222 	ld	iy, #2
+   008D FD 39         [15]  223 	add	iy, sp
    008F FD A6 01      [19]  224 	and	a, 1 (iy)
    0092 B1            [ 4]  225 	or	a,c
    0093 28 1C         [12]  226 	jr	Z,00103$
    0095 3Ar02r00      [13]  227 	ld	a,(#_prev_joypad1 + 0)
-   0098 FD 21 02 00   [14]  228 	ld	iy,#2
-   009C FD 39         [15]  229 	add	iy,sp
+   0098 FD 21 02 00   [14]  228 	ld	iy, #2
+   009C FD 39         [15]  229 	add	iy, sp
    009E FD A6 00      [19]  230 	and	a, 0 (iy)
-   00A1 4F            [ 4]  231 	ld	c,a
+   00A1 4F            [ 4]  231 	ld	c, a
    00A2 3Ar03r00      [13]  232 	ld	a,(#_prev_joypad1 + 1)
-   00A5 FD 21 02 00   [14]  233 	ld	iy,#2
-   00A9 FD 39         [15]  234 	add	iy,sp
+   00A5 FD 21 02 00   [14]  233 	ld	iy, #2
+   00A9 FD 39         [15]  234 	add	iy, sp
    00AB FD A6 01      [19]  235 	and	a, 1 (iy)
    00AE B1            [ 4]  236 	or	a,c
    00AF 28 03         [12]  237 	jr	Z,00104$
    00B1                     238 00103$:
-   00B1 2E 00         [ 7]  239 	ld	l,#0x00
+   00B1 2E 00         [ 7]  239 	ld	l, #0x00
    00B3 C9            [10]  240 	ret
    00B4                     241 00104$:
-   00B4 2E 01         [ 7]  242 	ld	l,#0x01
+   00B4 2E 01         [ 7]  242 	ld	l, #0x01
    00B6 C9            [10]  243 	ret
                             244 ;input_manager.c:76: static unsigned char engine_input_manager_move( unsigned int data )
                             245 ;	---------------------------------
@@ -247,20 +247,18 @@
                             247 ; ---------------------------------
    00B7                     248 _engine_input_manager_move:
                             249 ;input_manager.c:78: return curr_joypad1 & data;
-   00B7 3Ar00r00      [13]  250 	ld	a,(#_curr_joypad1 + 0)
-   00BA FD 21 02 00   [14]  251 	ld	iy,#2
-   00BE FD 39         [15]  252 	add	iy,sp
-   00C0 FD A6 00      [19]  253 	and	a, 0 (iy)
-   00C3 6F            [ 4]  254 	ld	l,a
-   00C4 3Ar01r00      [13]  255 	ld	a,(#_curr_joypad1 + 1)
-   00C7 FD 21 02 00   [14]  256 	ld	iy,#2
-   00CB FD 39         [15]  257 	add	iy,sp
-   00CD FD A6 01      [19]  258 	and	a, 1 (iy)
-   00D0 C9            [10]  259 	ret
-                            260 	.area _CODE
-                            261 	.area _INITIALIZER
-   0000                     262 __xinit__curr_joypad1:
-   0000 00 00               263 	.dw #0x0000
-   0002                     264 __xinit__prev_joypad1:
-   0002 00 00               265 	.dw #0x0000
-                            266 	.area _CABS (ABS)
+   00B7 21r00r00      [10]  250 	ld	hl,#_curr_joypad1 + 0
+   00BA 4E            [ 7]  251 	ld	c, (hl)
+   00BB 21 02 00      [10]  252 	ld	hl, #2+0
+   00BE 39            [11]  253 	add	hl, sp
+   00BF 7E            [ 7]  254 	ld	a, (hl)
+   00C0 A1            [ 4]  255 	and	a, c
+   00C1 6F            [ 4]  256 	ld	l, a
+   00C2 C9            [10]  257 	ret
+                            258 	.area _CODE
+                            259 	.area _INITIALIZER
+   0000                     260 __xinit__curr_joypad1:
+   0000 00 00               261 	.dw #0x0000
+   0002                     262 __xinit__prev_joypad1:
+   0002 00 00               263 	.dw #0x0000
+                            264 	.area _CABS (ABS)

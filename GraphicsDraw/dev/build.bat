@@ -55,8 +55,6 @@ gfx.rel
 :: Execute
 ihx2sms output.ihx output.sms
 
-:: Copy
-cp output.sms ..\asm
 
 :: Delete
 cd devkit
@@ -73,6 +71,6 @@ if exist "*.noi" del "*.noi" > nul
 if exist "*.sym" del "*.sym" > nul
 
 :: Run
-::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
-C:\SEGA\meka\mekaw.exe output.sms
+java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+::C:\SEGA\meka\mekaw.exe output.sms
 ::output.sms

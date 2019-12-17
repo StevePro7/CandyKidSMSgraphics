@@ -1,6 +1,6 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.6.0 #9615 (MINGW64)
+; Version 3.6.9 #9960 (MINGW64)
 ;--------------------------------------------------------
 	.module input_manager
 	.optsdcc -mz80
@@ -69,11 +69,11 @@ _prev_joypad1:
 ; ---------------------------------
 _engine_input_manager_update::
 ;input_manager.c:15: prev_joypad1 = curr_joypad1;
-	ld	hl,(_curr_joypad1)
-	ld	(_prev_joypad1),hl
+	ld	hl, (_curr_joypad1)
+	ld	(_prev_joypad1), hl
 ;input_manager.c:16: curr_joypad1 = devkit_SMS_getKeysStatus();
 	call	_devkit_SMS_getKeysStatus
-	ld	(_curr_joypad1),hl
+	ld	(_curr_joypad1), hl
 	ret
 ;input_manager.c:20: unsigned char engine_input_manager_hold_up()
 ;	---------------------------------
@@ -214,32 +214,32 @@ _engine_input_manager_move_fire2::
 _engine_input_manager_hold:
 ;input_manager.c:74: return curr_joypad1 & data && !( prev_joypad1 & data );
 	ld	a,(#_curr_joypad1 + 0)
-	ld	iy,#2
-	add	iy,sp
+	ld	iy, #2
+	add	iy, sp
 	and	a, 0 (iy)
-	ld	c,a
+	ld	c, a
 	ld	a,(#_curr_joypad1 + 1)
-	ld	iy,#2
-	add	iy,sp
+	ld	iy, #2
+	add	iy, sp
 	and	a, 1 (iy)
 	or	a,c
 	jr	Z,00103$
 	ld	a,(#_prev_joypad1 + 0)
-	ld	iy,#2
-	add	iy,sp
+	ld	iy, #2
+	add	iy, sp
 	and	a, 0 (iy)
-	ld	c,a
+	ld	c, a
 	ld	a,(#_prev_joypad1 + 1)
-	ld	iy,#2
-	add	iy,sp
+	ld	iy, #2
+	add	iy, sp
 	and	a, 1 (iy)
 	or	a,c
 	jr	Z,00104$
 00103$:
-	ld	l,#0x00
+	ld	l, #0x00
 	ret
 00104$:
-	ld	l,#0x01
+	ld	l, #0x01
 	ret
 ;input_manager.c:76: static unsigned char engine_input_manager_move( unsigned int data )
 ;	---------------------------------
@@ -247,15 +247,13 @@ _engine_input_manager_hold:
 ; ---------------------------------
 _engine_input_manager_move:
 ;input_manager.c:78: return curr_joypad1 & data;
-	ld	a,(#_curr_joypad1 + 0)
-	ld	iy,#2
-	add	iy,sp
-	and	a, 0 (iy)
-	ld	l,a
-	ld	a,(#_curr_joypad1 + 1)
-	ld	iy,#2
-	add	iy,sp
-	and	a, 1 (iy)
+	ld	hl,#_curr_joypad1 + 0
+	ld	c, (hl)
+	ld	hl, #2+0
+	add	hl, sp
+	ld	a, (hl)
+	and	a, c
+	ld	l, a
 	ret
 	.area _CODE
 	.area _INITIALIZER

@@ -1,6 +1,6 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
-; Version 3.6.0 #9615 (MINGW64)
+; Version 3.6.9 #9960 (MINGW64)
 ;--------------------------------------------------------
 	.module font_manager
 	.optsdcc -mz80
@@ -55,8 +55,8 @@ _engine_font_manager_draw_char::
 	ld	hl, #2+0
 	add	hl, sp
 	ld	a, (hl)
-	add	a,#0xe0
-	ld	c,a
+	add	a, #0xe0
+	ld	c, a
 ;font_manager.c:14: devkit_SMS_setNextTileatXY( x, y );
 	push	bc
 	ld	hl, #6+0
@@ -90,28 +90,28 @@ _engine_font_manager_draw_text::
 	add	ix,sp
 ;font_manager.c:20: const unsigned char *pnt = font_tiles__tilemap__bin;
 ;font_manager.c:23: while( '\0' != text[idx] )
-	ld	c,6 (ix)
-	ld	b,#0x00
+	ld	c, 6 (ix)
+	ld	b, #0x00
 00101$:
-	ld	a,4 (ix)
+	ld	a, 4 (ix)
 	add	a, b
-	ld	e,a
-	ld	a,5 (ix)
+	ld	e, a
+	ld	a, 5 (ix)
 	adc	a, #0x00
-	ld	d,a
-	ld	a,(de)
+	ld	d, a
+	ld	a, (de)
 	or	a, a
 	jr	Z,00104$
 ;font_manager.c:25: signed char tile = text[idx] - TEXT_ROOT;
-	add	a,#0xe0
-	ld	e,a
+	add	a, #0xe0
+	ld	e, a
 ;font_manager.c:26: devkit_SMS_setNextTileatXY( x++, y );
-	ld	d,c
+	ld	d, c
 	inc	c
-	ld	6 (ix),c
+	ld	6 (ix), c
 	push	bc
 	push	de
-	ld	a,7 (ix)
+	ld	a, 7 (ix)
 	push	af
 	inc	sp
 	push	de
@@ -143,21 +143,21 @@ _engine_font_manager_draw_data::
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-	ld	hl,#-10
-	add	hl,sp
-	ld	sp,hl
+	ld	hl, #-10
+	add	hl, sp
+	ld	sp, hl
 ;font_manager.c:34: const unsigned char *pnt = font_tiles__tilemap__bin;
 ;font_manager.c:43: for( idx = 0; idx < DATA_LONG; ++idx )
-	ld	hl,#0x0001
-	add	hl,sp
-	ld	-5 (ix),l
-	ld	-4 (ix),h
-	ld	a,6 (ix)
-	ld	-1 (ix),a
-	ld	-10 (ix),#0x00
+	ld	hl, #0x0001
+	add	hl, sp
+	ld	-2 (ix), l
+	ld	-1 (ix), h
+	ld	a, 6 (ix)
+	ld	-5 (ix), a
+	ld	-10 (ix), #0x00
 00106$:
 ;font_manager.c:45: quotient = data / UNIT_ROOT;
-	ld	hl,#0x000a
+	ld	hl, #0x000a
 	push	hl
 	ld	l,4 (ix)
 	ld	h,5 (ix)
@@ -165,13 +165,13 @@ _engine_font_manager_draw_data::
 	call	__divuint
 	pop	af
 	pop	af
-	ld	c,l
-	ld	b,h
-	ld	-3 (ix),c
-	ld	-2 (ix),b
+	ld	c, l
+	ld	b, h
+	ld	-4 (ix), c
+	ld	-3 (ix), b
 ;font_manager.c:46: remainder = data % UNIT_ROOT;
 	push	bc
-	ld	hl,#0x000a
+	ld	hl, #0x000a
 	push	hl
 	ld	l,4 (ix)
 	ld	h,5 (ix)
@@ -180,42 +180,42 @@ _engine_font_manager_draw_data::
 	pop	af
 	pop	af
 	pop	bc
-	ld	e,l
+	ld	e, l
 ;font_manager.c:48: hold[idx] = remainder;
-	ld	a,-10 (ix)
-	add	a, -5 (ix)
-	ld	l,a
-	ld	a,#0x00
-	adc	a, -4 (ix)
-	ld	h,a
-	ld	(hl),e
+	ld	a, -10 (ix)
+	add	a, -2 (ix)
+	ld	l, a
+	ld	a, #0x00
+	adc	a, -1 (ix)
+	ld	h, a
+	ld	(hl), e
 ;font_manager.c:49: data /= UNIT_ROOT;
-	ld	4 (ix),c
-	ld	5 (ix),b
+	ld	4 (ix), c
+	ld	5 (ix), b
 ;font_manager.c:51: tile = hold[idx] + DATA_ROOT;
-	ld	a,e
+	ld	a, e
 	add	a, #0x10
-	ld	c,a
+	ld	c, a
 ;font_manager.c:52: if( 0 == quotient && 0 == remainder && idx > 0 )
-	ld	a,-2 (ix)
-	or	a,-3 (ix)
+	ld	a, -3 (ix)
+	or	a,-4 (ix)
 	jr	NZ,00102$
-	ld	a,e
+	ld	a, e
 	or	a, a
 	jr	NZ,00102$
-	ld	a,-10 (ix)
+	ld	a, -10 (ix)
 	or	a, a
 	jr	Z,00102$
 ;font_manager.c:55: tile = 0;
-	ld	c,#0x00
+	ld	c, #0x00
 00102$:
 ;font_manager.c:58: devkit_SMS_setNextTileatXY( x--, y );
-	ld	b,-1 (ix)
-	dec	-1 (ix)
-	ld	a,-1 (ix)
-	ld	6 (ix),a
+	ld	b, -5 (ix)
+	dec	-5 (ix)
+	ld	a, -5 (ix)
+	ld	6 (ix), a
 	push	bc
-	ld	a,7 (ix)
+	ld	a, 7 (ix)
 	push	af
 	inc	sp
 	push	bc
@@ -232,9 +232,9 @@ _engine_font_manager_draw_data::
 	inc	sp
 ;font_manager.c:43: for( idx = 0; idx < DATA_LONG; ++idx )
 	inc	-10 (ix)
-	ld	a,-10 (ix)
+	ld	a, -10 (ix)
 	sub	a, #0x04
-	jp	C,00106$
+	jp	C, 00106$
 	ld	sp, ix
 	pop	ix
 	ret
@@ -246,28 +246,28 @@ _engine_font_manager_draw_data_ZERO::
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-	ld	hl,#-6
-	add	hl,sp
-	ld	sp,hl
+	ld	hl, #-6
+	add	hl, sp
+	ld	sp, hl
 ;font_manager.c:65: const unsigned char *pnt = font_tiles__tilemap__bin;
 ;font_manager.c:72: for( idx = 0; idx < DATA_LONG; ++idx )
-	ld	hl,#0x0000
-	add	hl,sp
-	ld	-2 (ix),l
-	ld	-1 (ix),h
-	ld	c,6 (ix)
-	ld	b,#0x00
+	ld	hl, #0x0000
+	add	hl, sp
+	ld	-2 (ix), l
+	ld	-1 (ix), h
+	ld	c, 6 (ix)
+	ld	b, #0x00
 00102$:
 ;font_manager.c:74: hold[idx] = data % UNIT_ROOT;
-	ld	a,b
+	ld	a, b
 	add	a, -2 (ix)
-	ld	l,a
-	ld	a,#0x00
+	ld	l, a
+	ld	a, #0x00
 	adc	a, -1 (ix)
-	ld	h,a
+	ld	h, a
 	push	hl
 	push	bc
-	ld	de,#0x000a
+	ld	de, #0x000a
 	push	de
 	ld	e,4 (ix)
 	ld	d,5 (ix)
@@ -278,11 +278,11 @@ _engine_font_manager_draw_data_ZERO::
 	ex	de,hl
 	pop	bc
 	pop	hl
-	ld	(hl),e
+	ld	(hl), e
 ;font_manager.c:75: data /= UNIT_ROOT;
 	push	bc
 	push	de
-	ld	hl,#0x000a
+	ld	hl, #0x000a
 	push	hl
 	ld	l,4 (ix)
 	ld	h,5 (ix)
@@ -292,19 +292,19 @@ _engine_font_manager_draw_data_ZERO::
 	pop	af
 	pop	de
 	pop	bc
-	ld	4 (ix),l
-	ld	5 (ix),h
+	ld	4 (ix), l
+	ld	5 (ix), h
 ;font_manager.c:77: tile = hold[idx] + DATA_ROOT;
-	ld	a,e
+	ld	a, e
 	add	a, #0x10
-	ld	e,a
+	ld	e, a
 ;font_manager.c:79: devkit_SMS_setNextTileatXY( x--, y );
-	ld	d,c
+	ld	d, c
 	dec	c
-	ld	6 (ix),c
+	ld	6 (ix), c
 	push	bc
 	push	de
-	ld	a,7 (ix)
+	ld	a, 7 (ix)
 	push	af
 	inc	sp
 	push	de
@@ -316,7 +316,7 @@ _engine_font_manager_draw_data_ZERO::
 ;font_manager.c:80: devkit_SMS_setTile( *pnt + tile );
 	ld	a,(#_font_tiles__tilemap__bin + 0)
 	add	a, e
-	ld	d,a
+	ld	d, a
 	push	bc
 	push	de
 	inc	sp
@@ -325,7 +325,7 @@ _engine_font_manager_draw_data_ZERO::
 	pop	bc
 ;font_manager.c:72: for( idx = 0; idx < DATA_LONG; ++idx )
 	inc	b
-	ld	a,b
+	ld	a, b
 	sub	a, #0x04
 	jr	C,00102$
 	ld	sp, ix
