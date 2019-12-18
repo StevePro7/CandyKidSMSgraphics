@@ -7,7 +7,7 @@ cd gfx
 
 :: Sprites
 :: https://github.com/maxim-zhao/bmp2tile
-bmp2tile.exe raw\sprites.bmp -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
+bmp2tile.exe raw\sprites.bmp -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette
 bmp2tile.exe raw\adriana.bmp -savetiles "adriana (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 64 -savepalette "adriana (palette).bin" -fullpalette  -spritepalette -exit
 
 cd ..

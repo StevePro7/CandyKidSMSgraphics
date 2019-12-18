@@ -5,7 +5,7 @@
 #define NORMAL_TILES_TEXT	"NORMAL TILES LOADED..."
 #define SPRITE_TILES_TEXT	"SPRITE TILES LOADED..."
 
-static void draw_sprites();
+static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx );
 static void draw_adriana();
 
 void engine_screen_manager_init()
@@ -15,13 +15,21 @@ void engine_screen_manager_init()
 
 void engine_screen_manager_update()
 {
-	draw_sprites();
+	draw_sprites( 48, 32, 0 );
+	draw_sprites( 80, 32, 1 );
 	draw_adriana();
 }
 
-static void draw_sprites()
+static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
 {
-	const unsigned char max = 8;
+	unsigned int tile = 256 + idx * 16;
+
+	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+
+	/*const unsigned char max = 8;
 	unsigned char x = 64;
 	unsigned char y = 32;
 	unsigned int tile = 256;
@@ -40,7 +48,7 @@ static void draw_sprites()
 		{
 			devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
 		}
-	}
+	}*/
 }
 static void draw_adriana()
 {
