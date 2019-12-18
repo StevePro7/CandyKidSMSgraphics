@@ -92,6 +92,18 @@ _engine_content_manager_load_sprites::
 	ld	bc, #_sprites__palette__bin+0
 	push	bc
 	call	_devkit_SMS_loadSpritePalette
+;content_manager.c:27: devkit_SMS_loadPSGaidencompressedTiles( adriana__tiles__psgcompr, SPRITE_TILES + 64 );
+	ld	hl, #0x0140
+	ex	(sp),hl
+	ld	hl, #_adriana__tiles__psgcompr
+	push	hl
+	call	_devkit_SMS_loadPSGaidencompressedTiles
+	pop	af
+	pop	af
+;content_manager.c:28: devkit_SMS_loadSpritePalette( ( void * ) adriana__palette__bin );
+	ld	bc, #_adriana__palette__bin+0
+	push	bc
+	call	_devkit_SMS_loadSpritePalette
 	pop	af
 	ret
 	.area _CODE

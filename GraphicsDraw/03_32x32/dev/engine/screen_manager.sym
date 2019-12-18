@@ -7,6 +7,9 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
+    _devkit_SMS_addSprite                                          **** GX
+  0 _draw_adriana                                                  007D R
+  0 _draw_sprites                                                  001D R
   0 _engine_screen_manager_init                                    0000 GR
   0 _engine_screen_manager_update                                  0001 GR
 
@@ -15,7 +18,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size    2   flags    0
+   0 _CODE                                      size   AF   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8

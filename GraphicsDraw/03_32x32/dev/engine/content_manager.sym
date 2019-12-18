@@ -7,6 +7,8 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
+    _adriana__palette__bin                                         **** GX
+    _adriana__tiles__psgcompr                                      **** GX
     _devkit_SMS_loadBGPalette                                      **** GX
     _devkit_SMS_loadPSGaidencompressedTiles                        **** GX
     _devkit_SMS_loadSpritePalette                                  **** GX
@@ -19,12 +21,13 @@ Symbol Table
     _tree_avoid__palette__bin                                      **** GX
     _tree_avoid__tiles__psgcompr                                   **** GX
 
+
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   40   flags    0
+   0 _CODE                                      size   54   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8
