@@ -1,0 +1,8 @@
+18/12/2019
+
+candy is 16x16 on tile map
+which means would be like 8x8
+
+but need to shrink and rebuffer 4px each side
+to get 16x16
+except the big freeman candy

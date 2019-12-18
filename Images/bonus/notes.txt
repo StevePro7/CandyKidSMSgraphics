@@ -15,3 +15,5 @@ bonus
 
 sms
 12x12
+
+but is still 16x16 so need to buffer 2px each side
