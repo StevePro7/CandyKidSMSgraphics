@@ -87,18 +87,18 @@
    0031 E5            [11]   87 	push	hl
    0032 CDr00r00      [17]   88 	call	_devkit_SMS_loadPSGaidencompressedTiles
    0035 F1            [10]   89 	pop	af
-                             90 ;content_manager.c:27: devkit_SMS_loadPSGaidencompressedTiles( adriana__tiles__psgcompr, SPRITE_TILES + 64 );
-   0036 21 40 01      [10]   91 	ld	hl, #0x0140
-   0039 E3            [19]   92 	ex	(sp),hl
-   003A 21r00r00      [10]   93 	ld	hl,#_adriana__tiles__psgcompr
-   003D E5            [11]   94 	push	hl
-   003E CDr00r00      [17]   95 	call	_devkit_SMS_loadPSGaidencompressedTiles
-   0041 F1            [10]   96 	pop	af
-   0042 F1            [10]   97 	pop	af
-                             98 ;content_manager.c:28: devkit_SMS_loadSpritePalette( ( void * ) adriana__palette__bin );
-   0043 01r00r00      [10]   99 	ld	bc,#_adriana__palette__bin+0
-   0046 C5            [11]  100 	push	bc
-   0047 CDr00r00      [17]  101 	call	_devkit_SMS_loadSpritePalette
+   0036 F1            [10]   90 	pop	af
+                             91 ;content_manager.c:25: devkit_SMS_loadSpritePalette( ( void * ) sprites__palette__bin );
+   0037 01r00r00      [10]   92 	ld	bc,#_sprites__palette__bin+0
+   003A C5            [11]   93 	push	bc
+   003B CDr00r00      [17]   94 	call	_devkit_SMS_loadSpritePalette
+                             95 ;content_manager.c:27: devkit_SMS_loadPSGaidencompressedTiles( adriana__tiles__psgcompr, SPRITE_TILES + 64 );
+   003E 21 40 01      [10]   96 	ld	hl, #0x0140
+   0041 E3            [19]   97 	ex	(sp),hl
+   0042 21r00r00      [10]   98 	ld	hl,#_adriana__tiles__psgcompr
+   0045 E5            [11]   99 	push	hl
+   0046 CDr00r00      [17]  100 	call	_devkit_SMS_loadPSGaidencompressedTiles
+   0049 F1            [10]  101 	pop	af
    004A F1            [10]  102 	pop	af
    004B C9            [10]  103 	ret
                             104 	.area _CODE

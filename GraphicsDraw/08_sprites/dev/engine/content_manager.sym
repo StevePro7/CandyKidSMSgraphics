@@ -7,7 +7,6 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
-    _adriana__palette__bin                                         **** GX
     _adriana__tiles__psgcompr                                      **** GX
     _devkit_SMS_loadBGPalette                                      **** GX
     _devkit_SMS_loadPSGaidencompressedTiles                        **** GX
@@ -16,6 +15,7 @@ Symbol Table
   0 _engine_content_manager_load_tiles                             0000 GR
     _font_tiles__palette__bin                                      **** GX
     _font_tiles__tiles__psgcompr                                   **** GX
+    _sprites__palette__bin                                         **** GX
     _sprites__tiles__psgcompr                                      **** GX
     _tree_avoid__palette__bin                                      **** GX
     _tree_avoid__tiles__psgcompr                                   **** GX

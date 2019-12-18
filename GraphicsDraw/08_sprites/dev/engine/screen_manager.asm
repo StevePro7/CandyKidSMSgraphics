@@ -65,64 +65,64 @@ ___str_0:
 ; Function engine_screen_manager_update
 ; ---------------------------------
 _engine_screen_manager_update::
-;screen_manager.c:18: draw_sprites( 48, 32, 0 );
-	ld	hl,#0x0020
+;screen_manager.c:19: draw_sprites( 48, 32, idx + 0 );
+	ld	hl,#0x0620
 	push	hl
 	ld	a,#0x30
 	push	af
 	inc	sp
 	call	_draw_sprites
-;screen_manager.c:19: draw_sprites( 80, 32, 1 );
+;screen_manager.c:20: draw_sprites( 80, 32, idx + 1 );
 	inc	sp
-	ld	hl,#0x0120
+	ld	hl,#0x0720
 	ex	(sp),hl
 	ld	a,#0x50
 	push	af
 	inc	sp
 	call	_draw_sprites
-;screen_manager.c:21: draw_sprites( 48, 64, 2 );
+;screen_manager.c:22: draw_sprites( 48, 64, idx + 2 );
 	inc	sp
-	ld	hl,#0x0240
+	ld	hl,#0x0840
 	ex	(sp),hl
 	ld	a,#0x30
 	push	af
 	inc	sp
 	call	_draw_sprites
-;screen_manager.c:22: draw_sprites( 80, 64, 3 );
+;screen_manager.c:23: draw_sprites( 80, 64, idx + 3 );
 	inc	sp
-	ld	hl,#0x0340
+	ld	hl,#0x0940
 	ex	(sp),hl
 	ld	a,#0x50
 	push	af
 	inc	sp
 	call	_draw_sprites
-;screen_manager.c:24: draw_sprites( 48, 96, 4 );
+;screen_manager.c:25: draw_sprites( 48, 96, idx + 4 );
 	inc	sp
-	ld	hl,#0x0460
+	ld	hl,#0x0a60
 	ex	(sp),hl
 	ld	a,#0x30
 	push	af
 	inc	sp
 	call	_draw_sprites
-;screen_manager.c:25: draw_sprites( 80, 96, 5 );
+;screen_manager.c:26: draw_sprites( 80, 96, idx + 5 );
 	inc	sp
-	ld	hl,#0x0560
+	ld	hl,#0x0b60
 	ex	(sp),hl
 	ld	a,#0x50
 	push	af
 	inc	sp
 	call	_draw_sprites
-;screen_manager.c:27: draw_sprites( 48, 128, 6 );
+;screen_manager.c:28: draw_sprites( 48, 128, idx + 6 );
 	inc	sp
-	ld	hl,#0x0680
+	ld	hl,#0x0c80
 	ex	(sp),hl
 	ld	a,#0x30
 	push	af
 	inc	sp
 	call	_draw_sprites
-;screen_manager.c:28: draw_sprites( 80, 128, 7 );
+;screen_manager.c:29: draw_sprites( 80, 128, idx + 7 );
 	inc	sp
-	ld	hl,#0x0780
+	ld	hl,#0x0d80
 	ex	(sp),hl
 	ld	a,#0x50
 	push	af
@@ -131,7 +131,7 @@ _engine_screen_manager_update::
 	pop	af
 	inc	sp
 	ret
-;screen_manager.c:33: static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
+;screen_manager.c:34: static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
 ;	---------------------------------
 ; Function draw_sprites
 ; ---------------------------------
@@ -139,7 +139,7 @@ _draw_sprites:
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-;screen_manager.c:35: unsigned int tile = 256 + idx * 4;
+;screen_manager.c:36: unsigned int tile = 256 + idx * 4;
 	ld	l,6 (ix)
 	ld	h,#0x00
 	add	hl, hl
@@ -148,7 +148,7 @@ _draw_sprites:
 	add	hl,bc
 	ld	c,l
 	ld	b,h
-;screen_manager.c:37: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+;screen_manager.c:38: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	push	bc
 	push	bc
 	ld	h,5 (ix)
@@ -158,7 +158,7 @@ _draw_sprites:
 	pop	af
 	pop	af
 	pop	bc
-;screen_manager.c:38: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+;screen_manager.c:39: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	ld	l, c
 	ld	h, b
 	inc	hl
@@ -175,7 +175,7 @@ _draw_sprites:
 	pop	af
 	pop	de
 	pop	bc
-;screen_manager.c:39: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+;screen_manager.c:40: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	ld	l, c
 	ld	h, b
 	inc	hl
@@ -196,7 +196,7 @@ _draw_sprites:
 	pop	af
 	pop	de
 	pop	bc
-;screen_manager.c:40: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+;screen_manager.c:41: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 	inc	bc
 	inc	bc
 	inc	bc
@@ -207,33 +207,33 @@ _draw_sprites:
 	pop	af
 	pop	ix
 	ret
-;screen_manager.c:63: static void draw_adriana()
+;screen_manager.c:64: static void draw_adriana()
 ;	---------------------------------
 ; Function draw_adriana
 ; ---------------------------------
 _draw_adriana:
-;screen_manager.c:69: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+;screen_manager.c:70: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	ld	hl,#0x0140
 	push	hl
 	ld	hl,#0x20b0
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:70: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+;screen_manager.c:71: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	ld	hl, #0x0141
 	ex	(sp),hl
 	ld	hl,#0x20b8
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:71: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+;screen_manager.c:72: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	ld	hl, #0x0142
 	ex	(sp),hl
 	ld	hl,#0x28b0
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:72: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+;screen_manager.c:73: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 	ld	hl, #0x0143
 	ex	(sp),hl
 	ld	hl,#0x28b8

@@ -15,17 +15,18 @@ void engine_screen_manager_init()
 
 void engine_screen_manager_update()
 {
-	draw_sprites( 48, 32, 0 );
-	draw_sprites( 80, 32, 1 );
+	unsigned char idx = 6;
+	draw_sprites( 48, 32, idx + 0 );
+	draw_sprites( 80, 32, idx + 1 );
 
-	draw_sprites( 48, 64, 2 );
-	draw_sprites( 80, 64, 3 );
+	draw_sprites( 48, 64, idx + 2 );
+	draw_sprites( 80, 64, idx + 3 );
 
-	draw_sprites( 48, 96, 4 );
-	draw_sprites( 80, 96, 5 );
+	draw_sprites( 48, 96, idx + 4 );
+	draw_sprites( 80, 96, idx + 5 );
 
-	draw_sprites( 48, 128, 6 );
-	draw_sprites( 80, 128, 7 );
+	draw_sprites( 48, 128, idx + 6 );
+	draw_sprites( 80, 128, idx + 7 );
 
 	//draw_adriana();
 }
