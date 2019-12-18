@@ -15,7 +15,7 @@ void engine_screen_manager_init()
 
 void engine_screen_manager_update()
 {
-	unsigned char idx = 6;
+	unsigned char idx = 0;
 	draw_sprites( 48, 32, idx + 0 );
 	draw_sprites( 80, 32, idx + 1 );
 

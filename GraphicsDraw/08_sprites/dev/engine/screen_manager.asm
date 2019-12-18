@@ -66,7 +66,7 @@ ___str_0:
 ; ---------------------------------
 _engine_screen_manager_update::
 ;screen_manager.c:19: draw_sprites( 48, 32, idx + 0 );
-	ld	hl,#0x0620
+	ld	hl,#0x0020
 	push	hl
 	ld	a,#0x30
 	push	af
@@ -74,7 +74,7 @@ _engine_screen_manager_update::
 	call	_draw_sprites
 ;screen_manager.c:20: draw_sprites( 80, 32, idx + 1 );
 	inc	sp
-	ld	hl,#0x0720
+	ld	hl,#0x0120
 	ex	(sp),hl
 	ld	a,#0x50
 	push	af
@@ -82,7 +82,7 @@ _engine_screen_manager_update::
 	call	_draw_sprites
 ;screen_manager.c:22: draw_sprites( 48, 64, idx + 2 );
 	inc	sp
-	ld	hl,#0x0840
+	ld	hl,#0x0240
 	ex	(sp),hl
 	ld	a,#0x30
 	push	af
@@ -90,7 +90,7 @@ _engine_screen_manager_update::
 	call	_draw_sprites
 ;screen_manager.c:23: draw_sprites( 80, 64, idx + 3 );
 	inc	sp
-	ld	hl,#0x0940
+	ld	hl,#0x0340
 	ex	(sp),hl
 	ld	a,#0x50
 	push	af
@@ -98,7 +98,7 @@ _engine_screen_manager_update::
 	call	_draw_sprites
 ;screen_manager.c:25: draw_sprites( 48, 96, idx + 4 );
 	inc	sp
-	ld	hl,#0x0a60
+	ld	hl,#0x0460
 	ex	(sp),hl
 	ld	a,#0x30
 	push	af
@@ -106,7 +106,7 @@ _engine_screen_manager_update::
 	call	_draw_sprites
 ;screen_manager.c:26: draw_sprites( 80, 96, idx + 5 );
 	inc	sp
-	ld	hl,#0x0b60
+	ld	hl,#0x0560
 	ex	(sp),hl
 	ld	a,#0x50
 	push	af
@@ -114,7 +114,7 @@ _engine_screen_manager_update::
 	call	_draw_sprites
 ;screen_manager.c:28: draw_sprites( 48, 128, idx + 6 );
 	inc	sp
-	ld	hl,#0x0c80
+	ld	hl,#0x0680
 	ex	(sp),hl
 	ld	a,#0x30
 	push	af
@@ -122,7 +122,7 @@ _engine_screen_manager_update::
 	call	_draw_sprites
 ;screen_manager.c:29: draw_sprites( 80, 128, idx + 7 );
 	inc	sp
-	ld	hl,#0x0d80
+	ld	hl,#0x0780
 	ex	(sp),hl
 	ld	a,#0x50
 	push	af
