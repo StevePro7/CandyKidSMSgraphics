@@ -47,7 +47,8 @@ namespace GraphicsLoad
 			}
 
 			//int y = twice ? 2 : 1;
-			int y = most + 4;
+			//int y = most + 4;
+			int y = 16;
 			wide = (int)(size * scale);
 			high = (int)(y * size * scale);
 
@@ -122,7 +123,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(renderTarget);
 				GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1, 0);
 
-				Draw2();
+				Draw3();
 				base.Draw(gameTime);
 
 				GraphicsDevice.SetRenderTarget(null);
@@ -138,7 +139,7 @@ namespace GraphicsLoad
 			}
 			else
 			{
-				Draw2();
+				Draw3();
 				base.Draw(gameTime);
 			}
 		}
@@ -183,6 +184,28 @@ namespace GraphicsLoad
 			{
 				z = y + (i + 1) * (int)(size * scale);
 				var pos = new Vector2(x, z);
+				Rectangle dest = GetRectangle(i);
+				spriteBatch.Draw(image, pos, dest, Color.White);
+			}
+
+			spriteBatch.End();
+		}
+
+		private void Draw3()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			int[] arr = { 4, 5, 8, 9, 12, 13, 6, 7, 10, 11, 14, 15, 0, 1, 2, 3 };
+			//int[] arr = { 4 };
+			int x = 0;
+			int y = 0;
+
+			for(int j = 0; j < arr.Length; j++)
+			{
+				int i = arr[j];
+				y = j * (int)(size * scale);
+				var pos = new Vector2(x, y);
 				Rectangle dest = GetRectangle(i);
 				spriteBatch.Draw(image, pos, dest, Color.White);
 			}
