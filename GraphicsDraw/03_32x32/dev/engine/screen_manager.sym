@@ -8,17 +8,22 @@ Symbol Table
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
     _devkit_SMS_addSprite                                          **** GX
-  0 _draw_adriana                                                  007D R
-  0 _draw_sprites                                                  001D R
+    _devkit_SMS_setNextTileatXY                                    **** GX
+    _devkit_SMS_setTile                                            **** GX
+  0 _draw_adriana                                                  0096 R
+  0 _draw_sprites                                                  0032 R
+  0 _draw_tree                                                     00C8 R
   0 _engine_screen_manager_init                                    0000 GR
-  0 _engine_screen_manager_update                                  0001 GR
+  0 _engine_screen_manager_update                                  0016 GR
+    _tree_avoid__tilemap__bin                                      **** GX
+
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   AF   flags    0
+   0 _CODE                                      size  14B   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8
