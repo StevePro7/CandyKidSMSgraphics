@@ -1,0 +1,17 @@
+18/12/2019
+
+bonus is 24x24 on tile map
+which means would be like 12x12
+
+
+CK
+32x32
+
+CK sms
+16x16
+
+bonus
+24x24
+
+sms
+12x12
