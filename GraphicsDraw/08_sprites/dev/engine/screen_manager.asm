@@ -65,72 +65,175 @@ ___str_0:
 ; Function engine_screen_manager_update
 ; ---------------------------------
 _engine_screen_manager_update::
-;screen_manager.c:18: draw_sprites();
+;screen_manager.c:18: draw_sprites( 48, 32, 0 );
+	ld	hl,#0x0020
+	push	hl
+	ld	a,#0x30
+	push	af
+	inc	sp
 	call	_draw_sprites
-;screen_manager.c:19: draw_adriana();
-	jp  _draw_adriana
-;screen_manager.c:22: static void draw_sprites()
+;screen_manager.c:19: draw_sprites( 80, 32, 1 );
+	inc	sp
+	ld	hl,#0x0120
+	ex	(sp),hl
+	ld	a,#0x50
+	push	af
+	inc	sp
+	call	_draw_sprites
+;screen_manager.c:21: draw_sprites( 48, 64, 2 );
+	inc	sp
+	ld	hl,#0x0240
+	ex	(sp),hl
+	ld	a,#0x30
+	push	af
+	inc	sp
+	call	_draw_sprites
+;screen_manager.c:22: draw_sprites( 80, 64, 3 );
+	inc	sp
+	ld	hl,#0x0340
+	ex	(sp),hl
+	ld	a,#0x50
+	push	af
+	inc	sp
+	call	_draw_sprites
+;screen_manager.c:24: draw_sprites( 48, 96, 4 );
+	inc	sp
+	ld	hl,#0x0460
+	ex	(sp),hl
+	ld	a,#0x30
+	push	af
+	inc	sp
+	call	_draw_sprites
+;screen_manager.c:25: draw_sprites( 80, 96, 5 );
+	inc	sp
+	ld	hl,#0x0560
+	ex	(sp),hl
+	ld	a,#0x50
+	push	af
+	inc	sp
+	call	_draw_sprites
+;screen_manager.c:27: draw_sprites( 48, 128, 6 );
+	inc	sp
+	ld	hl,#0x0680
+	ex	(sp),hl
+	ld	a,#0x30
+	push	af
+	inc	sp
+	call	_draw_sprites
+;screen_manager.c:28: draw_sprites( 80, 128, 7 );
+	inc	sp
+	ld	hl,#0x0780
+	ex	(sp),hl
+	ld	a,#0x50
+	push	af
+	inc	sp
+	call	_draw_sprites
+	pop	af
+	inc	sp
+	ret
+;screen_manager.c:33: static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
 ;	---------------------------------
 ; Function draw_sprites
 ; ---------------------------------
 _draw_sprites:
-;screen_manager.c:28: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
-	ld	hl,#0x0100
-	push	hl
-	ld	hl,#0x2040
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:29: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-	ld	hl, #0x0101
-	ex	(sp),hl
-	ld	hl,#0x2048
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:30: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-	ld	hl, #0x0102
-	ex	(sp),hl
-	ld	hl,#0x2840
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:31: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-	ld	hl, #0x0103
-	ex	(sp),hl
-	ld	hl,#0x2848
+	push	ix
+	ld	ix,#0
+	add	ix,sp
+;screen_manager.c:35: unsigned int tile = 256 + idx * 4;
+	ld	l,6 (ix)
+	ld	h,#0x00
+	add	hl, hl
+	add	hl, hl
+	ld	bc,#0x0100
+	add	hl,bc
+	ld	c,l
+	ld	b,h
+;screen_manager.c:37: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+	push	bc
+	push	bc
+	ld	h,5 (ix)
+	ld	l,4 (ix)
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
 	pop	af
+	pop	bc
+;screen_manager.c:38: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+	ld	l, c
+	ld	h, b
+	inc	hl
+	ld	a,4 (ix)
+	add	a, #0x08
+	ld	e,a
+	push	bc
+	push	de
+	push	hl
+	ld	d, 5 (ix)
+	push	de
+	call	_devkit_SMS_addSprite
+	pop	af
+	pop	af
+	pop	de
+	pop	bc
+;screen_manager.c:39: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+	ld	l, c
+	ld	h, b
+	inc	hl
+	inc	hl
+	ld	a,5 (ix)
+	add	a, #0x08
+	ld	d,a
+	push	bc
+	push	de
+	push	hl
+	push	de
+	inc	sp
+	ld	a,4 (ix)
+	push	af
+	inc	sp
+	call	_devkit_SMS_addSprite
+	pop	af
+	pop	af
+	pop	de
+	pop	bc
+;screen_manager.c:40: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+	inc	bc
+	inc	bc
+	inc	bc
+	push	bc
+	push	de
+	call	_devkit_SMS_addSprite
+	pop	af
+	pop	af
+	pop	ix
 	ret
-;screen_manager.c:53: static void draw_adriana()
+;screen_manager.c:63: static void draw_adriana()
 ;	---------------------------------
 ; Function draw_adriana
 ; ---------------------------------
 _draw_adriana:
-;screen_manager.c:59: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+;screen_manager.c:69: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	ld	hl,#0x0140
 	push	hl
 	ld	hl,#0x20b0
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:60: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+;screen_manager.c:70: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	ld	hl, #0x0141
 	ex	(sp),hl
 	ld	hl,#0x20b8
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:61: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+;screen_manager.c:71: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	ld	hl, #0x0142
 	ex	(sp),hl
 	ld	hl,#0x28b0
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:62: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+;screen_manager.c:72: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 	ld	hl, #0x0143
 	ex	(sp),hl
 	ld	hl,#0x28b8

@@ -17,12 +17,22 @@ void engine_screen_manager_update()
 {
 	draw_sprites( 48, 32, 0 );
 	draw_sprites( 80, 32, 1 );
-	draw_adriana();
+
+	draw_sprites( 48, 64, 2 );
+	draw_sprites( 80, 64, 3 );
+
+	draw_sprites( 48, 96, 4 );
+	draw_sprites( 80, 96, 5 );
+
+	draw_sprites( 48, 128, 6 );
+	draw_sprites( 80, 128, 7 );
+
+	//draw_adriana();
 }
 
 static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
 {
-	unsigned int tile = 256 + idx * 16;
+	unsigned int tile = 256 + idx * 4;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
