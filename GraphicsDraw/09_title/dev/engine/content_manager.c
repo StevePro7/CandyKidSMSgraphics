@@ -2,8 +2,9 @@
 #include "..\devkit\_sms_manager.h"
 #include "..\gfx.h"
 
-#define TREE_TILES		64
 #define FONT_TILES		0
+#define TREE_TILES		64
+#define GAME_TITLE		80
 #define SPRITE_TILES	256
 
 void engine_content_manager_load_tiles()
@@ -15,6 +16,10 @@ void engine_content_manager_load_tiles()
 	// Font tiles.
 	devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
 	devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
+
+	// Game title.
+	devkit_SMS_loadPSGaidencompressedTiles( game_title__tiles__psgcompr, GAME_TITLE );
+	devkit_SMS_loadBGPalette( ( void * ) game_title__palette__bin );
 
 }
 
