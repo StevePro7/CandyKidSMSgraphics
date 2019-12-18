@@ -18,6 +18,7 @@ namespace GraphicsLoad
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
+		const int most = 12;
 		int index = 0;
 		float scale = 1.0f;
 		bool saves = false;
@@ -28,24 +29,25 @@ namespace GraphicsLoad
 
 		public AnGame()
 		{
-			if (null != ConfigurationManager.AppSettings["index"])
+			if(null != ConfigurationManager.AppSettings["index"])
 			{
 				index = Convert.ToInt32(ConfigurationManager.AppSettings["index"]);
 			}
-			if (null != ConfigurationManager.AppSettings["scale"])
+			if(null != ConfigurationManager.AppSettings["scale"])
 			{
 				scale = Convert.ToSingle(ConfigurationManager.AppSettings["scale"]);
 			}
-			if (null != ConfigurationManager.AppSettings["saves"])
+			if(null != ConfigurationManager.AppSettings["saves"])
 			{
 				saves = Convert.ToBoolean(ConfigurationManager.AppSettings["saves"]);
 			}
-			if (null != ConfigurationManager.AppSettings["twice"])
+			if(null != ConfigurationManager.AppSettings["twice"])
 			{
 				twice = Convert.ToBoolean(ConfigurationManager.AppSettings["twice"]);
 			}
 
-			int y = twice ? 2 : 1;
+			//int y = twice ? 2 : 1;
+			int y = most + 4;
 			wide = (int)(size * scale);
 			high = (int)(y * size * scale);
 
@@ -101,7 +103,7 @@ namespace GraphicsLoad
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Update(GameTime gameTime)
 		{
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+			if(GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 			{
 				Exit();
 			}
@@ -115,12 +117,12 @@ namespace GraphicsLoad
 		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw(GameTime gameTime)
 		{
-			if (saves)
+			if(saves)
 			{
 				GraphicsDevice.SetRenderTarget(renderTarget);
 				GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1, 0);
 
-				Draw();
+				Draw2();
 				base.Draw(gameTime);
 
 				GraphicsDevice.SetRenderTarget(null);
@@ -136,7 +138,7 @@ namespace GraphicsLoad
 			}
 			else
 			{
-				Draw();
+				Draw2();
 				base.Draw(gameTime);
 			}
 		}
@@ -150,11 +152,39 @@ namespace GraphicsLoad
 			//spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
 			spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White);
 
-			if (twice)
+			if(twice)
 			{
 				dest = GetRectangle(index + 1);
 				//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
 				spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White);
+			}
+
+			spriteBatch.End();
+		}
+
+		private void Draw2()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			int x = 0;
+			int y = 0;
+			for (int i = 0; i < most; i++)
+			{
+				int j = 4 + i;
+				y = i * (int)(size * scale);
+				var pos = new Vector2(x, y);
+				Rectangle dest = GetRectangle(j);
+				spriteBatch.Draw(image, pos, dest, Color.White);
+			}
+
+			int z = y;
+			for(int i = 0; i < 4; i++)
+			{
+				z = y + (i + 1) * (int)(size * scale);
+				var pos = new Vector2(x, z);
+				Rectangle dest = GetRectangle(i);
+				spriteBatch.Draw(image, pos, dest, Color.White);
 			}
 
 			spriteBatch.End();
