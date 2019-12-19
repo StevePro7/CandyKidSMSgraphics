@@ -11,23 +11,20 @@ Symbol Table
     _devkit_SMS_loadBGPalette                                      **** GX
     _devkit_SMS_loadPSGaidencompressedTiles                        **** GX
     _devkit_SMS_loadSpritePalette                                  **** GX
-  0 _engine_content_manager_load_sprites                           003E GR
+  0 _engine_content_manager_load_sprites                           0016 GR
   0 _engine_content_manager_load_tiles                             0000 GR
-    _font_tiles__palette__bin                                      **** GX
-    _font_tiles__tiles__psgcompr                                   **** GX
-    _game_title__palette__bin                                      **** GX
-    _game_title__tiles__psgcompr                                   **** GX
     _sprites__palette__bin                                         **** GX
     _sprites__tiles__psgcompr                                      **** GX
-    _tree_avoid__palette__bin                                      **** GX
-    _tree_avoid__tiles__psgcompr                                   **** GX
+    _tree_death__palette__bin                                      **** GX
+    _tree_death__tiles__psgcompr                                   **** GX
+
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
 Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   60   flags    0
+   0 _CODE                                      size   38   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8

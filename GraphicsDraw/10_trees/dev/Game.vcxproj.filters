@@ -61,7 +61,7 @@
       <Filter>Source Files\engine</Filter>
     </ClCompile>
     <ClCompile Include="engine\screen_manager.c">
-      <Filter>Source Files\engine</Filter>
+      <Filter>Source Files\output</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

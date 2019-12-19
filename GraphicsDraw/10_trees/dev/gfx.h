@@ -37,3 +37,12 @@ extern const unsigned char	tree_avoid__tilemap__bin[];
 extern const unsigned char	tree_avoid__tiles__psgcompr[];
 #define				tree_avoid__tiles__psgcompr_size 82
 
+extern const unsigned char	tree_death__palette__bin[];
+#define				tree_death__palette__bin_size 16
+
+extern const unsigned char	tree_death__tilemap__bin[];
+#define				tree_death__tilemap__bin_size 8
+
+extern const unsigned char	tree_death__tiles__psgcompr[];
+#define				tree_death__tiles__psgcompr_size 115
+

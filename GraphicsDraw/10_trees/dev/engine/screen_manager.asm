@@ -198,8 +198,8 @@ _draw_tree:
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-;screen_manager.c:57: const unsigned int *pnt = ( const unsigned int * ) tree_avoid__tilemap__bin;
-	ld	de, #_tree_avoid__tilemap__bin
+;screen_manager.c:57: const unsigned int *pnt = ( const unsigned int * ) tree_death__tilemap__bin;
+	ld	de, #_tree_death__tilemap__bin
 ;screen_manager.c:59: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); 	devkit_SMS_setTile( *pnt + 0 );
 	push	de
 	ld	h, 5 (ix)

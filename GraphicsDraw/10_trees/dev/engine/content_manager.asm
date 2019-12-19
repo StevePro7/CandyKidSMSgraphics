@@ -49,40 +49,16 @@
 ; Function engine_content_manager_load_tiles
 ; ---------------------------------
 _engine_content_manager_load_tiles::
-;content_manager.c:13: devkit_SMS_loadPSGaidencompressedTiles( tree_avoid__tiles__psgcompr, TREE_TILES );
+;content_manager.c:13: devkit_SMS_loadPSGaidencompressedTiles( tree_death__tiles__psgcompr, TREE_TILES );
 	ld	hl, #0x0040
 	push	hl
-	ld	hl, #_tree_avoid__tiles__psgcompr
+	ld	hl, #_tree_death__tiles__psgcompr
 	push	hl
 	call	_devkit_SMS_loadPSGaidencompressedTiles
 	pop	af
 	pop	af
-;content_manager.c:14: devkit_SMS_loadBGPalette( ( void * ) tree_avoid__palette__bin );
-	ld	bc, #_tree_avoid__palette__bin+0
-	push	bc
-	call	_devkit_SMS_loadBGPalette
-;content_manager.c:17: devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
-	ld	hl, #0x0000
-	ex	(sp),hl
-	ld	hl, #_font_tiles__tiles__psgcompr
-	push	hl
-	call	_devkit_SMS_loadPSGaidencompressedTiles
-	pop	af
-	pop	af
-;content_manager.c:18: devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
-	ld	bc, #_font_tiles__palette__bin+0
-	push	bc
-	call	_devkit_SMS_loadBGPalette
-;content_manager.c:21: devkit_SMS_loadPSGaidencompressedTiles( game_title__tiles__psgcompr, GAME_TITLE );
-	ld	hl, #0x0050
-	ex	(sp),hl
-	ld	hl, #_game_title__tiles__psgcompr
-	push	hl
-	call	_devkit_SMS_loadPSGaidencompressedTiles
-	pop	af
-	pop	af
-;content_manager.c:22: devkit_SMS_loadBGPalette( ( void * ) game_title__palette__bin );
-	ld	bc, #_game_title__palette__bin+0
+;content_manager.c:14: devkit_SMS_loadBGPalette( ( void * ) tree_death__palette__bin );
+	ld	bc, #_tree_death__palette__bin+0
 	push	bc
 	call	_devkit_SMS_loadBGPalette
 	pop	af

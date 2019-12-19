@@ -198,8 +198,8 @@
    0096 DD E5         [15]  198 	push	ix
    0098 DD 21 00 00   [14]  199 	ld	ix,#0
    009C DD 39         [15]  200 	add	ix,sp
-                            201 ;screen_manager.c:57: const unsigned int *pnt = ( const unsigned int * ) tree_avoid__tilemap__bin;
-   009E 11r00r00      [10]  202 	ld	de, #_tree_avoid__tilemap__bin
+                            201 ;screen_manager.c:57: const unsigned int *pnt = ( const unsigned int * ) tree_death__tilemap__bin;
+   009E 11r00r00      [10]  202 	ld	de, #_tree_death__tilemap__bin
                             203 ;screen_manager.c:59: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); 	devkit_SMS_setTile( *pnt + 0 );
    00A1 D5            [11]  204 	push	de
    00A2 DD 66 05      [19]  205 	ld	h, 5 (ix)
