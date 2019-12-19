@@ -1,14 +1,61 @@
 18/12/2019
 
-candy is 16x16 on tile map
-which means would be like 8x8
+candy is 16.16 on tile map
+which means would be like 8.8
 
-but need to shrink and rebuffer 4px each side
-to get 16x16
-except the big freeman candy
+but need to shrink and rebuffer 4p. each side
+to get 16.16
+e.cept the big freeman candy
 
 actual candy top left to bottom right is
-12x12
+12.12
 
 2+12+2
 2+12+2
+
+
+24.24
+4+16+4
+
+8.8	tl
+16.16	mid
+8.8	br
+
+....
+....
+....
+....
+....OOOO
+....OOOO
+....OOOO
+....OOOO
+    OOOO
+    OOOO
+
+
+solution
+draw 8.8 square in middle
+draw 4.4 square 2. p. tl
+draw 4.4 square 2. p. br
+leave 2.p surrounding
+
+0 + 2 + 8 + 2 + 0 = 12
+2 + 2 + 8 + 2 + 2 = 16	surrounding
+
+
+................
+................
+..OOOO..........
+..OOOO..........
+..OOXXXXXXXX....
+..OOXXXXXXXX....
+....XXXXXXXX....
+....XXXXXXXX....
+....XXXXXXXX....
+....XXXXXXXX....
+....XXXXXXXXOO..
+....XXXXXXXXOO..
+..........OOOO..
+..........OOOO..
+................
+................
