@@ -6,3 +6,9 @@ which means would be like 8x8
 but need to shrink and rebuffer 4px each side
 to get 16x16
 except the big freeman candy
+
+actual candy top left to bottom right is
+12x12
+
+2+12+2
+2+12+2
