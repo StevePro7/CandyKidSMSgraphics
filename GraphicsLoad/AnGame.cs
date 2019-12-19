@@ -15,6 +15,7 @@ namespace GraphicsLoad
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		Texture2D image;
+		Texture2D[] trees;
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
@@ -48,7 +49,7 @@ namespace GraphicsLoad
 
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
-			int y = 16;
+			int y = 1;
 			wide = (int)(size * scale);
 			high = (int)(y * size * scale);
 
@@ -81,6 +82,9 @@ namespace GraphicsLoad
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			var name = scale * size;
 			image = Content.Load<Texture2D>("sprites" + name);
+			trees = new Texture2D[2];
+			trees[0] = Content.Load<Texture2D>("tree_avoid");
+			trees[1] = Content.Load<Texture2D>("tree_death");
 
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
@@ -123,7 +127,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(renderTarget);
 				GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1, 0);
 
-				Draw3();
+				Draw();
 				base.Draw(gameTime);
 
 				GraphicsDevice.SetRenderTarget(null);
@@ -131,7 +135,8 @@ namespace GraphicsLoad
 
 				var xx = scale * size;
 				var yy = index.ToString().PadLeft(2, '0');
-				var file = $"Scale{xx}_Index{yy}.bmp";
+				//var file = $"Scale{xx}_Index{yy}.bmp";
+				var file = $"tree_death.bmp";
 				Stream stream = File.Create(file);
 
 				resolvedTexture.SaveAsPng(stream, wide, high);
@@ -139,7 +144,7 @@ namespace GraphicsLoad
 			}
 			else
 			{
-				Draw3();
+				Draw();
 				base.Draw(gameTime);
 			}
 		}
@@ -149,19 +154,12 @@ namespace GraphicsLoad
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
 
-			Rectangle dest = GetRectangle(index);
-			//spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-			spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White);
-
-			if(twice)
-			{
-				dest = GetRectangle(index + 1);
-				//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-				spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White);
-			}
+			spriteBatch.Draw(trees[0], Vector2.Zero, Color.White);
+			spriteBatch.Draw(trees[1], Vector2.Zero, Color.White);
 
 			spriteBatch.End();
 		}
+		
 
 		private void Draw2()
 		{
@@ -208,6 +206,25 @@ namespace GraphicsLoad
 				var pos = new Vector2(x, y);
 				Rectangle dest = GetRectangle(i);
 				spriteBatch.Draw(image, pos, dest, Color.White);
+			}
+
+			spriteBatch.End();
+		}
+
+		private void Draw4()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			Rectangle dest = GetRectangle(index);
+			//spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
+			spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White);
+
+			if (twice)
+			{
+				dest = GetRectangle(index + 1);
+				//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
+				spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White);
 			}
 
 			spriteBatch.End();
