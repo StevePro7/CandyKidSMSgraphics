@@ -16,6 +16,7 @@ namespace GraphicsLoad
 		SpriteBatch spriteBatch;
 		Texture2D image;
 		Texture2D[] trees;
+		Texture2D[] candy;
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
@@ -86,6 +87,15 @@ namespace GraphicsLoad
 			trees[0] = Content.Load<Texture2D>("tree_avoid");
 			trees[1] = Content.Load<Texture2D>("tree_death");
 
+			const int max = 13;
+			candy = new Texture2D[max];
+			for (int idx = 0; idx < max; idx++)
+			{
+				var file = (idx + 2).ToString().PadLeft(2, '0');
+				var text = $"Candy/Candy{file}";
+				candy[idx] = Content.Load<Texture2D>(text);
+			}
+
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
 			high = pp.BackBufferHeight;
@@ -134,9 +144,10 @@ namespace GraphicsLoad
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
 				var xx = scale * size;
-				var yy = index.ToString().PadLeft(2, '0');
+				//var yy = index.ToString().PadLeft(2, '0');
+				var yy = (index + 2).ToString().PadLeft(2, '0');
 				//var file = $"Scale{xx}_Index{yy}.bmp";
-				var file = $"tree_death.bmp";
+				var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create(file);
 
 				resolvedTexture.SaveAsPng(stream, wide, high);
@@ -154,12 +165,18 @@ namespace GraphicsLoad
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
 
-			spriteBatch.Draw(trees[0], Vector2.Zero, Color.White);
-			spriteBatch.Draw(trees[1], Vector2.Zero, Color.White);
+			Texture2D source = candy[index];
+
+			Rectangle outset = new Rectangle(0, 0, 4, 4);
+			Rectangle middle = new Rectangle(8, 8, 8, 8);
+
+			spriteBatch.Draw(source, new Vector2(4, 4), middle, Color.White);
+			spriteBatch.Draw(source, new Vector2(2, 2), outset, Color.White);
+			spriteBatch.Draw(source, new Vector2(10, 10), outset, Color.White);
 
 			spriteBatch.End();
+
 		}
-		
 
 		private void Draw2()
 		{
@@ -226,6 +243,17 @@ namespace GraphicsLoad
 				//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
 				spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White);
 			}
+
+			spriteBatch.End();
+		}
+
+		private void Draw5()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			spriteBatch.Draw(trees[0], Vector2.Zero, Color.White);
+			spriteBatch.Draw(trees[1], Vector2.Zero, Color.White);
 
 			spriteBatch.End();
 		}
