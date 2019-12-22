@@ -58,10 +58,14 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	struct_level_object *lo = &global_level_object;
 
 	const unsigned char *o = data;
-	unsigned char row, col, cnt;
-	unsigned char tile;
+	unsigned char row, col;// , cnt;
+	unsigned char tile_data;
 
 	unsigned int idx;
+	//enum_tile_type tile_type;
+	//enum_coll_type coll_type;
+	unsigned char tile_type;
+	unsigned char coll_type;
 
 	lo->load_cols = size / MAX_ROWS;
 	lo->draw_cols = lo->load_cols - CRLF;
@@ -72,12 +76,28 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	devkit_SMS_mapROMBank( bank );
 	for( row = 0; row < MAX_ROWS; row++ )
 	{
-		tile = *o;
+		tile_data = *o;
 		for( col = 0; col < lo->load_cols; col++ )
 		{
-			if( !( tile == CR || tile == LF ) )
+			if( !( tile_data == CR || tile_data == LF ) )
 			{
 				idx = row * MAX_COLS + col;
+
+				engine_tile_manager_load_tile( &tile_type, tile_data );
+				lo->drawtiles_array[ idx ] = tile_type;
+
+				if( tile_type_candy == tile_type )
+				{
+					lo->candyCount++;
+				}
+				if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+				{
+					lo->bonusCount++;
+				}
+
+				// TODO read from game object. 
+				unsigned char trees_avoid = 1;
+				engine_tile_manager_load_coll( &coll_type, tile_data, trees_avoid );
 			}
 		}
 	}

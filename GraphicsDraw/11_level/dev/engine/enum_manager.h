@@ -24,4 +24,11 @@ typedef enum tag_enum_tile_type
 
 } enum_tile_type;
 
+typedef enum tag_enum_coll_type
+{
+	coll_type_empty = 0,
+	coll_type_block = 1,
+
+} enum_coll_type;
+
 #endif//_ENUM_MANAGER_H_

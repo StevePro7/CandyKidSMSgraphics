@@ -5,6 +5,8 @@
 
 typedef struct tag_struct_level_object
 {
+	unsigned char collision_array[ MAX_ROWS * MAX_COLS ];
+	unsigned char drawtiles_array[ MAX_ROWS * MAX_COLS ];
 	unsigned int load_cols;
 	unsigned int draw_cols;
 
