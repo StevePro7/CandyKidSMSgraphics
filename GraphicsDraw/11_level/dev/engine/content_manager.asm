@@ -49,26 +49,26 @@
 ; Function engine_content_manager_load_tiles
 ; ---------------------------------
 _engine_content_manager_load_tiles::
-;content_manager.c:13: devkit_SMS_loadPSGaidencompressedTiles( tree_death__tiles__psgcompr, TREE_TILES );
+;content_manager.c:13: devkit_SMS_loadPSGaidencompressedTiles( tree_avoid__tiles__psgcompr, TREE_TILES );
 	ld	hl, #0x0040
 	push	hl
-	ld	hl, #_tree_death__tiles__psgcompr
+	ld	hl, #_tree_avoid__tiles__psgcompr
 	push	hl
 	call	_devkit_SMS_loadPSGaidencompressedTiles
 	pop	af
 	pop	af
-;content_manager.c:14: devkit_SMS_loadBGPalette( ( void * ) tree_death__palette__bin );
-	ld	bc, #_tree_death__palette__bin+0
+;content_manager.c:14: devkit_SMS_loadBGPalette( ( void * ) tree_avoid__palette__bin );
+	ld	bc, #_tree_avoid__palette__bin+0
 	push	bc
 	call	_devkit_SMS_loadBGPalette
 	pop	af
 	ret
-;content_manager.c:26: void engine_content_manager_load_sprites()
+;content_manager.c:30: void engine_content_manager_load_sprites()
 ;	---------------------------------
 ; Function engine_content_manager_load_sprites
 ; ---------------------------------
 _engine_content_manager_load_sprites::
-;content_manager.c:29: devkit_SMS_loadPSGaidencompressedTiles( sprites__tiles__psgcompr, SPRITE_TILES );
+;content_manager.c:33: devkit_SMS_loadPSGaidencompressedTiles( sprites__tiles__psgcompr, SPRITE_TILES );
 	ld	hl, #0x0100
 	push	hl
 	ld	hl, #_sprites__tiles__psgcompr
@@ -76,11 +76,11 @@ _engine_content_manager_load_sprites::
 	call	_devkit_SMS_loadPSGaidencompressedTiles
 	pop	af
 	pop	af
-;content_manager.c:30: devkit_SMS_loadSpritePalette( ( void * ) sprites__palette__bin );
+;content_manager.c:34: devkit_SMS_loadSpritePalette( ( void * ) sprites__palette__bin );
 	ld	bc, #_sprites__palette__bin+0
 	push	bc
 	call	_devkit_SMS_loadSpritePalette
-;content_manager.c:32: devkit_SMS_loadPSGaidencompressedTiles( adriana__tiles__psgcompr, SPRITE_TILES + 64 );
+;content_manager.c:36: devkit_SMS_loadPSGaidencompressedTiles( adriana__tiles__psgcompr, SPRITE_TILES + 64 );
 	ld	hl, #0x0140
 	ex	(sp),hl
 	ld	hl, #_adriana__tiles__psgcompr

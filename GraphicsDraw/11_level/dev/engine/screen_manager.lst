@@ -43,15 +43,15 @@
                              43 ; code
                              44 ;--------------------------------------------------------
                              45 	.area _CODE
-                             46 ;screen_manager.c:12: void engine_screen_manager_init()
+                             46 ;screen_manager.c:9: void engine_screen_manager_init()
                              47 ;	---------------------------------
                              48 ; Function engine_screen_manager_init
                              49 ; ---------------------------------
    0000                      50 _engine_screen_manager_init::
-                             51 ;screen_manager.c:16: for( x = 2; x < 32; x += 2 )
+                             51 ;screen_manager.c:13: for( x = 2; x < 32; x += 2 )
    0000 06 02         [ 7]   52 	ld	b, #0x02
    0002                      53 00103$:
-                             54 ;screen_manager.c:18: draw_tree( x, 0 );
+                             54 ;screen_manager.c:15: draw_tree( x, 0 );
    0002 C5            [11]   55 	push	bc
    0003 AF            [ 4]   56 	xor	a, a
    0004 F5            [11]   57 	push	af
@@ -61,7 +61,7 @@
    0008 CDr96r00      [17]   61 	call	_draw_tree
    000B F1            [10]   62 	pop	af
    000C C1            [10]   63 	pop	bc
-                             64 ;screen_manager.c:19: draw_tree( x, 22 );
+                             64 ;screen_manager.c:16: draw_tree( x, 22 );
    000D C5            [11]   65 	push	bc
    000E 3E 16         [ 7]   66 	ld	a, #0x16
    0010 F5            [11]   67 	push	af
@@ -71,16 +71,16 @@
    0014 CDr96r00      [17]   71 	call	_draw_tree
    0017 F1            [10]   72 	pop	af
    0018 C1            [10]   73 	pop	bc
-                             74 ;screen_manager.c:16: for( x = 2; x < 32; x += 2 )
+                             74 ;screen_manager.c:13: for( x = 2; x < 32; x += 2 )
    0019 04            [ 4]   75 	inc	b
    001A 04            [ 4]   76 	inc	b
    001B 78            [ 4]   77 	ld	a, b
    001C D6 20         [ 7]   78 	sub	a, #0x20
    001E 38 E2         [12]   79 	jr	C,00103$
-                             80 ;screen_manager.c:22: for( y = 2; y < 22; y += 2 )
+                             80 ;screen_manager.c:19: for( y = 2; y < 22; y += 2 )
    0020 06 02         [ 7]   81 	ld	b, #0x02
    0022                      82 00105$:
-                             83 ;screen_manager.c:24: draw_tree( 2, y );
+                             83 ;screen_manager.c:21: draw_tree( 2, y );
    0022 C5            [11]   84 	push	bc
    0023 C5            [11]   85 	push	bc
    0024 33            [ 6]   86 	inc	sp
@@ -90,7 +90,7 @@
    0029 CDr96r00      [17]   90 	call	_draw_tree
    002C F1            [10]   91 	pop	af
    002D C1            [10]   92 	pop	bc
-                             93 ;screen_manager.c:25: draw_tree( 30, y );
+                             93 ;screen_manager.c:22: draw_tree( 30, y );
    002E C5            [11]   94 	push	bc
    002F C5            [11]   95 	push	bc
    0030 33            [ 6]   96 	inc	sp
@@ -100,22 +100,22 @@
    0035 CDr96r00      [17]  100 	call	_draw_tree
    0038 F1            [10]  101 	pop	af
    0039 C1            [10]  102 	pop	bc
-                            103 ;screen_manager.c:22: for( y = 2; y < 22; y += 2 )
+                            103 ;screen_manager.c:19: for( y = 2; y < 22; y += 2 )
    003A 04            [ 4]  104 	inc	b
    003B 04            [ 4]  105 	inc	b
    003C 78            [ 4]  106 	ld	a, b
    003D D6 16         [ 7]  107 	sub	a, #0x16
    003F 38 E1         [12]  108 	jr	C,00105$
-                            109 ;screen_manager.c:28: draw_titile();
+                            109 ;screen_manager.c:25: draw_titile();
    0041 C3r45r00      [10]  110 	jp  _draw_titile
-                            111 ;screen_manager.c:31: void engine_screen_manager_update()
+                            111 ;screen_manager.c:28: void engine_screen_manager_update()
                             112 ;	---------------------------------
                             113 ; Function engine_screen_manager_update
                             114 ; ---------------------------------
    0044                     115 _engine_screen_manager_update::
-                            116 ;screen_manager.c:33: }
+                            116 ;screen_manager.c:30: }
    0044 C9            [10]  117 	ret
-                            118 ;screen_manager.c:35: static void draw_titile()
+                            118 ;screen_manager.c:32: static void draw_titile()
                             119 ;	---------------------------------
                             120 ; Function draw_titile
                             121 ; ---------------------------------
@@ -124,14 +124,14 @@
    0047 DD 21 00 00   [14]  124 	ld	ix,#0
    004B DD 39         [15]  125 	add	ix,sp
    004D F5            [11]  126 	push	af
-                            127 ;screen_manager.c:37: const unsigned int *pnt = ( const unsigned int * ) game_title__tilemap__bin;
+                            127 ;screen_manager.c:34: const unsigned int *pnt = ( const unsigned int * ) game_title__tilemap__bin;
    004E 01r00r00      [10]  128 	ld	bc, #_game_title__tilemap__bin+0
    0051 33            [ 6]  129 	inc	sp
    0052 33            [ 6]  130 	inc	sp
    0053 C5            [11]  131 	push	bc
-                            132 ;screen_manager.c:45: for( j = 0; j < 4; j++ )
+                            132 ;screen_manager.c:42: for( j = 0; j < 4; j++ )
    0054 0E 00         [ 7]  133 	ld	c, #0x00
-                            134 ;screen_manager.c:47: for( i = 0; i < 26; i++ )
+                            134 ;screen_manager.c:44: for( i = 0; i < 26; i++ )
    0056                     135 00109$:
    0056 41            [ 4]  136 	ld	b, c
    0057 04            [ 4]  137 	inc	b
@@ -146,7 +146,7 @@
    0060 5F            [ 4]  146 	ld	e, a
    0061 16 00         [ 7]  147 	ld	d, #0x00
    0063                     148 00103$:
-                            149 ;screen_manager.c:49: devkit_SMS_setNextTileatXY( x + i, y + j );
+                            149 ;screen_manager.c:46: devkit_SMS_setNextTileatXY( x + i, y + j );
    0063 7A            [ 4]  150 	ld	a, d
    0064 C6 04         [ 7]  151 	add	a, #0x04
    0066 C5            [11]  152 	push	bc
@@ -159,7 +159,7 @@
    006F F1            [10]  159 	pop	af
    0070 D1            [10]  160 	pop	de
    0071 C1            [10]  161 	pop	bc
-                            162 ;screen_manager.c:50: devkit_SMS_setTile( *pnt + j * 26 + i );
+                            162 ;screen_manager.c:47: devkit_SMS_setTile( *pnt + j * 26 + i );
    0072 E1            [10]  163 	pop	hl
    0073 E5            [11]  164 	push	hl
    0074 7E            [ 7]  165 	ld	a, (hl)
@@ -177,12 +177,12 @@
    0082 33            [ 6]  177 	inc	sp
    0083 D1            [10]  178 	pop	de
    0084 C1            [10]  179 	pop	bc
-                            180 ;screen_manager.c:47: for( i = 0; i < 26; i++ )
+                            180 ;screen_manager.c:44: for( i = 0; i < 26; i++ )
    0085 14            [ 4]  181 	inc	d
    0086 7A            [ 4]  182 	ld	a, d
    0087 D6 1A         [ 7]  183 	sub	a, #0x1a
    0089 38 D8         [12]  184 	jr	C,00103$
-                            185 ;screen_manager.c:45: for( j = 0; j < 4; j++ )
+                            185 ;screen_manager.c:42: for( j = 0; j < 4; j++ )
    008B 0C            [ 4]  186 	inc	c
    008C 79            [ 4]  187 	ld	a, c
    008D D6 04         [ 7]  188 	sub	a, #0x04
@@ -190,7 +190,7 @@
    0091 DD F9         [10]  190 	ld	sp, ix
    0093 DD E1         [14]  191 	pop	ix
    0095 C9            [10]  192 	ret
-                            193 ;screen_manager.c:55: static void draw_tree( unsigned char x, unsigned char y )
+                            193 ;screen_manager.c:52: static void draw_tree( unsigned char x, unsigned char y )
                             194 ;	---------------------------------
                             195 ; Function draw_tree
                             196 ; ---------------------------------
@@ -198,9 +198,9 @@
    0096 DD E5         [15]  198 	push	ix
    0098 DD 21 00 00   [14]  199 	ld	ix,#0
    009C DD 39         [15]  200 	add	ix,sp
-                            201 ;screen_manager.c:57: const unsigned int *pnt = ( const unsigned int * ) tree_death__tilemap__bin;
-   009E 11r00r00      [10]  202 	ld	de, #_tree_death__tilemap__bin
-                            203 ;screen_manager.c:59: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); 	devkit_SMS_setTile( *pnt + 0 );
+                            201 ;screen_manager.c:54: const unsigned int *pnt = ( const unsigned int * ) tree_avoid__tilemap__bin;
+   009E 11r00r00      [10]  202 	ld	de, #_tree_avoid__tilemap__bin
+                            203 ;screen_manager.c:56: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); 	devkit_SMS_setTile( *pnt + 0 );
    00A1 D5            [11]  204 	push	de
    00A2 DD 66 05      [19]  205 	ld	h, 5 (ix)
    00A5 DD 6E 04      [19]  206 	ld	l, 4 (ix)
@@ -219,7 +219,7 @@
    00B6 CDr00r00      [17]  219 	call	_devkit_SMS_setTile
    00B9 33            [ 6]  220 	inc	sp
    00BA D1            [10]  221 	pop	de
-                            222 ;screen_manager.c:60: devkit_SMS_setNextTileatXY( x + 1, y + 0 ); 	devkit_SMS_setTile( *pnt + 1 );
+                            222 ;screen_manager.c:57: devkit_SMS_setNextTileatXY( x + 1, y + 0 ); 	devkit_SMS_setTile( *pnt + 1 );
    00BB DD 4E 04      [19]  223 	ld	c, 4 (ix)
    00BE 0C            [ 4]  224 	inc	c
    00BF C5            [11]  225 	push	bc
@@ -245,7 +245,7 @@
    00D9 33            [ 6]  245 	inc	sp
    00DA D1            [10]  246 	pop	de
    00DB C1            [10]  247 	pop	bc
-                            248 ;screen_manager.c:61: devkit_SMS_setNextTileatXY( x + 0, y + 1 ); 	devkit_SMS_setTile( *pnt + 2 );
+                            248 ;screen_manager.c:58: devkit_SMS_setNextTileatXY( x + 0, y + 1 ); 	devkit_SMS_setTile( *pnt + 2 );
    00DC DD 46 05      [19]  249 	ld	b, 5 (ix)
    00DF 04            [ 4]  250 	inc	b
    00E0 C5            [11]  251 	push	bc
@@ -276,7 +276,7 @@
    00FF 33            [ 6]  276 	inc	sp
    0100 D1            [10]  277 	pop	de
    0101 C1            [10]  278 	pop	bc
-                            279 ;screen_manager.c:62: devkit_SMS_setNextTileatXY( x + 1, y + 1 ); 	devkit_SMS_setTile( *pnt + 3 );
+                            279 ;screen_manager.c:59: devkit_SMS_setNextTileatXY( x + 1, y + 1 ); 	devkit_SMS_setTile( *pnt + 3 );
    0102 D5            [11]  280 	push	de
    0103 C5            [11]  281 	push	bc
    0104 CDr00r00      [17]  282 	call	_devkit_SMS_setNextTileatXY

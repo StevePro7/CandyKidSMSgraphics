@@ -15,8 +15,8 @@ Symbol Table
   0 _engine_content_manager_load_tiles                             0000 GR
     _sprites__palette__bin                                         **** GX
     _sprites__tiles__psgcompr                                      **** GX
-    _tree_death__palette__bin                                      **** GX
-    _tree_death__tiles__psgcompr                                   **** GX
+    _tree_avoid__palette__bin                                      **** GX
+    _tree_avoid__tiles__psgcompr                                   **** GX
 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.

@@ -9,9 +9,13 @@
 
 void engine_content_manager_load_tiles()
 {
-	// Tree tiles.
-	devkit_SMS_loadPSGaidencompressedTiles( tree_death__tiles__psgcompr, TREE_TILES );
-	devkit_SMS_loadBGPalette( ( void * ) tree_death__palette__bin );
+	// Tree avoid tiles.
+	devkit_SMS_loadPSGaidencompressedTiles( tree_avoid__tiles__psgcompr, TREE_TILES );
+	devkit_SMS_loadBGPalette( ( void * ) tree_avoid__palette__bin );
+
+	// Tree death tiles.
+	//devkit_SMS_loadPSGaidencompressedTiles( tree_death__tiles__psgcompr, TREE_TILES );
+	//devkit_SMS_loadBGPalette( ( void * ) tree_death__palette__bin );
 
 	//// Font tiles.
 	//devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
