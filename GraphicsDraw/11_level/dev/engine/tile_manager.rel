@@ -1,0 +1,38 @@
+XL2
+H 9 areas 5 global symbols
+M tile_manager
+O -mz80
+S _devkit_SMS_setNextTileatXY Ref0000
+S .__.ABS. Def0000
+S _tree_avoid__tilemap__bin Ref0000
+S _devkit_SMS_setTile Ref0000
+A _CODE size 75 flags 0 addr 0
+S _engine_tile_manager_draw_tile Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 DD E5 DD 21 00 00 DD 39 DD 66 06 DD 6E 05
+R 00 00 00 00
+T 0E 00 E5 CD 00 00 F1 21 00 00 4E 79 DD 86 04 47
+R 00 00 00 00 02 04 00 00 02 08 02 00
+T 1C 00 C5 33 CD 00 00 33 DD 4E 05 0C C5 DD 46 06
+R 00 00 00 00 02 05 03 00
+T 2A 00 C5 CD 00 00 F1 C1 3A 00 00 DD 86 04 47 04
+R 00 00 00 00 02 04 00 00 02 09 02 00
+T 38 00 C5 C5 33 CD 00 00 33 C1 DD 46 06 04 C5 C5
+R 00 00 00 00 02 06 03 00
+T 46 00 33 DD 7E 05 F5 33 CD 00 00 F1 C1 3A 00 00
+R 00 00 00 00 02 09 00 00 02 0E 02 00
+T 54 00 DD 86 04 C6 02 C5 F5 33 CD 00 00 33 CD
+R 00 00 00 00 02 0B 03 00
+T 61 00 00 00 F1 3A 00 00 DD 86 04 C6 03 F5 33 CD
+R 00 00 00 00 02 02 00 00 02 06 02 00
+T 6F 00 00 00 33 DD E1 C9
+R 00 00 00 00 02 02 03 00

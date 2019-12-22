@@ -111,6 +111,12 @@
     <ClCompile Include="object\level_object.c">
       <Filter>Source Files\object</Filter>
     </ClCompile>
+    <ClCompile Include="engine\level_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\tile_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="build.bat">
@@ -177,6 +183,12 @@
     </ClInclude>
     <ClInclude Include="object\level_object.h">
       <Filter>Header Files\object</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\level_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\tile_manager.h">
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

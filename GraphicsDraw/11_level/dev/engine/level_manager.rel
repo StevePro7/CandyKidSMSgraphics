@@ -1,0 +1,20 @@
+XL2
+H 9 areas 3 global symbols
+M level_manager
+O -mz80
+S .__.ABS. Def0000
+S _engine_tile_manager_draw_tile Ref0000
+A _CODE size D flags 0 addr 0
+S _engine_level_manager_init_level Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 21 04 04 E5 AF F5 33 CD 00 00 F1 33 C9
+R 00 00 00 00 02 0A 01 00

@@ -17,9 +17,9 @@ void engine_content_manager_load_tiles()
 	//devkit_SMS_loadPSGaidencompressedTiles( tree_death__tiles__psgcompr, TREE_TILES );
 	//devkit_SMS_loadBGPalette( ( void * ) tree_death__palette__bin );
 
-	//// Font tiles.
-	//devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
-	//devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
+	// Font tiles.
+	devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
+	devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
 
 	//// Game title.
 	//devkit_SMS_loadPSGaidencompressedTiles( game_title__tiles__psgcompr, GAME_TITLE );

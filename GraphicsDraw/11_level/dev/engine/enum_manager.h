@@ -12,4 +12,16 @@ typedef enum tag_enum_screen_type
 
 } enum_screen_type;
 
+typedef enum tag_enum_tile_type
+{
+	tile_type_blank = 0,
+	tile_type_candy = 1,
+	tile_type_trees = 2,
+	tile_type_bonusA = 3,
+	tile_type_bonusB = 4,
+	tile_type_bonusC = 5,
+	tile_type_bonusD = 6,
+
+} enum_tile_type;
+
 #endif//_ENUM_MANAGER_H_
