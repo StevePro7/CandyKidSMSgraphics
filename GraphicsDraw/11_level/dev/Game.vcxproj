@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="banks\bank2.c" />
     <ClCompile Include="devkit\_sms_manager.c" />
     <ClCompile Include="devkit\_snd_manager.c" />
     <ClCompile Include="engine\asm_manager.c" />
@@ -156,6 +157,7 @@
     <ClCompile Include="game.c" />
     <ClCompile Include="gfx.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="object\level_object.c" />
     <ClCompile Include="screen\func_screen.c" />
     <ClCompile Include="screen\intro_screen.c" />
     <ClCompile Include="screen\load_screen.c" />
@@ -167,6 +169,7 @@
     <None Include="build.bat" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="banks\bank2.h" />
     <ClInclude Include="devkit\_sms_manager.h" />
     <ClInclude Include="devkit\_snd_manager.h" />
     <ClInclude Include="engine\asm_manager.h" />
@@ -179,6 +182,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gfx.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="object\level_object.h" />
     <ClInclude Include="screen\func_screen.h" />
     <ClInclude Include="screen\intro_screen.h" />
     <ClInclude Include="screen\load_screen.h" />
