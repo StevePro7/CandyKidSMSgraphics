@@ -67,7 +67,8 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	unsigned char tile_type;
 	unsigned char coll_type;
 
-	lo->load_cols = size / MAX_ROWS;
+	// TODO next line of code should be 10 NOT 12
+	lo->load_cols = ( size + CRLF ) / MAX_ROWS;
 	lo->draw_cols = lo->load_cols - CRLF;
 
 	lo->candyCount = 0;
