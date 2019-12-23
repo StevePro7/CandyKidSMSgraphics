@@ -19,4 +19,8 @@ extern const unsigned char *levelAAdata[];
 extern const unsigned char levelAAsize[];
 extern const unsigned char levelAAbank[];
 
+extern const unsigned char *levelBBdata[];
+extern const unsigned char levelBBsize[];
+extern const unsigned char levelBBbank[];
+
 #endif//_LEVEL_OBJECT_H_
