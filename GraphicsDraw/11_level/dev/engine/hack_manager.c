@@ -62,4 +62,7 @@ void engine_hack_manager_invert()
 	// Invert default values.
 	ho->hack_music = !ho->hack_music;
 	ho->hack_sound = !ho->hack_sound;
+
+
+	//ho->hack_world = 1;
 }
