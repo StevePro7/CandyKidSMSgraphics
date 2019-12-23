@@ -45,42 +45,39 @@ void engine_tile_manager_load_tile( unsigned char *tile_type, unsigned char tile
 	*tile_type = tile_type_blank;
 }
 
-void engine_tile_manager_load_coll( unsigned char *coll_type, unsigned char tile_data, unsigned char trees_avoid )
+void engine_tile_manager_load_coll( unsigned char *coll_type, unsigned char tile_data )
 {
 	if( '2' == tile_data )
 	{
-		if( trees_avoid )
-		{
-			*coll_type = coll_type_block;
-			return;
-		}
+		*coll_type = coll_type_block;
+		return;
 	}
 
 	*coll_type = coll_type_empty;
 }
 
-void engine_tile_manager_draw_loop()
-{
-	unsigned char x;
-	unsigned char y;
-
-	for( x = 0; x < TREE_WIDE * 2; x += 2 )
-	{
-		draw_tree( x, 0 );
-		draw_tree( x, 22 );
-	}
-	for( y = 2; y < TREE_HIGH * 2 - 2 ; y += 2 )
-	{
-		draw_tree( 0, y );
-		draw_tree( 22, y );
-	}
-}
+//void engine_tile_manager_draw_loop()
+//{
+//	unsigned char x;
+//	unsigned char y;
+//
+//	/*for( x = 0; x < TREE_WIDE * 2; x += 2 )
+//	{
+//		draw_tree( x, 0 );
+//		draw_tree( x, 22 );
+//	}
+//	for( y = 2; y < TREE_HIGH * 2 - 2 ; y += 2 )
+//	{
+//		draw_tree( 0, y );
+//		draw_tree( 22, y );
+//	}*/
+//}
 void engine_tile_manager_draw_tile( unsigned char index, unsigned char x, unsigned char y )
 {
-	/*if( tile_type_trees != index )
+	if( tile_type_trees != index )
 	{
 		return;
-	}*/
+	}
 
 	draw_tree( x, y );
 }

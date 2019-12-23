@@ -23,12 +23,36 @@ void engine_level_manager_init_level()
 	struct_level_object *lo = &global_level_object;
 	unsigned char idx, row, col;
 
-	for( row = 0; row < MAX_ROWS; row++ )
+	for( row = 0; row < TREE_ROWS; row++ )
 	{
-		for( col = 0; col < MAX_COLS; col++ )
+		for( col = 0; col < TREE_COLS; col++ )
 		{
-			idx = row * MAX_COLS + col;
+			idx = row * TREE_COLS + col;
+
+			lo->drawtiles_array[ idx ] = tile_type_blank;
+			lo->collision_array[ idx ] = coll_type_empty;
 		}
+	}
+
+	for( col = 0; col < TREE_COLS; col++ )
+	{
+		idx = TREE_ROWS * 0 + col;
+		lo->drawtiles_array[ idx ] = tile_type_trees;
+		lo->collision_array[ idx ] = coll_type_block;
+
+		idx = TREE_ROWS * ( TREE_ROWS  - 1 ) + col;
+		lo->drawtiles_array[ idx ] = tile_type_trees;
+		lo->collision_array[ idx ] = coll_type_block;
+	}
+	for( row = 1; row < TREE_ROWS - 1; row++ )
+	{
+		idx = row * TREE_COLS + 0;
+		lo->drawtiles_array[ idx ] = tile_type_trees;
+		lo->collision_array[ idx ] = coll_type_block;
+
+		idx = row * TREE_COLS + ( TREE_COLS - 1 );
+		lo->drawtiles_array[ idx ] = tile_type_trees;
+		lo->collision_array[ idx ] = coll_type_block;
 	}
 }
 
@@ -55,9 +79,10 @@ void engine_level_manager_draw_level()
 {
 	struct_level_object *lo = &global_level_object;
 	unsigned char row, col;
-	for( row = 0; row < MAX_ROWS; row++ )
+
+	for( row = 0; row < TREE_ROWS; row++ )
 	{
-		for( col = 0; col < lo->draw_cols; col++ )
+		for( col = 0; col < TREE_COLS; col++ )
 		{
 			draw_tiles( col, row );
 		}
@@ -68,8 +93,6 @@ void engine_level_manager_draw_level()
 static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size )
 {
 	struct_level_object *lo = &global_level_object;
-
-	unsigned char trees_avoid = 1;
 
 	const unsigned char *o = data;
 	unsigned char row, col;// , cnt;
@@ -88,36 +111,36 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	lo->candyCount = 0;
 	lo->bonusCount = 0;
 
-	devkit_SMS_mapROMBank( bank );
-	for( row = 0; row < MAX_ROWS; row++ )
-	{
-		for( col = 0; col < lo->load_cols; col++ )
-		{
-			tile_data = *o;
-			if( !( tile_data == CR || tile_data == LF ) )
-			{
-				idx = row * MAX_COLS + col;
+	//devkit_SMS_mapROMBank( bank );
+	//for( row = 0; row < MAX_ROWS; row++ )
+	//{
+	//	for( col = 0; col < lo->load_cols; col++ )
+	//	{
+	//		tile_data = *o;
+	//		if( !( tile_data == CR || tile_data == LF ) )
+	//		{
+	//			idx = row * MAX_COLS + col;
 
-				engine_tile_manager_load_tile( &tile_type, tile_data );
-				lo->drawtiles_array[ idx ] = tile_type;
+	//			engine_tile_manager_load_tile( &tile_type, tile_data );
+	//			lo->drawtiles_array[ idx ] = tile_type;
+	//			
+	//			if( tile_type_candy == tile_type )
+	//			{
+	//				lo->candyCount++;
+	//			}
+	//			if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+	//			{
+	//				lo->bonusCount++;
+	//			}
 
-				if( tile_type_candy == tile_type )
-				{
-					lo->candyCount++;
-				}
-				if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
-				{
-					lo->bonusCount++;
-				}
+	//			// TODO read from game object. 
+	//			engine_tile_manager_load_coll( &coll_type, tile_data );
+	//			lo->collision_array[ idx ] = coll_type;
+	//		}
 
-				// TODO read from game object. 
-				
-				engine_tile_manager_load_coll( &coll_type, tile_data, trees_avoid );
-			}
-
-			o++;
-		}
-	}
+	//		o++;
+	//	}
+	//}
 }
 
 static void draw_tiles( unsigned char x, unsigned char y )
@@ -126,8 +149,9 @@ static void draw_tiles( unsigned char x, unsigned char y )
 	unsigned char tile;
 	unsigned int idx;
 
-	idx = y * lo->draw_cols + x;
+	idx = y * TREE_COLS + x;
 	tile = lo->drawtiles_array[ idx ];
 
+	//engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + x * 2, y * 2 );
 	engine_tile_manager_draw_tile( tile, x * 2, y * 2 );
 }

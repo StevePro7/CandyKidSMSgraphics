@@ -31,4 +31,18 @@ typedef enum tag_enum_coll_type
 
 } enum_coll_type;
 
+typedef enum tag_enum_exit_type
+{
+	exit_type_public = 0,
+	exit_type_closed = 1,
+
+} enum_exit_type;
+
+typedef enum tag_enum_tree_type
+{
+	tree_type_avoid = 0,
+	tree_type_death = 1,
+
+} enum_tree_type;
+
 #endif//_ENUM_MANAGER_H_

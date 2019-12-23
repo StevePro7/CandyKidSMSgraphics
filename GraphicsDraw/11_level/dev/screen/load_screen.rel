@@ -2,7 +2,7 @@ XL2
 H 9 areas 6 global symbols
 M load_screen
 O -mz80
-S _engine_tile_manager_draw_loop Ref0000
+S _engine_level_manager_draw_level Ref0000
 S _engine_level_manager_init_level Ref0000
 S .__.ABS. Def0000
 S _engine_level_manager_load_level Ref0000
