@@ -16,6 +16,7 @@ struct_level_object global_level_object;
 
 // Private helper methods.
 static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size );
+static void draw_tiles( unsigned char x, unsigned char y );
 
 void engine_level_manager_init_level()
 {
@@ -29,8 +30,6 @@ void engine_level_manager_init_level()
 			idx = row * MAX_COLS + col;
 		}
 	}
-
-	engine_tile_manager_draw_tile( 0, 4, 4 );
 }
 
 void engine_level_manager_load_level( const unsigned char world, const unsigned char round )
@@ -52,10 +51,25 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 	}
 }
 
+void engine_level_manager_draw_level()
+{
+	struct_level_object *lo = &global_level_object;
+	unsigned char row, col;
+	for( row = 0; row < MAX_ROWS; row++ )
+	{
+		for( col = 0; col < lo->draw_cols; col++ )
+		{
+			draw_tiles( col, row );
+		}
+	}
+}
+
 
 static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size )
 {
 	struct_level_object *lo = &global_level_object;
+
+	unsigned char trees_avoid = 1;
 
 	const unsigned char *o = data;
 	unsigned char row, col;// , cnt;
@@ -97,13 +111,23 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 				}
 
 				// TODO read from game object. 
-				unsigned char trees_avoid = 1;
+				
 				engine_tile_manager_load_coll( &coll_type, tile_data, trees_avoid );
 			}
 
 			o++;
 		}
 	}
+}
 
-	idx = 7;
+static void draw_tiles( unsigned char x, unsigned char y )
+{
+	struct_level_object *lo = &global_level_object;
+	unsigned char tile;
+	unsigned int idx;
+
+	idx = y * lo->draw_cols + x;
+	tile = lo->drawtiles_array[ idx ];
+
+	engine_tile_manager_draw_tile( tile, x * 2, y * 2 );
 }

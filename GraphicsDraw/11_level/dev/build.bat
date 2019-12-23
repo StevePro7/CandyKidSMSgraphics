@@ -73,6 +73,7 @@ engine\input_manager.rel ^
 engine\level_manager.rel ^
 engine\screen_manager.rel ^
 engine\tile_manager.rel ^
+object\level_object.rel ^
 screen\none_screen.rel ^
 screen\splash_screen.rel ^
 screen\intro_screen.rel ^
