@@ -10,7 +10,7 @@ A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
 A _GSINIT size 0 flags 0 addr 0
 A _GSFINAL size 0 flags 0 addr 0
-A _BANK2 size 76 flags 0 addr 0
+A _BANK2 size 78 flags 0 addr 0
 S _level0101_txt Def0000
 A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
@@ -32,5 +32,5 @@ T 54 00 30 30 30 30 30 30 30 30 30 30 0D 0A 30 31
 R 00 00 07 00
 T 62 00 30 31 31 31 31 30 31 30 0D 0A 35 30 30 30
 R 00 00 07 00
-T 70 00 30 30 30 30 30 36
+T 70 00 30 30 30 30 30 36 0D 0A
 R 00 00 07 00

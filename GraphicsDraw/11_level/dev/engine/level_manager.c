@@ -68,7 +68,7 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	unsigned char coll_type;
 
 	// TODO next line of code should be 10 NOT 12
-	lo->load_cols = ( size + CRLF ) / MAX_ROWS;
+	lo->load_cols = size / MAX_ROWS;
 	lo->draw_cols = lo->load_cols - CRLF;
 
 	lo->candyCount = 0;
@@ -77,9 +77,9 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	devkit_SMS_mapROMBank( bank );
 	for( row = 0; row < MAX_ROWS; row++ )
 	{
-		tile_data = *o;
 		for( col = 0; col < lo->load_cols; col++ )
 		{
+			tile_data = *o;
 			if( !( tile_data == CR || tile_data == LF ) )
 			{
 				idx = row * MAX_COLS + col;
@@ -100,6 +100,10 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 				unsigned char trees_avoid = 1;
 				engine_tile_manager_load_coll( &coll_type, tile_data, trees_avoid );
 			}
+
+			o++;
 		}
 	}
+
+	idx = 7;
 }
