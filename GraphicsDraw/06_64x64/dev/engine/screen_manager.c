@@ -20,11 +20,21 @@ void engine_screen_manager_update()
 	unsigned char r = 0;
 	unsigned char c = 0;
 	
-	for( r = 0; r < max; r++ )
+	r = 0;
+	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
+
+	for( r = 1; r < max; r++ )
 	{
 		for( c = 0; c < max; c++ )
 		{
 			devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
 		}
 	}
+
+	x = 128;
+	y = 32;
+	devkit_SMS_addSprite( x + 0, y + 0, tile + 64 );
+	devkit_SMS_addSprite( x + 8, y + 0, tile + 65 );
+	devkit_SMS_addSprite( x + 0, y + 8, tile + 66 );
+	devkit_SMS_addSprite( x + 8, y + 8, tile + 67 );
 }

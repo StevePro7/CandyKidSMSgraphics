@@ -137,25 +137,25 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(renderTarget);
 				GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1, 0);
 
-				Draw();
+				Draw4();
 				base.Draw(gameTime);
 
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
 				var xx = scale * size;
-				//var yy = index.ToString().PadLeft(2, '0');
-				var yy = (index + 2).ToString().PadLeft(2, '0');
-				//var file = $"Scale{xx}_Index{yy}.bmp";
-				var file = $"Candy{yy}.bmp";
-				Stream stream = File.Create(file);
+				var yy = index.ToString().PadLeft(2, '0');
+				//var yy = (index + 2).ToString().PadLeft(2, '0');
+				var file = $"Scale{xx}_Index{yy}.bmp";
+				//var file = $"Candy{yy}.bmp";
+				Stream stream = File.Create("Images/" + file);
 
 				resolvedTexture.SaveAsPng(stream, wide, high);
 				Exit();
 			}
 			else
 			{
-				Draw();
+				Draw4();
 				base.Draw(gameTime);
 			}
 		}
@@ -175,7 +175,6 @@ namespace GraphicsLoad
 			spriteBatch.Draw(source, new Vector2(10, 10), outset, Color.White);
 
 			spriteBatch.End();
-
 		}
 
 		private void Draw2()

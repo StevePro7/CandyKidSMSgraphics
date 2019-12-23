@@ -1,3 +1,9 @@
+extern const unsigned char	adriana__palette__bin[];
+#define				adriana__palette__bin_size 16
+
+extern const unsigned char	adriana__tiles__psgcompr[];
+#define				adriana__tiles__psgcompr_size 62
+
 extern const unsigned char	font_tiles__palette__bin[];
 #define				font_tiles__palette__bin_size 16
 

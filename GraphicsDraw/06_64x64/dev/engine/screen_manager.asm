@@ -68,57 +68,110 @@ _engine_screen_manager_update::
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-	dec	sp
-;screen_manager.c:22: for( r = 0; r < 8; r++ )
-	ld	c, #0x00
-;screen_manager.c:24: for( c = 0; c < 8; c++ )
-00109$:
+	push	af
+;screen_manager.c:24: devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
+	ld	hl, #0x0100
+	push	hl
+	ld	hl, #0x2020
+	push	hl
+	call	_devkit_SMS_addSprite
+	pop	af
+	pop	af
+;screen_manager.c:26: for( r = 1; r < max; r++ )
+	ld	c, #0x01
+00107$:
 	ld	a, c
-	rlca
-	rlca
-	rlca
-	and	a, #0xf8
-	add	a, #0x20
-	ld	-1 (ix), a
-	ld	b, #0x00
-00103$:
-;screen_manager.c:26: devkit_SMS_addSprite( x + c * 8, y + r * 8, tile + ( r * 8 + c ) );
+	sub	a, #0x08
+	jr	NC,00102$
+;screen_manager.c:28: for( c = 0; c < max; c++ )
 	ld	l, c
 	ld	h, #0x00
 	add	hl, hl
 	add	hl, hl
 	add	hl, hl
-	ld	e, b
-	ld	d, #0x00
-	add	hl, de
-	ld	de, #0x0100
-	add	hl, de
-	ld	a, b
-	rlca
-	rlca
-	rlca
-	and	a, #0xf8
+	ex	(sp), hl
+	ld	l, c
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	ld	a, l
 	add	a, #0x20
-	ld	e, a
+	ld	b, a
+	ld	e, #0x00
+00104$:
+	ld	a, e
+	sub	a, #0x08
+	jr	NC,00108$
+;screen_manager.c:30: devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
+	ld	d, e
+	ld	h, #0x00
+	ld	a, -2 (ix)
+	add	a, d
+	ld	l, a
+	ld	a, -1 (ix)
+	adc	a, h
+	ld	h, a
+	ld	iy, #0x0100
 	push	bc
-	push	hl
-	ld	d, -1 (ix)
+	ld	c, l
+	ld	b, h
+	add	iy, bc
+	pop	bc
 	push	de
+	ld	l, e
+	add	hl, hl
+	add	hl, hl
+	add	hl, hl
+	pop	de
+	ld	a, l
+	add	a, #0x20
+	ld	d, a
+	push	bc
+	push	de
+	push	iy
+	ld	c, d
+	push	bc
 	call	_devkit_SMS_addSprite
 	pop	af
 	pop	af
+	pop	de
 	pop	bc
-;screen_manager.c:24: for( c = 0; c < 8; c++ )
-	inc	b
-	ld	a, b
-	sub	a, #0x08
-	jr	C,00103$
-;screen_manager.c:22: for( r = 0; r < 8; r++ )
+;screen_manager.c:28: for( c = 0; c < max; c++ )
+	inc	e
+	jr	00104$
+00108$:
+;screen_manager.c:26: for( r = 1; r < max; r++ )
 	inc	c
-	ld	a, c
-	sub	a, #0x08
-	jr	C,00109$
-	inc	sp
+	jr	00107$
+00102$:
+;screen_manager.c:36: devkit_SMS_addSprite( x + 0, y + 0, tile + 64 );
+	ld	hl, #0x0140
+	push	hl
+	ld	hl, #0x2080
+	push	hl
+	call	_devkit_SMS_addSprite
+	pop	af
+;screen_manager.c:37: devkit_SMS_addSprite( x + 8, y + 0, tile + 65 );
+	ld	hl, #0x0141
+	ex	(sp),hl
+	ld	hl, #0x2088
+	push	hl
+	call	_devkit_SMS_addSprite
+	pop	af
+;screen_manager.c:38: devkit_SMS_addSprite( x + 0, y + 8, tile + 66 );
+	ld	hl, #0x0142
+	ex	(sp),hl
+	ld	hl, #0x2880
+	push	hl
+	call	_devkit_SMS_addSprite
+	pop	af
+;screen_manager.c:39: devkit_SMS_addSprite( x + 8, y + 8, tile + 67 );
+	ld	hl, #0x0143
+	ex	(sp),hl
+	ld	hl, #0x2888
+	push	hl
+	call	_devkit_SMS_addSprite
+	ld	sp,ix
 	pop	ix
 	ret
 	.area _CODE
