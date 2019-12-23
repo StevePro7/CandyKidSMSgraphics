@@ -95,52 +95,51 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 	struct_level_object *lo = &global_level_object;
 
 	const unsigned char *o = data;
-	unsigned char row, col;// , cnt;
+	unsigned char row, col;
 	unsigned char tile_data;
 
 	unsigned int idx;
-	//enum_tile_type tile_type;
-	//enum_coll_type coll_type;
 	unsigned char tile_type;
 	unsigned char coll_type;
 
-	// TODO next line of code should be 10 NOT 12
 	lo->load_cols = size / MAX_ROWS;
 	lo->draw_cols = lo->load_cols - CRLF;
 
 	lo->candyCount = 0;
 	lo->bonusCount = 0;
 
-	//devkit_SMS_mapROMBank( bank );
-	//for( row = 0; row < MAX_ROWS; row++ )
-	//{
-	//	for( col = 0; col < lo->load_cols; col++ )
-	//	{
-	//		tile_data = *o;
-	//		if( !( tile_data == CR || tile_data == LF ) )
-	//		{
-	//			idx = row * MAX_COLS + col;
+	devkit_SMS_mapROMBank( bank );
+	for( row = 0; row < MAX_ROWS; row++ )
+	{
+		for( col = 0; col < lo->load_cols; col++ )
+		{
+			tile_data = *o;
+			if( !( tile_data == CR || tile_data == LF ) )
+			{
+				engine_tile_manager_load_tile( &tile_type, tile_data );
 
-	//			engine_tile_manager_load_tile( &tile_type, tile_data );
-	//			lo->drawtiles_array[ idx ] = tile_type;
-	//			
-	//			if( tile_type_candy == tile_type )
-	//			{
-	//				lo->candyCount++;
-	//			}
-	//			if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
-	//			{
-	//				lo->bonusCount++;
-	//			}
+				idx = ( row + 1 ) * TREE_COLS + ( col + 1 );
 
-	//			// TODO read from game object. 
-	//			engine_tile_manager_load_coll( &coll_type, tile_data );
-	//			lo->collision_array[ idx ] = coll_type;
-	//		}
+				
+				lo->drawtiles_array[ idx ] = tile_type;
+				
+				if( tile_type_candy == tile_type )
+				{
+					lo->candyCount++;
+				}
+				if( tile_type_bonusA == tile_type || tile_type_bonusB == tile_type || tile_type_bonusC == tile_type || tile_type_bonusD == tile_type )
+				{
+					lo->bonusCount++;
+				}
 
-	//		o++;
-	//	}
-	//}
+				// TODO read from game object. 
+				engine_tile_manager_load_coll( &coll_type, tile_data );
+				lo->collision_array[ idx ] = coll_type;
+			}
+
+			o++;
+		}
+	}
 }
 
 static void draw_tiles( unsigned char x, unsigned char y )
