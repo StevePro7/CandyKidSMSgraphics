@@ -66,11 +66,27 @@ void engine_level_manager_load_level( const unsigned char world, const unsigned 
 	level = world * MAX_ROUNDS + round;
 	index = 0;
 
+	if( level >= halve )
+	{
+		index = level - halve;
+	}
+	else
+	{
+		index = level;
+	}
+
 	if( level < halve )
 	{
 		const unsigned char *data = levelAAdata[ index ];
 		const unsigned char bank = levelAAbank[ index ];
 		const unsigned char size = levelAAsize[ index ];
+		load_level( data, bank, size );
+	}
+	else
+	{
+		const unsigned char *data = levelBBdata[ index ];
+		const unsigned char bank = levelBBbank[ index ];
+		const unsigned char size = levelBBsize[ index ];
 		load_level( data, bank, size );
 	}
 }

@@ -10,10 +10,13 @@ void main( void )
 
 	devkit_SMS_setSpriteMode( devkit_SPRITEMODE_NORMAL() );
 	devkit_SMS_useFirstHalfTilesforSprites_False();
-	//devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
+	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
 
 	engine_content_manager_load_tiles();
 	engine_content_manager_load_sprites();
+
+	engine_hack_manager_init();
+	engine_hack_manager_invert();
 
 	open_screen_type = screen_type_load;
 	engine_screen_manager_init( open_screen_type );

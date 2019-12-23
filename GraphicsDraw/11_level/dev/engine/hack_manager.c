@@ -5,6 +5,8 @@
 #define PEEK( addr)			(* ( unsigned char *)( addr ) )
 #define POKE( addr, data )	(* ( unsigned char *)( addr ) = ( data ) )
 
+#define HACKER_START		0x0050
+
 // Global variable.
 struct_hack_object global_hack_object;
 
