@@ -1,6 +1,6 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
-                              3 ; Version 3.6.0 #9615 (MINGW64)
+                              3 ; Version 3.6.9 #9960 (MINGW64)
                               4 ;--------------------------------------------------------
                               5 	.module screen_manager
                               6 	.optsdcc -mz80
@@ -43,15 +43,15 @@
                              43 ; code
                              44 ;--------------------------------------------------------
                              45 	.area _CODE
-                             46 ;screen_manager.c:11: void engine_screen_manager_init()
+                             46 ;screen_manager.c:12: void engine_screen_manager_init()
                              47 ;	---------------------------------
                              48 ; Function engine_screen_manager_init
                              49 ; ---------------------------------
    0000                      50 _engine_screen_manager_init::
-                             51 ;screen_manager.c:13: engine_font_manager_draw_text( SPRITE_TILES_TEXT, 2, 0 );
-   0000 21 02 00      [10]   52 	ld	hl,#0x0002
+                             51 ;screen_manager.c:14: engine_font_manager_draw_text( SPRITE_TILES_TEXT, 2, 0 );
+   0000 21 02 00      [10]   52 	ld	hl, #0x0002
    0003 E5            [11]   53 	push	hl
-   0004 21r0Er00      [10]   54 	ld	hl,#___str_0
+   0004 21r0Er00      [10]   54 	ld	hl, #___str_0
    0007 E5            [11]   55 	push	hl
    0008 CDr00r00      [17]   56 	call	_engine_font_manager_draw_text
    000B F1            [10]   57 	pop	af
@@ -63,188 +63,159 @@
         20 4C 4F 41 44 45
         44 2E 2E 2E
    0024 00                   62 	.db 0x00
-                             63 ;screen_manager.c:16: void engine_screen_manager_update()
+                             63 ;screen_manager.c:17: void engine_screen_manager_update()
                              64 ;	---------------------------------
                              65 ; Function engine_screen_manager_update
                              66 ; ---------------------------------
    0025                      67 _engine_screen_manager_update::
-                             68 ;screen_manager.c:19: draw_sprites( 48, 32, idx + 0 );
-   0025 21 20 00      [10]   69 	ld	hl,#0x0020
-   0028 E5            [11]   70 	push	hl
-   0029 3E 30         [ 7]   71 	ld	a,#0x30
-   002B F5            [11]   72 	push	af
-   002C 33            [ 6]   73 	inc	sp
-   002D CDr87r00      [17]   74 	call	_draw_sprites
-                             75 ;screen_manager.c:20: draw_sprites( 80, 32, idx + 1 );
-   0030 33            [ 6]   76 	inc	sp
-   0031 21 20 01      [10]   77 	ld	hl,#0x0120
-   0034 E3            [19]   78 	ex	(sp),hl
-   0035 3E 50         [ 7]   79 	ld	a,#0x50
-   0037 F5            [11]   80 	push	af
-   0038 33            [ 6]   81 	inc	sp
-   0039 CDr87r00      [17]   82 	call	_draw_sprites
-                             83 ;screen_manager.c:22: draw_sprites( 48, 64, idx + 2 );
-   003C 33            [ 6]   84 	inc	sp
-   003D 21 40 02      [10]   85 	ld	hl,#0x0240
-   0040 E3            [19]   86 	ex	(sp),hl
-   0041 3E 30         [ 7]   87 	ld	a,#0x30
-   0043 F5            [11]   88 	push	af
-   0044 33            [ 6]   89 	inc	sp
-   0045 CDr87r00      [17]   90 	call	_draw_sprites
-                             91 ;screen_manager.c:23: draw_sprites( 80, 64, idx + 3 );
-   0048 33            [ 6]   92 	inc	sp
-   0049 21 40 03      [10]   93 	ld	hl,#0x0340
-   004C E3            [19]   94 	ex	(sp),hl
-   004D 3E 50         [ 7]   95 	ld	a,#0x50
-   004F F5            [11]   96 	push	af
-   0050 33            [ 6]   97 	inc	sp
-   0051 CDr87r00      [17]   98 	call	_draw_sprites
-                             99 ;screen_manager.c:25: draw_sprites( 48, 96, idx + 4 );
-   0054 33            [ 6]  100 	inc	sp
-   0055 21 60 04      [10]  101 	ld	hl,#0x0460
-   0058 E3            [19]  102 	ex	(sp),hl
-   0059 3E 30         [ 7]  103 	ld	a,#0x30
-   005B F5            [11]  104 	push	af
-   005C 33            [ 6]  105 	inc	sp
-   005D CDr87r00      [17]  106 	call	_draw_sprites
-                            107 ;screen_manager.c:26: draw_sprites( 80, 96, idx + 5 );
-   0060 33            [ 6]  108 	inc	sp
-   0061 21 60 05      [10]  109 	ld	hl,#0x0560
-   0064 E3            [19]  110 	ex	(sp),hl
-   0065 3E 50         [ 7]  111 	ld	a,#0x50
-   0067 F5            [11]  112 	push	af
-   0068 33            [ 6]  113 	inc	sp
-   0069 CDr87r00      [17]  114 	call	_draw_sprites
-                            115 ;screen_manager.c:28: draw_sprites( 48, 128, idx + 6 );
-   006C 33            [ 6]  116 	inc	sp
-   006D 21 80 06      [10]  117 	ld	hl,#0x0680
-   0070 E3            [19]  118 	ex	(sp),hl
-   0071 3E 30         [ 7]  119 	ld	a,#0x30
-   0073 F5            [11]  120 	push	af
-   0074 33            [ 6]  121 	inc	sp
-   0075 CDr87r00      [17]  122 	call	_draw_sprites
-                            123 ;screen_manager.c:29: draw_sprites( 80, 128, idx + 7 );
-   0078 33            [ 6]  124 	inc	sp
-   0079 21 80 07      [10]  125 	ld	hl,#0x0780
-   007C E3            [19]  126 	ex	(sp),hl
-   007D 3E 50         [ 7]  127 	ld	a,#0x50
-   007F F5            [11]  128 	push	af
-   0080 33            [ 6]  129 	inc	sp
-   0081 CDr87r00      [17]  130 	call	_draw_sprites
-   0084 F1            [10]  131 	pop	af
-   0085 33            [ 6]  132 	inc	sp
-   0086 C9            [10]  133 	ret
-                            134 ;screen_manager.c:34: static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
-                            135 ;	---------------------------------
-                            136 ; Function draw_sprites
-                            137 ; ---------------------------------
-   0087                     138 _draw_sprites:
-   0087 DD E5         [15]  139 	push	ix
-   0089 DD 21 00 00   [14]  140 	ld	ix,#0
-   008D DD 39         [15]  141 	add	ix,sp
-                            142 ;screen_manager.c:36: unsigned int tile = 256 + idx * 4;
-   008F DD 6E 06      [19]  143 	ld	l,6 (ix)
-   0092 26 00         [ 7]  144 	ld	h,#0x00
-   0094 29            [11]  145 	add	hl, hl
-   0095 29            [11]  146 	add	hl, hl
-   0096 01 00 01      [10]  147 	ld	bc,#0x0100
-   0099 09            [11]  148 	add	hl,bc
-   009A 4D            [ 4]  149 	ld	c,l
-   009B 44            [ 4]  150 	ld	b,h
-                            151 ;screen_manager.c:38: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
-   009C C5            [11]  152 	push	bc
-   009D C5            [11]  153 	push	bc
-   009E DD 66 05      [19]  154 	ld	h,5 (ix)
-   00A1 DD 6E 04      [19]  155 	ld	l,4 (ix)
-   00A4 E5            [11]  156 	push	hl
-   00A5 CDr00r00      [17]  157 	call	_devkit_SMS_addSprite
-   00A8 F1            [10]  158 	pop	af
-   00A9 F1            [10]  159 	pop	af
-   00AA C1            [10]  160 	pop	bc
-                            161 ;screen_manager.c:39: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-   00AB 69            [ 4]  162 	ld	l, c
-   00AC 60            [ 4]  163 	ld	h, b
-   00AD 23            [ 6]  164 	inc	hl
-   00AE DD 7E 04      [19]  165 	ld	a,4 (ix)
-   00B1 C6 08         [ 7]  166 	add	a, #0x08
-   00B3 5F            [ 4]  167 	ld	e,a
-   00B4 C5            [11]  168 	push	bc
-   00B5 D5            [11]  169 	push	de
-   00B6 E5            [11]  170 	push	hl
-   00B7 DD 56 05      [19]  171 	ld	d, 5 (ix)
-   00BA D5            [11]  172 	push	de
-   00BB CDr00r00      [17]  173 	call	_devkit_SMS_addSprite
-   00BE F1            [10]  174 	pop	af
-   00BF F1            [10]  175 	pop	af
-   00C0 D1            [10]  176 	pop	de
-   00C1 C1            [10]  177 	pop	bc
-                            178 ;screen_manager.c:40: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-   00C2 69            [ 4]  179 	ld	l, c
-   00C3 60            [ 4]  180 	ld	h, b
-   00C4 23            [ 6]  181 	inc	hl
-   00C5 23            [ 6]  182 	inc	hl
-   00C6 DD 7E 05      [19]  183 	ld	a,5 (ix)
-   00C9 C6 08         [ 7]  184 	add	a, #0x08
-   00CB 57            [ 4]  185 	ld	d,a
-   00CC C5            [11]  186 	push	bc
-   00CD D5            [11]  187 	push	de
-   00CE E5            [11]  188 	push	hl
-   00CF D5            [11]  189 	push	de
-   00D0 33            [ 6]  190 	inc	sp
-   00D1 DD 7E 04      [19]  191 	ld	a,4 (ix)
-   00D4 F5            [11]  192 	push	af
-   00D5 33            [ 6]  193 	inc	sp
-   00D6 CDr00r00      [17]  194 	call	_devkit_SMS_addSprite
-   00D9 F1            [10]  195 	pop	af
-   00DA F1            [10]  196 	pop	af
-   00DB D1            [10]  197 	pop	de
-   00DC C1            [10]  198 	pop	bc
-                            199 ;screen_manager.c:41: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-   00DD 03            [ 6]  200 	inc	bc
-   00DE 03            [ 6]  201 	inc	bc
-   00DF 03            [ 6]  202 	inc	bc
-   00E0 C5            [11]  203 	push	bc
-   00E1 D5            [11]  204 	push	de
-   00E2 CDr00r00      [17]  205 	call	_devkit_SMS_addSprite
-   00E5 F1            [10]  206 	pop	af
-   00E6 F1            [10]  207 	pop	af
-   00E7 DD E1         [14]  208 	pop	ix
-   00E9 C9            [10]  209 	ret
-                            210 ;screen_manager.c:64: static void draw_adriana()
-                            211 ;	---------------------------------
-                            212 ; Function draw_adriana
-                            213 ; ---------------------------------
-   00EA                     214 _draw_adriana:
-                            215 ;screen_manager.c:70: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
-   00EA 21 40 01      [10]  216 	ld	hl,#0x0140
-   00ED E5            [11]  217 	push	hl
-   00EE 21 B0 20      [10]  218 	ld	hl,#0x20b0
-   00F1 E5            [11]  219 	push	hl
-   00F2 CDr00r00      [17]  220 	call	_devkit_SMS_addSprite
-   00F5 F1            [10]  221 	pop	af
-                            222 ;screen_manager.c:71: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-   00F6 21 41 01      [10]  223 	ld	hl, #0x0141
-   00F9 E3            [19]  224 	ex	(sp),hl
-   00FA 21 B8 20      [10]  225 	ld	hl,#0x20b8
-   00FD E5            [11]  226 	push	hl
-   00FE CDr00r00      [17]  227 	call	_devkit_SMS_addSprite
-   0101 F1            [10]  228 	pop	af
-                            229 ;screen_manager.c:72: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-   0102 21 42 01      [10]  230 	ld	hl, #0x0142
-   0105 E3            [19]  231 	ex	(sp),hl
-   0106 21 B0 28      [10]  232 	ld	hl,#0x28b0
-   0109 E5            [11]  233 	push	hl
-   010A CDr00r00      [17]  234 	call	_devkit_SMS_addSprite
-   010D F1            [10]  235 	pop	af
-                            236 ;screen_manager.c:73: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-   010E 21 43 01      [10]  237 	ld	hl, #0x0143
-   0111 E3            [19]  238 	ex	(sp),hl
-   0112 21 B8 28      [10]  239 	ld	hl,#0x28b8
-   0115 E5            [11]  240 	push	hl
-   0116 CDr00r00      [17]  241 	call	_devkit_SMS_addSprite
-   0119 F1            [10]  242 	pop	af
-   011A F1            [10]  243 	pop	af
-   011B C9            [10]  244 	ret
-                            245 	.area _CODE
-                            246 	.area _INITIALIZER
-                            247 	.area _CABS (ABS)
+                             68 ;screen_manager.c:33: draw_skullnc();
+   0025 C3rBDr00      [10]   69 	jp  _draw_skullnc
+                             70 ;screen_manager.c:36: static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
+                             71 ;	---------------------------------
+                             72 ; Function draw_sprites
+                             73 ; ---------------------------------
+   0028                      74 _draw_sprites:
+   0028 DD E5         [15]   75 	push	ix
+   002A DD 21 00 00   [14]   76 	ld	ix,#0
+   002E DD 39         [15]   77 	add	ix,sp
+                             78 ;screen_manager.c:38: unsigned int tile = 256 + idx * 4;
+   0030 DD 6E 06      [19]   79 	ld	l, 6 (ix)
+   0033 26 00         [ 7]   80 	ld	h, #0x00
+   0035 29            [11]   81 	add	hl, hl
+   0036 29            [11]   82 	add	hl, hl
+   0037 01 00 01      [10]   83 	ld	bc,#0x0100
+   003A 09            [11]   84 	add	hl,bc
+   003B 4D            [ 4]   85 	ld	c, l
+   003C 44            [ 4]   86 	ld	b, h
+                             87 ;screen_manager.c:40: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+   003D C5            [11]   88 	push	bc
+   003E C5            [11]   89 	push	bc
+   003F DD 66 05      [19]   90 	ld	h, 5 (ix)
+   0042 DD 6E 04      [19]   91 	ld	l, 4 (ix)
+   0045 E5            [11]   92 	push	hl
+   0046 CDr00r00      [17]   93 	call	_devkit_SMS_addSprite
+   0049 F1            [10]   94 	pop	af
+   004A F1            [10]   95 	pop	af
+   004B C1            [10]   96 	pop	bc
+                             97 ;screen_manager.c:41: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+   004C 69            [ 4]   98 	ld	l, c
+   004D 60            [ 4]   99 	ld	h, b
+   004E 23            [ 6]  100 	inc	hl
+   004F DD 7E 04      [19]  101 	ld	a, 4 (ix)
+   0052 C6 08         [ 7]  102 	add	a, #0x08
+   0054 5F            [ 4]  103 	ld	e, a
+   0055 C5            [11]  104 	push	bc
+   0056 D5            [11]  105 	push	de
+   0057 E5            [11]  106 	push	hl
+   0058 DD 56 05      [19]  107 	ld	d, 5 (ix)
+   005B D5            [11]  108 	push	de
+   005C CDr00r00      [17]  109 	call	_devkit_SMS_addSprite
+   005F F1            [10]  110 	pop	af
+   0060 F1            [10]  111 	pop	af
+   0061 D1            [10]  112 	pop	de
+   0062 C1            [10]  113 	pop	bc
+                            114 ;screen_manager.c:42: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+   0063 69            [ 4]  115 	ld	l, c
+   0064 60            [ 4]  116 	ld	h, b
+   0065 23            [ 6]  117 	inc	hl
+   0066 23            [ 6]  118 	inc	hl
+   0067 DD 7E 05      [19]  119 	ld	a, 5 (ix)
+   006A C6 08         [ 7]  120 	add	a, #0x08
+   006C 57            [ 4]  121 	ld	d, a
+   006D C5            [11]  122 	push	bc
+   006E D5            [11]  123 	push	de
+   006F E5            [11]  124 	push	hl
+   0070 D5            [11]  125 	push	de
+   0071 33            [ 6]  126 	inc	sp
+   0072 DD 7E 04      [19]  127 	ld	a, 4 (ix)
+   0075 F5            [11]  128 	push	af
+   0076 33            [ 6]  129 	inc	sp
+   0077 CDr00r00      [17]  130 	call	_devkit_SMS_addSprite
+   007A F1            [10]  131 	pop	af
+   007B F1            [10]  132 	pop	af
+   007C D1            [10]  133 	pop	de
+   007D C1            [10]  134 	pop	bc
+                            135 ;screen_manager.c:43: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+   007E 03            [ 6]  136 	inc	bc
+   007F 03            [ 6]  137 	inc	bc
+   0080 03            [ 6]  138 	inc	bc
+   0081 C5            [11]  139 	push	bc
+   0082 D5            [11]  140 	push	de
+   0083 CDr00r00      [17]  141 	call	_devkit_SMS_addSprite
+   0086 F1            [10]  142 	pop	af
+   0087 F1            [10]  143 	pop	af
+   0088 DD E1         [14]  144 	pop	ix
+   008A C9            [10]  145 	ret
+                            146 ;screen_manager.c:66: static void draw_adriana()
+                            147 ;	---------------------------------
+                            148 ; Function draw_adriana
+                            149 ; ---------------------------------
+   008B                     150 _draw_adriana:
+                            151 ;screen_manager.c:72: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+   008B 21 40 01      [10]  152 	ld	hl, #0x0140
+   008E E5            [11]  153 	push	hl
+   008F 21 B0 20      [10]  154 	ld	hl, #0x20b0
+   0092 E5            [11]  155 	push	hl
+   0093 CDr00r00      [17]  156 	call	_devkit_SMS_addSprite
+   0096 F1            [10]  157 	pop	af
+                            158 ;screen_manager.c:73: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+   0097 21 41 01      [10]  159 	ld	hl, #0x0141
+   009A E3            [19]  160 	ex	(sp),hl
+   009B 21 B8 20      [10]  161 	ld	hl, #0x20b8
+   009E E5            [11]  162 	push	hl
+   009F CDr00r00      [17]  163 	call	_devkit_SMS_addSprite
+   00A2 F1            [10]  164 	pop	af
+                            165 ;screen_manager.c:74: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+   00A3 21 42 01      [10]  166 	ld	hl, #0x0142
+   00A6 E3            [19]  167 	ex	(sp),hl
+   00A7 21 B0 28      [10]  168 	ld	hl, #0x28b0
+   00AA E5            [11]  169 	push	hl
+   00AB CDr00r00      [17]  170 	call	_devkit_SMS_addSprite
+   00AE F1            [10]  171 	pop	af
+                            172 ;screen_manager.c:75: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+   00AF 21 43 01      [10]  173 	ld	hl, #0x0143
+   00B2 E3            [19]  174 	ex	(sp),hl
+   00B3 21 B8 28      [10]  175 	ld	hl, #0x28b8
+   00B6 E5            [11]  176 	push	hl
+   00B7 CDr00r00      [17]  177 	call	_devkit_SMS_addSprite
+   00BA F1            [10]  178 	pop	af
+   00BB F1            [10]  179 	pop	af
+   00BC C9            [10]  180 	ret
+                            181 ;screen_manager.c:77: static void draw_skullnc()
+                            182 ;	---------------------------------
+                            183 ; Function draw_skullnc
+                            184 ; ---------------------------------
+   00BD                     185 _draw_skullnc:
+                            186 ;screen_manager.c:83: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+   00BD 21 50 01      [10]  187 	ld	hl, #0x0150
+   00C0 E5            [11]  188 	push	hl
+   00C1 21 B0 20      [10]  189 	ld	hl, #0x20b0
+   00C4 E5            [11]  190 	push	hl
+   00C5 CDr00r00      [17]  191 	call	_devkit_SMS_addSprite
+   00C8 F1            [10]  192 	pop	af
+                            193 ;screen_manager.c:84: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+   00C9 21 51 01      [10]  194 	ld	hl, #0x0151
+   00CC E3            [19]  195 	ex	(sp),hl
+   00CD 21 B8 20      [10]  196 	ld	hl, #0x20b8
+   00D0 E5            [11]  197 	push	hl
+   00D1 CDr00r00      [17]  198 	call	_devkit_SMS_addSprite
+   00D4 F1            [10]  199 	pop	af
+                            200 ;screen_manager.c:85: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+   00D5 21 52 01      [10]  201 	ld	hl, #0x0152
+   00D8 E3            [19]  202 	ex	(sp),hl
+   00D9 21 B0 28      [10]  203 	ld	hl, #0x28b0
+   00DC E5            [11]  204 	push	hl
+   00DD CDr00r00      [17]  205 	call	_devkit_SMS_addSprite
+   00E0 F1            [10]  206 	pop	af
+                            207 ;screen_manager.c:86: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+   00E1 21 53 01      [10]  208 	ld	hl, #0x0153
+   00E4 E3            [19]  209 	ex	(sp),hl
+   00E5 21 B8 28      [10]  210 	ld	hl, #0x28b8
+   00E8 E5            [11]  211 	push	hl
+   00E9 CDr00r00      [17]  212 	call	_devkit_SMS_addSprite
+   00EC F1            [10]  213 	pop	af
+   00ED F1            [10]  214 	pop	af
+   00EE C9            [10]  215 	ret
+                            216 	.area _CODE
+                            217 	.area _INITIALIZER
+                            218 	.area _CABS (ABS)

@@ -13,6 +13,12 @@ extern const unsigned char	font_tiles__tilemap__bin[];
 extern const unsigned char	font_tiles__tiles__psgcompr[];
 #define				font_tiles__tiles__psgcompr_size 663
 
+extern const unsigned char	skullnc__palette__bin[];
+#define				skullnc__palette__bin_size 16
+
+extern const unsigned char	skullnc__tiles__psgcompr[];
+#define				skullnc__tiles__psgcompr_size 54
+
 extern const unsigned char	sprites__palette__bin[];
 #define				sprites__palette__bin_size 16
 
