@@ -14,13 +14,12 @@ namespace GraphicsLoad
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-		Texture2D image;
-		Texture2D[] trees;
-		Texture2D[] candy;
+		Texture2D image, image02;
+		Texture2D[] boss32;
+		Texture2D[] boss64;
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
-		const int most = 12;
 		int index = 0;
 		float scale = 1.0f;
 		bool saves = false;
@@ -50,7 +49,7 @@ namespace GraphicsLoad
 
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
-			int y = 1;
+			int y = 16;
 			wide = (int)(size * scale);
 			high = (int)(y * size * scale);
 
@@ -82,19 +81,8 @@ namespace GraphicsLoad
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			var name = scale * size;
-			image = Content.Load<Texture2D>("sprites02_" + name);
-			trees = new Texture2D[2];
-			trees[0] = Content.Load<Texture2D>("tree_avoid");
-			trees[1] = Content.Load<Texture2D>("tree_death");
-
-			const int max = 13;
-			candy = new Texture2D[max];
-			for (int idx = 0; idx < max; idx++)
-			{
-				var file = (idx + 2).ToString().PadLeft(2, '0');
-				var text = $"Candy/Candy{file}";
-				candy[idx] = Content.Load<Texture2D>(text);
-			}
+			image = Content.Load<Texture2D>("sprites");
+			image02 = Content.Load<Texture2D>("sprites02");
 
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
@@ -137,16 +125,16 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(renderTarget);
 				GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1, 0);
 
-				Draw4();
+				Draw3();
 				base.Draw(gameTime);
 
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var xx = scale * size;
-				var yy = index.ToString().PadLeft(2, '0');
+				//var xx = scale * size;
+				//var yy = index.ToString().PadLeft(2, '0');
 				//var yy = (index + 2).ToString().PadLeft(2, '0');
-				var file = $"Scale{xx}_Index{yy}.bmp";
+				var file = $"spritemap.bmp";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -155,7 +143,7 @@ namespace GraphicsLoad
 			}
 			else
 			{
-				Draw4();
+				Draw3();
 				base.Draw(gameTime);
 			}
 		}
@@ -165,45 +153,36 @@ namespace GraphicsLoad
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
 
-			Texture2D source = candy[index];
-
-			Rectangle outset = new Rectangle(0, 0, 4, 4);
-			Rectangle middle = new Rectangle(8, 8, 8, 8);
-
-			spriteBatch.Draw(source, new Vector2(4, 4), middle, Color.White);
-			spriteBatch.Draw(source, new Vector2(2, 2), outset, Color.White);
-			spriteBatch.Draw(source, new Vector2(10, 10), outset, Color.White);
-
 			spriteBatch.End();
 		}
 
-		private void Draw2()
-		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
+		//private void Draw2()
+		//{
+		//	GraphicsDevice.Clear(Color.Black);
+		//	spriteBatch.Begin();
 
-			int x = 0;
-			int y = 0;
-			for (int i = 0; i < most; i++)
-			{
-				int j = 4 + i;
-				y = i * (int)(size * scale);
-				var pos = new Vector2(x, y);
-				Rectangle dest = GetRectangle(j);
-				spriteBatch.Draw(image, pos, dest, Color.White);
-			}
+		//	int x = 0;
+		//	int y = 0;
+		//	for (int i = 0; i < most; i++)
+		//	{
+		//		int j = 4 + i;
+		//		y = i * (int)(size * scale);
+		//		var pos = new Vector2(x, y);
+		//		Rectangle dest = GetRectangle(j);
+		//		spriteBatch.Draw(image, pos, dest, Color.White);
+		//	}
 
-			int z = y;
-			for(int i = 0; i < 4; i++)
-			{
-				z = y + (i + 1) * (int)(size * scale);
-				var pos = new Vector2(x, z);
-				Rectangle dest = GetRectangle(i);
-				spriteBatch.Draw(image, pos, dest, Color.White);
-			}
+		//	int z = y;
+		//	for(int i = 0; i < 4; i++)
+		//	{
+		//		z = y + (i + 1) * (int)(size * scale);
+		//		var pos = new Vector2(x, z);
+		//		Rectangle dest = GetRectangle(i);
+		//		spriteBatch.Draw(image, pos, dest, Color.White);
+		//	}
 
-			spriteBatch.End();
-		}
+		//	spriteBatch.End();
+		//}
 
 		private void Draw3()
 		{
@@ -215,13 +194,25 @@ namespace GraphicsLoad
 			int x = 0;
 			int y = 0;
 
+			Texture2D draws = image;
 			for(int j = 0; j < arr.Length; j++)
 			{
+				draws = image;
 				int i = arr[j];
+				if (6 == i)
+				{
+					i = 4;
+					draws = image02;
+				}
+				if (7 == i)
+				{
+					i = 5;
+					draws = image02;
+				}
 				y = j * (int)(size * scale);
 				var pos = new Vector2(x, y);
 				Rectangle dest = GetRectangle(i);
-				spriteBatch.Draw(image, pos, dest, Color.White);
+				spriteBatch.Draw(draws, pos, dest, Color.White);
 			}
 
 			spriteBatch.End();
@@ -242,17 +233,6 @@ namespace GraphicsLoad
 				//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
 				spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White);
 			}
-
-			spriteBatch.End();
-		}
-
-		private void Draw5()
-		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
-
-			spriteBatch.Draw(trees[0], Vector2.Zero, Color.White);
-			spriteBatch.Draw(trees[1], Vector2.Zero, Color.White);
 
 			spriteBatch.End();
 		}
