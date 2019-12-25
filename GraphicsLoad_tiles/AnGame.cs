@@ -14,9 +14,10 @@ namespace GraphicsLoad
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-		Texture2D image;
-		Texture2D[] trees;
+		Texture2D[] bonus;
+		Texture2D[] bonus02;
 		Texture2D[] candy;
+		Texture2D[] trees;
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
@@ -24,33 +25,20 @@ namespace GraphicsLoad
 		int index = 0;
 		float scale = 1.0f;
 		bool saves = false;
-		bool twice = false;
 
 		int wide;
 		int high;
 
 		public AnGame()
 		{
-			if(null != ConfigurationManager.AppSettings["index"])
-			{
-				index = Convert.ToInt32(ConfigurationManager.AppSettings["index"]);
-			}
-			if(null != ConfigurationManager.AppSettings["scale"])
-			{
-				scale = Convert.ToSingle(ConfigurationManager.AppSettings["scale"]);
-			}
 			if(null != ConfigurationManager.AppSettings["saves"])
 			{
 				saves = Convert.ToBoolean(ConfigurationManager.AppSettings["saves"]);
 			}
-			if(null != ConfigurationManager.AppSettings["twice"])
-			{
-				twice = Convert.ToBoolean(ConfigurationManager.AppSettings["twice"]);
-			}
 
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
-			int y = 1;
+			int y = 4;
 			wide = (int)(size * scale);
 			high = (int)(y * size * scale);
 
@@ -81,13 +69,19 @@ namespace GraphicsLoad
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-			var name = scale * size;
-			image = Content.Load<Texture2D>("sprites02_" + name);
-			trees = new Texture2D[2];
-			trees[0] = Content.Load<Texture2D>("tree_avoid");
-			trees[1] = Content.Load<Texture2D>("tree_death");
 
-			const int max = 13;
+			var names = new string[] { "BlueSpiral", "CoolTriangle", "LoveHeart", "PawPrint" };
+			const int bns = 4;
+			bonus = new Texture2D[bns];
+			bonus02 = new Texture2D[bns];
+			for (int idx = 0; idx < bns; idx++)
+			{
+				var name = names[idx];
+				bonus[idx] = Content.Load<Texture2D>("Bonus/" + name);
+				bonus02[idx] = Content.Load<Texture2D>("Bonus02/" + name);
+			}
+
+			const int max = 14;
 			candy = new Texture2D[max];
 			for (int idx = 0; idx < max; idx++)
 			{
@@ -95,6 +89,11 @@ namespace GraphicsLoad
 				var text = $"Candy/Candy{file}";
 				candy[idx] = Content.Load<Texture2D>(text);
 			}
+
+			trees = new Texture2D[2];
+			trees[0] = Content.Load<Texture2D>("Trees/tree_avoid");
+			trees[1] = Content.Load<Texture2D>("Trees/tree_death");
+
 
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
@@ -137,16 +136,13 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(renderTarget);
 				GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1, 0);
 
-				Draw4();
+				Draw();
 				base.Draw(gameTime);
 
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var xx = scale * size;
-				var yy = index.ToString().PadLeft(2, '0');
-				//var yy = (index + 2).ToString().PadLeft(2, '0');
-				var file = $"Scale{xx}_Index{yy}.bmp";
+				var file = $"Tiles.bmp";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -155,7 +151,7 @@ namespace GraphicsLoad
 			}
 			else
 			{
-				Draw4();
+				Draw();
 				base.Draw(gameTime);
 			}
 		}
@@ -165,105 +161,16 @@ namespace GraphicsLoad
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
 
-			Texture2D source = candy[index];
-
-			Rectangle outset = new Rectangle(0, 0, 4, 4);
-			Rectangle middle = new Rectangle(8, 8, 8, 8);
-
-			spriteBatch.Draw(source, new Vector2(4, 4), middle, Color.White);
-			spriteBatch.Draw(source, new Vector2(2, 2), outset, Color.White);
-			spriteBatch.Draw(source, new Vector2(10, 10), outset, Color.White);
-
-			spriteBatch.End();
-		}
-
-		private void Draw2()
-		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
-
-			int x = 0;
-			int y = 0;
-			for (int i = 0; i < most; i++)
+			for (int idx = 0; idx < 4; idx++)
 			{
-				int j = 4 + i;
-				y = i * (int)(size * scale);
-				var pos = new Vector2(x, y);
-				Rectangle dest = GetRectangle(j);
-				spriteBatch.Draw(image, pos, dest, Color.White);
-			}
-
-			int z = y;
-			for(int i = 0; i < 4; i++)
-			{
-				z = y + (i + 1) * (int)(size * scale);
-				var pos = new Vector2(x, z);
-				Rectangle dest = GetRectangle(i);
-				spriteBatch.Draw(image, pos, dest, Color.White);
+				var image = bonus[idx];
+				var pos = new Vector2(0, idx * size);
+				spriteBatch.Draw(image, pos, Color.White);
 			}
 
 			spriteBatch.End();
 		}
 
-		private void Draw3()
-		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
-
-			int[] arr = { 4, 5, 8, 9, 12, 13, 6, 7, 10, 11, 14, 15, 0, 1, 2, 3 };
-			//int[] arr = { 4 };
-			int x = 0;
-			int y = 0;
-
-			for(int j = 0; j < arr.Length; j++)
-			{
-				int i = arr[j];
-				y = j * (int)(size * scale);
-				var pos = new Vector2(x, y);
-				Rectangle dest = GetRectangle(i);
-				spriteBatch.Draw(image, pos, dest, Color.White);
-			}
-
-			spriteBatch.End();
-		}
-
-		private void Draw4()
-		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
-
-			Rectangle dest = GetRectangle(index);
-			//spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-			spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White);
-
-			if (twice)
-			{
-				dest = GetRectangle(index + 1);
-				//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-				spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White);
-			}
-
-			spriteBatch.End();
-		}
-
-		private void Draw5()
-		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
-
-			spriteBatch.Draw(trees[0], Vector2.Zero, Color.White);
-			spriteBatch.Draw(trees[1], Vector2.Zero, Color.White);
-
-			spriteBatch.End();
-		}
-
-		private Rectangle GetRectangle(int index)
-		{
-			int h = index / 4;
-			int w = index % 4;
-			int delta = (int)(size * scale);
-			Rectangle dest = new Rectangle(w * delta, h * delta, delta, delta);
-			return dest;
-		}
+		
 	}
 }
