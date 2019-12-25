@@ -1,0 +1,221 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.9 #9960 (MINGW64)
+                              4 ;--------------------------------------------------------
+                              5 	.module screen_manager
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _devkit_SMS_addSprite
+                             12 	.globl _engine_font_manager_draw_text
+                             13 	.globl _engine_screen_manager_init
+                             14 	.globl _engine_screen_manager_update
+                             15 ;--------------------------------------------------------
+                             16 ; special function registers
+                             17 ;--------------------------------------------------------
+                             18 ;--------------------------------------------------------
+                             19 ; ram data
+                             20 ;--------------------------------------------------------
+                             21 	.area _DATA
+                             22 ;--------------------------------------------------------
+                             23 ; ram data
+                             24 ;--------------------------------------------------------
+                             25 	.area _INITIALIZED
+                             26 ;--------------------------------------------------------
+                             27 ; absolute external ram data
+                             28 ;--------------------------------------------------------
+                             29 	.area _DABS (ABS)
+                             30 ;--------------------------------------------------------
+                             31 ; global & static initialisations
+                             32 ;--------------------------------------------------------
+                             33 	.area _HOME
+                             34 	.area _GSINIT
+                             35 	.area _GSFINAL
+                             36 	.area _GSINIT
+                             37 ;--------------------------------------------------------
+                             38 ; Home
+                             39 ;--------------------------------------------------------
+                             40 	.area _HOME
+                             41 	.area _HOME
+                             42 ;--------------------------------------------------------
+                             43 ; code
+                             44 ;--------------------------------------------------------
+                             45 	.area _CODE
+                             46 ;screen_manager.c:12: void engine_screen_manager_init()
+                             47 ;	---------------------------------
+                             48 ; Function engine_screen_manager_init
+                             49 ; ---------------------------------
+   0000                      50 _engine_screen_manager_init::
+                             51 ;screen_manager.c:14: engine_font_manager_draw_text( SPRITE_TILES_TEXT, 2, 0 );
+   0000 21 02 00      [10]   52 	ld	hl, #0x0002
+   0003 E5            [11]   53 	push	hl
+   0004 21r0Er00      [10]   54 	ld	hl, #___str_0
+   0007 E5            [11]   55 	push	hl
+   0008 CDr00r00      [17]   56 	call	_engine_font_manager_draw_text
+   000B F1            [10]   57 	pop	af
+   000C F1            [10]   58 	pop	af
+   000D C9            [10]   59 	ret
+   000E                      60 ___str_0:
+   000E 53 50 52 49 54 45    61 	.ascii "SPRITE TILES LOADED..."
+        20 54 49 4C 45 53
+        20 4C 4F 41 44 45
+        44 2E 2E 2E
+   0024 00                   62 	.db 0x00
+                             63 ;screen_manager.c:17: void engine_screen_manager_update()
+                             64 ;	---------------------------------
+                             65 ; Function engine_screen_manager_update
+                             66 ; ---------------------------------
+   0025                      67 _engine_screen_manager_update::
+                             68 ;screen_manager.c:33: draw_skullnc();
+   0025 C3rBDr00      [10]   69 	jp  _draw_skullnc
+                             70 ;screen_manager.c:36: static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
+                             71 ;	---------------------------------
+                             72 ; Function draw_sprites
+                             73 ; ---------------------------------
+   0028                      74 _draw_sprites:
+   0028 DD E5         [15]   75 	push	ix
+   002A DD 21 00 00   [14]   76 	ld	ix,#0
+   002E DD 39         [15]   77 	add	ix,sp
+                             78 ;screen_manager.c:38: unsigned int tile = 256 + idx * 4;
+   0030 DD 6E 06      [19]   79 	ld	l, 6 (ix)
+   0033 26 00         [ 7]   80 	ld	h, #0x00
+   0035 29            [11]   81 	add	hl, hl
+   0036 29            [11]   82 	add	hl, hl
+   0037 01 00 01      [10]   83 	ld	bc,#0x0100
+   003A 09            [11]   84 	add	hl,bc
+   003B 4D            [ 4]   85 	ld	c, l
+   003C 44            [ 4]   86 	ld	b, h
+                             87 ;screen_manager.c:40: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+   003D C5            [11]   88 	push	bc
+   003E C5            [11]   89 	push	bc
+   003F DD 66 05      [19]   90 	ld	h, 5 (ix)
+   0042 DD 6E 04      [19]   91 	ld	l, 4 (ix)
+   0045 E5            [11]   92 	push	hl
+   0046 CDr00r00      [17]   93 	call	_devkit_SMS_addSprite
+   0049 F1            [10]   94 	pop	af
+   004A F1            [10]   95 	pop	af
+   004B C1            [10]   96 	pop	bc
+                             97 ;screen_manager.c:41: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+   004C 69            [ 4]   98 	ld	l, c
+   004D 60            [ 4]   99 	ld	h, b
+   004E 23            [ 6]  100 	inc	hl
+   004F DD 7E 04      [19]  101 	ld	a, 4 (ix)
+   0052 C6 08         [ 7]  102 	add	a, #0x08
+   0054 5F            [ 4]  103 	ld	e, a
+   0055 C5            [11]  104 	push	bc
+   0056 D5            [11]  105 	push	de
+   0057 E5            [11]  106 	push	hl
+   0058 DD 56 05      [19]  107 	ld	d, 5 (ix)
+   005B D5            [11]  108 	push	de
+   005C CDr00r00      [17]  109 	call	_devkit_SMS_addSprite
+   005F F1            [10]  110 	pop	af
+   0060 F1            [10]  111 	pop	af
+   0061 D1            [10]  112 	pop	de
+   0062 C1            [10]  113 	pop	bc
+                            114 ;screen_manager.c:42: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+   0063 69            [ 4]  115 	ld	l, c
+   0064 60            [ 4]  116 	ld	h, b
+   0065 23            [ 6]  117 	inc	hl
+   0066 23            [ 6]  118 	inc	hl
+   0067 DD 7E 05      [19]  119 	ld	a, 5 (ix)
+   006A C6 08         [ 7]  120 	add	a, #0x08
+   006C 57            [ 4]  121 	ld	d, a
+   006D C5            [11]  122 	push	bc
+   006E D5            [11]  123 	push	de
+   006F E5            [11]  124 	push	hl
+   0070 D5            [11]  125 	push	de
+   0071 33            [ 6]  126 	inc	sp
+   0072 DD 7E 04      [19]  127 	ld	a, 4 (ix)
+   0075 F5            [11]  128 	push	af
+   0076 33            [ 6]  129 	inc	sp
+   0077 CDr00r00      [17]  130 	call	_devkit_SMS_addSprite
+   007A F1            [10]  131 	pop	af
+   007B F1            [10]  132 	pop	af
+   007C D1            [10]  133 	pop	de
+   007D C1            [10]  134 	pop	bc
+                            135 ;screen_manager.c:43: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+   007E 03            [ 6]  136 	inc	bc
+   007F 03            [ 6]  137 	inc	bc
+   0080 03            [ 6]  138 	inc	bc
+   0081 C5            [11]  139 	push	bc
+   0082 D5            [11]  140 	push	de
+   0083 CDr00r00      [17]  141 	call	_devkit_SMS_addSprite
+   0086 F1            [10]  142 	pop	af
+   0087 F1            [10]  143 	pop	af
+   0088 DD E1         [14]  144 	pop	ix
+   008A C9            [10]  145 	ret
+                            146 ;screen_manager.c:66: static void draw_adriana()
+                            147 ;	---------------------------------
+                            148 ; Function draw_adriana
+                            149 ; ---------------------------------
+   008B                     150 _draw_adriana:
+                            151 ;screen_manager.c:72: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+   008B 21 40 01      [10]  152 	ld	hl, #0x0140
+   008E E5            [11]  153 	push	hl
+   008F 21 B0 20      [10]  154 	ld	hl, #0x20b0
+   0092 E5            [11]  155 	push	hl
+   0093 CDr00r00      [17]  156 	call	_devkit_SMS_addSprite
+   0096 F1            [10]  157 	pop	af
+                            158 ;screen_manager.c:73: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+   0097 21 41 01      [10]  159 	ld	hl, #0x0141
+   009A E3            [19]  160 	ex	(sp),hl
+   009B 21 B8 20      [10]  161 	ld	hl, #0x20b8
+   009E E5            [11]  162 	push	hl
+   009F CDr00r00      [17]  163 	call	_devkit_SMS_addSprite
+   00A2 F1            [10]  164 	pop	af
+                            165 ;screen_manager.c:74: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+   00A3 21 42 01      [10]  166 	ld	hl, #0x0142
+   00A6 E3            [19]  167 	ex	(sp),hl
+   00A7 21 B0 28      [10]  168 	ld	hl, #0x28b0
+   00AA E5            [11]  169 	push	hl
+   00AB CDr00r00      [17]  170 	call	_devkit_SMS_addSprite
+   00AE F1            [10]  171 	pop	af
+                            172 ;screen_manager.c:75: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+   00AF 21 43 01      [10]  173 	ld	hl, #0x0143
+   00B2 E3            [19]  174 	ex	(sp),hl
+   00B3 21 B8 28      [10]  175 	ld	hl, #0x28b8
+   00B6 E5            [11]  176 	push	hl
+   00B7 CDr00r00      [17]  177 	call	_devkit_SMS_addSprite
+   00BA F1            [10]  178 	pop	af
+   00BB F1            [10]  179 	pop	af
+   00BC C9            [10]  180 	ret
+                            181 ;screen_manager.c:77: static void draw_skullnc()
+                            182 ;	---------------------------------
+                            183 ; Function draw_skullnc
+                            184 ; ---------------------------------
+   00BD                     185 _draw_skullnc:
+                            186 ;screen_manager.c:83: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+   00BD 21 50 01      [10]  187 	ld	hl, #0x0150
+   00C0 E5            [11]  188 	push	hl
+   00C1 21 B0 20      [10]  189 	ld	hl, #0x20b0
+   00C4 E5            [11]  190 	push	hl
+   00C5 CDr00r00      [17]  191 	call	_devkit_SMS_addSprite
+   00C8 F1            [10]  192 	pop	af
+                            193 ;screen_manager.c:84: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+   00C9 21 51 01      [10]  194 	ld	hl, #0x0151
+   00CC E3            [19]  195 	ex	(sp),hl
+   00CD 21 B8 20      [10]  196 	ld	hl, #0x20b8
+   00D0 E5            [11]  197 	push	hl
+   00D1 CDr00r00      [17]  198 	call	_devkit_SMS_addSprite
+   00D4 F1            [10]  199 	pop	af
+                            200 ;screen_manager.c:85: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+   00D5 21 52 01      [10]  201 	ld	hl, #0x0152
+   00D8 E3            [19]  202 	ex	(sp),hl
+   00D9 21 B0 28      [10]  203 	ld	hl, #0x28b0
+   00DC E5            [11]  204 	push	hl
+   00DD CDr00r00      [17]  205 	call	_devkit_SMS_addSprite
+   00E0 F1            [10]  206 	pop	af
+                            207 ;screen_manager.c:86: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+   00E1 21 53 01      [10]  208 	ld	hl, #0x0153
+   00E4 E3            [19]  209 	ex	(sp),hl
+   00E5 21 B8 28      [10]  210 	ld	hl, #0x28b8
+   00E8 E5            [11]  211 	push	hl
+   00E9 CDr00r00      [17]  212 	call	_devkit_SMS_addSprite
+   00EC F1            [10]  213 	pop	af
+   00ED F1            [10]  214 	pop	af
+   00EE C9            [10]  215 	ret
+                            216 	.area _CODE
+                            217 	.area _INITIALIZER
+                            218 	.area _CABS (ABS)

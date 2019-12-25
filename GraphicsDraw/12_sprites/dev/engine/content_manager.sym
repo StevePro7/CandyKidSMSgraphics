@@ -1,0 +1,39 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  2710 L
+    .__.ABS.                                                    =  0000 G
+    .__.CPU.                                                    =  0000 L
+    .__.H$L.                                                    =  0000 L
+    _adriana__tiles__psgcompr                                      **** GX
+    _devkit_SMS_loadBGPalette                                      **** GX
+    _devkit_SMS_loadPSGaidencompressedTiles                        **** GX
+    _devkit_SMS_loadSpritePalette                                  **** GX
+  0 _engine_content_manager_load_sprites                           002A GR
+  0 _engine_content_manager_load_tiles                             0000 GR
+    _font_tiles__palette__bin                                      **** GX
+    _font_tiles__tiles__psgcompr                                   **** GX
+    _skullnc__palette__bin                                         **** GX
+    _skullnc__tiles__psgcompr                                      **** GX
+    _sprites__tiles__psgcompr                                      **** GX
+    _tree_avoid__palette__bin                                      **** GX
+    _tree_avoid__tiles__psgcompr                                   **** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE                                      size   58   flags    0
+   1 _DATA                                      size    0   flags    0
+   2 _INITIALIZED                               size    0   flags    0
+   3 _DABS                                      size    0   flags    8
+   4 _HOME                                      size    0   flags    0
+   5 _GSINIT                                    size    0   flags    0
+   6 _GSFINAL                                   size    0   flags    0
+   7 _INITIALIZER                               size    0   flags    0
+   8 _CABS                                      size    0   flags    8
+
