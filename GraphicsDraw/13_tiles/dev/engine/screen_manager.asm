@@ -59,7 +59,7 @@ _engine_screen_manager_init::
 	pop	af
 	ret
 ___str_0:
-	.ascii "SPRITE TILES LOADED..."
+	.ascii "STEVEN TILES LOADED..."
 	.db 0x00
 ;screen_manager.c:18: void engine_screen_manager_update()
 ;	---------------------------------

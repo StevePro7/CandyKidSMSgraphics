@@ -3,8 +3,8 @@ cd gfx
 
 :: Tiles
 bmp2tile.exe raw\font_tiles.bmp -savetiles "font_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset 0  -savetilemap "font_tiles (tilemap).bin" -savepalette "font_tiles (palette).bin" -fullpalette -exit
-bmp2tile.exe raw\tree_avoid.bmp -savetiles "tree_avoid (tiles).psgcompr" -noremovedupes -planar -tileoffset 64 -savetilemap "tree_avoid (tilemap).bin" -savepalette "tree_avoid (palette).bin" -fullpalette -exit
-bmp2tile.exe raw\game_title.bmp -savetiles "game_title (tiles).psgcompr" -noremovedupes -planar -tileoffset 80 -savetilemap "game_title (tilemap).bin" -savepalette "game_title (palette).bin" -fullpalette -exit
+::bmp2tile.exe raw\tree_avoid.bmp -savetiles "tree_avoid (tiles).psgcompr" -noremovedupes -planar -tileoffset 64 -savetilemap "tree_avoid (tilemap).bin" -savepalette "tree_avoid (palette).bin" -fullpalette -exit
+bmp2tile.exe raw\game_title.bmp -savetiles "game_title (tiles).psgcompr" -noremovedupes -planar -tileoffset 64 -savetilemap "game_title (tilemap).bin" -savepalette "game_title (palette).bin" -fullpalette -exit
 
 :: Sprites
 :: https://github.com/maxim-zhao/bmp2tile

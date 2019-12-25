@@ -1,0 +1,24 @@
+25/12/2019
+font	 64
+title	104	32, 64, 96, 104		96 + 8 = 104 = 26 * 4
+
+
+104
+ 64
+168
+
+256
+168
+ 88
+
+88 / 4 = 22 16x16 tiles things
+budget for 22x things including font + title
+
+so what I think to do is 2x images
+font + 22x things 
+
+
+trees x 2	 8
+bonus x 4	16
+candy x 14	56
+		80	tiles

@@ -42,6 +42,7 @@ static void draw_titile()
 	unsigned char i;
 	unsigned char j;
 
+	// CANDY KID title is 26 cols * 4 rows of 8x8 tiles.
 	for( j = 0; j < 4; j++ )
 	{
 		for( i = 0; i < 26; i++ )

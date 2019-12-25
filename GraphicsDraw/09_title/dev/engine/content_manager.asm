@@ -74,7 +74,7 @@ _engine_content_manager_load_tiles::
 	push	bc
 	call	_devkit_SMS_loadBGPalette
 ;content_manager.c:21: devkit_SMS_loadPSGaidencompressedTiles( game_title__tiles__psgcompr, GAME_TITLE );
-	ld	hl, #0x0050
+	ld	hl, #0x0040
 	ex	(sp),hl
 	ld	hl, #_game_title__tiles__psgcompr
 	push	hl

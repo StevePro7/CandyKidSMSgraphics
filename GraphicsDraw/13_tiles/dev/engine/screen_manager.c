@@ -4,7 +4,7 @@
 #include "..\devkit\_sms_manager.h"
 
 #define NORMAL_TILES_TEXT	"NORMAL TILES LOADED..."
-#define SPRITE_TILES_TEXT	"SPRITE TILES LOADED..."
+#define SPRITE_TILES_TEXT	"STEVEN TILES LOADED..."
 
 static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx );
 static void draw_candykd();

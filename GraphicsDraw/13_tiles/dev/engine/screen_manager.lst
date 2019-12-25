@@ -59,7 +59,7 @@
    000C F1            [10]   59 	pop	af
    000D C9            [10]   60 	ret
    000E                      61 ___str_0:
-   000E 53 50 52 49 54 45    62 	.ascii "SPRITE TILES LOADED..."
+   000E 53 54 45 56 45 4E    62 	.ascii "STEVEN TILES LOADED..."
         20 54 49 4C 45 53
         20 4C 4F 41 44 45
         44 2E 2E 2E

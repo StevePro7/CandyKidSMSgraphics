@@ -74,7 +74,7 @@
    0024 C5            [11]   74 	push	bc
    0025 CDr00r00      [17]   75 	call	_devkit_SMS_loadBGPalette
                              76 ;content_manager.c:21: devkit_SMS_loadPSGaidencompressedTiles( game_title__tiles__psgcompr, GAME_TITLE );
-   0028 21 50 00      [10]   77 	ld	hl, #0x0050
+   0028 21 40 00      [10]   77 	ld	hl, #0x0040
    002B E3            [19]   78 	ex	(sp),hl
    002C 21r00r00      [10]   79 	ld	hl, #_game_title__tiles__psgcompr
    002F E5            [11]   80 	push	hl

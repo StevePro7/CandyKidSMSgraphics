@@ -4,7 +4,7 @@
 
 #define FONT_TILES		0
 #define TREE_TILES		64
-#define GAME_TITLE		80
+#define GAME_TITLE		64	//80
 #define SPRITE_TILES	256
 
 void engine_content_manager_load_tiles()
