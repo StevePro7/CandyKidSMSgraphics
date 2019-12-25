@@ -7,7 +7,9 @@ cd gfx
 
 :: Sprites
 :: https://github.com/maxim-zhao/bmp2tile
-bmp2tile.exe raw\sprites.bmp -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0  -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
+::bmp2tile.exe raw\candykids.bmp -savetiles "candykids (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0  -savepalette "candykids (palette).bin" -fullpalette  -spritepalette -exit
+bmp2tile.exe raw\candykids.bmp -savetiles "candymama (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset   0  -spritepalette -exit
+bmp2tile.exe raw\candykids.bmp -savetiles "candykids (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 192  -spritepalette -exit
 
 cd ..
 cd dev

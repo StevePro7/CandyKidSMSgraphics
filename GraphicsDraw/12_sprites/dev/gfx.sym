@@ -7,12 +7,12 @@ Symbol Table
     .__.ABS.                                                    =  0000 G
     .__.CPU.                                                    =  0000 L
     .__.H$L.                                                    =  0000 L
-    _devkit_SMS_loadPSGaidencompressedTiles                        **** GX
-    _devkit_SMS_loadSpritePalette                                  **** GX
-  0 _engine_content_manager_load_sprites                           0001 GR
-  0 _engine_content_manager_load_tiles                             0000 GR
-    _sprites__palette__bin                                         **** GX
-    _sprites__tiles__psgcompr                                      **** GX
+  0 _candykids__tiles__psgcompr                                    0000 GR
+  0 _candymama__tiles__psgcompr                                    0144 GR
+  0 _font_tiles__palette__bin                                      0288 GR
+  0 _font_tiles__tilemap__bin                                      0298 GR
+  0 _font_tiles__tiles__psgcompr                                   0318 GR
+  0 _sprites__palette__bin                                         05AF GR
 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
@@ -20,7 +20,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   17   flags    0
+   0 _CODE                                      size  5BF   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8
