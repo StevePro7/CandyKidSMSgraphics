@@ -51,7 +51,7 @@ namespace GraphicsLoad
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
 			int y = 16;
-			wide = (int)(size * scale);
+			wide = (int)(y * size * scale);
 			high = (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
@@ -89,6 +89,18 @@ namespace GraphicsLoad
 			skulls[0] = Content.Load<Texture2D>("skull03");
 			skulls[1] = Content.Load<Texture2D>("skull04");
 
+			const int max = 7;
+			boss32 = new Texture2D[max];
+			boss64 = new Texture2D[max];
+			for (int i = 0; i < max; i++)
+			{
+				int idx = i * 2 + 4;
+				var fle = idx.ToString().PadLeft(2, '0');
+				var n32 = $"Scale32_Index{fle}";
+				var n64 = $"Scale64_Index{fle}";
+				boss32[i] = Content.Load<Texture2D>("Boss32/" + n32);
+				boss64[i] = Content.Load<Texture2D>("Boss64/" + n64);
+			}
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
 			high = pp.BackBufferHeight;
@@ -130,7 +142,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(renderTarget);
 				GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1, 0);
 
-				Draw3();
+				Draw();
 				base.Draw(gameTime);
 
 				GraphicsDevice.SetRenderTarget(null);
@@ -148,7 +160,7 @@ namespace GraphicsLoad
 			}
 			else
 			{
-				Draw3();
+				Draw();
 				base.Draw(gameTime);
 			}
 		}
@@ -157,6 +169,10 @@ namespace GraphicsLoad
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
+
+			Draw3();
+			Draw3b();
+			Draw3c();
 
 			spriteBatch.End();
 		}
@@ -191,9 +207,6 @@ namespace GraphicsLoad
 
 		private void Draw3()
 		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
-
 			int[] arr = { 4, 5, 8, 9, 12, 13, 6, 7, 10, 11, 14, 15, 0, 1, 2, 3 };
 			//int[] arr = { 4 };
 			int x = 0;
@@ -228,8 +241,44 @@ namespace GraphicsLoad
 			//spriteBatch.Draw(skulls[0], pos, Color.White);
 			//pos = new Vector2(0, 256 + 16);
 			//spriteBatch.Draw(skulls[1], pos, Color.White);
+		}
 
-			spriteBatch.End();
+		private void Draw3b()
+		{
+			int[] arr = { 0, 2, 4, 6, 3, 5 };
+			int i = 0;
+			for (int y = 0; y < 2; y++)
+			{
+				for (int x = 0; x < 3; x++)
+				{
+					int j = arr[i];
+					int xx, yy;
+					Texture2D image;
+					Vector2 pos;
+					xx = x * 64;
+					yy = y * 64;
+					image = boss64[j];
+					pos = new Vector2(xx + 16, yy);
+					spriteBatch.Draw(image, pos, Color.White);
+
+					xx = x * 32;
+					yy = y * 32;
+					image = boss32[j];
+					pos = new Vector2(xx + 16, yy + 128);
+					spriteBatch.Draw(image, pos, Color.White);
+
+					i++;
+				}
+			}
+		}
+
+		private void Draw3c()
+		{
+			Vector2 pos;
+			pos = new Vector2(16, 128 + 64);
+			spriteBatch.Draw(skulls[0], pos, Color.White);
+			pos = new Vector2(16, 128 + 64 + 16);
+			spriteBatch.Draw(skulls[1], pos, Color.White);
 		}
 
 		private void Draw4()
