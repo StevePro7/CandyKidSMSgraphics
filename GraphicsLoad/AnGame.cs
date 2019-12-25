@@ -82,7 +82,7 @@ namespace GraphicsLoad
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			var name = scale * size;
-			image = Content.Load<Texture2D>("sprites" + name);
+			image = Content.Load<Texture2D>("sprites02" + name);
 			trees = new Texture2D[2];
 			trees[0] = Content.Load<Texture2D>("tree_avoid");
 			trees[1] = Content.Load<Texture2D>("tree_death");
