@@ -50,7 +50,7 @@ namespace GraphicsLoad
 
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
-			int y = 18;
+			int y = 16;
 			wide = (int)(size * scale);
 			high = (int)(y * size * scale);
 
@@ -205,6 +205,7 @@ namespace GraphicsLoad
 			{
 				draws = image;
 				int i = arr[j];
+
 				if (6 == i)
 				{
 					i = 4;
@@ -215,16 +216,18 @@ namespace GraphicsLoad
 					i = 5;
 					draws = image02;
 				}
+
 				y = j * (int)(size * scale);
 				pos = new Vector2(x, y);
 				Rectangle dest = GetRectangle(i);
 				spriteBatch.Draw(draws, pos, dest, Color.White);
 			}
 
-			pos = new Vector2(0, 256 + 0);
-			spriteBatch.Draw(skulls[0], pos, Color.White);
-			pos = new Vector2(0, 256 + 16);
-			spriteBatch.Draw(skulls[1], pos, Color.White);
+			// skulls n' crossbones
+			//pos = new Vector2(0, 256 + 0);
+			//spriteBatch.Draw(skulls[0], pos, Color.White);
+			//pos = new Vector2(0, 256 + 16);
+			//spriteBatch.Draw(skulls[1], pos, Color.White);
 
 			spriteBatch.End();
 		}
