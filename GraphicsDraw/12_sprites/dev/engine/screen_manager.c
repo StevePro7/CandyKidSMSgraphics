@@ -17,10 +17,17 @@ void engine_screen_manager_init()
 
 void engine_screen_manager_update()
 {
-	unsigned char idx = 0;
+	unsigned char input;
 
-	draw_candykd();
-	//draw_skullnc();
+	input = engine_input_manager_move_fire1();
+	if( input )
+	{
+		draw_skullnc();
+	}
+	else
+	{
+		draw_candykd();
+	}
 }
 
 static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
@@ -31,27 +38,6 @@ static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
 	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-
-	/*const unsigned char max = 8;
-	unsigned char x = 64;
-	unsigned char y = 32;
-	unsigned int tile = 256;
-
-	unsigned char r = 0;
-	unsigned char c = 0;
-
-	c = 2; 	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
-	c = 3; 	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
-	c = 4; 	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
-	c = 5; 	devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
-
-	for( r = 1; r < max - 0; r++ )
-	{
-		for( c = 1; c < max - 1; c++ )
-		{
-			devkit_SMS_addSprite( x + c * max, y + r * max, tile + ( r * max + c ) );
-		}
-	}*/
 }
 static void draw_candykd()
 {
@@ -68,7 +54,7 @@ static void draw_skullnc()
 {
 	unsigned char x = 176;
 	unsigned char y = 32;
-	unsigned int tile = 256 + 68;
+	unsigned int tile = 256 + 64;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
