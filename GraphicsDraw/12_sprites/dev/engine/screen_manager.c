@@ -19,6 +19,19 @@ void engine_screen_manager_update()
 {
 	unsigned char input;
 
+	unsigned char idx = 6;
+	draw_sprites( 48, 32, idx + 0 );
+	draw_sprites( 80, 32, idx + 1 );
+
+	draw_sprites( 48, 64, idx + 2 );
+	draw_sprites( 80, 64, idx + 3 );
+
+	draw_sprites( 48, 96, idx + 4 );
+	draw_sprites( 80, 96, idx + 5 );
+
+	draw_sprites( 48, 128, idx + 6 );
+	draw_sprites( 80, 128, idx + 7 );
+
 	input = engine_input_manager_move_fire1();
 	if( input )
 	{

@@ -9,9 +9,9 @@ Symbol Table
     .__.H$L.                                                    =  0000 L
   0 ___str_0                                                       000E R
     _devkit_SMS_addSprite                                          **** GX
-  0 _draw_candykd                                                  0093 R
-  0 _draw_skullnc                                                  00C5 R
-  0 _draw_sprites                                                  0030 R
+  0 _draw_candykd                                                  00F4 R
+  0 _draw_skullnc                                                  0126 R
+  0 _draw_sprites                                                  0091 R
     _engine_font_manager_draw_text                                 **** GX
     _engine_input_manager_move_fire1                               **** GX
   0 _engine_screen_manager_init                                    0000 GR
@@ -23,7 +23,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   F7   flags    0
+   0 _CODE                                      size  158   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8
