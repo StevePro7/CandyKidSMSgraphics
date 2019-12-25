@@ -17,6 +17,7 @@ namespace GraphicsLoad
 		Texture2D image, image02;
 		Texture2D[] boss32;
 		Texture2D[] boss64;
+		Texture2D[] skulls;
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
@@ -49,7 +50,7 @@ namespace GraphicsLoad
 
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
-			int y = 16;
+			int y = 18;
 			wide = (int)(size * scale);
 			high = (int)(y * size * scale);
 
@@ -83,6 +84,10 @@ namespace GraphicsLoad
 			var name = scale * size;
 			image = Content.Load<Texture2D>("sprites");
 			image02 = Content.Load<Texture2D>("sprites02");
+
+			skulls = new Texture2D[2];
+			skulls[0] = Content.Load<Texture2D>("skull03");
+			skulls[1] = Content.Load<Texture2D>("skull04");
 
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
@@ -194,6 +199,7 @@ namespace GraphicsLoad
 			int x = 0;
 			int y = 0;
 
+			Vector2 pos;
 			Texture2D draws = image;
 			for(int j = 0; j < arr.Length; j++)
 			{
@@ -210,10 +216,15 @@ namespace GraphicsLoad
 					draws = image02;
 				}
 				y = j * (int)(size * scale);
-				var pos = new Vector2(x, y);
+				pos = new Vector2(x, y);
 				Rectangle dest = GetRectangle(i);
 				spriteBatch.Draw(draws, pos, dest, Color.White);
 			}
+
+			pos = new Vector2(0, 256 + 0);
+			spriteBatch.Draw(skulls[0], pos, Color.White);
+			pos = new Vector2(0, 256 + 16);
+			spriteBatch.Draw(skulls[1], pos, Color.White);
 
 			spriteBatch.End();
 		}
