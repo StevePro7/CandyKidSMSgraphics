@@ -7,8 +7,14 @@ typedef struct tag_struct_gamer_object
 	int posnY;
 	signed char tileX;
 	signed char tileY;
+	unsigned char delta;
+	unsigned char total;
+	unsigned char speed;
+	unsigned char direction;
+	unsigned char lifecycle;
 	unsigned int image;
 	unsigned char frame;
+	unsigned char calcd;
 
 } struct_gamer_object;
 

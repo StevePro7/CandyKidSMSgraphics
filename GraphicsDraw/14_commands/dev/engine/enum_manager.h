@@ -12,6 +12,24 @@ typedef enum tag_enum_screen_type
 
 } enum_screen_type;
 
+typedef enum tag_enum_direction_type
+{
+	direction_type_none = 0,
+	direction_type_upxx = 1,
+	direction_type_down = 2,
+	direction_type_left = 3,
+	direction_type_rght = 4,
+
+} enum_direction_type;
+
+typedef enum tag_enum_lifecycle_type
+{
+	lifecycle_type_idle = 0,
+	lifecycle_type_move = 1,
+	lifecycle_type_dead = 2,
+
+} enum_lifecycle_type;
+
 typedef enum tag_enum_tile_type
 {
 	tile_type_blank = 0,
