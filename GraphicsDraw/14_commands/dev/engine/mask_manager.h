@@ -1,0 +1,6 @@
+#ifndef _MASK_MANAGER_H_
+#define _MASK_MANAGER_H_
+
+#define IDENTITY_KID_MASK	0x80
+
+#endif//_MASK_MANAGER_H_

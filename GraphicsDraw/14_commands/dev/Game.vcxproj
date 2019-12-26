@@ -186,6 +186,7 @@
     <ClInclude Include="engine\hack_manager.h" />
     <ClInclude Include="engine\input_manager.h" />
     <ClInclude Include="engine\level_manager.h" />
+    <ClInclude Include="engine\mask_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
     <ClInclude Include="engine\tile_manager.h" />
     <ClInclude Include="game.h" />

@@ -208,5 +208,8 @@
     <ClInclude Include="object\hack_object.h">
       <Filter>Header Files\object</Filter>
     </ClInclude>
+    <ClInclude Include="engine\mask_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
