@@ -156,6 +156,7 @@
     <ClCompile Include="engine\hack_manager.c" />
     <ClCompile Include="engine\input_manager.c" />
     <ClCompile Include="engine\level_manager.c" />
+    <ClCompile Include="engine\mask_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
     <ClCompile Include="engine\tile_manager.c" />
     <ClCompile Include="game.c" />
