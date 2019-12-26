@@ -167,6 +167,8 @@
     <ClCompile Include="game.c" />
     <ClCompile Include="gfx.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="object\enemy_object.c" />
+    <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\hack_object.c" />
     <ClCompile Include="object\level_object.c" />
     <ClCompile Include="screen\func_screen.c" />
@@ -201,6 +203,8 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gfx.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="object\enemy_object.h" />
+    <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\hack_object.h" />
     <ClInclude Include="object\level_object.h" />
     <ClInclude Include="screen\func_screen.h" />

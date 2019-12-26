@@ -1,5 +1,5 @@
 #include "enemy_manager.h"
 
-void fooE()
+void fooT()
 {
 }

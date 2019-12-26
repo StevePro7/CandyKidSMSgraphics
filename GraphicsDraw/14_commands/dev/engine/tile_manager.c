@@ -9,7 +9,6 @@
 #define BASE_TILE_OFFSET	64
 
 static void draw_blank( unsigned char x, unsigned char y );
-static void draw_tree( unsigned char x, unsigned char y );
 
 void engine_tile_manager_load_tile( unsigned char *tile_type, unsigned char tile_data )
 {
@@ -82,7 +81,7 @@ void engine_tile_manager_draw_tile( unsigned char index, unsigned char x, unsign
 		return;
 	}
 
-	draw_tree( x, y );
+	engine_tile_manager_draw_tree( x, y );
 }
 
 static void draw_blank( unsigned char x, unsigned char y )
@@ -93,7 +92,7 @@ static void draw_blank( unsigned char x, unsigned char y )
 	engine_font_manager_draw_char( ' ', x + 1, y + 1 );
 }
 
-static void draw_tree( unsigned char x, unsigned char y )
+void engine_tile_manager_draw_tree( unsigned char x, unsigned char y )
 {
 	const unsigned char *pnt = tree_avoid__tilemap__bin;
 
