@@ -170,8 +170,8 @@ namespace GraphicsLoad
 
 			for (int idx = 0; idx < bonus.Length; idx++)
 			{
-				//var image = bonus[idx];
-				var image = bonus02[idx];
+				var image = bonus[idx];
+				//var image = bonus02[idx];
 				var pos = new Vector2(0, 64 + idx * size);
 				spriteBatch.Draw(image, pos, Color.White);
 			}
