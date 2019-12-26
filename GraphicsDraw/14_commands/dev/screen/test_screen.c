@@ -28,6 +28,16 @@ void screen_test_screen_update( unsigned char *screen_type )
 	unsigned char input;
 	engine_gamer_manager_draw();
 
+	input = engine_input_manager_move_up();
+	if( input )
+	{
+		engine_command_move_up();
+	}
+	input = engine_input_manager_move_down();
+	if( input )
+	{
+		engine_command_move_down();
+	}
 	input = engine_input_manager_move_left();
 	if( input )
 	{

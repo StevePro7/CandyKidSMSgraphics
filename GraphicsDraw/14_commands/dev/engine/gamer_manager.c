@@ -21,7 +21,7 @@ void engine_gamer_manager_init()
 	go->tileY = 2;
 	go->delta = 0;
 	go->total = 0;
-	go->speed = 1;
+	go->speed = 2;
 
 	go->direction = direction_type_none;
 	go->lifecycle = lifecycle_type_idle;
@@ -32,6 +32,9 @@ void engine_gamer_manager_init()
 	go->image = 0;
 	go->frame = 0;
 	calcd_frame();
+
+	engine_font_manager_draw_data( go->posnX, 20, 2 );
+	engine_font_manager_draw_data( go->posnY, 20, 3 );
 }
 
 void engine_gamer_manager_update()
@@ -90,6 +93,9 @@ void engine_gamer_manager_update()
 			go->lifecycle = lifecycle_type_idle;
 			go->delta = 0;
 			go->total = 0;
+
+			engine_font_manager_draw_data( go->posnX, 20, 2 );
+			engine_font_manager_draw_data( go->posnY, 20, 3 );
 		}
 
 		if( go->delta > TILE_HALF)
@@ -98,58 +104,6 @@ void engine_gamer_manager_update()
 			go->delta = 0;
 			calcd_frame();
 		}
-
-		//if( direction_type_left == go->direction )
-		//{
-		//	go->delta += go->speed;
-		//	go->posnX -= go->speed;				// different
-		//	go->total += go->speed;
-
-		//	if( go->total >= TILE_SIZE )
-		//	{
-		//		go->tileX--;					// different
-		//		go->posnX = go->tileX * TILE_SIZE;
-		//		go->direction = direction_type_none;
-		//		go->lifecycle = lifecycle_type_idle;
-		//		//go->frame = 1 - go->frame;
-		//		go->delta = 0;
-		//		//calcd_frame();
-		//		go->total = 0;
-		//	}
-
-		//	if( go->delta >= 8 )
-		//	{
-		//		go->frame = 1 - go->frame;
-		//		go->delta = 0;
-		//		calcd_frame();
-		//	}
-		//}
-
-		//if( direction_type_rght == go->direction )
-		//{
-		//	go->delta += go->speed;
-		//	go->posnX += go->speed;
-		//	go->total += go->speed;
-
-		//	if( go->total >= TILE_SIZE )
-		//	{
-		//		go->tileX++;
-		//		go->posnX = go->tileX * TILE_SIZE;
-		//		go->direction = direction_type_none;
-		//		go->lifecycle = lifecycle_type_idle;
-		//		//go->frame = 1 - go->frame;
-		//		go->delta = 0;
-		//		//calcd_frame();
-		//		go->total = 0;
-		//	}
-
-		//	if( go->delta >= 8 )
-		//	{
-		//		go->frame = 1 - go->frame;
-		//		go->delta = 0;
-		//		calcd_frame();
-		//	}
-		//}
 
 	}
 }
