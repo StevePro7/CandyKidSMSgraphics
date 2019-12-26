@@ -40,8 +40,8 @@ namespace GraphicsLoad
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
 			int y = 4;
-			wide = (int)(size * scale);
-			high = (int)(y * size * scale);
+			wide = 128;// (int)(size * scale);
+			high = 512 - 16 * 10;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -165,12 +165,24 @@ namespace GraphicsLoad
 
 			spriteBatch.Draw(font, Vector2.Zero, Color.White);
 
-			//for (int idx = 0; idx < 4; idx++)
-			//{
-			//	var image = bonus[idx];
-			//	var pos = new Vector2(0, idx * size);
-			//	spriteBatch.Draw(image, pos, Color.White);
-			//}
+			spriteBatch.Draw(trees[0], new Vector2(0, 32), Color.White);
+			spriteBatch.Draw(trees[1], new Vector2(0, 48), Color.White);
+
+			for (int idx = 0; idx < bonus.Length; idx++)
+			{
+				//var image = bonus[idx];
+				var image = bonus02[idx];
+				var pos = new Vector2(0, 64 + idx * size);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			//candy
+			for (int idx = 0; idx < candy.Length; idx++)
+			{
+				var image = candy[idx];
+				var pos = new Vector2(0, 128 + idx * size);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
 
 			spriteBatch.End();
 		}
