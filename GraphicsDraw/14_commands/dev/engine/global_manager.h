@@ -15,8 +15,8 @@
 #define TREE_ROWS				12
 #define TREE_COLS				12
 
-#define TILE_WIDE				16
-#define TILE_HIGH				16
+#define TILE_SIZE				16
+#define TILE_HALF				8
 
 #define SCREEN_SIZE_WIDE		256
 #define SCREEN_SIZE_HIGH		192

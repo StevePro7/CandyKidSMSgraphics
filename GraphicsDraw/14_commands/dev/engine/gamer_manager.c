@@ -1,6 +1,7 @@
 #include "gamer_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
+#include "global_manager.h"
 #include "sprite_manager.h"
 
 #define SPRITE_TILES_KID	256 + 48
@@ -20,7 +21,7 @@ void engine_gamer_manager_init()
 	go->tileY = 2;
 	go->delta = 0;
 	go->total = 0;
-	go->speed = 4;
+	go->speed = 1;
 
 	go->direction = direction_type_none;
 	go->lifecycle = lifecycle_type_idle;
@@ -36,7 +37,6 @@ void engine_gamer_manager_init()
 void engine_gamer_manager_update()
 {
 	struct_gamer_object *go = &global_gamer_object;
-
 	if( lifecycle_type_idle == go->lifecycle )
 	{
 		return;
@@ -44,69 +44,112 @@ void engine_gamer_manager_update()
 
 	if( lifecycle_type_move == go->lifecycle )
 	{
-		if( direction_type_left == go->direction )
+		go->delta += go->speed;
+		go->total += go->speed;
+
+		if( direction_type_upxx == go->direction )
 		{
-			/*if( 0 == go->delta && 0 == go->total )
-			{
-				go->frame = 1 - go->frame;
-				calcd_frame();
-			}*/
-
-			go->delta += go->speed;
-			go->posnX -= go->speed;				// different
-			go->total += go->speed;
-
-			if( go->total >= 16 )
-			{
-				go->tileX--;					// different
-				go->posnX = go->tileX * 16;
-				go->direction = direction_type_none;
-				go->lifecycle = lifecycle_type_idle;
-				//go->frame = 1 - go->frame;
-				go->delta = 0;
-				//calcd_frame();
-				go->total = 0;
-			}
-
-			if( go->delta >= 8 )
-			{
-				go->frame = 1 - go->frame;
-				go->delta = 0;
-				calcd_frame();
-			}
+			go->posnY -= go->speed;
+		}
+		else if( direction_type_down == go->direction )
+		{
+			go->posnY += go->speed;
+		}
+		else if( direction_type_left == go->direction )
+		{
+			go->posnX -= go->speed;
+		}
+		else if( direction_type_rght == go->direction )
+		{
+			go->posnX += go->speed;
 		}
 
-		if( direction_type_rght == go->direction )
+		if( go->total >= TILE_SIZE )
 		{
-			/*if( 0 == go->delta && 0 == go->total )
+			if( direction_type_upxx == go->direction )
 			{
-				go->frame = 1 - go->frame;
-				calcd_frame();
-			}*/
-
-			go->delta += go->speed;
-			go->posnX += go->speed;
-			go->total += go->speed;
-
-			if( go->total >= 16 )
+				go->tileY--;
+			}
+			else if( direction_type_down == go->direction )
+			{
+				go->tileY++;
+			}
+			else if( direction_type_left == go->direction )
+			{
+				go->tileX--;
+			}
+			else if( direction_type_rght == go->direction )
 			{
 				go->tileX++;
-				go->posnX = go->tileX * 16;
-				go->direction = direction_type_none;
-				go->lifecycle = lifecycle_type_idle;
-				//go->frame = 1 - go->frame;
-				go->delta = 0;
-				//calcd_frame();
-				go->total = 0;
 			}
 
-			if( go->delta >= 8 )
-			{
-				go->frame = 1 - go->frame;
-				go->delta = 0;
-				calcd_frame();
-			}
+			go->posnX = go->tileX * TILE_SIZE;
+			go->posnY = go->tileY * TILE_SIZE;
+
+			go->direction = direction_type_none;
+			go->lifecycle = lifecycle_type_idle;
+			go->delta = 0;
+			go->total = 0;
 		}
+
+		if( go->delta > TILE_HALF)
+		{
+			go->frame = 1 - go->frame;
+			go->delta = 0;
+			calcd_frame();
+		}
+
+		//if( direction_type_left == go->direction )
+		//{
+		//	go->delta += go->speed;
+		//	go->posnX -= go->speed;				// different
+		//	go->total += go->speed;
+
+		//	if( go->total >= TILE_SIZE )
+		//	{
+		//		go->tileX--;					// different
+		//		go->posnX = go->tileX * TILE_SIZE;
+		//		go->direction = direction_type_none;
+		//		go->lifecycle = lifecycle_type_idle;
+		//		//go->frame = 1 - go->frame;
+		//		go->delta = 0;
+		//		//calcd_frame();
+		//		go->total = 0;
+		//	}
+
+		//	if( go->delta >= 8 )
+		//	{
+		//		go->frame = 1 - go->frame;
+		//		go->delta = 0;
+		//		calcd_frame();
+		//	}
+		//}
+
+		//if( direction_type_rght == go->direction )
+		//{
+		//	go->delta += go->speed;
+		//	go->posnX += go->speed;
+		//	go->total += go->speed;
+
+		//	if( go->total >= TILE_SIZE )
+		//	{
+		//		go->tileX++;
+		//		go->posnX = go->tileX * TILE_SIZE;
+		//		go->direction = direction_type_none;
+		//		go->lifecycle = lifecycle_type_idle;
+		//		//go->frame = 1 - go->frame;
+		//		go->delta = 0;
+		//		//calcd_frame();
+		//		go->total = 0;
+		//	}
+
+		//	if( go->delta >= 8 )
+		//	{
+		//		go->frame = 1 - go->frame;
+		//		go->delta = 0;
+		//		calcd_frame();
+		//	}
+		//}
 
 	}
 }
