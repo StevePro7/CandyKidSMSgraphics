@@ -14,6 +14,7 @@ namespace GraphicsLoad
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
+		Texture2D font;
 		Texture2D[] bonus;
 		Texture2D[] bonus02;
 		Texture2D[] candy;
@@ -70,6 +71,7 @@ namespace GraphicsLoad
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
+			font = Content.Load<Texture2D>("font_tiles");
 			var names = new string[] { "BlueSpiral", "CoolTriangle", "LoveHeart", "PawPrint" };
 			const int bns = 4;
 			bonus = new Texture2D[bns];
@@ -161,16 +163,16 @@ namespace GraphicsLoad
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
 
-			for (int idx = 0; idx < 4; idx++)
-			{
-				var image = bonus[idx];
-				var pos = new Vector2(0, idx * size);
-				spriteBatch.Draw(image, pos, Color.White);
-			}
+			spriteBatch.Draw(font, Vector2.Zero, Color.White);
+
+			//for (int idx = 0; idx < 4; idx++)
+			//{
+			//	var image = bonus[idx];
+			//	var pos = new Vector2(0, idx * size);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
 
 			spriteBatch.End();
 		}
-
-		
 	}
 }
