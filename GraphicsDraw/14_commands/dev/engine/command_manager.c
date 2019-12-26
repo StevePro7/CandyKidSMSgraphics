@@ -11,8 +11,9 @@ void engine_command_move_left()
 		return;
 	}
 
-	go->direction = direction_type_left;
-	go->lifecycle = lifecycle_type_move;
+	/*go->direction = direction_type_left;
+	go->lifecycle = lifecycle_type_move;*/
+	engine_gamer_manager_move( direction_type_left );
 }
 
 void engine_command_move_right()
@@ -23,6 +24,7 @@ void engine_command_move_right()
 		return;
 	}
 
-	go->direction = direction_type_rght;
-	go->lifecycle = lifecycle_type_move;
+	engine_gamer_manager_move( direction_type_rght );
+	/*go->direction = direction_type_rght;
+	go->lifecycle = lifecycle_type_move;*/
 }

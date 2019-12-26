@@ -11,5 +11,6 @@ void engine_gamer_manager_init();
 void engine_gamer_manager_update();
 void engine_gamer_manager_draw();
 void engine_gamer_manager_text();
+void engine_gamer_manager_move( unsigned char direction );
 
 #endif//_GAMER_MANAGER_H_

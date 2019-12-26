@@ -20,7 +20,8 @@ void engine_gamer_manager_init()
 	go->tileY = 2;
 	go->delta = 0;
 	go->total = 0;
-	go->speed = 1;
+	go->speed = 4;
+
 	go->direction = direction_type_none;
 	go->lifecycle = lifecycle_type_idle;
 
@@ -45,11 +46,11 @@ void engine_gamer_manager_update()
 	{
 		if( direction_type_left == go->direction )
 		{
-			if( 0 == go->delta && 0 == go->total )
+			/*if( 0 == go->delta && 0 == go->total )
 			{
 				go->frame = 1 - go->frame;
 				calcd_frame();
-			}
+			}*/
 
 			go->delta += go->speed;
 			go->posnX -= go->speed;				// different
@@ -61,11 +62,13 @@ void engine_gamer_manager_update()
 				go->posnX = go->tileX * 16;
 				go->direction = direction_type_none;
 				go->lifecycle = lifecycle_type_idle;
+				//go->frame = 1 - go->frame;
 				go->delta = 0;
+				//calcd_frame();
 				go->total = 0;
 			}
 
-			if( go->delta > 8 )
+			if( go->delta >= 8 )
 			{
 				go->frame = 1 - go->frame;
 				go->delta = 0;
@@ -75,11 +78,11 @@ void engine_gamer_manager_update()
 
 		if( direction_type_rght == go->direction )
 		{
-			if( 0 == go->delta && 0 == go->total )
+			/*if( 0 == go->delta && 0 == go->total )
 			{
 				go->frame = 1 - go->frame;
 				calcd_frame();
-			}
+			}*/
 
 			go->delta += go->speed;
 			go->posnX += go->speed;
@@ -91,11 +94,13 @@ void engine_gamer_manager_update()
 				go->posnX = go->tileX * 16;
 				go->direction = direction_type_none;
 				go->lifecycle = lifecycle_type_idle;
+				//go->frame = 1 - go->frame;
 				go->delta = 0;
+				//calcd_frame();
 				go->total = 0;
 			}
 
-			if( go->delta > 8 )
+			if( go->delta >= 8 )
 			{
 				go->frame = 1 - go->frame;
 				go->delta = 0;
@@ -119,6 +124,15 @@ void engine_gamer_manager_text()
 
 	engine_font_manager_draw_data( go->delta, 20, 2 );
 	engine_font_manager_draw_data( go->total, 20, 3 );
+}
+
+void engine_gamer_manager_move( unsigned char direction )
+{
+	struct_gamer_object *go = &global_gamer_object;
+	go->direction = direction;
+	go->lifecycle = lifecycle_type_move;
+	go->frame = 1;
+	calcd_frame();
 }
 
 static void calcd_frame()
