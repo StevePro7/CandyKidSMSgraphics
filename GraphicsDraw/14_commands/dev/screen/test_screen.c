@@ -1,4 +1,5 @@
 #include "test_screen.h"
+#include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
@@ -19,20 +20,35 @@ void screen_test_screen_load()
 	engine_tile_manager_draw_tree( 8, 2 );
 
 	count = 0;
-	timer = 20;
+	timer = 0;
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
 {
+	unsigned char input;
 	engine_gamer_manager_draw();
 
-	count++;
+	input = engine_input_manager_hold_left();
+	if( input )
+	{
+		engine_command_move_left();
+	}
+	/*input = engine_input_manager_move_right();
+	if( input )
+	{
+		engine_command_move_right();
+	}*/
+
+	engine_gamer_manager_update();
+	//engine_gamer_manager_text();
+
+	/*count++;
 	if( count >= timer )
 	{
 		engine_gamer_manager_update();
 		engine_gamer_manager_text();
 		count = 0;
-	}
+	}*/
 
 	*screen_type = screen_type_test;
 }

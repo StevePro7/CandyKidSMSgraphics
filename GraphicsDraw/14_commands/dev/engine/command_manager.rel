@@ -1,10 +1,12 @@
 XL2
-H 9 areas 2 global symbols
+H 9 areas 4 global symbols
 M command_manager
 O -mz80
+S _global_gamer_object Ref0000
 S .__.ABS. Def0000
-A _CODE size 1 flags 0 addr 0
-S _fooC Def0000
+A _CODE size 22 flags 0 addr 0
+S _engine_command_move_right Def0011
+S _engine_command_move_left Def0000
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -15,5 +17,17 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 C9
+T 00 00 01 0A 00 0A 3D C8 18 00
+R 00 00 00 00 02 03 00 00
+T 08 00
 R 00 00 00 00
+T 08 00 21 09 00 36 03 3E 01 02 C9
+R 00 00 00 00 02 03 00 00
+T 11 00
+R 00 00 00 00
+T 11 00 01 0A 00 0A 3D C8 18 00
+R 00 00 00 00 02 03 00 00
+T 19 00
+R 00 00 00 00
+T 19 00 21 09 00 36 04 3E 01 02 C9
+R 00 00 00 00 02 03 00 00

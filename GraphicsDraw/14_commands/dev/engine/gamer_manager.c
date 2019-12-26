@@ -21,11 +21,11 @@ void engine_gamer_manager_init()
 	go->delta = 0;
 	go->total = 0;
 	go->speed = 1;
-	//go->direction = direction_type_none;
-	//go->lifecycle = lifecycle_type_idle;
+	go->direction = direction_type_none;
+	go->lifecycle = lifecycle_type_idle;
 
-	go->direction = direction_type_rght;
-	go->lifecycle = lifecycle_type_move;
+	//go->direction = direction_type_rght;
+	//go->lifecycle = lifecycle_type_move;
 
 	go->image = 0;
 	go->frame = 0;
@@ -45,15 +45,15 @@ void engine_gamer_manager_update()
 	{
 		if( direction_type_rght == go->direction )
 		{
+			if( 0 == go->delta && 0 == go->total )
+			{
+				go->frame = 1 - go->frame;
+				calcd_frame();
+			}
+
 			go->delta += go->speed;
 			go->posnX += go->speed;
 			go->total += go->speed;
-			if( go->delta >= 8 )
-			{
-				go->frame = 1 - go->frame;
-				go->delta = 0;
-				calcd_frame();
-			}
 
 			if( go->total >= 16 )
 			{
@@ -65,6 +65,12 @@ void engine_gamer_manager_update()
 				go->total = 0;
 			}
 
+			if( go->delta > 8 )
+			{
+				go->frame = 1 - go->frame;
+				go->delta = 0;
+				calcd_frame();
+			}
 		}
 	}
 }
