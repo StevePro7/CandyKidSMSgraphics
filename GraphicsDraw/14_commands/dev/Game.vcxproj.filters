@@ -129,6 +129,21 @@
     <ClCompile Include="engine\mask_manager.c">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
+    <ClCompile Include="engine\command_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\event_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\gamer_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\enemy_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\enemy_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="build.bat">
@@ -212,6 +227,15 @@
       <Filter>Header Files\object</Filter>
     </ClInclude>
     <ClInclude Include="engine\mask_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\command_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\event_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\gamer_manager.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
   </ItemGroup>

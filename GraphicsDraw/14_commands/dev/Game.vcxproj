@@ -149,9 +149,14 @@
     <ClCompile Include="devkit\_sms_manager.c" />
     <ClCompile Include="devkit\_snd_manager.c" />
     <ClCompile Include="engine\asm_manager.c" />
+    <ClCompile Include="engine\command_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
+    <ClCompile Include="engine\enemy_manager.c" />
+    <ClCompile Include="engine\enemy_manager.h" />
     <ClCompile Include="engine\enum_manager.c" />
+    <ClCompile Include="engine\event_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
+    <ClCompile Include="engine\gamer_manager.c" />
     <ClCompile Include="engine\global_manager.c" />
     <ClCompile Include="engine\hack_manager.c" />
     <ClCompile Include="engine\input_manager.c" />
@@ -180,9 +185,12 @@
     <ClInclude Include="devkit\_sms_manager.h" />
     <ClInclude Include="devkit\_snd_manager.h" />
     <ClInclude Include="engine\asm_manager.h" />
+    <ClInclude Include="engine\command_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
     <ClInclude Include="engine\enum_manager.h" />
+    <ClInclude Include="engine\event_manager.h" />
     <ClInclude Include="engine\font_manager.h" />
+    <ClInclude Include="engine\gamer_manager.h" />
     <ClInclude Include="engine\global_manager.h" />
     <ClInclude Include="engine\hack_manager.h" />
     <ClInclude Include="engine\input_manager.h" />
