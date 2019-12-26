@@ -151,8 +151,6 @@
     <ClCompile Include="engine\asm_manager.c" />
     <ClCompile Include="engine\command_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
-    <ClCompile Include="engine\enemy_manager.c" />
-    <ClCompile Include="engine\enemy_manager.h" />
     <ClCompile Include="engine\enum_manager.c" />
     <ClCompile Include="engine\event_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
@@ -163,6 +161,7 @@
     <ClCompile Include="engine\level_manager.c" />
     <ClCompile Include="engine\mask_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
+    <ClCompile Include="engine\sprite_manager.c" />
     <ClCompile Include="engine\tile_manager.c" />
     <ClCompile Include="game.c" />
     <ClCompile Include="gfx.c" />
@@ -199,6 +198,7 @@
     <ClInclude Include="engine\level_manager.h" />
     <ClInclude Include="engine\mask_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
+    <ClInclude Include="engine\sprite_manager.h" />
     <ClInclude Include="engine\tile_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gfx.h" />

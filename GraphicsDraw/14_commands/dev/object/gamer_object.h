@@ -5,6 +5,10 @@ typedef struct tag_struct_gamer_object
 {
 	int posnX;
 	int posnY;
+	signed char tileX;
+	signed char tileY;
+	unsigned int image;
+	unsigned char frame;
 
 } struct_gamer_object;
 
