@@ -28,27 +28,27 @@ void screen_test_screen_update( unsigned char *screen_type )
 	unsigned char input;
 	engine_gamer_manager_draw();
 
-	input = engine_input_manager_hold_left();
+	input = engine_input_manager_move_left();
 	if( input )
 	{
 		engine_command_move_left();
 	}
-	/*input = engine_input_manager_move_right();
+	input = engine_input_manager_move_right();
 	if( input )
 	{
 		engine_command_move_right();
-	}*/
+	}
 
-	engine_gamer_manager_update();
+	//engine_gamer_manager_update();
 	//engine_gamer_manager_text();
 
-	/*count++;
+	count++;
 	if( count >= timer )
 	{
 		engine_gamer_manager_update();
-		engine_gamer_manager_text();
+		//engine_gamer_manager_text();
 		count = 0;
-	}*/
+	}
 
 	*screen_type = screen_type_test;
 }

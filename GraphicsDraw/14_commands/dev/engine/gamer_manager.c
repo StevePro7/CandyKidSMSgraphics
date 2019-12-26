@@ -43,6 +43,36 @@ void engine_gamer_manager_update()
 
 	if( lifecycle_type_move == go->lifecycle )
 	{
+		if( direction_type_left == go->direction )
+		{
+			if( 0 == go->delta && 0 == go->total )
+			{
+				go->frame = 1 - go->frame;
+				calcd_frame();
+			}
+
+			go->delta += go->speed;
+			go->posnX -= go->speed;				// different
+			go->total += go->speed;
+
+			if( go->total >= 16 )
+			{
+				go->tileX--;					// different
+				go->posnX = go->tileX * 16;
+				go->direction = direction_type_none;
+				go->lifecycle = lifecycle_type_idle;
+				go->delta = 0;
+				go->total = 0;
+			}
+
+			if( go->delta > 8 )
+			{
+				go->frame = 1 - go->frame;
+				go->delta = 0;
+				calcd_frame();
+			}
+		}
+
 		if( direction_type_rght == go->direction )
 		{
 			if( 0 == go->delta && 0 == go->total )
@@ -72,6 +102,7 @@ void engine_gamer_manager_update()
 				calcd_frame();
 			}
 		}
+
 	}
 }
 

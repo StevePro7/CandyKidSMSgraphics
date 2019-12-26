@@ -1,5 +1,6 @@
 #include "command_manager.h"
 #include "enum_manager.h"
+#include "font_manager.h"
 #include "gamer_manager.h"
 
 void engine_command_move_left()
