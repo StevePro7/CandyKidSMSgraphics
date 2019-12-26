@@ -55,16 +55,9 @@ _engine_content_manager_load_tiles::
 	push	hl
 	call	_devkit_SMS_loadPSGaidencompressedTiles
 	pop	af
-;content_manager.c:20: devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
-	ld	hl, #0x0000
-	ex	(sp),hl
-	ld	hl, #_font_tiles__tiles__psgcompr
-	push	hl
-	call	_devkit_SMS_loadPSGaidencompressedTiles
 	pop	af
-	pop	af
-;content_manager.c:21: devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
-	ld	bc, #_font_tiles__palette__bin+0
+;content_manager.c:17: devkit_SMS_loadBGPalette( ( void * ) data_tiles__palette__bin );
+	ld	bc, #_data_tiles__palette__bin+0
 	push	bc
 	call	_devkit_SMS_loadBGPalette
 	pop	af

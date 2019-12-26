@@ -55,27 +55,20 @@
    0007 E5            [11]   55 	push	hl
    0008 CDr00r00      [17]   56 	call	_devkit_SMS_loadPSGaidencompressedTiles
    000B F1            [10]   57 	pop	af
-                             58 ;content_manager.c:20: devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
-   000C 21 00 00      [10]   59 	ld	hl, #0x0000
-   000F E3            [19]   60 	ex	(sp),hl
-   0010 21r00r00      [10]   61 	ld	hl, #_font_tiles__tiles__psgcompr
-   0013 E5            [11]   62 	push	hl
-   0014 CDr00r00      [17]   63 	call	_devkit_SMS_loadPSGaidencompressedTiles
-   0017 F1            [10]   64 	pop	af
-   0018 F1            [10]   65 	pop	af
-                             66 ;content_manager.c:21: devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
-   0019 01r00r00      [10]   67 	ld	bc, #_font_tiles__palette__bin+0
-   001C C5            [11]   68 	push	bc
-   001D CDr00r00      [17]   69 	call	_devkit_SMS_loadBGPalette
-   0020 F1            [10]   70 	pop	af
-   0021 C9            [10]   71 	ret
-                             72 ;content_manager.c:25: void engine_content_manager_load_sprites()
-                             73 ;	---------------------------------
-                             74 ; Function engine_content_manager_load_sprites
-                             75 ; ---------------------------------
-   0022                      76 _engine_content_manager_load_sprites::
-                             77 ;content_manager.c:36: }
-   0022 C9            [10]   78 	ret
-                             79 	.area _CODE
-                             80 	.area _INITIALIZER
-                             81 	.area _CABS (ABS)
+   000C F1            [10]   58 	pop	af
+                             59 ;content_manager.c:17: devkit_SMS_loadBGPalette( ( void * ) data_tiles__palette__bin );
+   000D 01r00r00      [10]   60 	ld	bc, #_data_tiles__palette__bin+0
+   0010 C5            [11]   61 	push	bc
+   0011 CDr00r00      [17]   62 	call	_devkit_SMS_loadBGPalette
+   0014 F1            [10]   63 	pop	af
+   0015 C9            [10]   64 	ret
+                             65 ;content_manager.c:25: void engine_content_manager_load_sprites()
+                             66 ;	---------------------------------
+                             67 ; Function engine_content_manager_load_sprites
+                             68 ; ---------------------------------
+   0016                      69 _engine_content_manager_load_sprites::
+                             70 ;content_manager.c:36: }
+   0016 C9            [10]   71 	ret
+                             72 	.area _CODE
+                             73 	.area _INITIALIZER
+                             74 	.area _CABS (ABS)

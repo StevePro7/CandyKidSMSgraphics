@@ -14,11 +14,11 @@ void engine_content_manager_load_tiles()
 
 	// Data tiles.
 	devkit_SMS_loadPSGaidencompressedTiles( data_tiles__tiles__psgcompr, TREE_TILES );
-	//devkit_SMS_loadBGPalette( ( void * ) data_tiles__palette__bin );
+	devkit_SMS_loadBGPalette( ( void * ) data_tiles__palette__bin );
 
 	// Font tiles.
-	devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
-	devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
+	//devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
+	//devkit_SMS_loadBGPalette( ( void * ) font_tiles__palette__bin );
 
 }
 
