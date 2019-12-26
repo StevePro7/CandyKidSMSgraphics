@@ -48,7 +48,7 @@
 ; Function engine_content_manager_load_tiles
 ; ---------------------------------
 _engine_content_manager_load_tiles::
-;content_manager.c:16: devkit_SMS_loadPSGaidencompressedTiles( data_tiles__tiles__psgcompr, TREE_TILES );
+;content_manager.c:16: devkit_SMS_loadPSGaidencompressedTiles( data_tiles__tiles__psgcompr, DATA_TILES );
 	ld	hl, #0x0040
 	push	hl
 	ld	hl, #_data_tiles__tiles__psgcompr
@@ -60,6 +60,13 @@ _engine_content_manager_load_tiles::
 	ld	bc, #_data_tiles__palette__bin+0
 	push	bc
 	call	_devkit_SMS_loadBGPalette
+;content_manager.c:20: devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
+	ld	hl, #0x0000
+	ex	(sp),hl
+	ld	hl, #_font_tiles__tiles__psgcompr
+	push	hl
+	call	_devkit_SMS_loadPSGaidencompressedTiles
+	pop	af
 	pop	af
 	ret
 ;content_manager.c:25: void engine_content_manager_load_sprites()

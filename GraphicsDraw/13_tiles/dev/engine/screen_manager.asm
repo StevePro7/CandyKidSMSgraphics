@@ -8,9 +8,8 @@
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
-	.globl _devkit_SMS_addSprite
-	.globl _engine_input_manager_move_fire1
-	.globl _engine_font_manager_draw_text
+	.globl _devkit_SMS_setTile
+	.globl _devkit_SMS_setNextTileatXY
 	.globl _engine_screen_manager_init
 	.globl _engine_screen_manager_update
 ;--------------------------------------------------------
@@ -44,247 +43,199 @@
 ; code
 ;--------------------------------------------------------
 	.area _CODE
-;screen_manager.c:13: void engine_screen_manager_init()
+;screen_manager.c:14: void engine_screen_manager_init()
 ;	---------------------------------
 ; Function engine_screen_manager_init
 ; ---------------------------------
 _engine_screen_manager_init::
-;screen_manager.c:15: engine_font_manager_draw_text( SPRITE_TILES_TEXT, 2, 0 );
-	ld	hl, #0x0002
+	dec	sp
+;screen_manager.c:17: unsigned char idx = 24;
+	ld	iy, #0
+	add	iy, sp
+	ld	0 (iy), #0x18
+;screen_manager.c:21: draw_tiles( 4, 4, 0 );
+	ld	hl, #0x0004
 	push	hl
-	ld	hl, #___str_0
+	ld	a, #0x04
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:22: draw_tiles( 8, 4, 4 );
+	inc	sp
+	ld	hl,#0x0404
+	ex	(sp),hl
+	ld	a, #0x08
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:25: draw_tiles( 12, 4, 8 );
+	inc	sp
+	ld	hl,#0x0804
+	ex	(sp),hl
+	ld	a, #0x0c
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:26: draw_tiles( 16, 4, 12 );
+	inc	sp
+	ld	hl,#0x0c04
+	ex	(sp),hl
+	ld	a, #0x10
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:27: draw_tiles( 20, 4, 16 );
+	inc	sp
+	ld	hl,#0x1004
+	ex	(sp),hl
+	ld	a, #0x14
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:28: draw_tiles( 24, 4, 20 );
+	inc	sp
+	ld	hl,#0x1404
+	ex	(sp),hl
+	ld	a, #0x18
+	push	af
+	inc	sp
+	call	_draw_tiles
+	pop	af
+	inc	sp
+;screen_manager.c:31: for( y = 0; y < 4; y += 2 )
+	ld	l, #0x00
+;screen_manager.c:33: for( x = 2; x < 16; x += 2 )
+00109$:
+	ld	a, l
+	add	a, #0x0a
+	ld	h, a
+	ld	iy, #0
+	add	iy, sp
+	ld	e, 0 (iy)
+	ld	d, #0x02
+00103$:
+;screen_manager.c:35: draw_tiles( x + 4, y + 10, idx );
+	ld	b, d
+	inc	b
+	inc	b
+	inc	b
+	inc	b
 	push	hl
-	call	_engine_font_manager_draw_text
+	push	de
+	ld	a, e
+	push	af
+	inc	sp
+	push	hl
+	inc	sp
+	push	bc
+	inc	sp
+	call	_draw_tiles
 	pop	af
-	pop	af
+	inc	sp
+	pop	de
+	pop	hl
+;screen_manager.c:36: idx += 4;
+	inc	e
+	inc	e
+	inc	e
+	inc	e
+;screen_manager.c:33: for( x = 2; x < 16; x += 2 )
+	inc	d
+	inc	d
+	ld	a, d
+	sub	a, #0x10
+	jr	C,00103$
+;screen_manager.c:31: for( y = 0; y < 4; y += 2 )
+	ld	iy, #0
+	add	iy, sp
+	ld	0 (iy), e
+	inc	l
+	inc	l
+	ld	a, l
+	sub	a, #0x04
+	jr	C,00109$
+	inc	sp
 	ret
-___str_0:
-	.ascii "STEVEN TILES LOADED..."
-	.db 0x00
-;screen_manager.c:18: void engine_screen_manager_update()
+;screen_manager.c:42: void engine_screen_manager_update()
 ;	---------------------------------
 ; Function engine_screen_manager_update
 ; ---------------------------------
 _engine_screen_manager_update::
-;screen_manager.c:23: draw_sprites( 48, 32, idx + 0 );
-	ld	hl, #0x0620
-	push	hl
-	ld	a, #0x30
-	push	af
-	inc	sp
-	call	_draw_sprites
-;screen_manager.c:24: draw_sprites( 80, 32, idx + 1 );
-	inc	sp
-	ld	hl,#0x0720
-	ex	(sp),hl
-	ld	a, #0x50
-	push	af
-	inc	sp
-	call	_draw_sprites
-;screen_manager.c:26: draw_sprites( 48, 64, idx + 2 );
-	inc	sp
-	ld	hl,#0x0840
-	ex	(sp),hl
-	ld	a, #0x30
-	push	af
-	inc	sp
-	call	_draw_sprites
-;screen_manager.c:27: draw_sprites( 80, 64, idx + 3 );
-	inc	sp
-	ld	hl,#0x0940
-	ex	(sp),hl
-	ld	a, #0x50
-	push	af
-	inc	sp
-	call	_draw_sprites
-;screen_manager.c:29: draw_sprites( 48, 96, idx + 4 );
-	inc	sp
-	ld	hl,#0x0a60
-	ex	(sp),hl
-	ld	a, #0x30
-	push	af
-	inc	sp
-	call	_draw_sprites
-;screen_manager.c:30: draw_sprites( 80, 96, idx + 5 );
-	inc	sp
-	ld	hl,#0x0b60
-	ex	(sp),hl
-	ld	a, #0x50
-	push	af
-	inc	sp
-	call	_draw_sprites
-;screen_manager.c:32: draw_sprites( 48, 128, idx + 6 );
-	inc	sp
-	ld	hl,#0x0c80
-	ex	(sp),hl
-	ld	a, #0x30
-	push	af
-	inc	sp
-	call	_draw_sprites
-;screen_manager.c:33: draw_sprites( 80, 128, idx + 7 );
-	inc	sp
-	ld	hl,#0x0d80
-	ex	(sp),hl
-	ld	a, #0x50
-	push	af
-	inc	sp
-	call	_draw_sprites
-	pop	af
-	inc	sp
-;screen_manager.c:35: input = engine_input_manager_move_fire1();
-	call	_engine_input_manager_move_fire1
-;screen_manager.c:36: if( input )
-	ld	a, l
-	or	a, a
-;screen_manager.c:38: draw_skullnc();
-	jp	NZ,_draw_skullnc
-;screen_manager.c:42: draw_candykd();
-	jp  _draw_candykd
-;screen_manager.c:46: static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
+;screen_manager.c:70: }
+	ret
+;screen_manager.c:72: static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx)
 ;	---------------------------------
-; Function draw_sprites
+; Function draw_tiles
 ; ---------------------------------
-_draw_sprites:
+_draw_tiles:
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-;screen_manager.c:48: unsigned int tile = 256 + idx * 4;
-	ld	l, 6 (ix)
-	ld	h, #0x00
-	add	hl, hl
-	add	hl, hl
-	ld	bc,#0x0100
-	add	hl,bc
-	ld	c, l
-	ld	b, h
-;screen_manager.c:50: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
-	push	bc
-	push	bc
+;screen_manager.c:74: const unsigned char *pnt = data_tiles__tilemap__bin;
+;screen_manager.c:76: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); devkit_SMS_setTile( *pnt + idx + 0 );
 	ld	h, 5 (ix)
 	ld	l, 4 (ix)
 	push	hl
-	call	_devkit_SMS_addSprite
+	call	_devkit_SMS_setNextTileatXY
 	pop	af
+	ld	hl, #_data_tiles__tilemap__bin + 0
+	ld	c, (hl)
+	ld	a, c
+	add	a, 6 (ix)
+	ld	b, a
+	push	bc
+	inc	sp
+	call	_devkit_SMS_setTile
+	inc	sp
+;screen_manager.c:77: devkit_SMS_setNextTileatXY( x + 1, y + 0 ); devkit_SMS_setTile( *pnt + idx + 1 );
+	ld	c, 4 (ix)
+	inc	c
+	push	bc
+	ld	b, 5 (ix)
+	push	bc
+	call	_devkit_SMS_setNextTileatXY
 	pop	af
 	pop	bc
-;screen_manager.c:51: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-	ld	l, c
-	ld	h, b
-	inc	hl
-	ld	a, 4 (ix)
-	add	a, #0x08
-	ld	e, a
+	ld	a,(#_data_tiles__tilemap__bin + 0)
+	add	a, 6 (ix)
+	ld	b, a
+	inc	b
 	push	bc
-	push	de
-	push	hl
-	ld	d, 5 (ix)
-	push	de
-	call	_devkit_SMS_addSprite
-	pop	af
-	pop	af
-	pop	de
+	push	bc
+	inc	sp
+	call	_devkit_SMS_setTile
+	inc	sp
 	pop	bc
-;screen_manager.c:52: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-	ld	l, c
-	ld	h, b
-	inc	hl
-	inc	hl
-	ld	a, 5 (ix)
-	add	a, #0x08
-	ld	d, a
+;screen_manager.c:78: devkit_SMS_setNextTileatXY( x + 0, y + 1 ); devkit_SMS_setTile( *pnt + idx + 2 );
+	ld	b, 5 (ix)
+	inc	b
 	push	bc
-	push	de
-	push	hl
-	push	de
+	push	bc
 	inc	sp
 	ld	a, 4 (ix)
 	push	af
 	inc	sp
-	call	_devkit_SMS_addSprite
+	call	_devkit_SMS_setNextTileatXY
 	pop	af
-	pop	af
-	pop	de
 	pop	bc
-;screen_manager.c:53: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-	inc	bc
-	inc	bc
-	inc	bc
+	ld	a,(#_data_tiles__tilemap__bin + 0)
+	add	a, 6 (ix)
+	add	a, #0x02
 	push	bc
-	push	de
-	call	_devkit_SMS_addSprite
+	push	af
+	inc	sp
+	call	_devkit_SMS_setTile
+	inc	sp
+	call	_devkit_SMS_setNextTileatXY
 	pop	af
-	pop	af
+	ld	a,(#_data_tiles__tilemap__bin + 0)
+	add	a, 6 (ix)
+	add	a, #0x03
+	push	af
+	inc	sp
+	call	_devkit_SMS_setTile
+	inc	sp
 	pop	ix
-	ret
-;screen_manager.c:55: static void draw_candykd()
-;	---------------------------------
-; Function draw_candykd
-; ---------------------------------
-_draw_candykd:
-;screen_manager.c:61: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
-	ld	hl, #0x0130
-	push	hl
-	ld	hl, #0x20b0
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:62: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-	ld	hl, #0x0131
-	ex	(sp),hl
-	ld	hl, #0x20b8
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:63: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-	ld	hl, #0x0132
-	ex	(sp),hl
-	ld	hl, #0x28b0
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:64: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-	ld	hl, #0x0133
-	ex	(sp),hl
-	ld	hl, #0x28b8
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-	pop	af
-	ret
-;screen_manager.c:66: static void draw_skullnc()
-;	---------------------------------
-; Function draw_skullnc
-; ---------------------------------
-_draw_skullnc:
-;screen_manager.c:72: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
-	ld	hl, #0x0140
-	push	hl
-	ld	hl, #0x20b0
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:73: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-	ld	hl, #0x0141
-	ex	(sp),hl
-	ld	hl, #0x20b8
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:74: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-	ld	hl, #0x0142
-	ex	(sp),hl
-	ld	hl, #0x28b0
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-;screen_manager.c:75: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-	ld	hl, #0x0143
-	ex	(sp),hl
-	ld	hl, #0x28b8
-	push	hl
-	call	_devkit_SMS_addSprite
-	pop	af
-	pop	af
 	ret
 	.area _CODE
 	.area _INITIALIZER
