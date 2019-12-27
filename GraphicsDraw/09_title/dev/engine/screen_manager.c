@@ -11,7 +11,7 @@ static void draw_tree( unsigned char x, unsigned char y );
 
 void engine_screen_manager_init()
 {
-	unsigned char x;
+	/*unsigned char x;
 	unsigned char y;
 	for( x = 2; x < 32; x += 2 )
 	{
@@ -23,7 +23,7 @@ void engine_screen_manager_init()
 	{
 		draw_tree( 2, y );
 		draw_tree( 30, y );
-	}
+	}*/
 
 	draw_titile();
 }
