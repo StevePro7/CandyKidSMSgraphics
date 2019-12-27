@@ -9,7 +9,34 @@ struct_command_object global_command_object;
 void engine_command_manager_init()
 {
 	struct_command_object *co = &global_command_object;
+	unsigned int idx;
+
 	co->frame = 0;
+	co->command = 0;
+
+	for( idx = 0; idx < MAX_MOVES_COMMANDS; idx++ )
+	{
+		co->move1_frames[ idx ] = 0;
+		co->move1_events[ idx ] = 0;
+		co->move2_frames[ idx ] = 0;
+		co->move2_events[ idx ] = 0;
+	}
+
+	for( idx = 0; idx < MAX_SPEED_COMMANDS; idx++ )
+	{
+		co->speed_frames[ idx ] = 0;
+		co->speed_events[ idx ] = 0;
+	}
+}
+
+void engine_command_manager_load()
+{
+	struct_command_object *co = &global_command_object;
+	co->frame = 10;
+	co->command = 0x80;
+
+	co->move1_frames[ 0 ] = 10;
+	co->move1_events[ 0 ] = 0x80;
 }
 
 void engine_command_move_up()

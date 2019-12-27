@@ -10,9 +10,10 @@ static unsigned char timer;
 
 void screen_func_screen_load()
 {
-	engine_font_manager_draw_text( "HELLO FUNC SCREEN!!", 2, 1 );
+	engine_font_manager_draw_text( "HELLO FUNC SCREEN", 2, 1 );
 
 	engine_command_manager_init();
+	engine_command_manager_load();
 
 	engine_enemy_manager_init();
 	engine_enemy_manager_load();
