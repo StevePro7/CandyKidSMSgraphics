@@ -3,6 +3,15 @@
 #include "font_manager.h"
 #include "gamer_manager.h"
 
+// Global variable.
+struct_command_object global_command_object;
+
+void engine_command_manager_init()
+{
+	struct_command_object *co = &global_command_object;
+	co->frame = 0;
+}
+
 void engine_command_move_up()
 {
 	struct_gamer_object *go = &global_gamer_object;
