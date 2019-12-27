@@ -41,7 +41,7 @@ namespace GraphicsLoad
 			//int y = most + 4;
 			int y = 4;
 			wide = 128;// (int)(size * scale);
-			high = 512 - 16 * 10;// (int)(y * size * scale);
+			high = 512 - 16 * 6;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -168,6 +168,7 @@ namespace GraphicsLoad
 			spriteBatch.Draw(trees[0], new Vector2(0, 32), Color.White);
 			spriteBatch.Draw(trees[1], new Vector2(0, 48), Color.White);
 
+			// bonus
 			for (int idx = 0; idx < bonus.Length; idx++)
 			{
 				var image = bonus[idx];
@@ -176,11 +177,31 @@ namespace GraphicsLoad
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
+			// bonus02
+			for (int idx = 0; idx < bonus.Length; idx++)
+			{
+				//var image = bonus[idx];
+				var image = bonus02[idx];
+				var pos = new Vector2(0, 128 + idx * size);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
 			//candy
-			for (int idx = 0; idx < candy.Length; idx++)
+			//int[] arr = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+			for (int idx = 0; idx < 14; idx++)
 			{
 				var image = candy[idx];
 				var pos = new Vector2(0, 128 + idx * size);
+				//spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			int[] arr = { 2, 3, 4, 5, 6, 7, 8, 10, 11, 13, 9, 12, 14, 15 };
+			for (int idx = 0; idx < 14; idx++)
+			{
+				int bob = arr[idx];
+				bob -= 2;
+				var image = candy[bob];
+				var pos = new Vector2(0, 128 + 64 + idx * size);
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
