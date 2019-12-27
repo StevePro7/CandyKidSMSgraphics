@@ -1,16 +1,22 @@
 XL2
-H 9 areas 7 global symbols
+H 9 areas D global symbols
 M command_manager
 O -mz80
 S _engine_gamer_manager_move Ref0000
 S _global_gamer_object Ref0000
+S _global_enemy_objects Ref0000
 S .__.ABS. Def0000
-A _CODE size 44 flags 0 addr 0
-S _engine_command_move_down Def0011
-S _engine_command_move_right Def0033
-S _engine_command_move_up Def0000
-S _engine_command_move_left Def0022
-A _DATA size 0 flags 0 addr 0
+S _engine_enemy_manager_move Ref0000
+A _CODE size B3 flags 0 addr 0
+S _engine_command_move_down Def0080
+S _engine_command_manager_load Def0048
+S _engine_command_move_up2 Def006F
+S _engine_command_manager_init Def0000
+S _engine_command_move_right Def00A2
+S _engine_command_move_up Def005E
+S _engine_command_move_left Def0091
+A _DATA size 1A7 flags 0 addr 0
+S _global_command_object Def0000
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
@@ -19,34 +25,70 @@ A _GSFINAL size 0 flags 0 addr 0
 A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
+R 00 00 01 00
+T 00 00
+R 00 00 01 00
+T 00 00
 R 00 00 00 00
-T 00 00 21 0A 00 4E 0D C8 18 00
+T 00 00 21 00 00 22 00 00 21 02 00 36 00 01 00 00
+R 00 00 00 00 00 06 01 00 00 09 01 00
+T 0E 00
+R 00 00 00 00
+T 0E 00 21 03 00 09 36 00 21 67 00 09 36 00 21
+R 00 00 00 00 00 03 01 00 00 09 01 00
+T 1B 00 CB 00 09 36 00 21 2F 01 09 36 00 03 79 D6
+R 00 00 00 00 00 02 01 00 00 08 01 00
+T 29 00 64 78 DE 00 38 DF 01 00 00
+R 00 00 00 00
+T 32 00
+R 00 00 00 00
+T 32 00 21 93 01 09 36 00 21 9D 01 09 36 00 03 79
+R 00 00 00 00 00 03 01 00 00 09 01 00
+T 40 00 D6 0A 78 DE 00 38 EB C9
+R 00 00 00 00
+T 48 00
+R 00 00 00 00
+T 48 00 21 0A 00 22 00 00 21 02 00 36 80 21 03 00
+R 00 00 00 00 00 06 01 00 00 09 01 00 00 0E 01 00
+T 56 00 36 02 21 67 00 36 80 C9
+R 00 00 00 00 00 05 01 00
+T 5E 00
+R 00 00 00 00
+T 5E 00 21 0A 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 01 00
-T 08 00
+T 66 00
 R 00 00 00 00
-T 08 00 3E 01 F5 33 CD 00 00 33 C9
+T 66 00 3E 01 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00
-T 11 00
+T 6F 00
 R 00 00 00 00
-T 11 00 21 0A 00 4E 0D C8 18 00
+T 6F 00 21 0A 00 4E 0D C8 18 00
+R 00 00 00 00 02 03 02 00
+T 77 00
+R 00 00 00 00
+T 77 00 21 00 01 E5 CD 00 00 F1 C9
+R 00 00 00 00 02 07 04 00
+T 80 00
+R 00 00 00 00
+T 80 00 21 0A 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 01 00
-T 19 00
+T 88 00
 R 00 00 00 00
-T 19 00 3E 02 F5 33 CD 00 00 33 C9
+T 88 00 3E 02 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00
-T 22 00
+T 91 00
 R 00 00 00 00
-T 22 00 21 0A 00 4E 0D C8 18 00
+T 91 00 21 0A 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 01 00
-T 2A 00
+T 99 00
 R 00 00 00 00
-T 2A 00 3E 03 F5 33 CD 00 00 33 C9
+T 99 00 3E 03 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00
-T 33 00
+T A2 00
 R 00 00 00 00
-T 33 00 21 0A 00 4E 0D C8 18 00
+T A2 00 21 0A 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 01 00
-T 3B 00
+T AA 00
 R 00 00 00 00
-T 3B 00 3E 04 F5 33 CD 00 00 33 C9
+T AA 00 3E 04 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00

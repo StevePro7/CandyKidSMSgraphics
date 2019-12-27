@@ -10,6 +10,7 @@ void engine_command_manager_init();
 void engine_command_manager_load();
 
 void engine_command_move_up();
+void engine_command_move_up2();
 void engine_command_move_down();
 void engine_command_move_left();
 void engine_command_move_right();

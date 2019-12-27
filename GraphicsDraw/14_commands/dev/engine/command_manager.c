@@ -1,4 +1,5 @@
 #include "command_manager.h"
+#include "enemy_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "gamer_manager.h"
@@ -35,7 +36,7 @@ void engine_command_manager_load()
 	co->frame = 10;
 	co->command = 0x80;
 
-	co->move1_frames[ 0 ] = 10;
+	co->move1_frames[ 0 ] = 2;
 	co->move1_events[ 0 ] = 0x80;
 }
 
@@ -48,6 +49,18 @@ void engine_command_move_up()
 	}
 
 	engine_gamer_manager_move( direction_type_upxx );
+}
+
+void engine_command_move_up2()
+{
+	unsigned char index = mama_type_pro;
+	struct_enemy_object *eo = &global_enemy_objects[ index ];
+	if( lifecycle_type_move == eo->lifecycle )
+	{
+		return;
+	}
+
+	engine_enemy_manager_move( index, direction_type_upxx );
 }
 
 void engine_command_move_down()
