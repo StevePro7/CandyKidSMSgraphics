@@ -1,11 +1,12 @@
 XL2
-H 9 areas 2 global symbols
+H 9 areas 3 global symbols
 M enemy_manager
 O -mz80
 S .__.ABS. Def0000
-A _CODE size 1 flags 0 addr 0
-S _fooT Def0000
-A _DATA size 0 flags 0 addr 0
+A _CODE size 31 flags 0 addr 0
+S _engine_enemy_manager_init Def0000
+A _DATA size 2D flags 0 addr 0
+S _global_enemy_objects Def0000
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
 A _HOME size 0 flags 0 addr 0
@@ -14,6 +15,20 @@ A _GSFINAL size 0 flags 0 addr 0
 A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
+R 00 00 01 00
+T 00 00
+R 00 00 01 00
+T 00 00
 R 00 00 00 00
-T 00 00 C9
+T 00 00 0E 00
+R 00 00 00 00
+T 02 00
+R 00 00 00 00
+T 02 00 06 00 69 60 29 09 29 09 29 09 11 00 00 19
+R 00 00 00 00 00 0D 01 00
+T 10 00 5D 54 AF 77 23 77 6B 62 23 23 AF 77 23 77
+R 00 00 00 00
+T 1E 00 21 04 00 19 36 00 21 05 00 19 36 00 0C 79
+R 00 00 00 00
+T 2C 00 D6 03 38 D2 C9
 R 00 00 00 00

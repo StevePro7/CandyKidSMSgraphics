@@ -5,6 +5,16 @@ typedef struct tag_struct_enemy_object
 {
 	int posnX;
 	int posnY;
+	signed char tileX;
+	signed char tileY;
+	unsigned char delta;
+	unsigned char total;
+	unsigned char speed;
+	unsigned char direction;
+	unsigned char lifecycle;
+	unsigned int image;
+	unsigned char frame;
+	unsigned char calcd;
 
 } struct_enemy_object;
 

@@ -3,6 +3,8 @@
 
 #define MAX_SCREEENS			6
 
+#define MAX_ENEMIES				3
+
 #define INVALID_INDEX			-1
 
 #define TOT_WORLDS				10
