@@ -1,0 +1,53 @@
+XL2
+H 9 areas A global symbols
+M screen_manager
+O -mz80
+S _readSaveGame Ref0000
+S _writeSaveGame Ref0000
+S _engine_font_manager_draw_text Ref0000
+S _incPoints Ref0000
+S _getPoints Ref0000
+S .__.ABS. Def0000
+S _isSaveGamePresent Ref0000
+S _engine_font_manager_draw_data Ref0000
+A _CODE size 72 flags 0 addr 0
+S _engine_screen_manager_init Def0000
+S _engine_screen_manager_update Def0071
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00 CD 00 00 01 65 00 E5 11 02 00 D5 C5 CD
+R 00 00 00 00 02 03 06 00 00 06 00 00
+T 0D 00 00 00 F1 F1 E1 4D 06 00 E5 11 02 02 D5 C5
+R 00 00 00 00 02 02 02 00
+T 1B 00 CD 00 00 F1 F1 E1 01 6B 00 E5 11 14 02 D5
+R 00 00 00 00 02 03 07 00 00 09 00 00
+T 29 00 C5 CD 00 00 F1 F1 E1 CB 45 CA 00 00 CD
+R 00 00 00 00 02 04 02 00 02 0C 01 00
+T 36 00 00 00 01 0C 04 C5 E5 CD 00 00 F1 F1 CD
+R 00 00 00 00 02 02 04 00 02 0A 07 00
+T 43 00 00 00 CD 00 00 01 0C 05 C5 E5 CD 00 00 F1
+R 00 00 00 00 02 02 00 00 02 05 04 00 02 0D 07 00
+T 51 00 F1 CD 00 00 CD 00 00 01 0C 06 C5 E5 CD
+R 00 00 00 00 02 04 03 00 02 07 04 00
+T 5E 00 00 00 F1 F1 C3 00 00
+R 00 00 00 00 02 02 07 00 02 07 01 00
+T 65 00
+R 00 00 00 00
+T 65 00 48 45 4C 4C 4F 00
+R 00 00 00 00
+T 6B 00
+R 00 00 00 00
+T 6B 00 54 48 45 52 45 00
+R 00 00 00 00
+T 71 00
+R 00 00 00 00
+T 71 00 C9
+R 00 00 00 00

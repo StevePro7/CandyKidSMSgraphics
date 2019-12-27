@@ -1,0 +1,181 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.9 #9960 (MINGW64)
+                              4 ;--------------------------------------------------------
+                              5 	.module tile_manager
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _devkit_SMS_setTile
+                             12 	.globl _devkit_SMS_setNextTileatXY
+                             13 	.globl _engine_tile_manager_draw
+                             14 ;--------------------------------------------------------
+                             15 ; special function registers
+                             16 ;--------------------------------------------------------
+                             17 ;--------------------------------------------------------
+                             18 ; ram data
+                             19 ;--------------------------------------------------------
+                             20 	.area _DATA
+                             21 ;--------------------------------------------------------
+                             22 ; ram data
+                             23 ;--------------------------------------------------------
+                             24 	.area _INITIALIZED
+                             25 ;--------------------------------------------------------
+                             26 ; absolute external ram data
+                             27 ;--------------------------------------------------------
+                             28 	.area _DABS (ABS)
+                             29 ;--------------------------------------------------------
+                             30 ; global & static initialisations
+                             31 ;--------------------------------------------------------
+                             32 	.area _HOME
+                             33 	.area _GSINIT
+                             34 	.area _GSFINAL
+                             35 	.area _GSINIT
+                             36 ;--------------------------------------------------------
+                             37 ; Home
+                             38 ;--------------------------------------------------------
+                             39 	.area _HOME
+                             40 	.area _HOME
+                             41 ;--------------------------------------------------------
+                             42 ; code
+                             43 ;--------------------------------------------------------
+                             44 	.area _CODE
+                             45 ;tile_manager.c:7: void engine_tile_manager_draw()
+                             46 ;	---------------------------------
+                             47 ; Function engine_tile_manager_draw
+                             48 ; ---------------------------------
+   0000                      49 _engine_tile_manager_draw::
+                             50 ;tile_manager.c:10: for( tx = 2; tx < 32; tx += 2 )
+   0000 06 02         [ 7]   51 	ld	b, #0x02
+   0002                      52 00103$:
+                             53 ;tile_manager.c:12: draw( tx, 0 );
+   0002 C5            [11]   54 	push	bc
+   0003 AF            [ 4]   55 	xor	a, a
+   0004 F5            [11]   56 	push	af
+   0005 33            [ 6]   57 	inc	sp
+   0006 C5            [11]   58 	push	bc
+   0007 33            [ 6]   59 	inc	sp
+   0008 CDr42r00      [17]   60 	call	_draw
+   000B F1            [10]   61 	pop	af
+   000C C1            [10]   62 	pop	bc
+                             63 ;tile_manager.c:13: draw( tx, 22 );
+   000D C5            [11]   64 	push	bc
+   000E 3E 16         [ 7]   65 	ld	a, #0x16
+   0010 F5            [11]   66 	push	af
+   0011 33            [ 6]   67 	inc	sp
+   0012 C5            [11]   68 	push	bc
+   0013 33            [ 6]   69 	inc	sp
+   0014 CDr42r00      [17]   70 	call	_draw
+   0017 F1            [10]   71 	pop	af
+   0018 C1            [10]   72 	pop	bc
+                             73 ;tile_manager.c:10: for( tx = 2; tx < 32; tx += 2 )
+   0019 04            [ 4]   74 	inc	b
+   001A 04            [ 4]   75 	inc	b
+   001B 78            [ 4]   76 	ld	a, b
+   001C D6 20         [ 7]   77 	sub	a, #0x20
+   001E 38 E2         [12]   78 	jr	C,00103$
+                             79 ;tile_manager.c:16: for( ty = 2; ty < 22; ty += 2 )
+   0020 06 02         [ 7]   80 	ld	b, #0x02
+   0022                      81 00105$:
+                             82 ;tile_manager.c:18: draw( 2, ty );
+   0022 C5            [11]   83 	push	bc
+   0023 C5            [11]   84 	push	bc
+   0024 33            [ 6]   85 	inc	sp
+   0025 3E 02         [ 7]   86 	ld	a, #0x02
+   0027 F5            [11]   87 	push	af
+   0028 33            [ 6]   88 	inc	sp
+   0029 CDr42r00      [17]   89 	call	_draw
+   002C F1            [10]   90 	pop	af
+   002D C1            [10]   91 	pop	bc
+                             92 ;tile_manager.c:19: draw( 30, ty );
+   002E C5            [11]   93 	push	bc
+   002F C5            [11]   94 	push	bc
+   0030 33            [ 6]   95 	inc	sp
+   0031 3E 1E         [ 7]   96 	ld	a, #0x1e
+   0033 F5            [11]   97 	push	af
+   0034 33            [ 6]   98 	inc	sp
+   0035 CDr42r00      [17]   99 	call	_draw
+   0038 F1            [10]  100 	pop	af
+   0039 C1            [10]  101 	pop	bc
+                            102 ;tile_manager.c:16: for( ty = 2; ty < 22; ty += 2 )
+   003A 04            [ 4]  103 	inc	b
+   003B 04            [ 4]  104 	inc	b
+   003C 78            [ 4]  105 	ld	a, b
+   003D D6 16         [ 7]  106 	sub	a, #0x16
+   003F 38 E1         [12]  107 	jr	C,00105$
+   0041 C9            [10]  108 	ret
+                            109 ;tile_manager.c:23: static void draw( unsigned char x, unsigned char y )
+                            110 ;	---------------------------------
+                            111 ; Function draw
+                            112 ; ---------------------------------
+   0042                     113 _draw:
+   0042 DD E5         [15]  114 	push	ix
+   0044 DD 21 00 00   [14]  115 	ld	ix,#0
+   0048 DD 39         [15]  116 	add	ix,sp
+                            117 ;tile_manager.c:25: const unsigned char *pnt = tree_avoid__tilemap__bin;
+                            118 ;tile_manager.c:27: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); devkit_SMS_setTile( *pnt + 0 );
+   004A DD 66 05      [19]  119 	ld	h, 5 (ix)
+   004D DD 6E 04      [19]  120 	ld	l, 4 (ix)
+   0050 E5            [11]  121 	push	hl
+   0051 CDr00r00      [17]  122 	call	_devkit_SMS_setNextTileatXY
+   0054 F1            [10]  123 	pop	af
+   0055 21r00r00      [10]  124 	ld	hl, #_tree_avoid__tilemap__bin + 0
+   0058 46            [ 7]  125 	ld	b, (hl)
+   0059 C5            [11]  126 	push	bc
+   005A 33            [ 6]  127 	inc	sp
+   005B CDr00r00      [17]  128 	call	_devkit_SMS_setTile
+   005E 33            [ 6]  129 	inc	sp
+                            130 ;tile_manager.c:28: devkit_SMS_setNextTileatXY( x + 1, y + 0 ); devkit_SMS_setTile( *pnt + 1 );
+   005F DD 4E 04      [19]  131 	ld	c, 4 (ix)
+   0062 0C            [ 4]  132 	inc	c
+   0063 C5            [11]  133 	push	bc
+   0064 DD 46 05      [19]  134 	ld	b, 5 (ix)
+   0067 C5            [11]  135 	push	bc
+   0068 CDr00r00      [17]  136 	call	_devkit_SMS_setNextTileatXY
+   006B F1            [10]  137 	pop	af
+   006C C1            [10]  138 	pop	bc
+   006D 21r00r00      [10]  139 	ld	hl, #_tree_avoid__tilemap__bin + 0
+   0070 46            [ 7]  140 	ld	b, (hl)
+   0071 04            [ 4]  141 	inc	b
+   0072 C5            [11]  142 	push	bc
+   0073 C5            [11]  143 	push	bc
+   0074 33            [ 6]  144 	inc	sp
+   0075 CDr00r00      [17]  145 	call	_devkit_SMS_setTile
+   0078 33            [ 6]  146 	inc	sp
+   0079 C1            [10]  147 	pop	bc
+                            148 ;tile_manager.c:29: devkit_SMS_setNextTileatXY( x + 0, y + 1 ); devkit_SMS_setTile( *pnt + 2 );
+   007A DD 46 05      [19]  149 	ld	b, 5 (ix)
+   007D 04            [ 4]  150 	inc	b
+   007E C5            [11]  151 	push	bc
+   007F C5            [11]  152 	push	bc
+   0080 33            [ 6]  153 	inc	sp
+   0081 DD 7E 04      [19]  154 	ld	a, 4 (ix)
+   0084 F5            [11]  155 	push	af
+   0085 33            [ 6]  156 	inc	sp
+   0086 CDr00r00      [17]  157 	call	_devkit_SMS_setNextTileatXY
+   0089 F1            [10]  158 	pop	af
+   008A C1            [10]  159 	pop	bc
+   008B 21r00r00      [10]  160 	ld	hl, #_tree_avoid__tilemap__bin + 0
+   008E 56            [ 7]  161 	ld	d, (hl)
+   008F 14            [ 4]  162 	inc	d
+   0090 14            [ 4]  163 	inc	d
+   0091 C5            [11]  164 	push	bc
+   0092 D5            [11]  165 	push	de
+   0093 33            [ 6]  166 	inc	sp
+   0094 CDr00r00      [17]  167 	call	_devkit_SMS_setTile
+   0097 33            [ 6]  168 	inc	sp
+   0098 CDr00r00      [17]  169 	call	_devkit_SMS_setNextTileatXY
+   009B F1            [10]  170 	pop	af
+   009C 3Ar00r00      [13]  171 	ld	a, (#_tree_avoid__tilemap__bin + 0)
+   009F C6 03         [ 7]  172 	add	a, #0x03
+   00A1 F5            [11]  173 	push	af
+   00A2 33            [ 6]  174 	inc	sp
+   00A3 CDr00r00      [17]  175 	call	_devkit_SMS_setTile
+   00A6 33            [ 6]  176 	inc	sp
+   00A7 DD E1         [14]  177 	pop	ix
+   00A9 C9            [10]  178 	ret
+                            179 	.area _CODE
+                            180 	.area _INITIALIZER
+                            181 	.area _CABS (ABS)
