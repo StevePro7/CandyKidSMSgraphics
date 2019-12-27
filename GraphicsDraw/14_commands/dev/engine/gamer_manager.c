@@ -111,7 +111,6 @@ void engine_gamer_manager_update()
 void engine_gamer_manager_draw()
 {
 	struct_gamer_object *go = &global_gamer_object;
-
 	engine_sprite_manager_draw( go->posnX, go->posnY, go->calcd );
 }
 

@@ -63,4 +63,12 @@ typedef enum tag_enum_tree_type
 
 } enum_tree_type;
 
+typedef enum tag_enum_mama_type
+{
+	mama_type_pro = 0,
+	mama_type_adi = 1,
+	mama_type_suz = 2,
+
+} enum_mama_type;
+
 #endif//_ENUM_MANAGER_H_
