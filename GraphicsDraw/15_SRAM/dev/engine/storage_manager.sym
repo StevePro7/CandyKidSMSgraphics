@@ -12,13 +12,13 @@ Symbol Table
     _devkit_SMS_SRAM                                               **** GX
     _devkit_SMS_disableSRAM                                        **** GX
     _devkit_SMS_enableSRAM                                         **** GX
-  0 _getPoints                                                     0086 GR
-  0 _incPoints                                                     008A GR
+  0 _getPoints                                                     0088 GR
+  0 _incPoints                                                     008C GR
   0 _isSaveGamePresent                                             0000 GR
   2 _lives                                                         0000 R
   2 _points                                                        0001 R
-  0 _readSaveGame                                                  002D GR
-  0 _writeSaveGame                                                 0055 GR
+  0 _readSaveGame                                                  002F GR
+  0 _writeSaveGame                                                 0057 GR
 
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
@@ -26,7 +26,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size   96   flags    0
+   0 _CODE                                      size   98   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    3   flags    0
    3 _DABS                                      size    0   flags    8

@@ -1,7 +1,7 @@
 #include "storage_manager.h"
 #include "..\devkit\_sms_manager.h"
 
-#define MAGIC			0xACE0B001
+#define MAGIC			0xACE0B002
 
 // Global variable.
 //struct_savegame_object global_savegame_object;

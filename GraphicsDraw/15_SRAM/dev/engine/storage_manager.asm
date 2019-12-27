@@ -70,7 +70,8 @@ _isSaveGamePresent::
 	ld	e, (hl)
 	inc	hl
 	ld	d, (hl)
-	dec	c
+	ld	a, c
+	sub	a, #0x02
 	jr	NZ,00103$
 	ld	a, b
 	sub	a, #0xb0
@@ -138,7 +139,7 @@ _writeSaveGame::
 ;storage_manager.c:46: savegame->Magic = MAGIC;
 	ld	l, c
 	ld	h, b
-	ld	(hl), #0x01
+	ld	(hl), #0x02
 	inc	hl
 	ld	(hl), #0xb0
 	inc	hl
