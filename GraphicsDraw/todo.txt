@@ -1,0 +1,14 @@
+todo
+28/12/2019
+
+tidy up SRAM like my objects
+add the array properties to stored collections of commands
+
+
+inject all the properties for all the entities
+
+refactor level load so do not include border
+put the border tree logic into the board mgr
+
+draw exits public vs. closed in board mgr
+have array[2] for tree avoid vs. death

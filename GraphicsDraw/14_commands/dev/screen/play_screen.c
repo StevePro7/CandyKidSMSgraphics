@@ -15,6 +15,8 @@ void screen_play_screen_load()
 	engine_level_manager_init_level();
 	engine_level_manager_load_level( 0, 0 );
 	engine_level_manager_draw_level();
+	engine_board_manager_draw_edge();
+
 //	engine_font_manager_draw_text( "PLAY SCREEN!!", 2, 0 );
 
 	engine_board_manager_init();

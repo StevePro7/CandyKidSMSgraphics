@@ -142,7 +142,9 @@ void engine_enemy_manager_draw()
 {
 	struct_enemy_object *eo;
 	unsigned char idx;
-	for( idx = 0; idx < MAX_ENEMIES; idx++ )
+	//for( idx = 0; idx < MAX_ENEMIES; idx++ )
+	//TODO revert to draw all enemies
+	for( idx = 0; idx < 1; idx++ )
 	{
 		eo = &global_enemy_objects[ idx ];
 		engine_sprite_manager_draw( eo->posnX, eo->posnY, eo->calcd );

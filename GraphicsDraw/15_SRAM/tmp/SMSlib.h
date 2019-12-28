@@ -225,7 +225,7 @@ unsigned char SMS_VDPType (void) { return 1; }
 #define VDP_NTSC                0x40
 #endif
 
-extern volatile unsigned char SMS_VDPFlags;
+/*extern volatile*/unsigned char SMS_VDPFlags;
 #define VDPFLAG_SPRITEOVERFLOW  0x40
 #define VDPFLAG_SPRITECOLLISION 0x20
 
