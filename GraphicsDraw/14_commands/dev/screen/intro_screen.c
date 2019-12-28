@@ -59,7 +59,7 @@ void screen_intro_screen_update( unsigned char *screen_type )
 	count++;
 	if( count < timer )
 	{
-		*screen_type = screen_type_play;
+		*screen_type = screen_type_intro;
 		return;
 	}
 	else

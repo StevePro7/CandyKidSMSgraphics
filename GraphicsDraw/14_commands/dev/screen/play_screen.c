@@ -59,6 +59,19 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Draw sprites first.
 	engine_gamer_manager_draw();
 
+	// Update.
+	count++;
+	if( count < timer )
+	{
+		*screen_type = screen_type_play;
+		return;
+	}
+	else
+	{
+		count = 0;
+	}
+
+
 	// Gamer.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
@@ -67,14 +80,26 @@ void screen_play_screen_update( unsigned char *screen_type )
 
 		gamer_direction = engine_move_manager_check( gamer_direction );
 		engine_font_manager_draw_data( gamer_direction, 20, 6 );
-		
+
+		// TODO hardcoded!
 		engine_event_manager_add_event( 0x01, gamer_direction );
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
 		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
-		gamer_direction = 0;
+		engine_gamer_manager_update();
 	}
+
+	if( direction_type_none != go->direction && lifecycle_type_idle == go->lifecycle )
+	{
+		// Check collision.
+		engine_gamer_manager_stop();
+	}
+
+	engine_event_manager_process_events();
+
+	frameCount++;
+	engine_font_manager_draw_data( frameCount, 30, 0 );
 
 	*screen_type = screen_type_play;
 }

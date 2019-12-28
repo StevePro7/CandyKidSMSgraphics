@@ -41,9 +41,73 @@ void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
 void engine_gamer_manager_update()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	
+	go->delta += go->speed;
+	go->total += go->speed;
+
+	// Update position.
+	if( direction_type_upxx == go->direction )
+	{
+		go->posnY -= go->speed;
+	}
+	else if( direction_type_down == go->direction )
+	{
+		go->posnY += go->speed;
+	}
+	else if( direction_type_left == go->direction )
+	{
+		go->posnX -= go->speed;
+	}
+	else if( direction_type_rght == go->direction )
+	{
+		go->posnX += go->speed;
+	}
+
+	// Update lifecycle
+	if( go->total >= TILE_SIZE )
+	{
+		if( direction_type_upxx == go->direction )
+		{
+			go->tileY--;
+		}
+		else if( direction_type_down == go->direction )
+		{
+			go->tileY++;
+		}
+		else if( direction_type_left == go->direction )
+		{
+			go->tileX--;
+		}
+		else if( direction_type_rght == go->direction )
+		{
+			go->tileX++;
+		}
+
+		calcd_spots();
+
+		go->lifecycle = lifecycle_type_idle;
+		go->delta = 0;
+		go->total = 0;
+
+		engine_font_manager_draw_data( go->posnX, 20, 2 );
+		engine_font_manager_draw_data( go->posnY, 20, 3 );
+	}
+
+	// Swap frame half way.
+	if( go->delta > TILE_HALF )
+	{
+		go->frame = 1 - go->frame;
+		go->delta = 0;
+		calcd_frame();
+	}
 }
 
+void engine_gamer_manager_stop()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	go->direction = direction_type_none;
+	go->frame = 0;
+	calcd_frame();
+}
 
 void engine_gamer_manager_updateX()
 {

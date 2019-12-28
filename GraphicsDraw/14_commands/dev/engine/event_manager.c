@@ -36,16 +36,34 @@ void engine_event_manager_add_event( unsigned char type, unsigned char args )
 	unsigned char index = ev->event_index;
 	ev->event_type[ index ] = type;
 	ev->event_args[ index ] = args;
-	ev->move1Index++;
+	ev->event_index++;
 }
 
 void engine_event_manager_process_events()
 {
 	struct_event_object *ev = &global_event_object;
+	unsigned index;
+
+	if( 0 == ev->event_index )
+	{
+		return;
+	}
+
+	for( index = 0; index < ev->event_index; index++ )
+	{
+		engine_event_manager_process_event( ev->event_type[ index ], ev->event_args[ index ] );
+	}
+
 }
 
-void engine_event_manager_process_event()
+void engine_event_manager_process_event( unsigned type, unsigned args )
 {
+	// TODO hardcoded!
+	if( 0x01 == type )
+	{
+		engine_gamer_manager_move( args );
+	}
+
 }
 
 unsigned char engine_event_manager_kidMove()
