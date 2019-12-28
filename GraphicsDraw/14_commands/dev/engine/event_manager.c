@@ -1,5 +1,6 @@
 #include "event_manager.h"
 #include "enum_manager.h"
+#include "font_manager.h"
 #include "gamer_manager.h"
 #include "global_manager.h"
 #include "input_manager.h"
@@ -67,7 +68,28 @@ unsigned char engine_event_manager_kidMove()
 
 void engine_event_manager_move1( unsigned int frameCount, unsigned char theMove )
 {
-	if( MOVEMENT_KID_RGHT_MASK == ( theMove & MOVEMENT_KID_RGHT_MASK ) )
+	//Redundant check as is wrapped from caller.
+	//if( MOVEMENT_ALL_NONE_MASK == ( theMove & MOVEMENT_ALL_NONE_MASK ) )
+	//{
+	//	return;
+	//}
+
+	engine_font_manager_draw_data( theMove, 30, 4 );
+
+	// Must be at least one event!
+	if( MOVEMENT_KID_UPXX_MASK == ( theMove & MOVEMENT_KID_UPXX_MASK ) )
+	{
+		engine_gamer_manager_move( direction_type_upxx );
+	}
+	else if( MOVEMENT_KID_DOWN_MASK == ( theMove & MOVEMENT_KID_DOWN_MASK ) )
+	{
+		engine_gamer_manager_move( direction_type_down );
+	}
+	else if( MOVEMENT_KID_LEFT_MASK == ( theMove & MOVEMENT_KID_LEFT_MASK ) )
+	{
+		engine_gamer_manager_move( direction_type_left );
+	}
+	else if( MOVEMENT_KID_RGHT_MASK == ( theMove & MOVEMENT_KID_RGHT_MASK ) )
 	{
 		engine_gamer_manager_move( direction_type_rght );
 	}

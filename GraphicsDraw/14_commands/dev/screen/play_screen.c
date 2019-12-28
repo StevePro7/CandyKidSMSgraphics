@@ -68,7 +68,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}
 
 
-
+	kidMove = 0x00;
 	if( lifecycle_type_idle == go->lifecycle )
 	{
 		kidMove = engine_event_manager_kidMove();
@@ -83,6 +83,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	theMove = kidMove + proMove;
 	if( MOVEMENT_ALL_NONE_MASK != theMove )
 	{
+		engine_font_manager_draw_data( kidMove, 30, 3 );
 		engine_event_manager_move1( frameCount, theMove );
 	}
 
