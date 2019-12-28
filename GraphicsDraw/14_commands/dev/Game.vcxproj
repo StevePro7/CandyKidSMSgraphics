@@ -162,6 +162,7 @@
     <ClCompile Include="engine\input_manager.c" />
     <ClCompile Include="engine\level_manager.c" />
     <ClCompile Include="engine\mask_manager.c" />
+    <ClCompile Include="engine\move_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
     <ClCompile Include="engine\sprite_manager.c" />
     <ClCompile Include="engine\tile_manager.c" />
@@ -206,6 +207,7 @@
     <ClInclude Include="engine\input_manager.h" />
     <ClInclude Include="engine\level_manager.h" />
     <ClInclude Include="engine\mask_manager.h" />
+    <ClInclude Include="engine\move_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
     <ClInclude Include="engine\sprite_manager.h" />
     <ClInclude Include="engine\tile_manager.h" />

@@ -32,6 +32,7 @@ void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
 	go->frame = 0;
 	calcd_frame();
 	calcd_spots();
+
 	engine_font_manager_draw_data( go->posnX, 20, 2 );
 	engine_font_manager_draw_data( go->posnY, 20, 3 );
 }
@@ -85,8 +86,9 @@ void engine_gamer_manager_update()
 				go->tileX++;
 			}
 
-			go->posnX = go->tileX * TILE_SIZE;
-			go->posnY = go->tileY * TILE_SIZE;
+			calcd_spots();
+			/*go->posnX = go->tileX * TILE_SIZE;
+			go->posnY = go->tileY * TILE_SIZE;*/
 
 			go->direction = direction_type_none;
 			go->lifecycle = lifecycle_type_idle;
@@ -139,6 +141,6 @@ static void calcd_spots()
 {
 	struct_gamer_object *go = &global_gamer_object;
 	struct_board_object *bo = &global_board_object;
-	go->posnX = bo->posnX[ go->homeX ];
-	go->posnY = bo->posnY[ go->homeY ];
+	go->posnX = bo->posnX[ go->tileX ];
+	go->posnY = bo->posnY[ go->tileY ];
 }

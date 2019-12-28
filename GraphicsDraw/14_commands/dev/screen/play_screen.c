@@ -7,9 +7,12 @@
 #include "..\engine\gamer_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\mask_manager.h"
+#include "..\engine\move_manager.h"
 #include "..\engine\sprite_manager.h"
 
 static unsigned int frameCount;
+
+static unsigned char count, timer;
 
 void screen_play_screen_load()
 {
@@ -28,7 +31,12 @@ void screen_play_screen_load()
 	engine_enemy_manager_init( homeX, homeY );
 
 	engine_event_manager_init();
+
 	frameCount = 0;
+	engine_font_manager_draw_data( frameCount, 30, 0 );
+
+	count = 0;
+	timer = 60;
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -36,25 +44,52 @@ void screen_play_screen_update( unsigned char *screen_type )
 	struct_gamer_object *go = &global_gamer_object;
 
 	unsigned char kidMove;
+	unsigned char proMove;// , adiMove, suzMove;
+	unsigned char theMove;
 
 	// Clear events.
 	engine_event_manager_clear();
 
 	// Draw sprites first.
 	engine_gamer_manager_draw();
+	//engine_enemy_manager_draw();
 
-	// Update
+
+	// Update.
+	count++;
+	if( count < timer )
+	{
+		*screen_type = screen_type_play;
+		return;
+	}
+	else
+	{
+		count = 0;
+	}
+
+
+
 	if( lifecycle_type_idle == go->lifecycle )
 	{
 		kidMove = engine_event_manager_kidMove();
-		if( MOVEMENT_KID_NONE_MASK != kidMove )
+		if( MOVEMENT_ALL_NONE_MASK != kidMove )
 		{
-
+			// TODO move_manager - check can go this way i.e. not blocked by tree
+			engine_font_manager_draw_data( kidMove, 30, 2 );
 		}
 	}
 
-	//engine_enemy_manager_draw();
+	proMove = 0x00;
+	theMove = kidMove + proMove;
+	if( MOVEMENT_ALL_NONE_MASK != theMove )
+	{
+		engine_event_manager_move1( frameCount, theMove );
+	}
+
+	engine_gamer_manager_update();
 	
 	frameCount++;
+	engine_font_manager_draw_data( frameCount, 30, 0 );
+
 	*screen_type = screen_type_play;
 }

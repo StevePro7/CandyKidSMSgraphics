@@ -5,7 +5,7 @@ O -mz80
 S _global_board_object Ref0000
 S _engine_sprite_manager_draw Ref0000
 S .__.ABS. Def0000
-A _CODE size 26B flags 0 addr 0
+A _CODE size 26E flags 0 addr 0
 S _engine_enemy_manager_load Def00D9
 S _engine_enemy_manager_draw Def01AC
 S _engine_enemy_manager_init Def0000
@@ -142,9 +142,11 @@ T 33 02
 R 00 00 00 00
 T 33 02 DD E5 DD 21 00 00 DD 39 01 00 00 DD 5E 04
 R 00 00 00 00 00 0B 01 00
-T 41 02 16 00 6B 62 29 29 29 29 19 09 5D 54 23 23
+T 41 02 16 00 6B 62 29 29 29 29 19 09 EB D5 FD E1
 R 00 00 00 00
-T 4F 02 4E 21 00 00 06 00 09 7E 12 4B 42 03 EB 23
-R 00 00 00 00 02 04 00 00
-T 5D 02 23 23 5E 21 0C 00 16 00 19 7E 02 DD E1 C9
+T 4F 02 FD 4E 04 21 00 00 06 00 09 7E 12 4B 42 03
 R 00 00 00 00 02 06 00 00
+T 5D 02 D5 FD E1 FD 5E 05 21 0C 00 16 00 19 7E 02
+R 00 00 00 00 02 09 00 00
+T 6B 02 DD E1 C9
+R 00 00 00 00

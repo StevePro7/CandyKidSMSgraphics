@@ -10,5 +10,6 @@ extern struct_event_object global_event_object;
 void engine_event_manager_init();
 void engine_event_manager_clear();
 unsigned char engine_event_manager_kidMove();
+void engine_event_manager_move1( unsigned int frameCount, unsigned char theMove );
 
 #endif//_EVENT_MANAGER_H_

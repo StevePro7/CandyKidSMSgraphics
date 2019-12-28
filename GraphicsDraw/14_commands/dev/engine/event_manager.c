@@ -1,4 +1,6 @@
 #include "event_manager.h"
+#include "enum_manager.h"
+#include "gamer_manager.h"
 #include "global_manager.h"
 #include "input_manager.h"
 #include "mask_manager.h"
@@ -27,7 +29,7 @@ void engine_event_manager_clear()
 
 unsigned char engine_event_manager_kidMove()
 {
-	unsigned char kidMove = MOVEMENT_KID_NONE_MASK;
+	unsigned char kidMove = MOVEMENT_ALL_NONE_MASK;
 
 	unsigned char input;
 	input = engine_input_manager_move_up();
@@ -61,4 +63,12 @@ unsigned char engine_event_manager_kidMove()
 	}
 
 	return kidMove;
+}
+
+void engine_event_manager_move1( unsigned int frameCount, unsigned char theMove )
+{
+	if( MOVEMENT_KID_RGHT_MASK == ( theMove & MOVEMENT_KID_RGHT_MASK ) )
+	{
+		engine_gamer_manager_move( direction_type_rght );
+	}
 }

@@ -160,6 +160,6 @@ static void calcd_spots( unsigned char index )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ index ];
 	struct_board_object *bo = &global_board_object;
-	eo->posnX = bo->posnX[ eo->homeX ];
-	eo->posnY = bo->posnY[ eo->homeY ];
+	eo->posnX = bo->posnX[ eo->tileX ];
+	eo->posnY = bo->posnY[ eo->tileY ];
 }
