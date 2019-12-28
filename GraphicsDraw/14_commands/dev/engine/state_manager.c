@@ -10,6 +10,9 @@ void engine_state_manager_init()
 	struct_state_object *so = &global_state_object;
 	so->exits_choice = exit_type_public;
 	so->trees_choice = tree_type_avoid;
+
+	// TODO remove this
+	so->trees_choice = tree_type_death;
 }
 
 void engine_state_manager_set_exits( unsigned char exits )

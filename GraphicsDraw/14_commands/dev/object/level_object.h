@@ -5,6 +5,7 @@
 
 typedef struct tag_struct_level_object
 {
+	// TODO I think that I want 2x2 multi dimensional array
 	unsigned char collision_array[ TREE_ROWS * TREE_COLS ];
 	unsigned char drawtiles_array[ TREE_ROWS * TREE_COLS ];
 	unsigned int load_cols;

@@ -64,7 +64,11 @@ void screen_play_screen_update( unsigned char *screen_type )
 	{
 		gamer_direction = engine_gamer_manager_direction();
 		engine_font_manager_draw_data( gamer_direction, 20, 5 );
-		//engine_event_manager_add_event( 0x01, gamer_direction );
+
+		gamer_direction = engine_move_manager_check( gamer_direction );
+		engine_font_manager_draw_data( gamer_direction, 20, 6 );
+		
+		engine_event_manager_add_event( 0x01, gamer_direction );
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
