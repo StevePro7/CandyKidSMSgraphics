@@ -2,6 +2,7 @@
 #include "..\engine\board_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\gamer_manager.h"
 #include "..\engine\level_manager.h"
 #include "..\engine\sprite_manager.h"
 
@@ -13,6 +14,7 @@ void screen_play_screen_load()
 //	engine_font_manager_draw_text( "PLAY SCREEN!!", 2, 0 );
 
 	engine_board_manager_init();
+	engine_gamer_manager_init();
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -21,6 +23,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	unsigned char tileX = 9;
 	unsigned char tileY = 2;
 
-	engine_sprite_manager_draw( bo->posnX[tileX], bo->posnY[tileY], 256 );
+	//engine_sprite_manager_draw( bo->posnX[tileX], bo->posnY[tileY], 256 );
+	engine_gamer_manager_draw();
 	*screen_type = screen_type_play;
 }

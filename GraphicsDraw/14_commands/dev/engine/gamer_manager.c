@@ -1,4 +1,5 @@
 #include "gamer_manager.h"
+#include "board_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "global_manager.h"
@@ -10,13 +11,14 @@
 struct_gamer_object global_gamer_object;
 
 static void calcd_frame();
+static void calcd_spots();
 
 void engine_gamer_manager_init()
 {
 	struct_gamer_object *go = &global_gamer_object;
 
-	go->posnX = 32;
-	go->posnY = 32;
+	//go->posnX = 128;// 32;
+	//go->posnY = 64;// 32;
 	go->tileX = 2;
 	go->tileY = 2;
 	go->delta = 0;
@@ -29,7 +31,7 @@ void engine_gamer_manager_init()
 	go->image = 0;
 	go->frame = 0;
 	calcd_frame();
-
+	calcd_spots();
 	engine_font_manager_draw_data( go->posnX, 20, 2 );
 	engine_font_manager_draw_data( go->posnY, 20, 3 );
 }
@@ -132,4 +134,11 @@ static void calcd_frame()
 {
 	struct_gamer_object *go = &global_gamer_object;
 	go->calcd = SPRITE_TILES_KID + go->image * 8 + go->frame * 4;
+}
+static void calcd_spots()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	struct_board_object *bo = &global_board_object;
+	go->posnX = bo->posnX[ go->tileX ];
+	go->posnY = bo->posnY[ go->tileY ];
 }
