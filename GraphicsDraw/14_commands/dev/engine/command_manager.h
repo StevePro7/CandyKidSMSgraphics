@@ -7,6 +7,8 @@
 extern struct_command_object global_command_object;
 
 // Methods.
+void engine_command_manager_move1( unsigned int frameCount, unsigned char theMove );
+
 void engine_command_manager_init();
 void engine_command_manager_load();
 

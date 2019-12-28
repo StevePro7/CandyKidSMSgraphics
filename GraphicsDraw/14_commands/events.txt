@@ -1,0 +1,22 @@
+events
+28/11/2019
+
+believe can capture entire game play into 16 events [or less]
+
+type
+kid move	args = direction
+pro move	args = direction
+adi move	args = direction
+suz move	args = direction
+
+
+kid speed	args = pixel
+pro speed	args = pixel + delay
+adi speed	args = pixel + delay
+suz speed	args = pixel + delay
+
+
+kid eat 	args = candy, bonus[1, 2, 3, 4]
+
+
+kid dead	args = tree [death], pro, adi, suz

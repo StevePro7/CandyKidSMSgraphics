@@ -8,9 +8,10 @@ typedef enum tag_enum_screen_type
 	screen_type_title = 2,
 	screen_type_intro = 3,
 	screen_type_load = 4,
-	screen_type_play = 5,
-	screen_type_test = 6,
-	screen_type_func = 7,
+	screen_type_demo = 5,
+	screen_type_play = 6,
+	screen_type_test = 7,
+	screen_type_func = 8,
 
 } enum_screen_type;
 
@@ -34,6 +35,15 @@ typedef enum tag_enum_lifecycle_type
 
 typedef enum tag_enum_tile_type
 {
+	// TODO swap candy + trees because this could be used for kidEat event
+	//tile_type_blank = 0,
+	//tile_type_trees = 1,
+	//tile_type_candy = 2,
+	//tile_type_bonusA = 3,
+	//tile_type_bonusB = 4,
+	//tile_type_bonusC = 5,
+	//tile_type_bonusD = 6,
+
 	tile_type_blank = 0,
 	tile_type_candy = 1,
 	tile_type_trees = 2,

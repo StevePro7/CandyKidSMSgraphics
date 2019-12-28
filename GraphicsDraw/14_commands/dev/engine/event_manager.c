@@ -1,4 +1,5 @@
 #include "event_manager.h"
+#include "command_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "gamer_manager.h"
@@ -93,4 +94,8 @@ void engine_event_manager_move1( unsigned int frameCount, unsigned char theMove 
 	{
 		engine_gamer_manager_move( direction_type_rght );
 	}
+
+
+	// TODO store command now
+	engine_command_manager_move1( frameCount, theMove );
 }
