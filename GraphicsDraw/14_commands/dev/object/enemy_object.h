@@ -3,8 +3,10 @@
 
 typedef struct tag_struct_enemy_object
 {
-	int posnX;
-	int posnY;
+	unsigned char posnX;
+	unsigned char posnY;
+	unsigned char homeX;
+	unsigned char homeY;
 	signed char tileX;
 	signed char tileY;
 	unsigned char delay;

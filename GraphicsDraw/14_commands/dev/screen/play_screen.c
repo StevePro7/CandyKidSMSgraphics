@@ -1,6 +1,7 @@
 #include "play_screen.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\enum_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
 #include "..\engine\level_manager.h"
@@ -14,7 +15,8 @@ void screen_play_screen_load()
 //	engine_font_manager_draw_text( "PLAY SCREEN!!", 2, 0 );
 
 	engine_board_manager_init();
-	engine_gamer_manager_init();
+	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
+	engine_enemy_manager_init();
 }
 
 void screen_play_screen_update( unsigned char *screen_type )

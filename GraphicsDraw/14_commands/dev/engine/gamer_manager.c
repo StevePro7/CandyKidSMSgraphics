@@ -13,14 +13,14 @@ struct_gamer_object global_gamer_object;
 static void calcd_frame();
 static void calcd_spots();
 
-void engine_gamer_manager_init()
+void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
 {
 	struct_gamer_object *go = &global_gamer_object;
 
-	//go->posnX = 128;// 32;
-	//go->posnY = 64;// 32;
-	go->tileX = 2;
-	go->tileY = 2;
+	go->homeX = homeX;
+	go->homeY = homeY;
+	go->tileX = homeX;
+	go->tileY = homeY;
 	go->delta = 0;
 	go->total = 0;
 	go->speed = 1;

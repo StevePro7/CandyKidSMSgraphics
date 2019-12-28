@@ -1,4 +1,5 @@
 #include "test_screen.h"
+#include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
@@ -11,7 +12,7 @@ static unsigned char timer;
 
 void screen_test_screen_load()
 {
-	engine_gamer_manager_init();
+	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
 
 	engine_font_manager_draw_text( "HELLO STEVEPRO SCREEN", 2, 1 );
 	engine_tile_manager_draw_tree( 2, 2 );
