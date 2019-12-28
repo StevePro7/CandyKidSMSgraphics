@@ -165,6 +165,7 @@
     <ClCompile Include="engine\move_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
     <ClCompile Include="engine\sprite_manager.c" />
+    <ClCompile Include="engine\state_manager.c" />
     <ClCompile Include="engine\tile_manager.c" />
     <ClCompile Include="game.c" />
     <ClCompile Include="gfx.c" />
@@ -176,6 +177,7 @@
     <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\hack_object.c" />
     <ClCompile Include="object\level_object.c" />
+    <ClCompile Include="object\state_object.c" />
     <ClCompile Include="screen\demo_screen.c" />
     <ClCompile Include="screen\func_screen.c" />
     <ClCompile Include="screen\intro_screen.c" />
@@ -211,6 +213,7 @@
     <ClInclude Include="engine\move_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
     <ClInclude Include="engine\sprite_manager.h" />
+    <ClInclude Include="engine\state_manager.h" />
     <ClInclude Include="engine\tile_manager.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gfx.h" />
@@ -222,6 +225,7 @@
     <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\hack_object.h" />
     <ClInclude Include="object\level_object.h" />
+    <ClInclude Include="object\state_object.h" />
     <ClInclude Include="screen\demo_screen.h" />
     <ClInclude Include="screen\func_screen.h" />
     <ClInclude Include="screen\intro_screen.h" />
