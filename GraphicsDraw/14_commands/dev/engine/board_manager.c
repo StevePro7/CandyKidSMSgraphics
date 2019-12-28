@@ -14,7 +14,7 @@ void engine_board_manager_init()
 	for( loop = 0; loop < TREE_ROWS; loop++ )
 	{
 		data = loop * TILE_SIZE;
-		bo->posnX[ loop ] = left + data;
+		bo->posnX[ loop ] = data + left;
 		bo->posnY[ loop ] = data;
 	}
 }
