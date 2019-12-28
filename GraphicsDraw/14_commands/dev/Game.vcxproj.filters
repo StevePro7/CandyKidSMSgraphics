@@ -165,6 +165,9 @@
     <ClCompile Include="object\board_object.c">
       <Filter>Source Files\object</Filter>
     </ClCompile>
+    <ClCompile Include="object\event_object.c">
+      <Filter>Source Files\object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="build.bat">
@@ -284,6 +287,9 @@
       <Filter>Header Files\screen</Filter>
     </ClInclude>
     <ClInclude Include="object\board_object.h">
+      <Filter>Header Files\object</Filter>
+    </ClInclude>
+    <ClInclude Include="object\event_object.h">
       <Filter>Header Files\object</Filter>
     </ClInclude>
   </ItemGroup>

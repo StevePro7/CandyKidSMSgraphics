@@ -171,6 +171,7 @@
     <ClCompile Include="object\board_object.c" />
     <ClCompile Include="object\command_object.c" />
     <ClCompile Include="object\enemy_object.c" />
+    <ClCompile Include="object\event_object.c" />
     <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\hack_object.c" />
     <ClCompile Include="object\level_object.c" />
@@ -214,6 +215,7 @@
     <ClInclude Include="object\board_object.h" />
     <ClInclude Include="object\command_object.h" />
     <ClInclude Include="object\enemy_object.h" />
+    <ClInclude Include="object\event_object.h" />
     <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\hack_object.h" />
     <ClInclude Include="object\level_object.h" />
