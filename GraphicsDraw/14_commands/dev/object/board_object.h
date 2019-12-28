@@ -5,7 +5,8 @@
 
 typedef struct tag_struct_board_object
 {
-	unsigned char positions[ TREE_ROWS ][ TREE_COLS ];
+	unsigned char posnX[ TREE_COLS ];
+	unsigned char posnY[ TREE_ROWS ];
 
 } struct_board_object;
 
