@@ -18,7 +18,7 @@ typedef struct tag_struct_enemy_object
 	unsigned char lifecycle;
 	unsigned int image;
 	unsigned char frame;
-	unsigned char calcd;
+	unsigned int calcd;
 
 } struct_enemy_object;
 

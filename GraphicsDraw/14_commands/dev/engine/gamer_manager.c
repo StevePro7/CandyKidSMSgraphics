@@ -212,6 +212,7 @@ unsigned char engine_gamer_manager_direction()
 	input = engine_input_manager_move_up();
 	if( input )
 	{
+		engine_font_manager_draw_text( "UPXX", 10, 10 );
 		direction = direction_type_upxx;
 	}
 	else

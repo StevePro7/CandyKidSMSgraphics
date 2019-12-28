@@ -45,13 +45,13 @@ void screen_play_screen_load()
 
 	engine_state_manager_init();
 	count = 0;
-	timer = 60;
+	timer = 10;
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
 {
 	struct_gamer_object *go = &global_gamer_object;
-	unsigned char gamer_direction;
+	unsigned char gamer_direction = direction_type_none;
 
 	// Clear events.
 	engine_event_manager_clear();
@@ -75,6 +75,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Gamer.
 	if( direction_type_none == go->direction && lifecycle_type_idle == go->lifecycle )
 	{
+		engine_font_manager_draw_data( gamer_direction, 20, 9 );
 		gamer_direction = engine_gamer_manager_direction();
 		engine_font_manager_draw_data( gamer_direction, 20, 5 );
 

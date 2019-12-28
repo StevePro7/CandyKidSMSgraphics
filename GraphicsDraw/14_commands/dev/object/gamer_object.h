@@ -16,7 +16,7 @@ typedef struct tag_struct_gamer_object
 	unsigned char lifecycle;
 	unsigned int image;
 	unsigned char frame;
-	unsigned char calcd;
+	unsigned int calcd;
 
 } struct_gamer_object;
 
