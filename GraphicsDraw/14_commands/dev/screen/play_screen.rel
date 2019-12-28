@@ -1,5 +1,5 @@
 XL2
-H 9 areas 10 global symbols
+H 9 areas 11 global symbols
 M play_screen
 O -mz80
 S _engine_gamer_manager_draw Ref0000
@@ -11,14 +11,15 @@ S _engine_font_manager_draw_text Ref0000
 S _engine_gamer_manager_direction Ref0000
 S .__.ABS. Def0000
 S _engine_enemy_manager_init Ref0000
+S _engine_state_manager_init Ref0000
 S _engine_event_manager_init Ref0000
 S _engine_font_manager_draw_data Ref0000
 S _engine_event_manager_clear Ref0000
 S _engine_board_manager_draw_edge Ref0000
 S _engine_level_manager_load_level Ref0000
-A _CODE size C0 flags 0 addr 0
+A _CODE size C3 flags 0 addr 0
 S _screen_play_screen_load Def0000
-S _screen_play_screen_update Def0093
+S _screen_play_screen_update Def0096
 A _DATA size 4 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -50,30 +51,30 @@ R 00 00 00 00
 T 2A 00 23 36 09 6B 62 23 23 36 02 C5 D5 CD 00 00
 R 00 00 00 00 02 0E 03 00
 T 38 00 21 00 00 E5 CD 00 00 F1 CD 00 00 21 02 00
-R 00 00 00 00 02 07 0D 00 02 0B 0C 00
-T 46 00 E5 21 87 00 E5 CD 00 00 F1 F1 CD 00 00 21
+R 00 00 00 00 02 07 0E 00 02 0B 0D 00
+T 46 00 E5 21 8A 00 E5 CD 00 00 F1 F1 CD 00 00 21
 R 00 00 00 00 00 04 00 00 02 08 05 00 02 0D 01 00
 T 54 00 02 02 E5 CD 00 00 F1 D1 C1 D5 C5 CD 00 00
 R 00 00 00 00 02 06 02 00 02 0E 08 00
 T 62 00 F1 F1 CD 00 00 21 00 00 22 00 00 2E 1E E5
-R 00 00 00 00 02 05 09 00 00 0B 01 00
-T 70 00 2E 00 E5 CD 00 00 F1 F1 21 02 00 36 00 21
-R 00 00 00 00 02 06 0A 00 00 0B 01 00
-T 7E 00 03 00 36 3C DD F9 DD E1 C9
-R 00 00 00 00 00 02 01 00
-T 87 00
+R 00 00 00 00 02 05 0A 00 00 0B 01 00
+T 70 00 2E 00 E5 CD 00 00 F1 F1 CD 00 00 21 02 00
+R 00 00 00 00 02 06 0B 00 02 0B 09 00 00 0E 01 00
+T 7E 00 36 00 21 03 00 36 3C DD F9 DD E1 C9
+R 00 00 00 00 00 05 01 00
+T 8A 00
 R 00 00 00 00
-T 87 00 50 4C 41 59 20 53 43 52 45 45 4E 00
+T 8A 00 50 4C 41 59 20 53 43 52 45 45 4E 00
 R 00 00 00 00
-T 93 00
+T 96 00
 R 00 00 00 00
-T 93 00 CD 00 00 CD 00 00 3A 0B 00 B7 20 1A 21
-R 00 00 00 00 02 03 0B 00 02 06 00 00 02 09 04 00
-T A0 00 00 00 11 0C 00 19 7E B7 20 0F CD 00 00 26
+T 96 00 CD 00 00 CD 00 00 3A 0B 00 B7 20 1A 21
+R 00 00 00 00 02 03 0C 00 02 06 00 00 02 09 04 00
+T A3 00 00 00 11 0C 00 19 7E B7 20 0F CD 00 00 26
 R 00 00 00 00 02 02 04 00 02 0D 06 00
-T AE 00 00 01 14 05 C5 E5 CD 00 00 F1 F1
-R 00 00 00 00 02 09 0A 00
-T B9 00
+T B1 00 00 01 14 05 C5 E5 CD 00 00 F1 F1
+R 00 00 00 00 02 09 0B 00
+T BC 00
 R 00 00 00 00
-T B9 00 C1 E1 E5 C5 36 06 C9
+T BC 00 C1 E1 E5 C5 36 06 C9
 R 00 00 00 00

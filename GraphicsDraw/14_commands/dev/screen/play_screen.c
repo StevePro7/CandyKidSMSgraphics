@@ -8,7 +8,15 @@
 #include "..\engine\level_manager.h"
 #include "..\engine\mask_manager.h"
 #include "..\engine\move_manager.h"
+#include "..\engine\state_manager.h"
 #include "..\engine\sprite_manager.h"
+
+// IMPORTANT disable compiler warning 110
+#ifdef _CONSOLE
+#else
+#pragma disable_warning 110
+#endif
+
 
 static unsigned int frameCount;
 
@@ -35,6 +43,7 @@ void screen_play_screen_load()
 	frameCount = 0;
 	engine_font_manager_draw_data( frameCount, 30, 0 );
 
+	engine_state_manager_init();
 	count = 0;
 	timer = 60;
 }
@@ -59,6 +68,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
+		//  warning 110: conditional flow changed by optimizer: so said EVELYN the modified DOG
 		gamer_direction = 0;
 	}
 
