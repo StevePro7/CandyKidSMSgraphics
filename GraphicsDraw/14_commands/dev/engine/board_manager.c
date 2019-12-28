@@ -18,8 +18,3 @@ void engine_board_manager_init()
 		bo->posnY[ loop ] = data;
 	}
 }
-
-void engine_board_manager_load()
-{
-
-}
