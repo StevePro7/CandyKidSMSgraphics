@@ -45,7 +45,7 @@ void screen_play_screen_load()
 
 	engine_state_manager_init();
 	count = 0;
-	timer = 10;
+	timer = 0;
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
@@ -83,7 +83,10 @@ void screen_play_screen_update( unsigned char *screen_type )
 		engine_font_manager_draw_data( gamer_direction, 20, 6 );
 
 		// TODO hardcoded!
-		engine_event_manager_add_event( 0x01, gamer_direction );
+		if( direction_type_none != gamer_direction )
+		{
+			engine_event_manager_add_event( 0x01, gamer_direction );
+		}
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
@@ -100,7 +103,7 @@ void screen_play_screen_update( unsigned char *screen_type )
 	engine_event_manager_process_events();
 
 	frameCount++;
-	engine_font_manager_draw_data( frameCount, 30, 0 );
+	//engine_font_manager_draw_data( frameCount, 30, 0 );
 
 	*screen_type = screen_type_play;
 }
