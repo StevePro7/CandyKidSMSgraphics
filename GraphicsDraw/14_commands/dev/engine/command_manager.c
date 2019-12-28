@@ -7,6 +7,7 @@
 // Global variable.
 struct_command_object global_command_object;
 
+// Methods.
 void engine_command_manager_init()
 {
 	struct_command_object *co = &global_command_object;

@@ -6,6 +6,7 @@
 // Global variable.
 extern struct_command_object global_command_object;
 
+// Methods.
 void engine_command_manager_init();
 void engine_command_manager_load();
 
