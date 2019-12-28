@@ -23,6 +23,8 @@ void engine_enemy_manager_init()
 		eo->posnY = 0;
 		eo->tileX = 0;
 		eo->tileY = 0;
+		eo->delay = 10;
+		eo->timer = 0;
 		eo->delta = 0;
 		eo->total = 0;
 		eo->speed = 1;
@@ -55,6 +57,13 @@ void engine_enemy_manager_update()
 
 	if( lifecycle_type_move == eo->lifecycle )
 	{
+		eo->timer++;
+		if( eo->timer <= eo->delay )
+		{
+			return;
+		}
+
+		eo->timer = 0;
 		eo->delta += eo->speed;
 		eo->total += eo->speed;
 

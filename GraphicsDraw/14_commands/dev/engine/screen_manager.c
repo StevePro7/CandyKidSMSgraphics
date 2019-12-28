@@ -5,8 +5,10 @@
 // Screens
 #include "..\screen\none_screen.h"
 #include "..\screen\splash_screen.h"
+#include "..\screen\title_screen.h"
 #include "..\screen\intro_screen.h"
 #include "..\screen\load_screen.h"
+#include "..\screen\play_screen.h"
 #include "..\screen\test_screen.h"
 #include "..\screen\func_screen.h"
 
@@ -24,16 +26,20 @@ void engine_screen_manager_init( unsigned char open_screen_type )
 	// Set load methods.
 	load_method[ screen_type_none ] = screen_none_screen_load;
 	load_method[ screen_type_splash ] = screen_splash_screen_load;
+	load_method[ screen_type_title ] = screen_title_screen_load;
 	load_method[ screen_type_intro ] = screen_intro_screen_load;
 	load_method[ screen_type_load ] = screen_load_screen_load;
+	load_method[ screen_type_play ] = screen_play_screen_load;
 	load_method[ screen_type_test ] = screen_test_screen_load;
 	load_method[ screen_type_func ] = screen_func_screen_load;
 
 	// Set update methods.
 	update_method[ screen_type_none ] = screen_none_screen_update;
 	update_method[ screen_type_splash ] = screen_splash_screen_update;
+	update_method[ screen_type_title ] = screen_title_screen_update;
 	update_method[ screen_type_intro ] = screen_intro_screen_update;
 	update_method[ screen_type_load ] = screen_load_screen_update;
+	update_method[ screen_type_play ]= screen_play_screen_update;
 	update_method[ screen_type_test ] = screen_test_screen_update;
 	update_method[ screen_type_func ] = screen_func_screen_update;
 }

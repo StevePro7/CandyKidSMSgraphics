@@ -24,9 +24,9 @@ void screen_func_screen_load()
 
 	count = 0;
 	frame = 0;
-	timer = 20;
+	timer = 0;
 
-	move1_frames = 10;
+	move1_frames = 20;
 	move1_events = 0x80;
 
 	engine_font_manager_draw_data( frame, 30, 0 );

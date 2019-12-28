@@ -1,7 +1,7 @@
 #ifndef _GLOBAL_MANAGER_H_
 #define _GLOBAL_MANAGER_H_
 
-#define MAX_SCREEENS			6
+#define MAX_SCREEENS			8
 
 #define MAX_ENEMIES				3
 

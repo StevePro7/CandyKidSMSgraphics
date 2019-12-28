@@ -7,6 +7,8 @@ typedef struct tag_struct_enemy_object
 	int posnY;
 	signed char tileX;
 	signed char tileY;
+	unsigned char delay;
+	unsigned char timer;
 	unsigned char delta;
 	unsigned char total;
 	unsigned char speed;
