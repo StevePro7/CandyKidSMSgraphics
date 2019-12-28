@@ -8,10 +8,10 @@
 struct_command_object global_command_object;
 
 // Methods.
-void engine_command_manager_move1( unsigned int frameCount, unsigned char theMove )
-{
-	struct_command_object *co = &global_command_object;
-}
+//void engine_command_manager_move1( unsigned int frameCount, unsigned char theMove )
+//{
+//	struct_command_object *co = &global_command_object;
+//}
 
 void engine_command_manager_init()
 {

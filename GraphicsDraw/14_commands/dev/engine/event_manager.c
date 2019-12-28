@@ -95,7 +95,7 @@ void engine_event_manager_move1( unsigned int frameCount, unsigned char theMove 
 		engine_gamer_manager_move( direction_type_rght );
 	}
 
-
 	// TODO store command now
-	engine_command_manager_move1( frameCount, theMove );
+	frameCount *= 1;
+	//engine_command_manager_move1( frameCount, theMove );
 }
