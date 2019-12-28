@@ -3,6 +3,7 @@
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "global_manager.h"
+#include "input_manager.h"
 #include "sprite_manager.h"
 
 #define SPRITE_TILES_KID	256 + 48
@@ -38,6 +39,13 @@ void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
 }
 
 void engine_gamer_manager_update()
+{
+	struct_gamer_object *go = &global_gamer_object;
+	
+}
+
+
+void engine_gamer_manager_updateX()
 {
 	struct_gamer_object *go = &global_gamer_object;
 	if( lifecycle_type_idle == go->lifecycle )
@@ -130,6 +138,44 @@ void engine_gamer_manager_move( unsigned char direction )
 	go->lifecycle = lifecycle_type_move;
 	go->frame = 1;
 	calcd_frame();
+}
+
+unsigned char engine_gamer_manager_direction()
+{
+	unsigned char direction = direction_type_none;
+
+	unsigned char input;
+	input = engine_input_manager_move_up();
+	if( input )
+	{
+		direction = direction_type_upxx;
+	}
+	else
+	{
+		input = engine_input_manager_move_down();
+		if( input )
+		{
+			direction = direction_type_down;
+		}
+		else
+		{
+			input = engine_input_manager_move_left();
+			if( input )
+			{
+				direction = direction_type_left;
+			}
+			else
+			{
+				input = engine_input_manager_move_right();
+				if( input )
+				{
+					direction = direction_type_rght;
+				}
+			}
+		}
+	}
+
+	return direction;
 }
 
 static void calcd_frame()

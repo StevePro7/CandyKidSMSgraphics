@@ -5,6 +5,11 @@
 
 typedef struct tag_struct_event_object
 {
+	unsigned char event_index;
+	unsigned char event_type[ 10 ];
+	unsigned char event_args[ 10 ];
+
+
 	unsigned int move1Index;
 	//unsigned int move2Index;
 	//unsigned int speedIndex;

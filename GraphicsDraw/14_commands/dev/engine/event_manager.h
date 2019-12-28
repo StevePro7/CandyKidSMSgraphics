@@ -9,6 +9,9 @@ extern struct_event_object global_event_object;
 // Methods.
 void engine_event_manager_init();
 void engine_event_manager_clear();
+void engine_event_manager_add( unsigned char type, unsigned char args );
+void engine_event_manager_process();
+
 unsigned char engine_event_manager_kidMove();
 void engine_event_manager_move1( unsigned int frameCount, unsigned char theMove );
 

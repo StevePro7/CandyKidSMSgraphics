@@ -26,8 +26,23 @@ void engine_event_manager_init()
 
 void engine_event_manager_clear()
 {
+	struct_event_object *ev = &global_event_object;
+	ev->event_index = 0;
 }
 
+void engine_event_manager_add( unsigned char type, unsigned char args )
+{
+	struct_event_object *ev = &global_event_object;
+	unsigned char index = ev->event_index;
+	ev->event_type[ index ] = type;
+	ev->event_args[ index ] = args;
+	ev->move1Index++;
+}
+
+void engine_event_manager_process()
+{
+	struct_event_object *ev = &global_event_object;
+}
 
 unsigned char engine_event_manager_kidMove()
 {
