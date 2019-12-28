@@ -139,6 +139,6 @@ static void calcd_spots()
 {
 	struct_gamer_object *go = &global_gamer_object;
 	struct_board_object *bo = &global_board_object;
-	go->posnX = bo->posnX[ go->tileX ];
-	go->posnY = bo->posnY[ go->tileY ];
+	go->posnX = bo->posnX[ go->homeX ];
+	go->posnY = bo->posnY[ go->homeY ];
 }

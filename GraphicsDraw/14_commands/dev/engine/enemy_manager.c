@@ -1,4 +1,5 @@
 #include "enemy_manager.h"
+#include "board_manager.h"
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "global_manager.h"
@@ -10,17 +11,22 @@
 struct_enemy_object global_enemy_objects[ MAX_ENEMIES ];
 
 static void calcd_frame( unsigned char index );
+static void calcd_spots( unsigned char index );
 
 // Methods.
-void engine_enemy_manager_init()
+void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY )
 {
 	struct_enemy_object *eo;
 	unsigned char idx;
 	for( idx = 0; idx < MAX_ENEMIES; idx++ )
 	{
 		eo = &global_enemy_objects[ idx ];
-		eo->posnX = 0;
-		eo->posnY = 0;
+		eo->homeX = homeX[ idx ];
+		eo->homeY = homeY[ idx ];
+		eo->tileX = homeX[ idx ];
+		eo->tileY = homeY[ idx ];
+		//eo->posnX = 0;
+		//eo->posnY = 0;
 		eo->tileX = 0;
 		eo->tileY = 0;
 		eo->delay = 10;
@@ -35,6 +41,7 @@ void engine_enemy_manager_init()
 		eo->image = 0;
 		eo->frame = 0;
 		calcd_frame( idx );
+		calcd_spots( idx );
 	}
 }
 
@@ -133,12 +140,24 @@ void engine_enemy_manager_move( unsigned char index, unsigned char direction )
 
 void engine_enemy_manager_draw()
 {
-	struct_enemy_object *eo = &global_enemy_objects[ mama_type_pro ];
-	engine_sprite_manager_draw( eo->posnX, eo->posnY, eo->calcd );
+	struct_enemy_object *eo;
+	unsigned char idx;
+	for( idx = 0; idx < MAX_ENEMIES; idx++ )
+	{
+		eo = &global_enemy_objects[ idx ];
+		engine_sprite_manager_draw( eo->posnX, eo->posnY, eo->calcd );
+	}
 }
 
 static void calcd_frame( unsigned char index )
 {
 	struct_enemy_object *eo = &global_enemy_objects[ index ];
 	eo->calcd = SPRITE_TILES_PRO + eo->image * 8 + eo->frame * 4;
+}
+static void calcd_spots( unsigned char index )
+{
+	struct_enemy_object *eo = &global_enemy_objects[ index ];
+	struct_board_object *bo = &global_board_object;
+	eo->posnX = bo->posnX[ eo->homeX ];
+	eo->posnY = bo->posnY[ eo->homeY ];
 }

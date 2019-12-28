@@ -1,0 +1,7 @@
+TODO
+28/11/2019
+
+set all the data for the entities:
+e.g.
+start image
+start frame

@@ -1,4 +1,5 @@
 #include "func_screen.h"
+#include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\enemy_manager.h"
@@ -14,12 +15,14 @@ static unsigned char move1_events;
 
 void screen_func_screen_load()
 {
+	unsigned char homeX[] = { PRO_HOME_X, ADI_HOME_X, SUZ_HOME_X };
+	unsigned char homeY[] = { PRO_HOME_Y, ADI_HOME_Y, SUZ_HOME_Y };
 	engine_font_manager_draw_text( "HELLO FUNC SCREEN", 2, 1 );
 
 	engine_command_manager_init();
 	engine_command_manager_load();
 
-	engine_enemy_manager_init();
+	engine_enemy_manager_init( homeX, homeY );
 	engine_enemy_manager_load();
 
 	count = 0;
