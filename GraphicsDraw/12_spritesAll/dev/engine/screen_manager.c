@@ -22,32 +22,36 @@ void engine_screen_manager_update()
 	unsigned char input;
 
 	draw_boss( 64, 32 );
+	idx += 36;
 
 	input = engine_input_manager_move_left();
 	if( input )
 	{
-		idx = 2;
+		idx += 2;
 	}
 	input = engine_input_manager_move_right();
 	if( input )
 	{
-		idx = 4;
+		idx += 4;
 	}
+
 	input = engine_input_manager_move_up();
 	if( input )
 	{
-		idx = 12;
+		idx += 12;
 	}
 	input = engine_input_manager_move_down();
 	if( input )
 	{
-		idx = 14;
+		idx += 14;
 	}
 	input = engine_input_manager_move_fire1();
 	if( input )
 	{
-		idx = 16;
+		idx += 16;
 	}
+
+
 	draw_sprites( 48, 128, idx );
 }
 
