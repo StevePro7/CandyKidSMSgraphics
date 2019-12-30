@@ -47,8 +47,8 @@ namespace GraphicsLoad
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
 			int y = 1;
-			wide = 144;// (int)(y * size * scale);
-			high = 192;// (int)(y * size * scale);
+			wide = 3 * 16;// (int)(y * size * scale);
+			high = 64 + 6 * 16;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -165,10 +165,11 @@ namespace GraphicsLoad
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
 				//var xx = scale * size;
-				var yy = index.ToString().PadLeft(2, '0');
-				//var yy = (index + 2).ToString().PadLeft(2, '0');
+				//var yy = index.ToString().PadLeft(2, '0');
+				//var yy = (index + 0).ToString().PadLeft(2, '0');
 				//var file01 = $"spritemap.bmp";
-				var file02 = $"spritemap.png";
+				//var file02 = $"spritemap.png";
+				var file02 = (index + 0).ToString().PadLeft(2, '0') + ".png";
 				//Stream stream01 = File.Create("Images/" + file01);
 				Stream stream02 = File.Create("Images/" + file02);
 
@@ -186,8 +187,23 @@ namespace GraphicsLoad
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
-			DrawAll();
+			DrawVert();
 			spriteBatch.End();
+		}
+
+		private void DrawVert()
+		{
+			spriteBatch.Draw(boss48[index], Vector2.Zero, Color.White);
+
+			Vector2 pos;
+			for (int j = 0; j < 3; j++)
+			{
+				for (int i = 0; i < 6; i++)
+				{
+					pos = new Vector2(j * 16, i * 16 + 64);
+					spriteBatch.Draw(data16[j * 6 + i], pos, Color.White);
+				}
+			}
 		}
 
 		private void DrawAll()
