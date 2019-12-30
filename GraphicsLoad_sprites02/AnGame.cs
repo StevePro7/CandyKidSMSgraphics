@@ -15,9 +15,9 @@ namespace GraphicsLoad
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		Texture2D image01, image02;
-		Texture2D[] boss32;
-		Texture2D[] boss64;
-		Texture2D[] skulls;
+		Texture2D[] data16;
+		Texture2D[] boss24;
+		Texture2D[] boss48;
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
@@ -47,8 +47,8 @@ namespace GraphicsLoad
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
 			int y = 1;
-			wide = (int)(y * size * scale);
-			high = (int)(y * size * scale);
+			wide = 144;// (int)(y * size * scale);
+			high = 192;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -78,24 +78,37 @@ namespace GraphicsLoad
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			var name = scale * size;
-			image01 = Content.Load<Texture2D>("sprites01");
-			image02 = Content.Load<Texture2D>("sprites02");
+			//image01 = Content.Load<Texture2D>("sprites01");
+			//image02 = Content.Load<Texture2D>("sprites02");
 
-			skulls = new Texture2D[2];
-			skulls[0] = Content.Load<Texture2D>("skull03");
-			skulls[1] = Content.Load<Texture2D>("skull04");
+			//skulls = new Texture2D[2];
+			//skulls[0] = Content.Load<Texture2D>("skull03");
+			//skulls[1] = Content.Load<Texture2D>("skull04");
 
-			const int max = 7;
-			boss32 = new Texture2D[max];
-			boss64 = new Texture2D[max];
+			int max = 16;
+			data16 = new Texture2D[max + 2];
+			for (int i = 0; i < max; i++)
+			{
+				int idx = i;
+				var fle = idx.ToString().PadLeft(2, '0');
+				var d16 = $"Index{fle}";
+				data16[i] = Content.Load<Texture2D>("16/" + d16);
+			}
+
+			data16[16] = Content.Load<Texture2D>("16/Skull00");
+			data16[17] = Content.Load<Texture2D>("16/Skull01");
+
+			max = 6;
+			boss24 = new Texture2D[max];
+			boss48 = new Texture2D[max];
 			for (int i = 0; i < max; i++)
 			{
 				int idx = i * 2 + 4;
 				var fle = idx.ToString().PadLeft(2, '0');
-				var n32 = $"Scale32_Index{fle}";
-				var n64 = $"Scale64_Index{fle}";
-				//boss32[i] = Content.Load<Texture2D>("Boss32/" + n32);
-				//boss64[i] = Content.Load<Texture2D>("Boss64/" + n64);
+				var n32 = $"Index{fle}";
+				var n64 = $"Index{fle}";
+				boss24[i] = Content.Load<Texture2D>("24/" + n32);
+				boss48[i] = Content.Load<Texture2D>("48/" + n64);
 			}
 
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
@@ -148,11 +161,12 @@ namespace GraphicsLoad
 				//var xx = scale * size;
 				var yy = index.ToString().PadLeft(2, '0');
 				//var yy = (index + 2).ToString().PadLeft(2, '0');
-				//var file = $"spritemap.bmp";
-				var file = $"Index{yy}.png";
-				Stream stream = File.Create("Images/" + file);
+				//var file01 = $"spritemap.bmp";
+				var file02 = $"spritemap.png";
+				//Stream stream01 = File.Create("Images/" + file01);
+				Stream stream02 = File.Create("Images/" + file02);
 
-				resolvedTexture.SaveAsPng(stream, wide, high);
+				resolvedTexture.SaveAsPng(stream02, wide, high);
 				Exit();
 			}
 			else
@@ -164,15 +178,43 @@ namespace GraphicsLoad
 
 		private void Draw()
 		{
-			//GraphicsDevice.Clear(Color.Black);
-			//spriteBatch.Begin();
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+			DrawAll();
+			spriteBatch.End();
+		}
 
-			Draw4();
-			//Draw3();
-			//Draw3b();
-			//Draw3c();
-
-			//spriteBatch.End();
+		private void DrawAll()
+		{
+			Vector2 pos;
+			// Boss 48
+			for (int i = 0; i < 3; i++)
+			{
+				pos = new Vector2(i * 48, 0);
+				spriteBatch.Draw(boss48[i], pos, Color.White);
+			}
+			for (int i = 0; i < 3; i++)
+			{
+				pos = new Vector2(i * 48, 64);
+				spriteBatch.Draw(boss48[i + 3], pos, Color.White);
+			}
+			// Boss 24
+			for (int i = 0; i < 6; i++)
+			{
+				pos = new Vector2(i * 24, 128);
+				spriteBatch.Draw(boss24[i], pos, Color.White);
+			}
+			// Data 16
+			for (int i = 0; i < 9; i++)
+			{
+				pos = new Vector2(i * 16, 160);
+				spriteBatch.Draw(data16[i], pos, Color.White);
+			}
+			for (int i = 0; i < 9; i++)
+			{
+				pos = new Vector2(i * 16, 176);
+				spriteBatch.Draw(data16[i + 9], pos, Color.White);
+			}
 		}
 
 		//private void Draw2()
@@ -255,13 +297,13 @@ namespace GraphicsLoad
 					Vector2 pos;
 					xx = x * 64;
 					yy = y * 64;
-					image = boss64[j];
+					image = boss48[j];
 					pos = new Vector2(xx + 16, yy);
 					spriteBatch.Draw(image, pos, Color.White);
 
 					xx = x * 32;
 					yy = y * 32;
-					image = boss32[j];
+					image = boss24[j];
 					pos = new Vector2(xx + 16, yy + 128);
 					spriteBatch.Draw(image, pos, Color.White);
 
@@ -270,33 +312,24 @@ namespace GraphicsLoad
 			}
 		}
 
-		private void Draw3c()
-		{
-			Vector2 pos;
-			pos = new Vector2(16, 128 + 64);
-			spriteBatch.Draw(skulls[0], pos, Color.White);
-			pos = new Vector2(16, 128 + 64 + 16);
-			spriteBatch.Draw(skulls[1], pos, Color.White);
-		}
+		//private void Draw4()
+		//{
+		//	GraphicsDevice.Clear(Color.Black);
+		//	spriteBatch.Begin();
 
-		private void Draw4()
-		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
+		//	Rectangle dest = GetRectangle(index);
+		//	//spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
+		//	spriteBatch.Draw(skulls[0], new Vector2(0, 0), dest, Color.White);
 
-			Rectangle dest = GetRectangle(index);
-			//spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-			spriteBatch.Draw(skulls[0], new Vector2(0, 0), dest, Color.White);
+		//	if (twice)
+		//	{
+		//		dest = GetRectangle(index + 1);
+		//		//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
+		//		spriteBatch.Draw(image01, new Vector2(0, size * scale), dest, Color.White);
+		//	}
 
-			if (twice)
-			{
-				dest = GetRectangle(index + 1);
-				//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-				spriteBatch.Draw(image01, new Vector2(0, size * scale), dest, Color.White);
-			}
-
-			spriteBatch.End();
-		}
+		//	spriteBatch.End();
+		//}
 
 		private Rectangle GetRectangle(int index)
 		{
