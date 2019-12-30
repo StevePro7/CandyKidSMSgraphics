@@ -11,7 +11,7 @@ extern const unsigned char	boss32_pro01__palette__bin[];
 #define				boss32_pro01__palette__bin_bank 2
 
 extern const unsigned char	boss32_pro01__tiles__psgcompr[];
-#define				boss32_pro01__tiles__psgcompr_size 1368
+#define				boss32_pro01__tiles__psgcompr_size 1598
 #define				boss32_pro01__tiles__psgcompr_bank 2
 
 extern const unsigned char	boss32_suz01__palette__bin[];

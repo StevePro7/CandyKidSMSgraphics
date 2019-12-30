@@ -49,7 +49,7 @@ namespace GraphicsLoad
 			//int y = most + 4;
 			int y = 1;
 
-			root = 32;
+			root = 64;
 			wide = 3 * 16;// (int)(y * size * scale);
 			high = root + 6 * 16;// (int)(y * size * scale);
 
@@ -190,14 +190,17 @@ namespace GraphicsLoad
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
-			DrawVert24();
+			DrawVert32();
 			spriteBatch.End();
 		}
 
-		private void DrawVert24()
+		private void DrawVert32()
 		{
-			spriteBatch.Draw(boss24[index + 0], new Vector2(0, 0), Color.White);
-			spriteBatch.Draw(boss24[index + 1], new Vector2(24, 0), Color.White);
+			int[] arr = { 0, 1, 2, 3 };
+			spriteBatch.Draw(boss24[arr[0]], new Vector2(0, 0), Color.White);
+			spriteBatch.Draw(boss24[arr[1]], new Vector2(24, 0), Color.White);
+			spriteBatch.Draw(boss24[arr[2]], new Vector2(0, 32), Color.White);
+			spriteBatch.Draw(boss24[arr[3]], new Vector2(24, 32), Color.White);
 
 			Vector2 pos;
 			for (int j = 0; j < 3; j++)
@@ -210,7 +213,7 @@ namespace GraphicsLoad
 			}
 		}
 
-		private void DrawVert48()
+		private void DrawVert64()
 		{
 			spriteBatch.Draw(boss48[index], Vector2.Zero, Color.White);
 
