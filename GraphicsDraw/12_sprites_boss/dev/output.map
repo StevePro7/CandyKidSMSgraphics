@@ -467,6 +467,7 @@ engine\asm_manager.rel                    [ asm_manager ]
 engine\content_manager.rel                [ content_manager ]
 engine\font_manager.rel                   [ font_manager ]
 engine\input_manager.rel                  [ input_manager ]
+engine\global_manager.rel                 [ global_manager ]
 engine\screen_manager.rel                 [ screen_manager ]
 gfx.rel                                   [ gfx ]
 

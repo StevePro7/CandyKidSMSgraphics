@@ -1,5 +1,6 @@
 #include "screen_manager.h"
 #include "font_manager.h"
+#include "global_manager.h"
 #include "input_manager.h"
 #include "..\devkit\_sms_manager.h"
 
@@ -45,7 +46,7 @@ void engine_screen_manager_update()
 
 static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
 {
-	unsigned int tile = 256 + idx * 4;
+	unsigned int tile = SPRITE_TILES + idx * 4;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
@@ -56,7 +57,7 @@ static void draw_candykd()
 {
 	unsigned char x = 56;
 	unsigned char y = 40;
-	unsigned int tile = 256 + 48;
+	unsigned int tile = SPRITE_TILES + 48;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
@@ -72,14 +73,14 @@ static void draw_skullnc()
 {
 	unsigned char x = 56;
 	unsigned char y = 40;
-	unsigned int tile = 256 + 64;
+	unsigned int tile = SPRITE_TILES + 64;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 
-	tile = 256 + 68;
+	tile = SPRITE_TILES + 68;
 	devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
 	devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
 	devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );

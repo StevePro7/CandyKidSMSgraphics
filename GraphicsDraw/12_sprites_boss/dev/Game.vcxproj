@@ -149,6 +149,7 @@
     <ClCompile Include="engine\asm_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
+    <ClCompile Include="engine\global_manager.c" />
     <ClCompile Include="engine\input_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
     <ClCompile Include="game.c" />
@@ -164,6 +165,7 @@
     <ClInclude Include="engine\asm_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
     <ClInclude Include="engine\font_manager.h" />
+    <ClInclude Include="engine\global_manager.h" />
     <ClInclude Include="engine\input_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
     <ClInclude Include="game.h" />
