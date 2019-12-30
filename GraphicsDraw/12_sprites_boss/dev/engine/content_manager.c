@@ -22,11 +22,11 @@ void engine_content_manager_load_tiles()
 void engine_content_manager_load_sprites()
 {
 	// Sprite tiles.
-	//devkit_SMS_loadPSGaidencompressedTiles( sprites__tiles__psgcompr, SPRITE_TILES );
+	devkit_SMS_loadPSGaidencompressedTiles( sprites__tiles__psgcompr, SPRITE_TILES );
 	devkit_SMS_loadSpritePalette( ( void * ) sprites__palette__bin );
 
-	devkit_SMS_mapROMBank( boss32_adi01__tiles__psgcompr_bank );
-	devkit_SMS_loadPSGaidencompressedTiles( boss32_adi02__tiles__psgcompr, BOSSES_TILES );
+	//devkit_SMS_mapROMBank( boss32_adi01__tiles__psgcompr_bank );
+	//devkit_SMS_loadPSGaidencompressedTiles( boss32_adi02__tiles__psgcompr, BOSSES_TILES );
 
 	//devkit_SMS_loadPSGaidencompressedTiles( adriana__tiles__psgcompr, SPRITE_TILES + 64 );
 	//devkit_SMS_loadSpritePalette( ( void * ) adriana__palette__bin );
