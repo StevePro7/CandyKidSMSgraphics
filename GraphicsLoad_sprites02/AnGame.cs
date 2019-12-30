@@ -286,7 +286,7 @@ namespace GraphicsLoad
 
 			Rectangle dest = GetRectangle(index);
 			//spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-			spriteBatch.Draw(skulls[1], new Vector2(0, 0), dest, Color.White);
+			spriteBatch.Draw(image01, new Vector2(0, 0), dest, Color.White);
 
 			if (twice)
 			{
