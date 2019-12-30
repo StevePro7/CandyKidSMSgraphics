@@ -1,0 +1,36 @@
+XL2
+H A areas 2 global symbols
+M bank2
+O -mz80
+S .__.ABS. Def0000
+A _CODE size 0 flags 0 addr 0
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _BANK2 size 7C flags 0 addr 0
+S _boss32_adi01__tiles__psgcompr Def0000
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 07 00
+T 00 00 10 00 30 00 00 03 03 0F 0F 3F 3F 10 30 00
+R 00 00 07 00
+T 0E 00 00 C0 C0 F0 F0 FC FC 00 A0 C3 00 03 03 03
+R 00 00 07 00
+T 1C 00 03 3C F0 3C 3C FC FC A0 C3 00 C3 C3 C3 C3
+R 00 00 07 00
+T 2A 00 3C 00 3C 3C 3C 3C A0 C3 00 C0 C0 C0 C0 3C
+R 00 00 07 00
+T 38 00 0F 3C 3C 3F 3F 00 A0 F0 00 30 30 30 30 0F
+R 00 00 07 00
+T 46 00 0F FF FF 3F 3F A0 CF 00 FF FF 40 3F C3 C3
+R 00 00 07 00
+T 54 00 A0 F0 00 0C 0C 0C 0C 0F F0 FF FF FC FC 00
+R 00 00 07 00
+T 62 00 A0 3F 00 30 30 1C FF 0F 0F 7F F0 F0 10 A0
+R 00 00 07 00
+T 70 00 3F 00 0C 0C 1C FF F0 F0 FE 0F 0F 00
+R 00 00 07 00
