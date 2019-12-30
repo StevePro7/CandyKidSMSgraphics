@@ -4,11 +4,12 @@
 #include "input_manager.h"
 #include "..\devkit\_sms_manager.h"
 
-#define SPRITE_TILES_TEXT	"BOSS TILES LOADED..."
+#define SPRITE_TILES_TEXT	"NEW SPRITE TILES LOADED..."
 
+static void draw_boss( unsigned char x, unsigned char y );
 static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx );
-static void draw_candykd();
-static void draw_skullnc();
+//static void draw_candykd();
+//static void draw_skullnc();
 
 void engine_screen_manager_init()
 {
@@ -17,71 +18,92 @@ void engine_screen_manager_init()
 
 void engine_screen_manager_update()
 {
-	//unsigned char input;
+	unsigned char idx = 0;
+	unsigned char input;
 
-	//unsigned char idx = 6;
-	//draw_sprites( 48, 32, idx + 0 );
-	//draw_sprites( 80, 32, idx + 1 );
+	draw_boss( 64, 32 );
 
-	/*draw_sprites( 48, 64, idx + 2 );
-	draw_sprites( 80, 64, idx + 3 );
-
-	draw_sprites( 48, 96, idx + 4 );
-	draw_sprites( 80, 96, idx + 5 );
-
-	draw_sprites( 48, 128, idx + 6 );
-	draw_sprites( 80, 128, idx + 7 );
-
+	input = engine_input_manager_move_left();
+	if( input )
+	{
+		idx = 2;
+	}
+	input = engine_input_manager_move_right();
+	if( input )
+	{
+		idx = 4;
+	}
+	input = engine_input_manager_move_up();
+	if( input )
+	{
+		idx = 12;
+	}
+	input = engine_input_manager_move_down();
+	if( input )
+	{
+		idx = 14;
+	}
 	input = engine_input_manager_move_fire1();
 	if( input )
 	{
-		draw_skullnc();
+		idx = 16;
 	}
-	else
+	draw_sprites( 48, 128, idx );
+}
+
+static void draw_boss( unsigned char x, unsigned char y )
+{
+	unsigned int tile;
+	unsigned char r, c;
+	for( r = 0; r < 8; r++ )
 	{
-		draw_candykd();
-	}*/
+		for( c = 0; c < 6; c++ )
+		{
+			tile = BOSS01_TILES + r * 6 + c;
+			devkit_SMS_addSprite( x + c * 8, y + r * 8, tile );
+		}
+	}
 }
 
 static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
 {
-	unsigned int tile = SPRITE_TILES + idx * 4;
+	unsigned int tile = ENTITY_TILES + idx;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+	devkit_SMS_addSprite( x + 0, y + 8, tile + 6 );
+	devkit_SMS_addSprite( x + 8, y + 8, tile + 7 );
 }
-static void draw_candykd()
-{
-	unsigned char x = 56;
-	unsigned char y = 40;
-	unsigned int tile = SPRITE_TILES + 48;
-
-	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
-	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-
-	devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
-	devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
-	devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );
-	devkit_SMS_addSprite( x + 8, y + 40, tile + 3 );
-}
-static void draw_skullnc()
-{
-	unsigned char x = 56;
-	unsigned char y = 40;
-	unsigned int tile = SPRITE_TILES + 64;
-
-	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
-	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
-	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
-	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
-
-	tile = SPRITE_TILES + 68;
-	devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
-	devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
-	devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );
-	devkit_SMS_addSprite( x + 8, y + 40, tile + 3 );
-}
+//static void draw_candykd()
+//{
+//	unsigned char x = 56;
+//	unsigned char y = 40;
+//	unsigned int tile = SPRITE_TILES + 48;
+//
+//	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+//	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+//	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+//	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+//
+//	devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
+//	devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
+//	devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );
+//	devkit_SMS_addSprite( x + 8, y + 40, tile + 3 );
+//}
+//static void draw_skullnc()
+//{
+//	unsigned char x = 56;
+//	unsigned char y = 40;
+//	unsigned int tile = SPRITE_TILES + 64;
+//
+//	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+//	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+//	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+//	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
+//
+//	tile = SPRITE_TILES + 68;
+//	devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
+//	devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
+//	devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );
+//	devkit_SMS_addSprite( x + 8, y + 40, tile + 3 );
+//}
