@@ -1,3 +1,15 @@
+extern const unsigned char	boss32_adi01__tiles__psgcompr[];
+#define				boss32_adi01__tiles__psgcompr_size 2
+#define				boss32_adi01__tiles__psgcompr_bank 2
+
+extern const unsigned char	boss32_pro01__tiles__psgcompr[];
+#define				boss32_pro01__tiles__psgcompr_size 2
+#define				boss32_pro01__tiles__psgcompr_bank 2
+
+extern const unsigned char	boss32_suz01__tiles__psgcompr[];
+#define				boss32_suz01__tiles__psgcompr_size 2
+#define				boss32_suz01__tiles__psgcompr_bank 2
+
 extern const unsigned char	boss64_adi01__palette__bin[];
 #define				boss64_adi01__palette__bin_size 16
 #define				boss64_adi01__palette__bin_bank 2
