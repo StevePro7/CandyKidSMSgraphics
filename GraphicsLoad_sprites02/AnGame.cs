@@ -28,6 +28,7 @@ namespace GraphicsLoad
 
 		int wide;
 		int high;
+		int root;
 
 		public AnGame()
 		{
@@ -47,8 +48,10 @@ namespace GraphicsLoad
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
 			int y = 1;
+
+			root = 32;
 			wide = 3 * 16;// (int)(y * size * scale);
-			high = 64 + 6 * 16;// (int)(y * size * scale);
+			high = root + 6 * 16;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -187,11 +190,27 @@ namespace GraphicsLoad
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
-			DrawVert();
+			DrawVert24();
 			spriteBatch.End();
 		}
 
-		private void DrawVert()
+		private void DrawVert24()
+		{
+			spriteBatch.Draw(boss24[index + 0], new Vector2(0, 0), Color.White);
+			spriteBatch.Draw(boss24[index + 1], new Vector2(24, 0), Color.White);
+
+			Vector2 pos;
+			for (int j = 0; j < 3; j++)
+			{
+				for (int i = 0; i < 6; i++)
+				{
+					pos = new Vector2(j * 16, i * 16 + root);
+					spriteBatch.Draw(data16[j * 6 + i], pos, Color.White);
+				}
+			}
+		}
+
+		private void DrawVert48()
 		{
 			spriteBatch.Draw(boss48[index], Vector2.Zero, Color.White);
 
@@ -200,7 +219,7 @@ namespace GraphicsLoad
 			{
 				for (int i = 0; i < 6; i++)
 				{
-					pos = new Vector2(j * 16, i * 16 + 64);
+					pos = new Vector2(j * 16, i * 16 + root);
 					spriteBatch.Draw(data16[j * 6 + i], pos, Color.White);
 				}
 			}
