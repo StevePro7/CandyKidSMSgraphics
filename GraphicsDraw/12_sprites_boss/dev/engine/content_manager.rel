@@ -7,7 +7,7 @@ S _devkit_SMS_loadBGPalette Ref0000
 S _devkit_SMS_loadPSGaidencompressedTiles Ref0000
 S _font_tiles__tiles__psgcompr Ref0000
 S .__.ABS. Def0000
-S _boss32_adi01__tiles__psgcompr Ref0000
+S _boss32_adi02__tiles__psgcompr Ref0000
 S _font_tiles__palette__bin Ref0000
 S _devkit_SMS_loadSpritePalette Ref0000
 S _devkit_SMS_mapROMBank Ref0000

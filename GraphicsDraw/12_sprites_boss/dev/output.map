@@ -43,10 +43,10 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000010  l__CABS0                        
      00000010  l__CABS4                        
      00000038  l__CABS3                        
-     0000007C  l__BANK2                        
      00000110  l__DATA                         
      0000012A  l__HEADER5                      
      00000200  s__CODE                         
+     0000095C  l__BANK2                        
      00001B0B  l__CODE                         
      00001D0B  s__HOME                         
      00001D0B  s__INITIALIZER                  
@@ -405,12 +405,22 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_BANK2                              00008000    0000007C =         124. bytes (REL,CON)
+_BANK2                              00008000    0000095C =        2396. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
      00008000  _boss32_adi01__tiles__psgcompr     bank2
-
+     0000807C  _boss32_adi02__tiles__psgcompr     bank2
+     000080FA  _boss32_pro01__tiles__psgcompr     bank2
+     00008178  _boss32_pro02__tiles__psgcompr     bank2
+     000081F6  _boss32_suz01__tiles__psgcompr     bank2
+     00008274  _boss32_suz02__tiles__psgcompr     bank2
+     000082F0  _boss64_adi01__tiles__psgcompr     bank2
+     00008402  _boss64_adi02__tiles__psgcompr     bank2
+     00008514  _boss64_pro01__tiles__psgcompr     bank2
+     00008626  _boss64_pro02__tiles__psgcompr     bank2
+     00008738  _boss64_suz01__tiles__psgcompr     bank2
+     0000884A  _boss64_suz02__tiles__psgcompr     bank2
 ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
 Hexadecimal  [32-Bits]
 
