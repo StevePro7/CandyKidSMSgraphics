@@ -87,14 +87,20 @@ namespace GraphicsLoad
 
 			int max = 16;
 			data16 = new Texture2D[max + 2];
-			for (int i = 0; i < max; i++)
+			for (int i = 4; i < max; i++)
 			{
 				int idx = i;
 				var fle = idx.ToString().PadLeft(2, '0');
 				var d16 = $"Index{fle}";
-				data16[i] = Content.Load<Texture2D>("16/" + d16);
+				data16[i - 4] = Content.Load<Texture2D>("16/" + d16);
 			}
-
+			for (int i = 0; i < 4; i++)
+			{
+				int idx = i;
+				var fle = idx.ToString().PadLeft(2, '0');
+				var d16 = $"Index{fle}";
+				data16[i + 12] = Content.Load<Texture2D>("16/" + d16);
+			}
 			data16[16] = Content.Load<Texture2D>("16/Skull00");
 			data16[17] = Content.Load<Texture2D>("16/Skull01");
 
