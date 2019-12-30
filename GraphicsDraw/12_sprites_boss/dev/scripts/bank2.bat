@@ -5,11 +5,8 @@ cd ..
 cd banks
 cd bank2
 
-REM player
-
+REM boss32
 bmp2tile.exe raw\boss32_adi01.bmp -savetiles "boss32_adi01 (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -exit
-
-
 
 cd ..
 folder2c bank2 bank2 2
