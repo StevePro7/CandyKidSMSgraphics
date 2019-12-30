@@ -54,8 +54,8 @@ static void draw_sprites( unsigned char x, unsigned char y, unsigned char idx)
 }
 static void draw_candykd()
 {
-	unsigned char x = 176;
-	unsigned char y = 32;
+	unsigned char x = 56;
+	unsigned char y = 40;
 	unsigned int tile = 256 + 48;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
@@ -63,15 +63,15 @@ static void draw_candykd()
 	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 
-	devkit_SMS_addSprite( x + 0, y + 40, tile + 0 );
-	devkit_SMS_addSprite( x + 8, y + 40, tile + 1 );
-	devkit_SMS_addSprite( x + 0, y + 48, tile + 2 );
-	devkit_SMS_addSprite( x + 8, y + 48, tile + 3 );
+	devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
+	devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
+	devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );
+	devkit_SMS_addSprite( x + 8, y + 40, tile + 3 );
 }
 static void draw_skullnc()
 {
-	unsigned char x = 176;
-	unsigned char y = 32;
+	unsigned char x = 56;
+	unsigned char y = 40;
 	unsigned int tile = 256 + 64;
 
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
@@ -80,8 +80,8 @@ static void draw_skullnc()
 	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 
 	tile = 256 + 68;
-	devkit_SMS_addSprite( x + 0, y + 40, tile + 0 );
-	devkit_SMS_addSprite( x + 8, y + 40, tile + 1 );
-	devkit_SMS_addSprite( x + 0, y + 48, tile + 2 );
-	devkit_SMS_addSprite( x + 8, y + 48, tile + 3 );
+	devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
+	devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
+	devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );
+	devkit_SMS_addSprite( x + 8, y + 40, tile + 3 );
 }

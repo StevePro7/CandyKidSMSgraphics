@@ -224,56 +224,56 @@ _draw_candykd:
 ;screen_manager.c:61: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	ld	hl, #0x0130
 	push	hl
-	ld	hl, #0x20b0
+	ld	hl, #0x2838
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
 ;screen_manager.c:62: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	ld	hl, #0x0131
 	ex	(sp),hl
-	ld	hl, #0x20b8
+	ld	hl, #0x2840
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
 ;screen_manager.c:63: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	ld	hl, #0x0132
 	ex	(sp),hl
-	ld	hl, #0x28b0
+	ld	hl, #0x3038
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
 ;screen_manager.c:64: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 	ld	hl, #0x0133
 	ex	(sp),hl
-	ld	hl, #0x28b8
+	ld	hl, #0x3040
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:66: devkit_SMS_addSprite( x + 0, y + 40, tile + 0 );
+;screen_manager.c:66: devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
 	ld	hl, #0x0130
 	ex	(sp),hl
-	ld	hl, #0x48b0
+	ld	hl, #0x4838
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:67: devkit_SMS_addSprite( x + 8, y + 40, tile + 1 );
+;screen_manager.c:67: devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
 	ld	hl, #0x0131
 	ex	(sp),hl
-	ld	hl, #0x48b8
+	ld	hl, #0x4840
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:68: devkit_SMS_addSprite( x + 0, y + 48, tile + 2 );
+;screen_manager.c:68: devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );
 	ld	hl, #0x0132
 	ex	(sp),hl
-	ld	hl, #0x50b0
+	ld	hl, #0x5038
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:69: devkit_SMS_addSprite( x + 8, y + 48, tile + 3 );
+;screen_manager.c:69: devkit_SMS_addSprite( x + 8, y + 40, tile + 3 );
 	ld	hl, #0x0133
 	ex	(sp),hl
-	ld	hl, #0x50b8
+	ld	hl, #0x5040
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
@@ -287,56 +287,56 @@ _draw_skullnc:
 ;screen_manager.c:77: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	ld	hl, #0x0140
 	push	hl
-	ld	hl, #0x20b0
+	ld	hl, #0x2838
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
 ;screen_manager.c:78: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	ld	hl, #0x0141
 	ex	(sp),hl
-	ld	hl, #0x20b8
+	ld	hl, #0x2840
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
 ;screen_manager.c:79: devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	ld	hl, #0x0142
 	ex	(sp),hl
-	ld	hl, #0x28b0
+	ld	hl, #0x3038
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
 ;screen_manager.c:80: devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 	ld	hl, #0x0143
 	ex	(sp),hl
-	ld	hl, #0x28b8
+	ld	hl, #0x3040
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:83: devkit_SMS_addSprite( x + 0, y + 40, tile + 0 );
+;screen_manager.c:83: devkit_SMS_addSprite( x + 0, y + 32, tile + 0 );
 	ld	hl, #0x0144
 	ex	(sp),hl
-	ld	hl, #0x48b0
+	ld	hl, #0x4838
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:84: devkit_SMS_addSprite( x + 8, y + 40, tile + 1 );
+;screen_manager.c:84: devkit_SMS_addSprite( x + 8, y + 32, tile + 1 );
 	ld	hl, #0x0145
 	ex	(sp),hl
-	ld	hl, #0x48b8
+	ld	hl, #0x4840
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:85: devkit_SMS_addSprite( x + 0, y + 48, tile + 2 );
+;screen_manager.c:85: devkit_SMS_addSprite( x + 0, y + 40, tile + 2 );
 	ld	hl, #0x0146
 	ex	(sp),hl
-	ld	hl, #0x50b0
+	ld	hl, #0x5038
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:86: devkit_SMS_addSprite( x + 8, y + 48, tile + 3 );
+;screen_manager.c:86: devkit_SMS_addSprite( x + 8, y + 40, tile + 3 );
 	ld	hl, #0x0147
 	ex	(sp),hl
-	ld	hl, #0x50b8
+	ld	hl, #0x5040
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
