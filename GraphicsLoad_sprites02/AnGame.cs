@@ -149,7 +149,7 @@ namespace GraphicsLoad
 				var yy = index.ToString().PadLeft(2, '0');
 				//var yy = (index + 2).ToString().PadLeft(2, '0');
 				//var file = $"spritemap.bmp";
-				var file = $"Index{yy}.bmp";
+				var file = $"Index{yy}.png";
 				Stream stream = File.Create("Images/" + file);
 
 				resolvedTexture.SaveAsPng(stream, wide, high);
