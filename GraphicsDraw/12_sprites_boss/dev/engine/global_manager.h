@@ -1,6 +1,7 @@
 #ifndef _GLOBAL_MANAGER_H_
 #define _GLOBAL_MANAGER_H_
 
+#define BOSSES_TILES	256
 #define SPRITE_TILES	256 + 64
 
 #endif//_GLOBAL_MANAGER_H_
