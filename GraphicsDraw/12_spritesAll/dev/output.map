@@ -51,7 +51,7 @@ Area                                    Addr        Size        Decimal Bytes (A
      00001CFC  s__INITIALIZER                  
      00001D04  s__GSINIT                       
      00001D13  s__GSFINAL                      
-     000020F2  l__BANK2                        
+     0000315C  l__BANK2                        
      00008000  _SMS_SRAM                          SMSlib_PSGaiden
      00008000  s__BANK2                        
      0000C000  s__DATA                         
@@ -405,22 +405,28 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_BANK2                              00008000    000020F2 =        8434. bytes (REL,CON)
+_BANK2                              00008000    0000315C =       12636. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00008000  _boss64_adi01__palette__bin        bank2
-     00008010  _boss64_adi01__tiles__psgcompr     bank2
-     0000855C  _boss64_adi02__palette__bin        bank2
-     0000856C  _boss64_adi02__tiles__psgcompr     bank2
-     00008AB0  _boss64_pro01__palette__bin        bank2
-     00008AC0  _boss64_pro01__tiles__psgcompr     bank2
-     00009002  _boss64_pro02__palette__bin        bank2
-     00009012  _boss64_pro02__tiles__psgcompr     bank2
-     000095A8  _boss64_suz01__palette__bin        bank2
-     000095B8  _boss64_suz01__tiles__psgcompr     bank2
-     00009B92  _boss64_suz02__palette__bin        bank2
-     00009BA2  _boss64_suz02__tiles__psgcompr     bank2
+     00008000  _boss32_adi01__palette__bin        bank2
+     00008010  _boss32_adi01__tiles__psgcompr     bank2
+     00008538  _boss32_pro01__palette__bin        bank2
+     00008548  _boss32_pro01__tiles__psgcompr     bank2
+     00008AA0  _boss32_suz01__palette__bin        bank2
+     00008AB0  _boss32_suz01__tiles__psgcompr     bank2
+     0000906A  _boss64_adi01__palette__bin        bank2
+     0000907A  _boss64_adi01__tiles__psgcompr     bank2
+     000095C6  _boss64_adi02__palette__bin        bank2
+     000095D6  _boss64_adi02__tiles__psgcompr     bank2
+     00009B1A  _boss64_pro01__palette__bin        bank2
+     00009B2A  _boss64_pro01__tiles__psgcompr     bank2
+     0000A06C  _boss64_pro02__palette__bin        bank2
+     0000A07C  _boss64_pro02__tiles__psgcompr     bank2
+     0000A612  _boss64_suz01__palette__bin        bank2
+     0000A622  _boss64_suz01__tiles__psgcompr     bank2
+     0000ABFC  _boss64_suz02__palette__bin        bank2
+     0000AC0C  _boss64_suz02__tiles__psgcompr     bank2
 ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
 Hexadecimal  [32-Bits]
 
