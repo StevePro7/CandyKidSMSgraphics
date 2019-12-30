@@ -14,7 +14,7 @@ namespace GraphicsLoad
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-		Texture2D image, image02;
+		Texture2D image01, image02;
 		Texture2D[] boss32;
 		Texture2D[] boss64;
 		Texture2D[] skulls;
@@ -43,14 +43,10 @@ namespace GraphicsLoad
 			{
 				saves = Convert.ToBoolean(ConfigurationManager.AppSettings["saves"]);
 			}
-			if(null != ConfigurationManager.AppSettings["twice"])
-			{
-				twice = Convert.ToBoolean(ConfigurationManager.AppSettings["twice"]);
-			}
 
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
-			int y = 16;
+			int y = 1;
 			wide = (int)(y * size * scale);
 			high = (int)(y * size * scale);
 
@@ -82,7 +78,7 @@ namespace GraphicsLoad
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 			var name = scale * size;
-			image = Content.Load<Texture2D>("sprites");
+			image01 = Content.Load<Texture2D>("sprites01");
 			image02 = Content.Load<Texture2D>("sprites02");
 
 			skulls = new Texture2D[2];
@@ -98,9 +94,10 @@ namespace GraphicsLoad
 				var fle = idx.ToString().PadLeft(2, '0');
 				var n32 = $"Scale32_Index{fle}";
 				var n64 = $"Scale64_Index{fle}";
-				boss32[i] = Content.Load<Texture2D>("Boss32/" + n32);
-				boss64[i] = Content.Load<Texture2D>("Boss64/" + n64);
+				//boss32[i] = Content.Load<Texture2D>("Boss32/" + n32);
+				//boss64[i] = Content.Load<Texture2D>("Boss64/" + n64);
 			}
+
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
 			high = pp.BackBufferHeight;
@@ -149,10 +146,10 @@ namespace GraphicsLoad
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
 				//var xx = scale * size;
-				//var yy = index.ToString().PadLeft(2, '0');
+				var yy = index.ToString().PadLeft(2, '0');
 				//var yy = (index + 2).ToString().PadLeft(2, '0');
-				var file = $"spritemap.bmp";
-				//var file = $"Candy{yy}.bmp";
+				//var file = $"spritemap.bmp";
+				var file = $"Index{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
 				resolvedTexture.SaveAsPng(stream, wide, high);
@@ -167,14 +164,15 @@ namespace GraphicsLoad
 
 		private void Draw()
 		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
+			//GraphicsDevice.Clear(Color.Black);
+			//spriteBatch.Begin();
 
-			Draw3();
-			Draw3b();
-			Draw3c();
+			Draw4();
+			//Draw3();
+			//Draw3b();
+			//Draw3c();
 
-			spriteBatch.End();
+			//spriteBatch.End();
 		}
 
 		//private void Draw2()
@@ -213,10 +211,10 @@ namespace GraphicsLoad
 			int y = 0;
 
 			Vector2 pos;
-			Texture2D draws = image;
+			Texture2D draws = image01;
 			for(int j = 0; j < arr.Length; j++)
 			{
-				draws = image;
+				draws = image01;
 				int i = arr[j];
 
 				if (6 == i)
@@ -288,13 +286,13 @@ namespace GraphicsLoad
 
 			Rectangle dest = GetRectangle(index);
 			//spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-			spriteBatch.Draw(image, new Vector2(0, 0), dest, Color.White);
+			spriteBatch.Draw(skulls[1], new Vector2(0, 0), dest, Color.White);
 
 			if (twice)
 			{
 				dest = GetRectangle(index + 1);
 				//spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 1.0f);
-				spriteBatch.Draw(image, new Vector2(0, size * scale), dest, Color.White);
+				spriteBatch.Draw(image01, new Vector2(0, size * scale), dest, Color.White);
 			}
 
 			spriteBatch.End();
