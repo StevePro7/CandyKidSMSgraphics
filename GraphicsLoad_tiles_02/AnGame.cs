@@ -146,7 +146,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"AllTiles.png";
+				var file = $"AllTiles2.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -196,7 +196,7 @@ namespace GraphicsLoad
 			{
 				var image = candy[idx];
 				var pos = new Vector2(160 + idx * size, 0);
-				spriteBatch.Draw(image, pos, Color.White);
+				//spriteBatch.Draw(image, pos, Color.White);
 			}
 
 			for (int idx = 0; idx < 12; idx++)
