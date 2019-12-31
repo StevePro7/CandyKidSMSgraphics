@@ -19,12 +19,12 @@ namespace GraphicsLoad
 		Texture2D[] bonus02;
 		Texture2D[] candy;
 		Texture2D[] trees;
-		Texture2D title;
+		Texture2D[] title;
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
 		const int most = 12;
-		int index = 0;
+		//int index = 0;
 		float scale = 1.0f;
 		bool saves = false;
 
@@ -41,7 +41,7 @@ namespace GraphicsLoad
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
 			int y = 4;
-			wide = 208;// (int)(size * scale);
+			wide = 200;// (int)(size * scale);
 			high = 64;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
@@ -72,7 +72,7 @@ namespace GraphicsLoad
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			font = Content.Load<Texture2D>("font_line");
+			//font = Content.Load<Texture2D>("font_line");
 			var names = new string[] { "BlueSpiral", "CoolTriangle", "LoveHeart", "PawPrint" };
 			const int bns = 4;
 			bonus = new Texture2D[bns];
@@ -97,7 +97,9 @@ namespace GraphicsLoad
 			trees[0] = Content.Load<Texture2D>("Trees/tree_avoid");
 			trees[1] = Content.Load<Texture2D>("Trees/tree_death");
 
-			title = Content.Load<Texture2D>("game_title");
+			title = new Texture2D[2];
+			title[0] = Content.Load<Texture2D>("title_Candy");
+			title[1] = Content.Load<Texture2D>("title_Kid");
 
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
@@ -192,21 +194,21 @@ namespace GraphicsLoad
 			}
 
 			//candy
-			for (int idx = 0; idx < 3; idx++)
+			for (int idx = 0; idx < 2; idx++)
 			{
 				var image = candy[idx];
 				var pos = new Vector2(160 + idx * size, 0);
-				//spriteBatch.Draw(image, pos, Color.White);
-			}
-
-			for (int idx = 0; idx < 12; idx++)
-			{
-				var image = candy[idx];
-				var pos = new Vector2(0 + idx * size, 16);
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
-			spriteBatch.Draw(candy[13], new Vector2(208 - 16, 16), Color.White);
+			for (int idx = 2; idx < 13; idx++)
+			{
+				var image = candy[idx];
+				var pos = new Vector2((idx - 2)* size, 16);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			spriteBatch.Draw(candy[13], new Vector2(192 - 16, 16), Color.White);
 
 			//int[] arr = { 2, 3, 4, 5, 6, 7, 8, 10, 11, 13, 9, 12, 14, 15 };
 			//for (int idx = 0; idx < 14; idx++)
@@ -218,7 +220,9 @@ namespace GraphicsLoad
 			//	spriteBatch.Draw(image, pos, Color.White);
 			//}
 
-			spriteBatch.Draw(title, new Vector2(0, 32), Color.White);
+			spriteBatch.Draw(title[0], new Vector2(0, 32), Color.White);
+			spriteBatch.Draw(title[1], new Vector2(200-64, 32), Color.White);
+
 			spriteBatch.End();
 		}
 
@@ -274,7 +278,7 @@ namespace GraphicsLoad
 			//	spriteBatch.Draw(image, pos, Color.White);
 			//}
 
-			spriteBatch.Draw(title, new Vector2(0, 48), Color.White);
+			//spriteBatch.Draw(title, new Vector2(0, 48), Color.White);
 			spriteBatch.End();
 		}
 
