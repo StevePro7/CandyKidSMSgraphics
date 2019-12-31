@@ -16,8 +16,8 @@ bmp2tile.exe raw\64\05.png -savetiles "boss64_suz02 (tiles).psgcompr" -noremoved
 
 REM boss32
 bmp2tile.exe raw\32\00.png -savetiles "boss32_pro01 (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -savepalette "boss32_pro01 (palette).bin" -fullpalette -spritepalette -exit
-bmp2tile.exe raw\32\02.png -savetiles "boss32_adi01 (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -savepalette "boss32_adi01 (palette).bin" -fullpalette -spritepalette -exit
-bmp2tile.exe raw\32\04.png -savetiles "boss32_suz01 (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -savepalette "boss32_suz01 (palette).bin" -fullpalette -spritepalette -exit
+bmp2tile.exe raw\32\01.png -savetiles "boss32_adi01 (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -savepalette "boss32_adi01 (palette).bin" -fullpalette -spritepalette -exit
+bmp2tile.exe raw\32\02.png -savetiles "boss32_suz01 (tiles).psgcompr" -noremovedupes -planar -tileoffset 0 -savepalette "boss32_suz01 (palette).bin" -fullpalette -spritepalette -exit
 
 
 cd ..
