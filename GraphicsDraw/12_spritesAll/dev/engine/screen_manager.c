@@ -21,7 +21,7 @@ void engine_screen_manager_update()
 	//unsigned char idx = 0;
 	//unsigned char input;
 
-	//draw_boss( 64, 32 );
+	draw_boss( 64, 32 );
 	/*idx += 36;
 
 	input = engine_input_manager_move_left();
@@ -51,8 +51,8 @@ void engine_screen_manager_update()
 		idx += 16;
 	}*/
 
-	draw_sprites( 52, 120, 4 );
-	draw_sprites( 56, 128, 48 );
+	//draw_sprites( 52, 120, 4 );
+	draw_sprites( 56, 88, 48 );
 	
 }
 
