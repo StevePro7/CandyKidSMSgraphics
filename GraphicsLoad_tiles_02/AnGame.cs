@@ -19,7 +19,9 @@ namespace GraphicsLoad
 		Texture2D[] bonus02;
 		Texture2D[] candy;
 		Texture2D[] trees;
-		Texture2D[] title;
+		Texture2D[] titles;
+		Texture2D title;
+
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
@@ -41,8 +43,8 @@ namespace GraphicsLoad
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
 			int y = 4;
-			wide = 200;// (int)(size * scale);
-			high = 64;// (int)(y * size * scale);
+			wide = 208;// (int)(size * scale);
+			high = 48;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -97,9 +99,10 @@ namespace GraphicsLoad
 			trees[0] = Content.Load<Texture2D>("Trees/tree_avoid");
 			trees[1] = Content.Load<Texture2D>("Trees/tree_death");
 
-			title = new Texture2D[2];
-			title[0] = Content.Load<Texture2D>("title_Candy");
-			title[1] = Content.Load<Texture2D>("title_Kid");
+			title = Content.Load<Texture2D>("game_title");
+			titles = new Texture2D[2];
+			titles[0] = Content.Load<Texture2D>("title_Candy");
+			titles[1] = Content.Load<Texture2D>("title_Kid");
 
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
@@ -148,7 +151,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"AllTiles2.png";
+				var file = $"AllTiles3.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -163,6 +166,69 @@ namespace GraphicsLoad
 		}
 
 		private void Draw()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			//spriteBatch.Draw(font, new Vector2(8, 0), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 8), new Rectangle(200, 0, 512, 8), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 16), new Rectangle(408, 0, 48, 8), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 24), new Rectangle(456, 0, 48, 8), Color.White);
+
+			spriteBatch.Draw(trees[0], new Vector2(0, 0), Color.White);
+			spriteBatch.Draw(trees[1], new Vector2(16, 0), Color.White);
+
+			// bonus
+			for (int idx = 0; idx < bonus.Length; idx++)
+			{
+				var image = bonus[idx];
+				//var image = bonus02[idx];
+				var pos = new Vector2(32 + idx * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			// bonus02
+			for (int idx = 0; idx < bonus.Length; idx++)
+			{
+				//var image = bonus[idx];
+				var image = bonus02[idx];
+				var pos = new Vector2(96 + idx * size, 0);
+				//spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			//candy
+			for (int idx = 0; idx < 6; idx++)
+			{
+				var image = candy[idx];
+				var pos = new Vector2(96 + idx * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			//for (int idx = 2; idx < 13; idx++)
+			//{
+			//	var image = candy[idx];
+			//	var pos = new Vector2((idx - 2) * size, 16);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
+
+			spriteBatch.Draw(candy[13], new Vector2(208 - 16, 0), Color.White);
+
+			//int[] arr = { 2, 3, 4, 5, 6, 7, 8, 10, 11, 13, 9, 12, 14, 15 };
+			//for (int idx = 0; idx < 14; idx++)
+			//{
+			//	int bob = arr[idx];
+			//	bob -= 2;
+			//	var image = candy[bob];
+			//	var pos = new Vector2(0, 128 + 64 + idx * size);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
+
+			spriteBatch.Draw(title, new Vector2(0, 16), Color.White);
+
+			spriteBatch.End();
+		}
+
+		private void DrawAll()
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
@@ -220,8 +286,8 @@ namespace GraphicsLoad
 			//	spriteBatch.Draw(image, pos, Color.White);
 			//}
 
-			spriteBatch.Draw(title[0], new Vector2(0, 32), Color.White);
-			spriteBatch.Draw(title[1], new Vector2(200-64, 32), Color.White);
+			spriteBatch.Draw(titles[0], new Vector2(0, 32), Color.White);
+			spriteBatch.Draw(titles[1], new Vector2(200-64, 32), Color.White);
 
 			spriteBatch.End();
 		}
