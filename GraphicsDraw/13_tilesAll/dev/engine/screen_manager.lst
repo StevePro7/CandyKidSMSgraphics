@@ -1,0 +1,310 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.9 #9960 (MINGW64)
+                              4 ;--------------------------------------------------------
+                              5 	.module screen_manager
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _devkit_SMS_setTile
+                             12 	.globl _devkit_SMS_setNextTileatXY
+                             13 	.globl _engine_font_manager_draw_text
+                             14 	.globl _engine_screen_manager_init
+                             15 	.globl _engine_screen_manager_update
+                             16 ;--------------------------------------------------------
+                             17 ; special function registers
+                             18 ;--------------------------------------------------------
+                             19 ;--------------------------------------------------------
+                             20 ; ram data
+                             21 ;--------------------------------------------------------
+                             22 	.area _DATA
+                             23 ;--------------------------------------------------------
+                             24 ; ram data
+                             25 ;--------------------------------------------------------
+                             26 	.area _INITIALIZED
+                             27 ;--------------------------------------------------------
+                             28 ; absolute external ram data
+                             29 ;--------------------------------------------------------
+                             30 	.area _DABS (ABS)
+                             31 ;--------------------------------------------------------
+                             32 ; global & static initialisations
+                             33 ;--------------------------------------------------------
+                             34 	.area _HOME
+                             35 	.area _GSINIT
+                             36 	.area _GSFINAL
+                             37 	.area _GSINIT
+                             38 ;--------------------------------------------------------
+                             39 ; Home
+                             40 ;--------------------------------------------------------
+                             41 	.area _HOME
+                             42 	.area _HOME
+                             43 ;--------------------------------------------------------
+                             44 ; code
+                             45 ;--------------------------------------------------------
+                             46 	.area _CODE
+                             47 ;screen_manager.c:16: void engine_screen_manager_init()
+                             48 ;	---------------------------------
+                             49 ; Function engine_screen_manager_init
+                             50 ; ---------------------------------
+   0000                      51 _engine_screen_manager_init::
+                             52 ;screen_manager.c:22: draw_tiles( 2, 0, 0 );
+   0000 21 00 00      [10]   53 	ld	hl, #0x0000
+   0003 E5            [11]   54 	push	hl
+   0004 3E 02         [ 7]   55 	ld	a, #0x02
+   0006 F5            [11]   56 	push	af
+   0007 33            [ 6]   57 	inc	sp
+   0008 CDrDCr00      [17]   58 	call	_draw_tiles
+                             59 ;screen_manager.c:23: draw_tiles( 4, 0, 0 );
+   000B 33            [ 6]   60 	inc	sp
+   000C 21 00 00      [10]   61 	ld	hl,#0x0000
+   000F E3            [19]   62 	ex	(sp),hl
+   0010 3E 04         [ 7]   63 	ld	a, #0x04
+   0012 F5            [11]   64 	push	af
+   0013 33            [ 6]   65 	inc	sp
+   0014 CDrDCr00      [17]   66 	call	_draw_tiles
+                             67 ;screen_manager.c:24: draw_tiles( 2, 2, 0 );
+   0017 33            [ 6]   68 	inc	sp
+   0018 21 02 00      [10]   69 	ld	hl,#0x0002
+   001B E3            [19]   70 	ex	(sp),hl
+   001C 3E 02         [ 7]   71 	ld	a, #0x02
+   001E F5            [11]   72 	push	af
+   001F 33            [ 6]   73 	inc	sp
+   0020 CDrDCr00      [17]   74 	call	_draw_tiles
+                             75 ;screen_manager.c:25: draw_tiles( 2, 4, 0 );
+   0023 33            [ 6]   76 	inc	sp
+   0024 21 04 00      [10]   77 	ld	hl,#0x0004
+   0027 E3            [19]   78 	ex	(sp),hl
+   0028 3E 02         [ 7]   79 	ld	a, #0x02
+   002A F5            [11]   80 	push	af
+   002B 33            [ 6]   81 	inc	sp
+   002C CDrDCr00      [17]   82 	call	_draw_tiles
+                             83 ;screen_manager.c:27: draw_tiles( 30, 0, 0 );
+   002F 33            [ 6]   84 	inc	sp
+   0030 21 00 00      [10]   85 	ld	hl,#0x0000
+   0033 E3            [19]   86 	ex	(sp),hl
+   0034 3E 1E         [ 7]   87 	ld	a, #0x1e
+   0036 F5            [11]   88 	push	af
+   0037 33            [ 6]   89 	inc	sp
+   0038 CDrDCr00      [17]   90 	call	_draw_tiles
+                             91 ;screen_manager.c:28: draw_tiles( 30, 2, 0 );
+   003B 33            [ 6]   92 	inc	sp
+   003C 21 02 00      [10]   93 	ld	hl,#0x0002
+   003F E3            [19]   94 	ex	(sp),hl
+   0040 3E 1E         [ 7]   95 	ld	a, #0x1e
+   0042 F5            [11]   96 	push	af
+   0043 33            [ 6]   97 	inc	sp
+   0044 CDrDCr00      [17]   98 	call	_draw_tiles
+                             99 ;screen_manager.c:29: draw_tiles( 30, 4, 0 );
+   0047 33            [ 6]  100 	inc	sp
+   0048 21 04 00      [10]  101 	ld	hl,#0x0004
+   004B E3            [19]  102 	ex	(sp),hl
+   004C 3E 1E         [ 7]  103 	ld	a, #0x1e
+   004E F5            [11]  104 	push	af
+   004F 33            [ 6]  105 	inc	sp
+   0050 CDrDCr00      [17]  106 	call	_draw_tiles
+   0053 F1            [10]  107 	pop	af
+   0054 33            [ 6]  108 	inc	sp
+                            109 ;screen_manager.c:47: draw_title();
+   0055 CDr7Er00      [17]  110 	call	_draw_title
+                            111 ;screen_manager.c:49: engine_font_manager_draw_text( NORMAL_TILES_TEXT, 4, 20 );
+   0058 21 04 14      [10]  112 	ld	hl, #0x1404
+   005B E5            [11]  113 	push	hl
+   005C 21r66r00      [10]  114 	ld	hl, #___str_0
+   005F E5            [11]  115 	push	hl
+   0060 CDr00r00      [17]  116 	call	_engine_font_manager_draw_text
+   0063 F1            [10]  117 	pop	af
+   0064 F1            [10]  118 	pop	af
+   0065 C9            [10]  119 	ret
+   0066                     120 ___str_0:
+   0066 4E 4F 52 4D 41 4C   121 	.ascii "NORMAL TILES LOADED..."
+        20 54 49 4C 45 53
+        20 4C 4F 41 44 45
+        44 2E 2E 2E
+   007C 00                  122 	.db 0x00
+                            123 ;screen_manager.c:52: void engine_screen_manager_update()
+                            124 ;	---------------------------------
+                            125 ; Function engine_screen_manager_update
+                            126 ; ---------------------------------
+   007D                     127 _engine_screen_manager_update::
+                            128 ;screen_manager.c:76: }
+   007D C9            [10]  129 	ret
+                            130 ;screen_manager.c:78: static void draw_title()
+                            131 ;	---------------------------------
+                            132 ; Function draw_title
+                            133 ; ---------------------------------
+   007E                     134 _draw_title:
+   007E DD E5         [15]  135 	push	ix
+   0080 DD 21 00 00   [14]  136 	ld	ix,#0
+   0084 DD 39         [15]  137 	add	ix,sp
+   0086 F5            [11]  138 	push	af
+                            139 ;screen_manager.c:81: const unsigned int *pnt = ( const unsigned int * ) apex_tiles__tilemap__bin;
+   0087 11r00r00      [10]  140 	ld	de, #_apex_tiles__tilemap__bin+0
+                            141 ;screen_manager.c:93: for( j = 0; j < 4; j++ )
+   008A 0E 00         [ 7]  142 	ld	c, #0x00
+                            143 ;screen_manager.c:95: for( i = 0; i < w; i++ )
+   008C                     144 00111$:
+   008C 41            [ 4]  145 	ld	b, c
+   008D 04            [ 4]  146 	inc	b
+   008E 04            [ 4]  147 	inc	b
+   008F 79            [ 4]  148 	ld	a, c
+   0090 87            [ 4]  149 	add	a, a
+   0091 81            [ 4]  150 	add	a, c
+   0092 87            [ 4]  151 	add	a, a
+   0093 87            [ 4]  152 	add	a, a
+   0094 81            [ 4]  153 	add	a, c
+   0095 87            [ 4]  154 	add	a, a
+   0096 DD 77 FF      [19]  155 	ld	-1 (ix), a
+   0099 DD 36 FE 00   [19]  156 	ld	-2 (ix), #0x00
+   009D                     157 00104$:
+   009D DD 7E FE      [19]  158 	ld	a, -2 (ix)
+   00A0 D6 1A         [ 7]  159 	sub	a, #0x1a
+   00A2 30 2D         [12]  160 	jr	NC,00107$
+                            161 ;screen_manager.c:97: devkit_SMS_setNextTileatXY( x + i, y + j );
+   00A4 DD 7E FE      [19]  162 	ld	a, -2 (ix)
+   00A7 C6 04         [ 7]  163 	add	a, #0x04
+   00A9 C5            [11]  164 	push	bc
+   00AA D5            [11]  165 	push	de
+   00AB C5            [11]  166 	push	bc
+   00AC 33            [ 6]  167 	inc	sp
+   00AD F5            [11]  168 	push	af
+   00AE 33            [ 6]  169 	inc	sp
+   00AF CDr00r00      [17]  170 	call	_devkit_SMS_setNextTileatXY
+   00B2 F1            [10]  171 	pop	af
+   00B3 D1            [10]  172 	pop	de
+   00B4 C1            [10]  173 	pop	bc
+                            174 ;screen_manager.c:98: devkit_SMS_setTile( *pnt + TITLE_START + j * w + i );
+   00B5 6B            [ 4]  175 	ld	l, e
+   00B6 62            [ 4]  176 	ld	h, d
+   00B7 7E            [ 7]  177 	ld	a, (hl)
+   00B8 23            [ 6]  178 	inc	hl
+   00B9 66            [ 7]  179 	ld	h, (hl)
+   00BA C6 34         [ 7]  180 	add	a, #0x34
+   00BC DD 86 FF      [19]  181 	add	a, -1 (ix)
+   00BF DD 86 FE      [19]  182 	add	a, -2 (ix)
+   00C2 C5            [11]  183 	push	bc
+   00C3 D5            [11]  184 	push	de
+   00C4 F5            [11]  185 	push	af
+   00C5 33            [ 6]  186 	inc	sp
+   00C6 CDr00r00      [17]  187 	call	_devkit_SMS_setTile
+   00C9 33            [ 6]  188 	inc	sp
+   00CA D1            [10]  189 	pop	de
+   00CB C1            [10]  190 	pop	bc
+                            191 ;screen_manager.c:95: for( i = 0; i < w; i++ )
+   00CC DD 34 FE      [23]  192 	inc	-2 (ix)
+   00CF 18 CC         [12]  193 	jr	00104$
+   00D1                     194 00107$:
+                            195 ;screen_manager.c:93: for( j = 0; j < 4; j++ )
+   00D1 0C            [ 4]  196 	inc	c
+   00D2 79            [ 4]  197 	ld	a, c
+   00D3 D6 04         [ 7]  198 	sub	a, #0x04
+   00D5 38 B5         [12]  199 	jr	C,00111$
+   00D7 DD F9         [10]  200 	ld	sp, ix
+   00D9 DD E1         [14]  201 	pop	ix
+   00DB C9            [10]  202 	ret
+                            203 ;screen_manager.c:103: static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx)
+                            204 ;	---------------------------------
+                            205 ; Function draw_tiles
+                            206 ; ---------------------------------
+   00DC                     207 _draw_tiles:
+   00DC DD E5         [15]  208 	push	ix
+   00DE DD 21 00 00   [14]  209 	ld	ix,#0
+   00E2 DD 39         [15]  210 	add	ix,sp
+                            211 ;screen_manager.c:106: const unsigned int *pnt = ( const unsigned int * ) apex_tiles__tilemap__bin;
+   00E4 01r00r00      [10]  212 	ld	bc, #_apex_tiles__tilemap__bin
+                            213 ;screen_manager.c:108: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); devkit_SMS_setTile( *pnt + idx + 0 );
+   00E7 C5            [11]  214 	push	bc
+   00E8 DD 66 05      [19]  215 	ld	h, 5 (ix)
+   00EB DD 6E 04      [19]  216 	ld	l, 4 (ix)
+   00EE E5            [11]  217 	push	hl
+   00EF CDr00r00      [17]  218 	call	_devkit_SMS_setNextTileatXY
+   00F2 F1            [10]  219 	pop	af
+   00F3 C1            [10]  220 	pop	bc
+   00F4 69            [ 4]  221 	ld	l, c
+   00F5 60            [ 4]  222 	ld	h, b
+   00F6 5E            [ 7]  223 	ld	e, (hl)
+   00F7 23            [ 6]  224 	inc	hl
+   00F8 56            [ 7]  225 	ld	d, (hl)
+   00F9 7B            [ 4]  226 	ld	a, e
+   00FA DD 86 06      [19]  227 	add	a, 6 (ix)
+   00FD 57            [ 4]  228 	ld	d, a
+   00FE C5            [11]  229 	push	bc
+   00FF D5            [11]  230 	push	de
+   0100 33            [ 6]  231 	inc	sp
+   0101 CDr00r00      [17]  232 	call	_devkit_SMS_setTile
+   0104 33            [ 6]  233 	inc	sp
+   0105 C1            [10]  234 	pop	bc
+                            235 ;screen_manager.c:109: devkit_SMS_setNextTileatXY( x + 1, y + 0 ); devkit_SMS_setTile( *pnt + idx + 1 );
+   0106 DD 5E 04      [19]  236 	ld	e, 4 (ix)
+   0109 1C            [ 4]  237 	inc	e
+   010A C5            [11]  238 	push	bc
+   010B D5            [11]  239 	push	de
+   010C DD 56 05      [19]  240 	ld	d, 5 (ix)
+   010F D5            [11]  241 	push	de
+   0110 CDr00r00      [17]  242 	call	_devkit_SMS_setNextTileatXY
+   0113 F1            [10]  243 	pop	af
+   0114 D1            [10]  244 	pop	de
+   0115 C1            [10]  245 	pop	bc
+   0116 69            [ 4]  246 	ld	l, c
+   0117 60            [ 4]  247 	ld	h, b
+   0118 7E            [ 7]  248 	ld	a, (hl)
+   0119 23            [ 6]  249 	inc	hl
+   011A 56            [ 7]  250 	ld	d, (hl)
+   011B DD 86 06      [19]  251 	add	a, 6 (ix)
+   011E 57            [ 4]  252 	ld	d, a
+   011F 14            [ 4]  253 	inc	d
+   0120 C5            [11]  254 	push	bc
+   0121 D5            [11]  255 	push	de
+   0122 D5            [11]  256 	push	de
+   0123 33            [ 6]  257 	inc	sp
+   0124 CDr00r00      [17]  258 	call	_devkit_SMS_setTile
+   0127 33            [ 6]  259 	inc	sp
+   0128 D1            [10]  260 	pop	de
+   0129 C1            [10]  261 	pop	bc
+                            262 ;screen_manager.c:110: devkit_SMS_setNextTileatXY( x + 0, y + 1 ); devkit_SMS_setTile( *pnt + idx + 26 );
+   012A DD 56 05      [19]  263 	ld	d, 5 (ix)
+   012D 14            [ 4]  264 	inc	d
+   012E C5            [11]  265 	push	bc
+   012F D5            [11]  266 	push	de
+   0130 D5            [11]  267 	push	de
+   0131 33            [ 6]  268 	inc	sp
+   0132 DD 7E 04      [19]  269 	ld	a, 4 (ix)
+   0135 F5            [11]  270 	push	af
+   0136 33            [ 6]  271 	inc	sp
+   0137 CDr00r00      [17]  272 	call	_devkit_SMS_setNextTileatXY
+   013A F1            [10]  273 	pop	af
+   013B D1            [10]  274 	pop	de
+   013C C1            [10]  275 	pop	bc
+   013D 69            [ 4]  276 	ld	l, c
+   013E 60            [ 4]  277 	ld	h, b
+   013F 7E            [ 7]  278 	ld	a, (hl)
+   0140 23            [ 6]  279 	inc	hl
+   0141 66            [ 7]  280 	ld	h, (hl)
+   0142 DD 86 06      [19]  281 	add	a, 6 (ix)
+   0145 C6 1A         [ 7]  282 	add	a, #0x1a
+   0147 C5            [11]  283 	push	bc
+   0148 D5            [11]  284 	push	de
+   0149 F5            [11]  285 	push	af
+   014A 33            [ 6]  286 	inc	sp
+   014B CDr00r00      [17]  287 	call	_devkit_SMS_setTile
+   014E 33            [ 6]  288 	inc	sp
+   014F CDr00r00      [17]  289 	call	_devkit_SMS_setNextTileatXY
+   0152 F1            [10]  290 	pop	af
+   0153 E1            [10]  291 	pop	hl
+   0154 4E            [ 7]  292 	ld	c, (hl)
+   0155 23            [ 6]  293 	inc	hl
+   0156 46            [ 7]  294 	ld	b, (hl)
+   0157 79            [ 4]  295 	ld	a, c
+   0158 DD 86 06      [19]  296 	add	a, 6 (ix)
+   015B C6 1B         [ 7]  297 	add	a, #0x1b
+   015D 47            [ 4]  298 	ld	b, a
+   015E C5            [11]  299 	push	bc
+   015F 33            [ 6]  300 	inc	sp
+   0160 CDr00r00      [17]  301 	call	_devkit_SMS_setTile
+   0163 33            [ 6]  302 	inc	sp
+   0164 DD E1         [14]  303 	pop	ix
+   0166 C9            [10]  304 	ret
+                            305 	.area _CODE
+                            306 	.area _INITIALIZER
+                            307 	.area _CABS (ABS)

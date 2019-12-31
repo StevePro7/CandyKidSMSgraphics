@@ -6,20 +6,27 @@
 
 #define NORMAL_TILES_TEXT	"NORMAL TILES LOADED..."
 #define SPRITE_TILES_TEXT	"STEVEN TILES LOADED..."
+#define TITLE_START		52
 
-static void draw_titile();
+static void draw_title();
 static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx );
 //static void draw_candykd();
 //static void draw_skullnc();
 
 void engine_screen_manager_init()
 {
-	unsigned char x, y;
-	unsigned char idx = 24;
+	//unsigned char x, y;
+	//unsigned char idx = 24;
 
 	// trees
-	//draw_tiles( 4, 4, 0 );
-	//draw_tiles( 8, 4, 4 );
+	draw_tiles( 2, 0, 0 );
+	draw_tiles( 4, 0, 0 );
+	draw_tiles( 2, 2, 0 );
+	draw_tiles( 2, 4, 0 );
+
+	draw_tiles( 30, 0, 0 );
+	draw_tiles( 30, 2, 0 );
+	draw_tiles( 30, 4, 0 );
 
 	//// bonus
 	//draw_tiles( 12, 4, 8 );
@@ -37,7 +44,9 @@ void engine_screen_manager_init()
 	//	}
 	//}
 
-	draw_titile();
+	draw_title();
+
+	engine_font_manager_draw_text( NORMAL_TILES_TEXT, 4, 20 );
 }
 
 void engine_screen_manager_update()
@@ -66,9 +75,10 @@ void engine_screen_manager_update()
 	}*/
 }
 
-static void draw_titile()
+static void draw_title()
 {
-	const unsigned int *pnt = ( const unsigned int * ) game_title__tilemap__bin;
+	//const unsigned int *pnt = ( const unsigned int * ) game_title__tilemap__bin;
+	const unsigned int *pnt = ( const unsigned int * ) apex_tiles__tilemap__bin;
 
 	unsigned char x = 4;
 	unsigned char y = 2;
@@ -76,25 +86,29 @@ static void draw_titile()
 	unsigned char i;
 	unsigned char j;
 
+	unsigned char w = 26;
+	unsigned char l = 4;
+
 	// CANDY KID title is 26 cols * 4 rows of 8x8 tiles.
 	for( j = 0; j < 4; j++ )
 	{
-		for( i = 0; i < 26; i++ )
+		for( i = 0; i < w; i++ )
 		{
 			devkit_SMS_setNextTileatXY( x + i, y + j );
-			devkit_SMS_setTile( *pnt + j * 26 + i );
+			devkit_SMS_setTile( *pnt + TITLE_START + j * w + i );
 		}
 	}
 }
 
 static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx)
 {
-	const unsigned char *pnt = data_tiles__tilemap__bin;
+	//const unsigned int *pnt = ( const unsigned int * ) game_title__tilemap__bin;
+	const unsigned int *pnt = ( const unsigned int * ) apex_tiles__tilemap__bin;
 
 	devkit_SMS_setNextTileatXY( x + 0, y + 0 ); devkit_SMS_setTile( *pnt + idx + 0 );
 	devkit_SMS_setNextTileatXY( x + 1, y + 0 ); devkit_SMS_setTile( *pnt + idx + 1 );
-	devkit_SMS_setNextTileatXY( x + 0, y + 1 ); devkit_SMS_setTile( *pnt + idx + 2 );
-	devkit_SMS_setNextTileatXY( x + 1, y + 1 ); devkit_SMS_setTile( *pnt + idx + 3 );
+	devkit_SMS_setNextTileatXY( x + 0, y + 1 ); devkit_SMS_setTile( *pnt + idx + 26 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 1 ); devkit_SMS_setTile( *pnt + idx + 27 );
 }
 //static void draw_candykd()
 //{
