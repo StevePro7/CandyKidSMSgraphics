@@ -18,11 +18,11 @@ void engine_screen_manager_init()
 
 void engine_screen_manager_update()
 {
-	unsigned char idx = 0;
-	unsigned char input;
+	//unsigned char idx = 0;
+	//unsigned char input;
 
-	draw_boss( 64, 32 );
-	idx += 36;
+	//draw_boss( 64, 32 );
+	/*idx += 36;
 
 	input = engine_input_manager_move_left();
 	if( input )
@@ -49,10 +49,11 @@ void engine_screen_manager_update()
 	if( input )
 	{
 		idx += 16;
-	}
+	}*/
 
-
-	draw_sprites( 48, 128, idx );
+	draw_sprites( 52, 120, 4 );
+	draw_sprites( 56, 128, 36 );
+	
 }
 
 static void draw_boss( unsigned char x, unsigned char y )
