@@ -23,9 +23,17 @@ void engine_content_manager_load_sprites()
 {
 	// Sprite tiles.
 
-	devkit_SMS_mapROMBank( boss32_pro01__tiles__psgcompr_bank );
+	//Boss32
+	/*devkit_SMS_mapROMBank( boss32_pro01__tiles__psgcompr_bank );
 	devkit_SMS_loadPSGaidencompressedTiles( boss32_pro01__tiles__psgcompr, SPRITE_TILES );
-	devkit_SMS_loadSpritePalette( ( void * ) boss32_pro01__palette__bin );
+	devkit_SMS_loadSpritePalette( ( void * ) boss32_pro01__palette__bin );*/
+
+
+	//Boss64
+	//00.png
+	devkit_SMS_mapROMBank( boss64_pro01__tiles__psgcompr_bank );
+	devkit_SMS_loadPSGaidencompressedTiles( boss64_pro01__tiles__psgcompr, SPRITE_TILES );
+	devkit_SMS_loadSpritePalette( ( void * ) boss64_pro01__palette__bin );
 
 
 	//devkit_SMS_mapROMBank( boss64_adi01__tiles__psgcompr_bank );
@@ -37,9 +45,7 @@ void engine_content_manager_load_sprites()
 	devkit_SMS_loadSpritePalette( ( void * ) boss64_adi02__palette__bin );*/
 
 
-	/*devkit_SMS_mapROMBank( boss64_pro01__tiles__psgcompr_bank );
-	devkit_SMS_loadPSGaidencompressedTiles( boss64_pro01__tiles__psgcompr, SPRITE_TILES );
-	devkit_SMS_loadSpritePalette( ( void * ) boss64_pro01__palette__bin );*/
+	
 
 	/*devkit_SMS_mapROMBank( boss64_pro02__tiles__psgcompr_bank );
 	devkit_SMS_loadPSGaidencompressedTiles( boss64_pro02__tiles__psgcompr, SPRITE_TILES );

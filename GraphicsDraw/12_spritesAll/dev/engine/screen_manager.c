@@ -52,7 +52,7 @@ void engine_screen_manager_update()
 	}*/
 
 	draw_sprites( 52, 120, 4 );
-	draw_sprites( 56, 128, 36 );
+	draw_sprites( 56, 128, 48 );
 	
 }
 
