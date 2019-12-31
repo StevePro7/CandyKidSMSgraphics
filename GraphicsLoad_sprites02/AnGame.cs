@@ -190,25 +190,29 @@ namespace GraphicsLoad
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
+			//DrawVert64();
 			DrawVert32();
 			spriteBatch.End();
 		}
 
 		private void DrawVert32()
 		{
-			int[] arr = { 0, 1, 2, 3 };
+			//int[] arr = { 0, 1, 2, 3 };
+			int[] arr = { 0, 1, 4, 5 };
 			spriteBatch.Draw(boss24[arr[0]], new Vector2(0, 0), Color.White);
 			spriteBatch.Draw(boss24[arr[1]], new Vector2(24, 0), Color.White);
+
 			spriteBatch.Draw(boss24[arr[2]], new Vector2(0, 32), Color.White);
 			spriteBatch.Draw(boss24[arr[3]], new Vector2(24, 32), Color.White);
 
 			Vector2 pos;
-			for (int j = 0; j < 3; j++)
+			int z = 0;
+			for (int y = 0; y < 6; y++)
 			{
-				for (int i = 0; i < 6; i++)
+				for (int x = 0; x < 3; x++)
 				{
-					pos = new Vector2(j * 16, i * 16 + root);
-					spriteBatch.Draw(data16[j * 6 + i], pos, Color.White);
+					pos = new Vector2(x * 16, y * 16 + root);
+					spriteBatch.Draw(data16[z++], pos, Color.White);
 				}
 			}
 		}
@@ -218,12 +222,13 @@ namespace GraphicsLoad
 			spriteBatch.Draw(boss48[index], Vector2.Zero, Color.White);
 
 			Vector2 pos;
-			for (int j = 0; j < 3; j++)
+			int z = 0;
+			for (int y = 0; y < 6; y++)
 			{
-				for (int i = 0; i < 6; i++)
+				for (int x = 0; x < 3; x++)
 				{
-					pos = new Vector2(j * 16, i * 16 + root);
-					spriteBatch.Draw(data16[j * 6 + i], pos, Color.White);
+					pos = new Vector2(x * 16, y * 16 + root);
+					spriteBatch.Draw(data16[z++], pos, Color.White);
 				}
 			}
 		}
