@@ -7,6 +7,7 @@
 #define NORMAL_TILES_TEXT	"NORMAL TILES LOADED..."
 #define SPRITE_TILES_TEXT	"STEVEN TILES LOADED..."
 
+static void draw_titile();
 static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx );
 //static void draw_candykd();
 //static void draw_skullnc();
@@ -16,35 +17,31 @@ void engine_screen_manager_init()
 	unsigned char x, y;
 	unsigned char idx = 24;
 
-
 	// trees
-	draw_tiles( 4, 4, 0 );
-	draw_tiles( 8, 4, 4 );
+	//draw_tiles( 4, 4, 0 );
+	//draw_tiles( 8, 4, 4 );
 
-	// bonus
-	draw_tiles( 12, 4, 8 );
-	draw_tiles( 16, 4, 12 );
-	draw_tiles( 20, 4, 16 );
-	draw_tiles( 24, 4, 20 );
+	//// bonus
+	//draw_tiles( 12, 4, 8 );
+	//draw_tiles( 16, 4, 12 );
+	//draw_tiles( 20, 4, 16 );
+	//draw_tiles( 24, 4, 20 );
 
-	// candy
-	for( y = 0; y < 4; y += 2 )
-	{
-		for( x = 2; x < 16; x += 2 )
-		{
-			draw_tiles( x + 4, y + 10, idx );
-			idx += 4;
-		}
-	}
+	//// candy
+	//for( y = 0; y < 4; y += 2 )
+	//{
+	//	for( x = 2; x < 16; x += 2 )
+	//	{
+	//		draw_tiles( x + 4, y + 10, idx );
+	//		idx += 4;
+	//	}
+	//}
 
+	draw_titile();
 }
 
 void engine_screen_manager_update()
 {
-	
-
-	
-
 	/*unsigned char idx = 6;
 	draw_sprites( 48, 32, idx + 0 );
 	draw_sprites( 80, 32, idx + 1 );
@@ -67,6 +64,27 @@ void engine_screen_manager_update()
 	{
 		draw_candykd();
 	}*/
+}
+
+static void draw_titile()
+{
+	const unsigned int *pnt = ( const unsigned int * ) game_title__tilemap__bin;
+
+	unsigned char x = 4;
+	unsigned char y = 2;
+
+	unsigned char i;
+	unsigned char j;
+
+	// CANDY KID title is 26 cols * 4 rows of 8x8 tiles.
+	for( j = 0; j < 4; j++ )
+	{
+		for( i = 0; i < 26; i++ )
+		{
+			devkit_SMS_setNextTileatXY( x + i, y + j );
+			devkit_SMS_setTile( *pnt + j * 26 + i );
+		}
+	}
 }
 
 static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx)

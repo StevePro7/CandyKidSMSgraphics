@@ -48,9 +48,16 @@
 ; Function engine_content_manager_load_tiles
 ; ---------------------------------
 _engine_content_manager_load_tiles::
+;content_manager.c:12: devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
+	ld	hl, #0x0000
+	push	hl
+	ld	hl, #_font_tiles__tiles__psgcompr
+	push	hl
+	call	_devkit_SMS_loadPSGaidencompressedTiles
+	pop	af
 ;content_manager.c:16: devkit_SMS_loadPSGaidencompressedTiles( data_tiles__tiles__psgcompr, DATA_TILES );
 	ld	hl, #0x0040
-	push	hl
+	ex	(sp),hl
 	ld	hl, #_data_tiles__tiles__psgcompr
 	push	hl
 	call	_devkit_SMS_loadPSGaidencompressedTiles
@@ -60,21 +67,21 @@ _engine_content_manager_load_tiles::
 	ld	bc, #_data_tiles__palette__bin+0
 	push	bc
 	call	_devkit_SMS_loadBGPalette
-;content_manager.c:20: devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
-	ld	hl, #0x0000
+;content_manager.c:20: devkit_SMS_loadPSGaidencompressedTiles( game_title__tiles__psgcompr, GAME_TITLE );
+	ld	hl, #0x0098
 	ex	(sp),hl
-	ld	hl, #_font_tiles__tiles__psgcompr
+	ld	hl, #_game_title__tiles__psgcompr
 	push	hl
 	call	_devkit_SMS_loadPSGaidencompressedTiles
 	pop	af
 	pop	af
 	ret
-;content_manager.c:25: void engine_content_manager_load_sprites()
+;content_manager.c:24: void engine_content_manager_load_sprites()
 ;	---------------------------------
 ; Function engine_content_manager_load_sprites
 ; ---------------------------------
 _engine_content_manager_load_sprites::
-;content_manager.c:36: }
+;content_manager.c:35: }
 	ret
 	.area _CODE
 	.area _INITIALIZER
