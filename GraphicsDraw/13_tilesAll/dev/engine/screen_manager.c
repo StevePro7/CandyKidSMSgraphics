@@ -15,18 +15,28 @@ static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx );
 
 void engine_screen_manager_init()
 {
-	//unsigned char x, y;
+	unsigned char x, y;
 	//unsigned char idx = 24;
 
 	// trees
-	draw_tiles( 2, 0, 0 );
-	draw_tiles( 4, 0, 0 );
+	for( x = 2; x < 32; x += 2 )
+	{
+		draw_tiles( x, 0, 0 );
+		draw_tiles( x, 22, 0 );
+	}
+	for( y = 2; y < 22; y += 2 )
+	{
+		draw_tiles( 2, y, 0 );
+		draw_tiles( 30, y, 0 );
+	}
+	
+	/*draw_tiles( 4, 0, 0 );
 	draw_tiles( 2, 2, 0 );
 	draw_tiles( 2, 4, 0 );
 
 	draw_tiles( 30, 0, 0 );
 	draw_tiles( 30, 2, 0 );
-	draw_tiles( 30, 4, 0 );
+	draw_tiles( 30, 4, 0 );*/
 
 	//// bonus
 	//draw_tiles( 12, 4, 8 );
@@ -46,7 +56,7 @@ void engine_screen_manager_init()
 
 	draw_title();
 
-	engine_font_manager_draw_text( NORMAL_TILES_TEXT, 4, 20 );
+	//engine_font_manager_draw_text( NORMAL_TILES_TEXT, 4, 20 );
 }
 
 void engine_screen_manager_update()
