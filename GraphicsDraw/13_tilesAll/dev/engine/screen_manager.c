@@ -33,12 +33,12 @@ void engine_screen_manager_init()
 
 	//// bonus
 	draw_tiles( 26, 6, 6 );
-	draw_tiles( 26, 8, 8 );
+	//draw_tiles( 26, 8, 8 );
 	draw_tiles( 26, 10, 10 );
 	draw_tiles( 28, 6, 4 );
 
 	draw_tiles( 28, 10, 12 );
-	draw_tiles( 22, 8, 14 );
+	draw_tiles( 26, 8, 14 );
 	//draw_tiles( 16, 4, 12 );
 	//draw_tiles( 20, 4, 16 );
 	//draw_tiles( 24, 4, 20 );

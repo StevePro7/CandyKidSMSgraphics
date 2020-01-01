@@ -123,14 +123,6 @@ _engine_screen_manager_init::
 	push	af
 	inc	sp
 	call	_draw_tiles
-;screen_manager.c:36: draw_tiles( 26, 8, 8 );
-	inc	sp
-	ld	hl,#0x0808
-	ex	(sp),hl
-	ld	a, #0x1a
-	push	af
-	inc	sp
-	call	_draw_tiles
 ;screen_manager.c:37: draw_tiles( 26, 10, 10 );
 	inc	sp
 	ld	hl,#0x0a0a
@@ -155,11 +147,11 @@ _engine_screen_manager_init::
 	push	af
 	inc	sp
 	call	_draw_tiles
-;screen_manager.c:41: draw_tiles( 22, 8, 14 );
+;screen_manager.c:41: draw_tiles( 26, 8, 14 );
 	inc	sp
 	ld	hl,#0x0e08
 	ex	(sp),hl
-	ld	a, #0x16
+	ld	a, #0x1a
 	push	af
 	inc	sp
 	call	_draw_tiles
