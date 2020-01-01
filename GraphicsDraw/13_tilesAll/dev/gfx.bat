@@ -7,7 +7,7 @@ bmp2tile.exe raw\apex_tiles.png -savetiles "apex_tiles (tiles).psgcompr" -noremo
 ::bmp2tile.exe raw\data_tiles.bmp -savetiles "data_tiles (tiles).psgcompr" -noremovedupes -planar -tileoffset  64 -savetilemap "data_tiles (tilemap).bin" -savepalette "data_tiles (palette).bin" -fullpalette -exit
 
 :: Sprites
-bmp2tile.exe raw\sprites.bmp -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
+bmp2tile.exe raw\sprites.png -savetiles "sprites (tiles).psgcompr" -noremovedupes -nomirror -planar -tileoffset 0 -savepalette "sprites (palette).bin" -fullpalette  -spritepalette -exit
 
 cd ..
 cd dev
