@@ -30,16 +30,15 @@ void engine_screen_manager_init()
 		draw_tiles( 30, y, 0 );
 	}
 	
-	/*draw_tiles( 4, 0, 0 );
-	draw_tiles( 2, 2, 0 );
-	draw_tiles( 2, 4, 0 );
-
-	draw_tiles( 30, 0, 0 );
-	draw_tiles( 30, 2, 0 );
-	draw_tiles( 30, 4, 0 );*/
 
 	//// bonus
-	draw_tiles( 20, 8, 8 );
+	draw_tiles( 26, 6, 6 );
+	draw_tiles( 26, 8, 8 );
+	draw_tiles( 26, 10, 10 );
+	draw_tiles( 28, 6, 4 );
+
+	draw_tiles( 28, 10, 12 );
+	draw_tiles( 22, 8, 14 );
 	//draw_tiles( 16, 4, 12 );
 	//draw_tiles( 20, 4, 16 );
 	//draw_tiles( 24, 4, 20 );
@@ -61,7 +60,8 @@ void engine_screen_manager_init()
 
 void engine_screen_manager_update()
 {
-	/*unsigned char idx = 6;
+	/*
+	unsigned char idx = 6;
 	draw_sprites( 48, 32, idx + 0 );
 	draw_sprites( 80, 32, idx + 1 );
 
@@ -73,19 +73,16 @@ void engine_screen_manager_update()
 
 	draw_sprites( 48, 128, idx + 6 );
 	draw_sprites( 80, 128, idx + 7 );
-
-	input = engine_input_manager_move_fire1();
+	*/
+	unsigned char input = engine_input_manager_move_fire1();
 	if( input )
 	{
 		draw_skullnc();
 	}
 	else
 	{
-		
-	}*/
-
-	draw_skullnc();
-	//draw_candykd();
+		draw_candykd();
+	}
 }
 
 static void draw_title()
@@ -125,7 +122,7 @@ static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx)
 }
 static void draw_candykd()
 {
-	unsigned char x = 176;
+	unsigned char x = 224;
 	unsigned char y = 64;
 	unsigned int tile = 256 + 96;
 

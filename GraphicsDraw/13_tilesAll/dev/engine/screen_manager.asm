@@ -11,6 +11,7 @@
 	.globl _devkit_SMS_addSprite
 	.globl _devkit_SMS_setTile
 	.globl _devkit_SMS_setNextTileatXY
+	.globl _engine_input_manager_move_fire1
 	.globl _engine_screen_manager_init
 	.globl _engine_screen_manager_update
 ;--------------------------------------------------------
@@ -115,25 +116,72 @@ _engine_screen_manager_init::
 	ld	a, b
 	sub	a, #0x16
 	jr	C,00105$
-;screen_manager.c:42: draw_tiles( 20, 8, 8 );
-	ld	hl, #0x0808
+;screen_manager.c:35: draw_tiles( 26, 6, 6 );
+	ld	hl, #0x0606
 	push	hl
-	ld	a, #0x14
+	ld	a, #0x1a
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:36: draw_tiles( 26, 8, 8 );
+	inc	sp
+	ld	hl,#0x0808
+	ex	(sp),hl
+	ld	a, #0x1a
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:37: draw_tiles( 26, 10, 10 );
+	inc	sp
+	ld	hl,#0x0a0a
+	ex	(sp),hl
+	ld	a, #0x1a
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:38: draw_tiles( 28, 6, 4 );
+	inc	sp
+	ld	hl,#0x0406
+	ex	(sp),hl
+	ld	a, #0x1c
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:40: draw_tiles( 28, 10, 12 );
+	inc	sp
+	ld	hl,#0x0c0a
+	ex	(sp),hl
+	ld	a, #0x1c
+	push	af
+	inc	sp
+	call	_draw_tiles
+;screen_manager.c:41: draw_tiles( 22, 8, 14 );
+	inc	sp
+	ld	hl,#0x0e08
+	ex	(sp),hl
+	ld	a, #0x16
 	push	af
 	inc	sp
 	call	_draw_tiles
 	pop	af
 	inc	sp
-;screen_manager.c:57: draw_title();
+;screen_manager.c:56: draw_title();
 	jp  _draw_title
-;screen_manager.c:62: void engine_screen_manager_update()
+;screen_manager.c:61: void engine_screen_manager_update()
 ;	---------------------------------
 ; Function engine_screen_manager_update
 ; ---------------------------------
 _engine_screen_manager_update::
-;screen_manager.c:87: draw_skullnc();
-	jp  _draw_skullnc
-;screen_manager.c:91: static void draw_title()
+;screen_manager.c:77: unsigned char input = engine_input_manager_move_fire1();
+	call	_engine_input_manager_move_fire1
+;screen_manager.c:78: if( input )
+	ld	a, l
+	or	a, a
+;screen_manager.c:80: draw_skullnc();
+	jp	NZ,_draw_skullnc
+;screen_manager.c:84: draw_candykd();
+	jp  _draw_candykd
+;screen_manager.c:88: static void draw_title()
 ;	---------------------------------
 ; Function draw_title
 ; ---------------------------------
@@ -142,11 +190,11 @@ _draw_title:
 	ld	ix,#0
 	add	ix,sp
 	push	af
-;screen_manager.c:94: const unsigned int *pnt = ( const unsigned int * ) apex_tiles__tilemap__bin;
+;screen_manager.c:91: const unsigned int *pnt = ( const unsigned int * ) apex_tiles__tilemap__bin;
 	ld	de, #_apex_tiles__tilemap__bin+0
-;screen_manager.c:106: for( j = 0; j < 4; j++ )
+;screen_manager.c:103: for( j = 0; j < 4; j++ )
 	ld	c, #0x00
-;screen_manager.c:108: for( i = 0; i < w; i++ )
+;screen_manager.c:105: for( i = 0; i < w; i++ )
 00111$:
 	ld	b, c
 	inc	b
@@ -164,7 +212,7 @@ _draw_title:
 	ld	a, -2 (ix)
 	sub	a, #0x1a
 	jr	NC,00107$
-;screen_manager.c:110: devkit_SMS_setNextTileatXY( x + i, y + j );
+;screen_manager.c:107: devkit_SMS_setNextTileatXY( x + i, y + j );
 	ld	a, -2 (ix)
 	add	a, #0x04
 	push	bc
@@ -177,7 +225,7 @@ _draw_title:
 	pop	af
 	pop	de
 	pop	bc
-;screen_manager.c:111: devkit_SMS_setTile( *pnt + TITLE_START + j * w + i );
+;screen_manager.c:108: devkit_SMS_setTile( *pnt + TITLE_START + j * w + i );
 	ld	l, e
 	ld	h, d
 	ld	a, (hl)
@@ -194,11 +242,11 @@ _draw_title:
 	inc	sp
 	pop	de
 	pop	bc
-;screen_manager.c:108: for( i = 0; i < w; i++ )
+;screen_manager.c:105: for( i = 0; i < w; i++ )
 	inc	-2 (ix)
 	jr	00104$
 00107$:
-;screen_manager.c:106: for( j = 0; j < 4; j++ )
+;screen_manager.c:103: for( j = 0; j < 4; j++ )
 	inc	c
 	ld	a, c
 	sub	a, #0x04
@@ -206,7 +254,7 @@ _draw_title:
 	ld	sp, ix
 	pop	ix
 	ret
-;screen_manager.c:116: static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx)
+;screen_manager.c:113: static void draw_tiles( unsigned char x, unsigned char y, unsigned char idx)
 ;	---------------------------------
 ; Function draw_tiles
 ; ---------------------------------
@@ -214,9 +262,9 @@ _draw_tiles:
 	push	ix
 	ld	ix,#0
 	add	ix,sp
-;screen_manager.c:119: const unsigned int *pnt = ( const unsigned int * ) apex_tiles__tilemap__bin;
+;screen_manager.c:116: const unsigned int *pnt = ( const unsigned int * ) apex_tiles__tilemap__bin;
 	ld	bc, #_apex_tiles__tilemap__bin
-;screen_manager.c:121: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); devkit_SMS_setTile( *pnt + idx + 0 );
+;screen_manager.c:118: devkit_SMS_setNextTileatXY( x + 0, y + 0 ); devkit_SMS_setTile( *pnt + idx + 0 );
 	push	bc
 	ld	h, 5 (ix)
 	ld	l, 4 (ix)
@@ -238,7 +286,7 @@ _draw_tiles:
 	call	_devkit_SMS_setTile
 	inc	sp
 	pop	bc
-;screen_manager.c:122: devkit_SMS_setNextTileatXY( x + 1, y + 0 ); devkit_SMS_setTile( *pnt + idx + 1 );
+;screen_manager.c:119: devkit_SMS_setNextTileatXY( x + 1, y + 0 ); devkit_SMS_setTile( *pnt + idx + 1 );
 	ld	e, 4 (ix)
 	inc	e
 	push	bc
@@ -265,7 +313,7 @@ _draw_tiles:
 	inc	sp
 	pop	de
 	pop	bc
-;screen_manager.c:123: devkit_SMS_setNextTileatXY( x + 0, y + 1 ); devkit_SMS_setTile( *pnt + idx + 26 );
+;screen_manager.c:120: devkit_SMS_setNextTileatXY( x + 0, y + 1 ); devkit_SMS_setTile( *pnt + idx + 26 );
 	ld	d, 5 (ix)
 	inc	d
 	push	bc
@@ -308,68 +356,68 @@ _draw_tiles:
 	inc	sp
 	pop	ix
 	ret
-;screen_manager.c:126: static void draw_candykd()
+;screen_manager.c:123: static void draw_candykd()
 ;	---------------------------------
 ; Function draw_candykd
 ; ---------------------------------
 _draw_candykd:
-;screen_manager.c:132: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+;screen_manager.c:129: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	ld	hl, #0x0160
 	push	hl
-	ld	hl, #0x40b0
+	ld	hl, #0x40e0
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:133: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+;screen_manager.c:130: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	ld	hl, #0x0161
 	ex	(sp),hl
-	ld	hl, #0x40b8
+	ld	hl, #0x40e8
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:134: devkit_SMS_addSprite( x + 0, y + 8, tile + 6 );
+;screen_manager.c:131: devkit_SMS_addSprite( x + 0, y + 8, tile + 6 );
 	ld	hl, #0x0166
 	ex	(sp),hl
-	ld	hl, #0x48b0
+	ld	hl, #0x48e0
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:135: devkit_SMS_addSprite( x + 8, y + 8, tile + 7 );
+;screen_manager.c:132: devkit_SMS_addSprite( x + 8, y + 8, tile + 7 );
 	ld	hl, #0x0167
 	ex	(sp),hl
-	ld	hl, #0x48b8
+	ld	hl, #0x48e8
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
 	pop	af
 	ret
-;screen_manager.c:137: static void draw_skullnc()
+;screen_manager.c:134: static void draw_skullnc()
 ;	---------------------------------
 ; Function draw_skullnc
 ; ---------------------------------
 _draw_skullnc:
-;screen_manager.c:143: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+;screen_manager.c:140: devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
 	ld	hl, #0x016e
 	push	hl
 	ld	hl, #0x40e0
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:144: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+;screen_manager.c:141: devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
 	ld	hl, #0x016f
 	ex	(sp),hl
 	ld	hl, #0x40e8
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:145: devkit_SMS_addSprite( x + 0, y + 8, tile + 6 );
+;screen_manager.c:142: devkit_SMS_addSprite( x + 0, y + 8, tile + 6 );
 	ld	hl, #0x0174
 	ex	(sp),hl
 	ld	hl, #0x48e0
 	push	hl
 	call	_devkit_SMS_addSprite
 	pop	af
-;screen_manager.c:146: devkit_SMS_addSprite( x + 8, y + 8, tile + 7 );
+;screen_manager.c:143: devkit_SMS_addSprite( x + 8, y + 8, tile + 7 );
 	ld	hl, #0x0175
 	ex	(sp),hl
 	ld	hl, #0x48e8
