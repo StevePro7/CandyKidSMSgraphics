@@ -5,6 +5,7 @@
 #include "..\banks\bank2.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\gfx.h"
+#include <stdlib.h>
 
 #define BASE_TILE_OFFSET	26
 #define BASE_CANDY_OFFSET	52
@@ -62,12 +63,29 @@ void engine_tile_manager_load_coll( unsigned char *coll_type, unsigned char tile
 void engine_tile_manager_draw_tile( unsigned char index, unsigned char x, unsigned char y )
 {
 	engine_tile_manager_draw_blank( x, y );
-	if( tile_type_trees != index )
-	{
-		return;
-	}
 
-	engine_tile_manager_draw_tree( tree_type_avoid, x, y );
+	if( tile_type_trees == index )
+	{
+		engine_tile_manager_draw_tree( tree_type_death, x, y );
+	}
+	else if( index >= tile_type_bonusA  && index <= tile_type_bonusD )
+	{
+		engine_tile_manager_draw_bonus( index, 1, x, y );
+	}
+	else if( tile_type_candy == index )
+	{
+		unsigned char type = 0;
+		//while( 1 )
+		//{
+			type = rand() % MAX_BLOCK_TILES;
+			//if( type == 0 )
+			//{
+			//	break;
+			//}
+		//}
+
+		engine_tile_manager_draw_candy( type, x, y );
+	}
 }
 
 void engine_tile_manager_draw_blank( unsigned char x, unsigned char y )

@@ -5,6 +5,7 @@
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\level_manager.h"
+#include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
 void screen_load_screen_load()
@@ -25,6 +26,8 @@ void screen_load_screen_update( unsigned char *screen_type )
 	unsigned char input;
 	unsigned char check;
 	check = 0;
+
+	engine_sprite_manager_draw_entity( 64, 32, 256 + 96 );
 
 	input = engine_input_manager_hold_left();
 	if( input )

@@ -1,6 +1,7 @@
 #include "func_screen.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\global_manager.h"
 #include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
@@ -23,7 +24,7 @@ void screen_func_screen_load()
 	engine_tile_manager_draw_bonus( tile_type_bonusC, 2, 18, 12 );
 	engine_tile_manager_draw_bonus( tile_type_bonusD, 2, 22, 12 );
 
-	for( idx = 0; idx < 12; idx++ )
+	for( idx = 0; idx < MAX_BLOCK_TILES; idx++ )
 	{
 		engine_tile_manager_draw_candy( idx, idx * 2 + 2, 18 );
 	}

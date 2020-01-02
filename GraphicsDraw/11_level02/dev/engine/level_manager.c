@@ -168,5 +168,4 @@ static void draw_tiles( unsigned char x, unsigned char y )
 	tile = lo->drawtiles_array[ idx ];
 
 	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + x * 2, y * 2 );
-	//engine_tile_manager_draw_tile( tile, x * 2, y * 2 );
 }

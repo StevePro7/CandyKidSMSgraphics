@@ -30,7 +30,6 @@ void engine_hack_manager_init()
 
 }
 
-
 void engine_hack_manager_invert()
 {
 	struct_hack_object *ho = &global_hack_object;
@@ -64,6 +63,6 @@ void engine_hack_manager_invert()
 	ho->hack_sound = !ho->hack_sound;
 
 
-	ho->hack_world = 7-1;
-	ho->hack_round = 9-1;
+	//ho->hack_world = 7-1;
+	//ho->hack_round = 9-1;
 }

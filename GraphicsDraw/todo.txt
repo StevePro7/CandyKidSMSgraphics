@@ -1,6 +1,16 @@
 todo
-28/12/2019
+02/01/2019
 
+11_level02
+inject the tree type
+inject the bonus multiplier
+swap candy=1 and trees=2 in all levels
+I can't remember why I wanted to do this but I think it was something to do with collision
+I must redo the game tiles to get a bit more color in the candy plus the all white free man candy + large death candy
+Do I want to make the bonus and candy smaller compared to the trees
+
+
+28/12/2019
 tidy up SRAM like my objects
 add the array properties to stored collections of commands
 
