@@ -27,6 +27,7 @@ cd engine
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 input_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 screen_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 sprite_manager.c
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 tile_manager.c
 cd ..
 
@@ -77,6 +78,7 @@ engine\global_manager.rel ^
 engine\input_manager.rel ^
 engine\level_manager.rel ^
 engine\screen_manager.rel ^
+engine\sprite_manager.rel ^
 engine\tile_manager.rel ^
 object\hack_object.rel ^
 object\level_object.rel ^

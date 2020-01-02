@@ -126,6 +126,9 @@
     <ClCompile Include="object\hack_object.c">
       <Filter>Source Files\object</Filter>
     </ClCompile>
+    <ClCompile Include="engine\sprite_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="build.bat">
@@ -207,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="object\hack_object.h">
       <Filter>Header Files\object</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\sprite_manager.h">
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

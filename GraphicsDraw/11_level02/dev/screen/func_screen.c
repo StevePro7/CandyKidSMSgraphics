@@ -1,6 +1,7 @@
 #include "func_screen.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\sprite_manager.h"
 #include "..\engine\tile_manager.h"
 
 void screen_func_screen_load()
@@ -30,5 +31,6 @@ void screen_func_screen_load()
 
 void screen_func_screen_update( unsigned char *screen_type )
 {
+	engine_sprite_manager_draw_entity( 128, 96, 256 + 96 );
 	*screen_type = screen_type_func;
 }
