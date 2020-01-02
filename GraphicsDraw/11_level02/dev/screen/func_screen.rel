@@ -1,11 +1,13 @@
 XL2
-H 9 areas 3 global symbols
+H 9 areas 5 global symbols
 M func_screen
 O -mz80
+S _engine_font_manager_draw_text Ref0000
 S .__.ABS. Def0000
-A _CODE size 8 flags 0 addr 0
+S _engine_tile_manager_draw_tree Ref0000
+A _CODE size 3E flags 0 addr 0
 S _screen_func_screen_load Def0000
-S _screen_func_screen_update Def0001
+S _screen_func_screen_update Def0037
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -16,9 +18,19 @@ A _INITIALIZER size 0 flags 0 addr 0
 A _CABS size 0 flags 8 addr 0
 T 00 00
 R 00 00 00 00
-T 00 00 C9
+T 00 00 21 02 02 E5 21 25 00 E5 CD 00 00 F1 21
+R 00 00 00 00 00 07 00 00 02 0B 00 00
+T 0D 00 04 04 E3 AF F5 33 CD 00 00 33 21 08 08 E3
+R 00 00 00 00 02 09 02 00
+T 1B 00 3E 01 F5 33 CD 00 00 F1 33 C9
+R 00 00 00 00 02 07 02 00
+T 25 00
 R 00 00 00 00
-T 01 00
+T 25 00 48 45 4C 4C 4F 20 46 55 4E 43 20 53 43 52
 R 00 00 00 00
-T 01 00 C1 E1 E5 C5 36 05 C9
+T 33 00 45 45 4E 00
+R 00 00 00 00
+T 37 00
+R 00 00 00 00
+T 37 00 C1 E1 E5 C5 36 05 C9
 R 00 00 00 00
