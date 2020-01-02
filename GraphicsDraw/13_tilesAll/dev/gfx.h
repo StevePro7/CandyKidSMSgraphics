@@ -5,7 +5,7 @@ extern const unsigned char	apex_tiles__tilemap__bin[];
 #define				apex_tiles__tilemap__bin_size 312
 
 extern const unsigned char	apex_tiles__tiles__psgcompr[];
-#define				apex_tiles__tiles__psgcompr_size 2276
+#define				apex_tiles__tiles__psgcompr_size 2297
 
 extern const unsigned char	data_tiles__palette__bin[];
 #define				data_tiles__palette__bin_size 16

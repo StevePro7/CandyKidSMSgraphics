@@ -11,9 +11,9 @@ Symbol Table
     _devkit_SMS_addSprite                                          **** GX
     _devkit_SMS_setNextTileatXY                                    **** GX
     _devkit_SMS_setTile                                            **** GX
-  0 _draw_candykd                                                  0180 R
-  0 _draw_skullnc                                                  01B2 R
-  0 _draw_tiles                                                    00F5 R
+  0 _draw_candykd                                                  0183 R
+  0 _draw_skullnc                                                  01B5 R
+  0 _draw_tiles                                                    00F8 R
   0 _draw_title                                                    0097 R
     _engine_input_manager_move_fire1                               **** GX
   0 _engine_screen_manager_init                                    0000 GR
@@ -24,7 +24,7 @@ Hexadecimal [16-Bits]
 
 Area Table
 
-   0 _CODE                                      size  1E4   flags    0
+   0 _CODE                                      size  1E7   flags    0
    1 _DATA                                      size    0   flags    0
    2 _INITIALIZED                               size    0   flags    0
    3 _DABS                                      size    0   flags    8

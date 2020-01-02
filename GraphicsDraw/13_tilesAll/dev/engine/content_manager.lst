@@ -1,6 +1,6 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
-                              3 ; Version 3.6.9 #9960 (MINGW64)
+                              3 ; Version 3.6.0 #9615 (MINGW64)
                               4 ;--------------------------------------------------------
                               5 	.module content_manager
                               6 	.optsdcc -mz80
@@ -50,22 +50,22 @@
                              50 ; ---------------------------------
    0000                      51 _engine_content_manager_load_tiles::
                              52 ;content_manager.c:12: devkit_SMS_loadPSGaidencompressedTiles( font_tiles__tiles__psgcompr, FONT_TILES );
-   0000 21 00 00      [10]   53 	ld	hl, #0x0000
+   0000 21 00 00      [10]   53 	ld	hl,#0x0000
    0003 E5            [11]   54 	push	hl
-   0004 21r00r00      [10]   55 	ld	hl, #_font_tiles__tiles__psgcompr
+   0004 21r00r00      [10]   55 	ld	hl,#_font_tiles__tiles__psgcompr
    0007 E5            [11]   56 	push	hl
    0008 CDr00r00      [17]   57 	call	_devkit_SMS_loadPSGaidencompressedTiles
    000B F1            [10]   58 	pop	af
                              59 ;content_manager.c:16: devkit_SMS_loadPSGaidencompressedTiles( apex_tiles__tiles__psgcompr, APEX_TILES );
    000C 21 40 00      [10]   60 	ld	hl, #0x0040
    000F E3            [19]   61 	ex	(sp),hl
-   0010 21r00r00      [10]   62 	ld	hl, #_apex_tiles__tiles__psgcompr
+   0010 21r00r00      [10]   62 	ld	hl,#_apex_tiles__tiles__psgcompr
    0013 E5            [11]   63 	push	hl
    0014 CDr00r00      [17]   64 	call	_devkit_SMS_loadPSGaidencompressedTiles
    0017 F1            [10]   65 	pop	af
    0018 F1            [10]   66 	pop	af
                              67 ;content_manager.c:17: devkit_SMS_loadBGPalette( ( void * ) apex_tiles__palette__bin );
-   0019 01r00r00      [10]   68 	ld	bc, #_apex_tiles__palette__bin+0
+   0019 01r00r00      [10]   68 	ld	bc,#_apex_tiles__palette__bin+0
    001C C5            [11]   69 	push	bc
    001D CDr00r00      [17]   70 	call	_devkit_SMS_loadBGPalette
    0020 F1            [10]   71 	pop	af
@@ -76,15 +76,15 @@
                              76 ; ---------------------------------
    0022                      77 _engine_content_manager_load_sprites::
                              78 ;content_manager.c:23: devkit_SMS_loadPSGaidencompressedTiles( sprites__tiles__psgcompr, SPRITE_TILES );
-   0022 21 00 01      [10]   79 	ld	hl, #0x0100
+   0022 21 00 01      [10]   79 	ld	hl,#0x0100
    0025 E5            [11]   80 	push	hl
-   0026 21r00r00      [10]   81 	ld	hl, #_sprites__tiles__psgcompr
+   0026 21r00r00      [10]   81 	ld	hl,#_sprites__tiles__psgcompr
    0029 E5            [11]   82 	push	hl
    002A CDr00r00      [17]   83 	call	_devkit_SMS_loadPSGaidencompressedTiles
    002D F1            [10]   84 	pop	af
    002E F1            [10]   85 	pop	af
                              86 ;content_manager.c:24: devkit_SMS_loadSpritePalette( ( void * ) sprites__palette__bin );
-   002F 01r00r00      [10]   87 	ld	bc, #_sprites__palette__bin+0
+   002F 01r00r00      [10]   87 	ld	bc,#_sprites__palette__bin+0
    0032 C5            [11]   88 	push	bc
    0033 CDr00r00      [17]   89 	call	_devkit_SMS_loadSpritePalette
    0036 F1            [10]   90 	pop	af
