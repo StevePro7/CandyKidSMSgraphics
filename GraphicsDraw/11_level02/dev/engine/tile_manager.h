@@ -9,5 +9,7 @@ void engine_tile_manager_draw_tile( unsigned char index, unsigned char x, unsign
 
 void engine_tile_manager_draw_blank( unsigned char x, unsigned char y );
 void engine_tile_manager_draw_tree( unsigned char type, unsigned char x, unsigned char y );
+void engine_tile_manager_draw_candy( unsigned char type, unsigned char x, unsigned char y );
+void engine_tile_manager_draw_bonus( unsigned char type, unsigned char multiplier, unsigned char x, unsigned char y );
 
 #endif//_TILE_MANAGER_H_

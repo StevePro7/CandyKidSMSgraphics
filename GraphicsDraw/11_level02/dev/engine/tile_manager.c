@@ -7,6 +7,9 @@
 #include "..\gfx.h"
 
 #define BASE_TILE_OFFSET	26
+#define BASE_CANDY_OFFSET	52
+
+static void draw_tile( unsigned char offset, unsigned char x, unsigned char y );
 
 void engine_tile_manager_load_tile( unsigned char *tile_type, unsigned char tile_data )
 {
@@ -78,9 +81,42 @@ void engine_tile_manager_draw_blank( unsigned char x, unsigned char y )
 void engine_tile_manager_draw_tree( unsigned char type, unsigned char x, unsigned char y )
 {
 	const unsigned char *pnt = game_tiles__tilemap__bin;
+	unsigned char offset = type * 2;
 
-	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + ( type * 2 ) + 0 );
-	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + ( type * 2 ) + 1 );
-	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + ( type * 2 ) + BASE_TILE_OFFSET + 0 );
-	devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + ( type * 2 ) + BASE_TILE_OFFSET + 1 );
+	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + offset + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + offset + 1 );
+	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILE_OFFSET + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILE_OFFSET + 1 );
+}
+
+void engine_tile_manager_draw_candy( unsigned char type, unsigned char x, unsigned char y )
+{
+	const unsigned char *pnt = game_tiles__tilemap__bin;
+	unsigned char offset = type * 2 + BASE_CANDY_OFFSET;
+
+	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + offset + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + offset + 1 );
+	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILE_OFFSET + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILE_OFFSET + 1 );
+}
+
+void engine_tile_manager_draw_bonus( unsigned char type, unsigned char multiplier, unsigned char x, unsigned char y )
+{
+	const unsigned char *pnt = game_tiles__tilemap__bin;
+	unsigned char offset = ( type - 1 ) * 2;
+	offset += ( multiplier - 1 ) * 8;
+
+	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + offset + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + offset + 1 );
+	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILE_OFFSET + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILE_OFFSET + 1 );
+}
+static void draw_tile( unsigned char offset, unsigned char x, unsigned char y )
+{
+	const unsigned char *pnt = game_tiles__tilemap__bin;
+
+	devkit_SMS_setNextTileatXY( x + 0, y + 0 );	devkit_SMS_setTile( *pnt + offset + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 0 );	devkit_SMS_setTile( *pnt + offset + 1 );
+	devkit_SMS_setNextTileatXY( x + 0, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILE_OFFSET + 0 );
+	devkit_SMS_setNextTileatXY( x + 1, y + 1 );	devkit_SMS_setTile( *pnt + offset + BASE_TILE_OFFSET + 1 );
 }
