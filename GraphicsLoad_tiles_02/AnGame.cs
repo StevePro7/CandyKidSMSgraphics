@@ -91,7 +91,8 @@ namespace GraphicsLoad
 			for (int idx = 0; idx < max; idx++)
 			{
 				var file = (idx + 2).ToString().PadLeft(2, '0');
-				var text = $"Candy/Candy{file}";
+				//var text = $"Candy/Candy{file}";
+				var text = $"Candy03/Candy{file}";
 				candy[idx] = Content.Load<Texture2D>(text);
 			}
 
@@ -151,7 +152,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"AllTiles3.png";
+				var file = $"AllTiles03.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
