@@ -44,7 +44,7 @@ namespace GraphicsLoad
 			//int y = most + 4;
 			int y = 4;
 			wide = 208;// (int)(size * scale);
-			high = 48;// (int)(y * size * scale);
+			high = 32;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -152,7 +152,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"AllTiles03.png";
+				var file = $"AllTiles04.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -167,6 +167,66 @@ namespace GraphicsLoad
 		}
 
 		private void Draw()
+		{
+			Draw_02lines();
+		}
+
+		private void Draw_02lines()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			//spriteBatch.Draw(font, new Vector2(8, 0), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 8), new Rectangle(200, 0, 512, 8), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 16), new Rectangle(408, 0, 48, 8), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 24), new Rectangle(456, 0, 48, 8), Color.White);
+
+			spriteBatch.Draw(trees[0], new Vector2(0, 0), Color.White);
+			spriteBatch.Draw(trees[1], new Vector2(16, 0), Color.White);
+
+			// bonus
+			for(int idx = 0; idx < bonus.Length; idx++)
+			{
+				var image = bonus[idx];
+				//var image = bonus02[idx];
+				var pos = new Vector2(32 + idx * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			// bonus02
+			for(int idx = 0; idx < bonus.Length; idx++)
+			{
+				//var image = bonus[idx];
+				var image = bonus02[idx];
+				var pos = new Vector2(96 + idx * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			//candy
+			for(int idx = 0; idx < 3; idx++)
+			{
+				var image = candy[idx];
+				var pos = new Vector2(160 + idx * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			for(int idx = 1; idx < 14; idx++)
+			{
+				var image = candy[idx];
+				var pos = new Vector2((idx - 1) * size, 16);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			//spriteBatch.Draw(candy[13], new Vector2(208 - 16, 16), Color.White);
+
+
+
+			spriteBatch.Draw(title, new Vector2(0, 32), Color.White);
+
+			spriteBatch.End();
+		}
+
+		private void Draw_03lines()
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
