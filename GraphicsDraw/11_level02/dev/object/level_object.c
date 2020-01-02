@@ -205,7 +205,7 @@ const unsigned char *levelBBdata[] =
 	level0905_txt,
 	level0906_txt,
 	level0907_txt,
-	level0909_txt,
+	level0908_txt,
 	level0909_txt,
 	level0910_txt,
 	level1001_txt,
@@ -215,8 +215,8 @@ const unsigned char *levelBBdata[] =
 	level1005_txt,
 	level1006_txt,
 	level1007_txt,
-	level1010_txt,
-	level1010_txt,
+	level1008_txt,
+	level1009_txt,
 	level1010_txt,
 };
 
