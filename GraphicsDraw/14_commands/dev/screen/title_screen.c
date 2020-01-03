@@ -1,8 +1,10 @@
 #include "title_screen.h"
+#include "..\engine\command_manager.h"
 #include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
+#include "..\engine\input_manager.h"
 //#include <limits.h>
 
 void screen_title_screen_load()
@@ -15,6 +17,7 @@ void screen_title_screen_load()
 	//size = sizeof( long );
 	//engine_font_manager_draw_data( size, 16, 10 );
 
+	engine_command_manager_init();
 	engine_delay_manager_init();
 	engine_delay_manager_load( 60 );
 	engine_frame_manager_init();
@@ -23,6 +26,8 @@ void screen_title_screen_load()
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
+	struct_frame_object *fo = &global_frame_object;
+	unsigned char input;
 	unsigned char proceed = engine_delay_manager_update();
 	if( !proceed )
 	{
@@ -30,7 +35,20 @@ void screen_title_screen_update( unsigned char *screen_type )
 		return;
 	}
 
+	if( 0 == fo->frame_delta )
+	{
+
+	}
+
+	engine_font_manager_draw_text( "     ", 10, 10 );
+	input = engine_input_manager_move_fire1();
+	if( input )
+	{
+		engine_font_manager_draw_text( "FIRE!", 10, 10 );
+	}
+
 	engine_frame_manager_update();
 	engine_frame_manager_draw();
+
 	*screen_type = screen_type_title;
 }

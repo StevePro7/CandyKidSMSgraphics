@@ -18,7 +18,7 @@ void engine_command_manager_init()
 	struct_command_object *co = &global_command_object;
 	unsigned int idx;
 
-	co->frame = 0;
+	co->frame_delta = 0;
 	co->command = 0;
 
 	for( idx = 0; idx < MAX_MOVES_COMMANDS; idx++ )
@@ -39,11 +39,16 @@ void engine_command_manager_init()
 void engine_command_manager_load()
 {
 	struct_command_object *co = &global_command_object;
-	co->frame = 10;
+	co->frame_delta = 10;
 	co->command = 0x80;
 
 	co->move1_frames[ 0 ] = 2;
 	co->move1_events[ 0 ] = 0x80;
+}
+
+void engine_command_manager_save( unsigned int frame_delta )
+{
+
 }
 
 void engine_command_move_up()

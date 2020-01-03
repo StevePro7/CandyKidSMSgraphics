@@ -6,7 +6,7 @@
 
 typedef struct tag_struct_command_object
 {
-	unsigned int frame;
+	unsigned int frame_delta;
 	unsigned char command;
 
 	unsigned char move1_frames[ MAX_MOVES_COMMANDS ];
