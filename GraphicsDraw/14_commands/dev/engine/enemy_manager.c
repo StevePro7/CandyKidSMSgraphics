@@ -29,11 +29,11 @@ void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY )
 		//eo->posnY = 0;
 		eo->tileX = 0;
 		eo->tileY = 0;
-		eo->delay = 10;
+		eo->delay = 10;		// TODO hardcoded - inject!
 		eo->timer = 0;
 		eo->delta = 0;
 		eo->total = 0;
-		eo->speed = 1;
+		eo->speed = 1;		// TODO hardcoded - inject!
 
 		eo->direction = direction_type_none;
 		eo->lifecycle = lifecycle_type_idle;
@@ -47,6 +47,7 @@ void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY )
 
 void engine_enemy_manager_load()
 {
+	// TODO hardcoded - inject!
 	struct_enemy_object *eo = &global_enemy_objects[ mama_type_pro ];
 	eo->posnX = 144;
 	eo->posnY = 144;

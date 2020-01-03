@@ -152,10 +152,12 @@
     <ClCompile Include="engine\board_manager.c" />
     <ClCompile Include="engine\command_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
+    <ClCompile Include="engine\delay_manager.c" />
     <ClCompile Include="engine\enemy_manager.c" />
     <ClCompile Include="engine\enum_manager.c" />
     <ClCompile Include="engine\event_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
+    <ClCompile Include="engine\frame_manager.c" />
     <ClCompile Include="engine\gamer_manager.c" />
     <ClCompile Include="engine\global_manager.c" />
     <ClCompile Include="engine\hack_manager.c" />
@@ -172,8 +174,10 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="object\board_object.c" />
     <ClCompile Include="object\command_object.c" />
+    <ClCompile Include="object\delay_object.c" />
     <ClCompile Include="object\enemy_object.c" />
     <ClCompile Include="object\event_object.c" />
+    <ClCompile Include="object\frame_object.c" />
     <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\hack_object.c" />
     <ClCompile Include="object\level_object.c" />
@@ -200,10 +204,12 @@
     <ClInclude Include="engine\board_manager.h" />
     <ClInclude Include="engine\command_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
+    <ClInclude Include="engine\delay_manager.h" />
     <ClInclude Include="engine\enemy_manager.h" />
     <ClInclude Include="engine\enum_manager.h" />
     <ClInclude Include="engine\event_manager.h" />
     <ClInclude Include="engine\font_manager.h" />
+    <ClInclude Include="engine\frame_manager.h" />
     <ClInclude Include="engine\gamer_manager.h" />
     <ClInclude Include="engine\global_manager.h" />
     <ClInclude Include="engine\hack_manager.h" />
@@ -220,8 +226,10 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="object\board_object.h" />
     <ClInclude Include="object\command_object.h" />
+    <ClInclude Include="object\delay_object.h" />
     <ClInclude Include="object\enemy_object.h" />
     <ClInclude Include="object\event_object.h" />
+    <ClInclude Include="object\frame_object.h" />
     <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\hack_object.h" />
     <ClInclude Include="object\level_object.h" />

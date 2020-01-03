@@ -20,8 +20,9 @@ void main( void )
 
 	//open_screen_type = screen_type_test;
 	//open_screen_type = screen_type_func;
-	open_screen_type = screen_type_play;
+	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_demo;
+	open_screen_type = screen_type_title;
 
 	engine_screen_manager_init( open_screen_type );
 	devkit_SMS_displayOn();

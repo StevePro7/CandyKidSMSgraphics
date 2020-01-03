@@ -1,5 +1,6 @@
 #include "play_screen.h"
 #include "..\engine\board_manager.h"
+#include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\enemy_manager.h"
 #include "..\engine\event_manager.h"
@@ -38,6 +39,7 @@ void screen_play_screen_load()
 	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
 	engine_enemy_manager_init( homeX, homeY );
 
+	engine_command_manager_init();
 	engine_event_manager_init();
 
 	frameCount = 0;
