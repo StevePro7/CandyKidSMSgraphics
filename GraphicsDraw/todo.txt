@@ -1,6 +1,14 @@
 todo
-02/01/2019
+03/01/2019
+14_commands
 
+don't forget to make the font_manager data and dataZERO 6x placeholders
+and update the input data type from unsigned int (2x bytes) to unsigned long (4x bytes)
+that way can score more than 65535 pts => 655350 pts
+determine if max score could ever be >= 999,9999
+
+
+02/01/2019
 11_level02
 inject the tree type
 inject the bonus multiplier

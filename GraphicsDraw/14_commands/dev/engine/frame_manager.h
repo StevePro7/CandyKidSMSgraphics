@@ -10,5 +10,6 @@ extern struct_frame_object global_frame_object;
 void engine_frame_manager_init();
 void engine_frame_manager_load();
 void engine_frame_manager_update();
+void engine_frame_manager_draw();
 
 #endif//_FRAME_MANAGER_H_`
