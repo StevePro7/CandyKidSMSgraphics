@@ -73,6 +73,9 @@ namespace GraphicsLoad
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
+			const string bonusDirX = "Bonus05";
+			const string candyDirX = "Candy05";
+
 			//font = Content.Load<Texture2D>("font_line");
 			var names = new string[] { "BlueSpiral", "CoolTriangle", "LoveHeart", "PawPrint" };
 			const int bns = 4;
@@ -80,8 +83,9 @@ namespace GraphicsLoad
 			for (int idx = 0; idx < bns; idx++)
 			{
 				var name = names[idx];
-				bonus[idx] = Content.Load<Texture2D>("Bonus/" + name);
-				bonus[idx + 4] = Content.Load<Texture2D>("Bonus/" + name + "_Flip");
+				var flip = name + "_Flip";
+				bonus[idx] = Content.Load<Texture2D>(bonusDirX + "/" + name);
+				bonus[idx + 4] = Content.Load<Texture2D>(bonusDirX + "/" + flip);
 			}
 
             const int max = 14;
@@ -90,7 +94,7 @@ namespace GraphicsLoad
 			{
 				var file = (idx + 2).ToString().PadLeft(2, '0');
 				//var text = $"Candy/Candy{file}";
-				var text = $"Candy03/Candy{file}";
+				var text = $"{candyDirX}/Candy{file}";
 				candy[idx] = Content.Load<Texture2D>(text);
 			}
 
@@ -150,7 +154,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"AllTiles04.png";
+				var file = $"AllTilesB12_C06.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -191,7 +195,7 @@ namespace GraphicsLoad
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
-			// bonus02
+			// bonusflip
 			//for(int idx = 0; idx < bonus.Length; idx++)
 			//{
 			//	//var image = bonus[idx];
@@ -246,14 +250,14 @@ namespace GraphicsLoad
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
-			// bonus flip
-			for (int idx = 0; idx < bonus.Length; idx++)
-			{
-				//var image = bonus[idx];
-				var image = bonus[idx + 4];
-				var pos = new Vector2(96 + idx * size, 0);
-				//spriteBatch.Draw(image, pos, Color.White);
-			}
+			// bonusflip
+			//for (int idx = 0; idx < bonus.Length; idx++)
+			//{
+			//	//var image = bonus[idx];
+			//	var image = bonus[idx + 4];
+			//	var pos = new Vector2(96 + idx * size, 0);
+			//	//spriteBatch.Draw(image, pos, Color.White);
+			//}
 
 			//candy
 			for (int idx = 0; idx < 6; idx++)
@@ -309,14 +313,14 @@ namespace GraphicsLoad
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
-			// bonus flip
-			for (int idx = 0; idx < bonus.Length; idx++)
-			{
-				//var image = bonus[idx];
-				var image = bonus[idx + 4];
-				var pos = new Vector2(96 + idx * size, 0);
-				spriteBatch.Draw(image, pos, Color.White);
-			}
+			// bonusflip
+			//for (int idx = 0; idx < bonus.Length; idx++)
+			//{
+			//	//var image = bonus[idx];
+			//	var image = bonus[idx + 4];
+			//	var pos = new Vector2(96 + idx * size, 0);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
 
 			//candy
 			for (int idx = 0; idx < 2; idx++)
@@ -373,14 +377,14 @@ namespace GraphicsLoad
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
-			// bonus flip
-			for (int idx = 0; idx < bonus.Length; idx++)
-			{
-				//var image = bonus[idx];
-				var image = bonus[idx + 4];
-				var pos = new Vector2(144 + idx * size, 16);
-				spriteBatch.Draw(image, pos, Color.White);
-			}
+			// bonusflip
+			//for (int idx = 0; idx < bonus.Length; idx++)
+			//{
+			//	//var image = bonus[idx];
+			//	var image = bonus[idx + 4];
+			//	var pos = new Vector2(144 + idx * size, 16);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
 
 			//candy
 			//int[] arr = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
