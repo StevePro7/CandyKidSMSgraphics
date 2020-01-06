@@ -25,30 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:Bonus/BlueSpiral.bmp
 
-#begin Bonus/BlueSpiral.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/BlueSpiral.bmp
-
-#begin Bonus/BlueSpiral_Flip.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/BlueSpiral_Flip.bmp
-
 #begin Bonus/CoolTriangle.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -60,30 +36,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bonus/CoolTriangle.bmp
-
-#begin Bonus/CoolTriangle.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/CoolTriangle.bmp
-
-#begin Bonus/CoolTriangle_Flip.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/CoolTriangle_Flip.bmp
 
 #begin Bonus/LoveHeart.bmp
 /importer:TextureImporter
@@ -97,30 +49,6 @@
 /processorParam:TextureFormat=Color
 /build:Bonus/LoveHeart.bmp
 
-#begin Bonus/LoveHeart.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/LoveHeart.bmp
-
-#begin Bonus/LoveHeart_flip.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/LoveHeart_flip.bmp
-
 #begin Bonus/PawPrint.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -133,7 +61,7 @@
 /processorParam:TextureFormat=Color
 /build:Bonus/PawPrint.bmp
 
-#begin Bonus/PawPrint.bmp
+#begin Bonus02/BlueSpiral.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -143,9 +71,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Bonus/PawPrint.bmp
+/build:Bonus02/BlueSpiral.bmp
 
-#begin Bonus/PawPrint_Flip.bmp
+#begin Bonus02/CoolTriangle.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -155,7 +83,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Bonus/PawPrint_Flip.bmp
+/build:Bonus02/CoolTriangle.bmp
+
+#begin Bonus02/LoveHeart.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus02/LoveHeart.bmp
+
+#begin Bonus02/PawPrint.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus02/PawPrint.bmp
 
 #begin Bonus04/BlueSpiral.bmp
 /importer:TextureImporter
@@ -169,6 +121,30 @@
 /processorParam:TextureFormat=Color
 /build:Bonus04/BlueSpiral.bmp
 
+#begin Bonus04/BlueSpiral.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus04/BlueSpiral.bmp
+
+#begin Bonus04/BlueSpiral_Flip.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus04/BlueSpiral_Flip.bmp
+
 #begin Bonus04/CoolTriangle.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -180,6 +156,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bonus04/CoolTriangle.bmp
+
+#begin Bonus04/CoolTriangle.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus04/CoolTriangle.bmp
+
+#begin Bonus04/CoolTriangle_Flip.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus04/CoolTriangle_Flip.bmp
 
 #begin Bonus04/LoveHeart.bmp
 /importer:TextureImporter
@@ -193,6 +193,30 @@
 /processorParam:TextureFormat=Color
 /build:Bonus04/LoveHeart.bmp
 
+#begin Bonus04/LoveHeart.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus04/LoveHeart.bmp
+
+#begin Bonus04/LoveHeart_Flip.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus04/LoveHeart_Flip.bmp
+
 #begin Bonus04/PawPrint.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -204,6 +228,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bonus04/PawPrint.bmp
+
+#begin Bonus04/PawPrint.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus04/PawPrint.bmp
+
+#begin Bonus04/PawPrint_Flip.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus04/PawPrint_Flip.bmp
 
 #begin Bonus05/BlueSpiral.bmp
 /importer:TextureImporter
@@ -217,6 +265,30 @@
 /processorParam:TextureFormat=Color
 /build:Bonus05/BlueSpiral.bmp
 
+#begin Bonus05/BlueSpiral.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus05/BlueSpiral.bmp
+
+#begin Bonus05/BlueSpiral_Flip.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus05/BlueSpiral_Flip.bmp
+
 #begin Bonus05/CoolTriangle.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -228,6 +300,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bonus05/CoolTriangle.bmp
+
+#begin Bonus05/CoolTriangle.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus05/CoolTriangle.bmp
+
+#begin Bonus05/CoolTriangle_Flip.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus05/CoolTriangle_Flip.bmp
 
 #begin Bonus05/LoveHeart.bmp
 /importer:TextureImporter
@@ -241,6 +337,30 @@
 /processorParam:TextureFormat=Color
 /build:Bonus05/LoveHeart.bmp
 
+#begin Bonus05/LoveHeart.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus05/LoveHeart.bmp
+
+#begin Bonus05/LoveHeart_Flip.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus05/LoveHeart_Flip.bmp
+
 #begin Bonus05/PawPrint.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -252,6 +372,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bonus05/PawPrint.bmp
+
+#begin Bonus05/PawPrint.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus05/PawPrint.bmp
+
+#begin Bonus05/PawPrint_Flip.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bonus05/PawPrint_Flip.bmp
 
 #begin Candy/Candy02.bmp
 /importer:TextureImporter
