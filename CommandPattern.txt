@@ -1,2 +1,10 @@
 Command Pattern
 06/01/2020
+
+
+https://github.com/huawenyu/Design-Patterns-in-C
+https://github.com/huawenyu/Design-Patterns-in-C/blob/master/auto-gen/command/test.c
+
+
+
+https://github.com/huawenyu/Design-Patterns-in-C
