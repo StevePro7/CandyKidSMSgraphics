@@ -2,7 +2,5 @@
 
 void main( void )
 {
-	struct light *light;
-
-	light = malloc( sizeof( *light ) );
+	int i = 7;
 }

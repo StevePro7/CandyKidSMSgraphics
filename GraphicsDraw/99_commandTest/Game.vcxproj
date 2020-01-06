@@ -144,19 +144,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="actor_manager.c" />
     <ClCompile Include="command.c" />
-    <ClCompile Include="flipdown.c" />
-    <ClCompile Include="flipup.c" />
+    <ClCompile Include="command_manager.c" />
+    <ClCompile Include="input_manager.c" />
     <ClCompile Include="light.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="actor_manager.h" />
     <ClInclude Include="command.h" />
-    <ClInclude Include="flipdown.h" />
-    <ClInclude Include="flipup.h" />
+    <ClInclude Include="command_manager.h" />
+    <ClInclude Include="input_manager.h" />
     <ClInclude Include="light.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="myobj.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -19,6 +19,12 @@
     <Filter Include="Source Files\command">
       <UniqueIdentifier>{8b7c7937-41dc-4e8a-8f12-152e8d8f61f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine">
+      <UniqueIdentifier>{62eb75ec-7bd1-448b-a1e1-35bb6930c788}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{46134ed3-9986-4bb7-b614-a1379af799bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -30,11 +36,14 @@
     <ClCompile Include="command.c">
       <Filter>Source Files\command</Filter>
     </ClCompile>
-    <ClCompile Include="flipup.c">
-      <Filter>Source Files\command</Filter>
+    <ClCompile Include="input_manager.c">
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
-    <ClCompile Include="flipdown.c">
-      <Filter>Source Files\command</Filter>
+    <ClCompile Include="command_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="actor_manager.c">
+      <Filter>Source Files\engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,14 +56,14 @@
     <ClInclude Include="command.h">
       <Filter>Header Files\command</Filter>
     </ClInclude>
-    <ClInclude Include="flipup.h">
-      <Filter>Header Files\command</Filter>
+    <ClInclude Include="input_manager.h">
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
-    <ClInclude Include="flipdown.h">
-      <Filter>Header Files\command</Filter>
+    <ClInclude Include="command_manager.h">
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
-    <ClInclude Include="myobj.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="actor_manager.h">
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
