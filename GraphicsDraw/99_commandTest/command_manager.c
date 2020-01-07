@@ -4,7 +4,7 @@
 // Global variable.
 struct_command_object global_command_object;
 
-static void( *execute[ 3 ] )( );
+static void( *execute[ 3 ] )( unsigned char data );
 static void( *undo[ 3 ] )( );
 
 static unsigned char commands[ 10 ];
@@ -14,12 +14,12 @@ void engine_command_manager_init()
 {
 	// IMPORTANT execute + undo must be same order.
 	execute[ 0 ] = engine_actor_manager_exec_fire;
-	execute[ 1 ] = engine_actor_manager_exec_jump;
-	execute[ 2 ] = engine_actor_manager_exec_move;
+	/*	execute[ 1 ] = engine_actor_manager_exec_jump;
+		execute[ 2 ] = engine_actor_manager_exec_move;
 
-	undo[ 0 ] = engine_actor_manager_undo_fire;
-	undo[ 1 ] = engine_actor_manager_undo_jump;
-	undo[ 2 ] = engine_actor_manager_undo_move;
+		undo[ 0 ] = engine_actor_manager_undo_fire;
+		undo[ 1 ] = engine_actor_manager_undo_jump;
+		undo[ 2 ] = engine_actor_manager_undo_move*/;
 }
 
 void engine_command_manager_add( unsigned char index, unsigned char command, unsigned char delta, unsigned char timer)
@@ -35,13 +35,15 @@ void engine_command_manager_add( unsigned char index, unsigned char command, uns
 
 void engine_command_manager_execute()
 {
+	struct_command_object *co = &global_command_object;
 	unsigned char idx;
 	unsigned char cmd;
+	unsigned char data = 125;
 
 	for( idx = 0; idx < 1; idx++ )
 	{
 		cmd = commands[ idx ];
-		execute[ cmd ]();
+		execute[ cmd ]( data );
 	}
 }
 
