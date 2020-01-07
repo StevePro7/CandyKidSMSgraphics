@@ -1,4 +1,5 @@
 #include "actor_manager.h"
+#include "command_manager.h"
 #include <stdio.h>
 
 // Public method.
@@ -17,7 +18,8 @@ void engine_actor_manager_exec_jump()
 }
 void engine_actor_manager_exec_move()
 {
-	printf( "EXEC move\n" );
+	struct_command_object *co = &global_command_object;
+	printf( "EXEC move : %d %d\n", co->delta, co->timer );
 }
 
 // Undo commands.

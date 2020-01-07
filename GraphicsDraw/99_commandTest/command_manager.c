@@ -1,6 +1,9 @@
 #include "command_manager.h"
 #include "actor_manager.h"
 
+// Global variable.
+struct_command_object global_command_object;
+
 static void( *execute[ 3 ] )( );
 static void( *undo[ 3 ] )( );
 
@@ -9,6 +12,7 @@ static unsigned char commands[ 10 ];
 // Public method.
 void engine_command_manager_init()
 {
+	// IMPORTANT execute + undo must be same order.
 	execute[ 0 ] = engine_actor_manager_exec_fire;
 	execute[ 1 ] = engine_actor_manager_exec_jump;
 	execute[ 2 ] = engine_actor_manager_exec_move;
@@ -18,11 +22,15 @@ void engine_command_manager_init()
 	undo[ 2 ] = engine_actor_manager_undo_move;
 }
 
-void engine_command_manager_add()
+void engine_command_manager_add( unsigned char index, unsigned char command, unsigned char delta, unsigned char timer)
 {
-	commands[ 0 ] = 2;
-	commands[ 1 ] = 0;
-	commands[ 2 ] = 1;
+	struct_command_object *co = &global_command_object;
+	co->delta = delta;
+	co->timer = timer;
+
+	commands[ index ] = command;
+	/*commands[ 1 ] = 0;
+	commands[ 2 ] = 1;*/
 }
 
 void engine_command_manager_execute()
@@ -30,7 +38,7 @@ void engine_command_manager_execute()
 	unsigned char idx;
 	unsigned char cmd;
 
-	for( idx = 0; idx < 3; idx++ )
+	for( idx = 0; idx < 1; idx++ )
 	{
 		cmd = commands[ idx ];
 		execute[ cmd ]();

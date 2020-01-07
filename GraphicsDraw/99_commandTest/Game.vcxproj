@@ -147,6 +147,7 @@
     <ClCompile Include="actor_manager.c" />
     <ClCompile Include="command.c" />
     <ClCompile Include="command_manager.c" />
+    <ClCompile Include="command_object.c" />
     <ClCompile Include="input_manager.c" />
     <ClCompile Include="light.c" />
     <ClCompile Include="main.c" />
@@ -155,6 +156,7 @@
     <ClInclude Include="actor_manager.h" />
     <ClInclude Include="command.h" />
     <ClInclude Include="command_manager.h" />
+    <ClInclude Include="command_object.h" />
     <ClInclude Include="input_manager.h" />
     <ClInclude Include="light.h" />
     <ClInclude Include="main.h" />
