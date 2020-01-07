@@ -2,5 +2,8 @@
 
 void main( void )
 {
-	int i = 7;
+	engine_command_manager_init();
+
+	engine_command_manager_add();
+	engine_command_manager_execute();
 }
