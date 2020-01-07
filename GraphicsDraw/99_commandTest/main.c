@@ -6,4 +6,5 @@ void main( void )
 
 	engine_command_manager_add();
 	engine_command_manager_execute();
+	engine_command_manager_undo();
 }

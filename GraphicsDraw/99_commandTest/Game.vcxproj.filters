@@ -25,6 +25,12 @@
     <Filter Include="Source Files\engine">
       <UniqueIdentifier>{46134ed3-9986-4bb7-b614-a1379af799bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\object">
+      <UniqueIdentifier>{c81a3eb9-d8cb-4b49-ba9f-d4dcddd59713}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\object">
+      <UniqueIdentifier>{f3d358f1-c493-4005-b25a-07cd936eb585}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
