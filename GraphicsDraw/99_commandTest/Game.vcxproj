@@ -151,7 +151,6 @@
     <ClCompile Include="input_manager.c" />
     <ClCompile Include="light.c" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="state_manager.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="actor_manager.h" />
@@ -161,7 +160,6 @@
     <ClInclude Include="input_manager.h" />
     <ClInclude Include="light.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="state_manager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
