@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClCompile Include="devkit\_sms_manager.c" />
     <ClCompile Include="devkit\_snd_manager.c" />
+    <ClCompile Include="engine\actor_manager.c" />
     <ClCompile Include="engine\asm_manager.c" />
     <ClCompile Include="engine\board_manager.c" />
     <ClCompile Include="engine\command_manager.c" />
@@ -194,6 +195,7 @@
   <ItemGroup>
     <ClInclude Include="devkit\_sms_manager.h" />
     <ClInclude Include="devkit\_snd_manager.h" />
+    <ClInclude Include="engine\actor_manager.h" />
     <ClInclude Include="engine\asm_manager.h" />
     <ClInclude Include="engine\board_manager.h" />
     <ClInclude Include="engine\command_manager.h" />

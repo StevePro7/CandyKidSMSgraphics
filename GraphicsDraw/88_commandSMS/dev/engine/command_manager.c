@@ -1,108 +1,56 @@
 #include "command_manager.h"
-#include "enemy_manager.h"
-#include "enum_manager.h"
-#include "font_manager.h"
-#include "gamer_manager.h"
+#include "actor_manager.h"
 
 // Global variable.
 struct_command_object global_command_object;
 
-// Methods.
-//void engine_command_manager_move1( unsigned int frameCount, unsigned char theMove )
-//{
-//	struct_command_object *co = &global_command_object;
-//}
+static void( *execute[ 3 ] )( );
+static void( *undo[ 3 ] )( );
 
+static unsigned char commands[ 10 ];
+
+// Public method.
 void engine_command_manager_init()
 {
-	struct_command_object *co = &global_command_object;
-	unsigned int idx;
+	// IMPORTANT execute + undo must be same order.
+	execute[ 0 ] = engine_actor_manager_exec_fire;
+	execute[ 1 ] = engine_actor_manager_exec_jump;
+	execute[ 2 ] = engine_actor_manager_exec_move;
 
-	co->frame_delta = 0;
-	co->command = 0;
-
-	for( idx = 0; idx < MAX_MOVES_COMMANDS; idx++ )
-	{
-		co->move1_frames[ idx ] = 0;
-		co->move1_events[ idx ] = 0;
-		co->move2_frames[ idx ] = 0;
-		co->move2_events[ idx ] = 0;
-	}
-
-	for( idx = 0; idx < MAX_SPEED_COMMANDS; idx++ )
-	{
-		co->speed_frames[ idx ] = 0;
-		co->speed_events[ idx ] = 0;
-	}
+	undo[ 0 ] = engine_actor_manager_undo_fire;
+	undo[ 1 ] = engine_actor_manager_undo_jump;
+	undo[ 2 ] = engine_actor_manager_undo_move;
 }
 
-void engine_command_manager_load()
+void engine_command_manager_add( unsigned char index, unsigned char command, unsigned char delta, unsigned char timer )
 {
 	struct_command_object *co = &global_command_object;
-	co->frame_delta = 10;
-	co->command = 0x80;
+	co->delta = delta;
+	co->timer = timer;
 
-	co->move1_frames[ 0 ] = 2;
-	co->move1_events[ 0 ] = 0x80;
+	commands[ index ] = command;
+	//commands[ 1 ] = 0;
+	//commands[ 2 ] = 1;
 }
 
-void engine_command_manager_save( unsigned int frame_delta )
+void engine_command_manager_execute()
 {
+	unsigned char idx;
+	unsigned char cmd;
 
-}
-
-void engine_command_move_up()
-{
-	struct_gamer_object *go = &global_gamer_object;
-	if( lifecycle_type_move == go->lifecycle )
+	for( idx = 0; idx < 1; idx++ )
 	{
-		return;
+		cmd = commands[ idx ];
+		execute[ cmd ]();
 	}
-
-	engine_gamer_manager_move( direction_type_upxx );
 }
 
-void engine_command_move_up2()
+void engine_command_manager_undo()
 {
-	unsigned char index = mama_type_pro;
-	struct_enemy_object *eo = &global_enemy_objects[ index ];
-	if( lifecycle_type_move == eo->lifecycle )
-	{
-		return;
-	}
+	unsigned char idx;
+	unsigned char cmd;
 
-	engine_enemy_manager_move( index, direction_type_upxx );
-}
-
-void engine_command_move_down()
-{
-	struct_gamer_object *go = &global_gamer_object;
-	if( lifecycle_type_move == go->lifecycle )
-	{
-		return;
-	}
-
-	engine_gamer_manager_move( direction_type_down );
-}
-
-void engine_command_move_left()
-{
-	struct_gamer_object *go = &global_gamer_object;
-	if( lifecycle_type_move == go->lifecycle )
-	{
-		return;
-	}
-
-	engine_gamer_manager_move( direction_type_left );
-}
-
-void engine_command_move_right()
-{
-	struct_gamer_object *go = &global_gamer_object;
-	if( lifecycle_type_move == go->lifecycle )
-	{
-		return;
-	}
-
-	engine_gamer_manager_move( direction_type_rght );
+	idx = 2;
+	cmd = commands[ idx ];
+	undo[ cmd ]();
 }

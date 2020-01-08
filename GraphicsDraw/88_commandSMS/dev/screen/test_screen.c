@@ -1,6 +1,6 @@
 #include "test_screen.h"
 #include "..\engine\board_manager.h"
-#include "..\engine\command_manager.h"
+//#include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
@@ -32,22 +32,22 @@ void screen_test_screen_update( unsigned char *screen_type )
 	input = engine_input_manager_move_up();
 	if( input )
 	{
-		engine_command_move_up();
+		//engine_command_move_up();
 	}
 	input = engine_input_manager_move_down();
 	if( input )
 	{
-		engine_command_move_down();
+		//engine_command_move_down();
 	}
 	input = engine_input_manager_move_left();
 	if( input )
 	{
-		engine_command_move_left();
+		//engine_command_move_left();
 	}
 	input = engine_input_manager_move_right();
 	if( input )
 	{
-		engine_command_move_right();
+		//engine_command_move_right();
 	}
 
 	//engine_gamer_manager_update();

@@ -6,18 +6,10 @@
 // Global variable.
 extern struct_command_object global_command_object;
 
-// Methods.
-//void engine_command_manager_move1( unsigned int frameCount, unsigned char theMove );
-
+// Public method.
 void engine_command_manager_init();
-void engine_command_manager_load();
-
-void engine_command_manager_save( unsigned int frame_delta );
-
-void engine_command_move_up();
-void engine_command_move_up2();
-void engine_command_move_down();
-void engine_command_move_left();
-void engine_command_move_right();
+void engine_command_manager_add( unsigned char index, unsigned char command, unsigned char delta, unsigned char timer );
+void engine_command_manager_execute();
+void engine_command_manager_undo();
 
 #endif//_COMMAND_MANAGER_H_

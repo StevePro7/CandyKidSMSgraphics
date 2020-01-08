@@ -174,6 +174,9 @@
     <ClCompile Include="engine\frame_manager.c">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
+    <ClCompile Include="engine\actor_manager.c">
+      <Filter>Source Files\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="build.bat">
@@ -308,6 +311,9 @@
       <Filter>Header Files\object</Filter>
     </ClInclude>
     <ClInclude Include="engine\frame_manager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actor_manager.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
   </ItemGroup>

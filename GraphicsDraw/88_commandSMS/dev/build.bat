@@ -19,6 +19,7 @@ set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
 
 cd engine
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 asm_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 actor_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 board_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 command_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
@@ -85,6 +86,7 @@ sdcc -o output.ihx --Werror --opt-code-speed -mz80 --no-std-crt0 --data-loc 0xC0
 devkit\_sms_manager.rel ^
 devkit\_snd_manager.rel ^
 engine\asm_manager.rel ^
+engine\actor_manager.rel ^
 engine\board_manager.rel ^
 engine\command_manager.rel ^
 engine\content_manager.rel ^
