@@ -7,6 +7,7 @@ struct_command_object global_command_object;
 static void( *execute[ 3 ] )( );
 static void( *undo[ 3 ] )( );
 
+static unsigned char counter;
 static unsigned char commands[ 10 ];
 
 // Public method.
@@ -20,6 +21,8 @@ void engine_command_manager_init()
 	undo[ 0 ] = engine_actor_manager_undo_fire;
 	undo[ 1 ] = engine_actor_manager_undo_jump;
 	undo[ 2 ] = engine_actor_manager_undo_move;
+
+	counter = 0;
 }
 
 void engine_command_manager_add( unsigned char index, unsigned char command, unsigned char delta, unsigned char timer)
@@ -31,6 +34,8 @@ void engine_command_manager_add( unsigned char index, unsigned char command, uns
 	commands[ index ] = command;
 	//commands[ 1 ] = 0;
 	//commands[ 2 ] = 1;
+
+	counter++
 }
 
 void engine_command_manager_execute()
@@ -38,7 +43,7 @@ void engine_command_manager_execute()
 	unsigned char idx;
 	unsigned char cmd;
 
-	for( idx = 0; idx < 1; idx++ )
+	for( idx = 0; idx < counter; idx++ )
 	{
 		cmd = commands[ idx ];
 		execute[ cmd ]();
