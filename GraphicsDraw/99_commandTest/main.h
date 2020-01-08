@@ -4,6 +4,7 @@
 #include "light.h"
 
 #include "actor_manager.h"
+#include "enum_manager.h"
 #include "command_manager.h"
 #include "input_manager.h"
 

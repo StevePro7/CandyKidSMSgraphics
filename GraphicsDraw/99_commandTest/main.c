@@ -8,7 +8,7 @@ void main( void )
 	input = engine_input_manager_hold_down();
 	if( input )
 	{
-		engine_command_manager_add( 0, 2, 10, 20 );
+		engine_command_manager_add( 0, command_type_move, 10, 20 );
 	}
 
 	engine_command_manager_execute();
