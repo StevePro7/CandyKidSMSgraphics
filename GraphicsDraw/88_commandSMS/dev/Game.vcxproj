@@ -144,8 +144,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="banks\bank2.c" />
-    <ClCompile Include="banks\bank3.c" />
     <ClCompile Include="devkit\_sms_manager.c" />
     <ClCompile Include="devkit\_snd_manager.c" />
     <ClCompile Include="engine\asm_manager.c" />
@@ -162,7 +160,6 @@
     <ClCompile Include="engine\global_manager.c" />
     <ClCompile Include="engine\hack_manager.c" />
     <ClCompile Include="engine\input_manager.c" />
-    <ClCompile Include="engine\level_manager.c" />
     <ClCompile Include="engine\mask_manager.c" />
     <ClCompile Include="engine\move_manager.c" />
     <ClCompile Include="engine\screen_manager.c" />
@@ -180,7 +177,6 @@
     <ClCompile Include="object\frame_object.c" />
     <ClCompile Include="object\gamer_object.c" />
     <ClCompile Include="object\hack_object.c" />
-    <ClCompile Include="object\level_object.c" />
     <ClCompile Include="object\state_object.c" />
     <ClCompile Include="screen\demo_screen.c" />
     <ClCompile Include="screen\func_screen.c" />
@@ -196,8 +192,6 @@
     <None Include="build.bat" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="banks\bank2.h" />
-    <ClInclude Include="banks\bank3.h" />
     <ClInclude Include="devkit\_sms_manager.h" />
     <ClInclude Include="devkit\_snd_manager.h" />
     <ClInclude Include="engine\asm_manager.h" />
@@ -214,7 +208,6 @@
     <ClInclude Include="engine\global_manager.h" />
     <ClInclude Include="engine\hack_manager.h" />
     <ClInclude Include="engine\input_manager.h" />
-    <ClInclude Include="engine\level_manager.h" />
     <ClInclude Include="engine\mask_manager.h" />
     <ClInclude Include="engine\move_manager.h" />
     <ClInclude Include="engine\screen_manager.h" />
@@ -232,7 +225,6 @@
     <ClInclude Include="object\frame_object.h" />
     <ClInclude Include="object\gamer_object.h" />
     <ClInclude Include="object\hack_object.h" />
-    <ClInclude Include="object\level_object.h" />
     <ClInclude Include="object\state_object.h" />
     <ClInclude Include="screen\demo_screen.h" />
     <ClInclude Include="screen\func_screen.h" />

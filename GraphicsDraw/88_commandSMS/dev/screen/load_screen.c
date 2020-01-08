@@ -4,16 +4,11 @@
 #include "..\engine\hack_manager.h"
 #include "..\engine\global_manager.h"
 #include "..\engine\input_manager.h"
-#include "..\engine\level_manager.h"
 #include "..\engine\tile_manager.h"
 
 void screen_load_screen_load()
 {
 	struct_hack_object *ho = &global_hack_object;
-
-	engine_level_manager_init_level();
-	engine_level_manager_load_level( ho->hack_world, ho->hack_round );
-	engine_level_manager_draw_level();
 
 	engine_font_manager_draw_data( ho->hack_world + 1, 31, 0 );
 	engine_font_manager_draw_data( ho->hack_round + 1, 31, 1 );
@@ -78,10 +73,6 @@ void screen_load_screen_update( unsigned char *screen_type )
 
 	if( check )
 	{
-		engine_level_manager_init_level();
-		engine_level_manager_load_level( ho->hack_world, ho->hack_round );
-		engine_level_manager_draw_level();
-
 		engine_font_manager_draw_data( ho->hack_world + 1, 31, 0 );
 		engine_font_manager_draw_data( ho->hack_round + 1, 31, 1 );
 	}

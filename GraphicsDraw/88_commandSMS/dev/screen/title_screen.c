@@ -12,7 +12,7 @@ void screen_title_screen_load()
 	//unsigned long max = 99999;
 	//int min = ( unsigned int ) 0 >> 1;
 	//unsigned char size;
-	engine_font_manager_draw_text( "TITLE SCREEN!", 4, 4 );
+	engine_font_manager_draw_text( "TITLE SCREEN!!!", 4, 4 );
 
 	//size = sizeof( long );
 	//engine_font_manager_draw_data( size, 16, 10 );

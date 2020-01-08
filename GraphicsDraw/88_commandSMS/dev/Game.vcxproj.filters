@@ -37,12 +37,6 @@
     <Filter Include="Source Files\screen">
       <UniqueIdentifier>{ab05e582-e0f7-47bf-a896-b201b06bf833}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\banks">
-      <UniqueIdentifier>{972f161a-50f6-4b7f-8ce1-d96fcaee2fa6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\banks">
-      <UniqueIdentifier>{91938ca7-ac0c-4efe-8cc2-06df9528f5f3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\object">
       <UniqueIdentifier>{7bb1501a-9fec-46fd-9f7f-eaa030132fdc}</UniqueIdentifier>
     </Filter>
@@ -105,20 +99,8 @@
     <ClCompile Include="screen\none_screen.c">
       <Filter>Source Files\screen</Filter>
     </ClCompile>
-    <ClCompile Include="banks\bank2.c">
-      <Filter>Source Files\banks</Filter>
-    </ClCompile>
-    <ClCompile Include="object\level_object.c">
-      <Filter>Source Files\object</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\level_manager.c">
-      <Filter>Source Files\engine</Filter>
-    </ClCompile>
     <ClCompile Include="engine\tile_manager.c">
       <Filter>Source Files\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="banks\bank3.c">
-      <Filter>Source Files\banks</Filter>
     </ClCompile>
     <ClCompile Include="engine\hack_manager.c">
       <Filter>Source Files\engine</Filter>
@@ -253,20 +235,8 @@
     <ClInclude Include="screen\test_screen.h">
       <Filter>Header Files\screen</Filter>
     </ClInclude>
-    <ClInclude Include="banks\bank2.h">
-      <Filter>Header Files\banks</Filter>
-    </ClInclude>
-    <ClInclude Include="object\level_object.h">
-      <Filter>Header Files\object</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\level_manager.h">
-      <Filter>Header Files\engine</Filter>
-    </ClInclude>
     <ClInclude Include="engine\tile_manager.h">
       <Filter>Header Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="banks\bank3.h">
-      <Filter>Header Files\banks</Filter>
     </ClInclude>
     <ClInclude Include="engine\hack_manager.h">
       <Filter>Header Files\engine</Filter>

@@ -1,5 +1,5 @@
 XL2
-H 9 areas D global symbols
+H 9 areas E global symbols
 M command_manager
 O -mz80
 S _engine_gamer_manager_move Ref0000
@@ -7,14 +7,15 @@ S _global_gamer_object Ref0000
 S _global_enemy_objects Ref0000
 S .__.ABS. Def0000
 S _engine_enemy_manager_move Ref0000
-A _CODE size B3 flags 0 addr 0
-S _engine_command_move_down Def0080
+A _CODE size B4 flags 0 addr 0
+S _engine_command_move_down Def0081
 S _engine_command_manager_load Def0048
-S _engine_command_move_up2 Def006F
+S _engine_command_manager_save Def005E
+S _engine_command_move_up2 Def0070
 S _engine_command_manager_init Def0000
-S _engine_command_move_right Def00A2
-S _engine_command_move_up Def005E
-S _engine_command_move_left Def0091
+S _engine_command_move_right Def00A3
+S _engine_command_move_up Def005F
+S _engine_command_move_left Def0092
 A _DATA size 1A7 flags 0 addr 0
 S _global_command_object Def0000
 A _INITIALIZED size 0 flags 0 addr 0
@@ -54,41 +55,45 @@ T 56 00 36 02 21 67 00 36 80 C9
 R 00 00 00 00 00 05 01 00
 T 5E 00
 R 00 00 00 00
-T 5E 00 21 0C 00 4E 0D C8 18 00
+T 5E 00 C9
+R 00 00 00 00
+T 5F 00
+R 00 00 00 00
+T 5F 00 21 0C 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 01 00
-T 66 00
+T 67 00
 R 00 00 00 00
-T 66 00 3E 01 F5 33 CD 00 00 33 C9
+T 67 00 3E 01 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00
-T 6F 00
+T 70 00
 R 00 00 00 00
-T 6F 00 21 0C 00 4E 0D C8 18 00
+T 70 00 21 0C 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 02 00
-T 77 00
+T 78 00
 R 00 00 00 00
-T 77 00 21 00 01 E5 CD 00 00 F1 C9
+T 78 00 21 00 01 E5 CD 00 00 F1 C9
 R 00 00 00 00 02 07 04 00
-T 80 00
+T 81 00
 R 00 00 00 00
-T 80 00 21 0C 00 4E 0D C8 18 00
+T 81 00 21 0C 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 01 00
-T 88 00
+T 89 00
 R 00 00 00 00
-T 88 00 3E 02 F5 33 CD 00 00 33 C9
+T 89 00 3E 02 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00
-T 91 00
+T 92 00
 R 00 00 00 00
-T 91 00 21 0C 00 4E 0D C8 18 00
+T 92 00 21 0C 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 01 00
-T 99 00
+T 9A 00
 R 00 00 00 00
-T 99 00 3E 03 F5 33 CD 00 00 33 C9
+T 9A 00 3E 03 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00
-T A2 00
+T A3 00
 R 00 00 00 00
-T A2 00 21 0C 00 4E 0D C8 18 00
+T A3 00 21 0C 00 4E 0D C8 18 00
 R 00 00 00 00 02 03 01 00
-T AA 00
+T AB 00
 R 00 00 00 00
-T AA 00 3E 04 F5 33 CD 00 00 33 C9
+T AB 00 3E 04 F5 33 CD 00 00 33 C9
 R 00 00 00 00 02 07 00 00

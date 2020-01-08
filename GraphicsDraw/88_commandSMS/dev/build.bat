@@ -32,7 +32,6 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_man
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 gamer_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 global_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 input_manager.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 mask_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 move_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 screen_manager.c
@@ -50,7 +49,6 @@ cd object
 sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 frame_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 gamer_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_object.c
-::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 state_object.c
 cd ..
 
@@ -81,13 +79,9 @@ echo.
 
 :: Link
 sdcc -o output.ihx --Werror --opt-code-speed -mz80 --no-std-crt0 --data-loc 0xC000 ^
--Wl-b_BANK2=0x8000 ^
--Wl-b_BANK3=0x8000 ^
 ..\crt0\crt0_sms.rel main.rel ^
 ..\lib\SMSlib.lib ^
 ..\lib\PSGlib.rel ^
-banks\bank2.rel ^
-banks\bank3.rel ^
 devkit\_sms_manager.rel ^
 devkit\_snd_manager.rel ^
 engine\asm_manager.rel ^
@@ -104,7 +98,6 @@ engine\gamer_manager.rel ^
 engine\global_manager.rel ^
 engine\hack_manager.rel ^
 engine\input_manager.rel ^
-engine\level_manager.rel ^
 engine\mask_manager.rel ^
 engine\move_manager.rel ^
 engine\screen_manager.rel ^
@@ -118,7 +111,6 @@ object\enemy_object.rel ^
 object\frame_object.rel ^
 object\gamer_object.rel ^
 object\hack_object.rel ^
-object\level_object.rel ^
 object\state_object.rel ^
 screen\none_screen.rel ^
 screen\splash_screen.rel ^
