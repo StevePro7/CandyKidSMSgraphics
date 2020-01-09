@@ -1,0 +1,40 @@
+Graphics
+09/01/2020
+
+Due to being so much work in progress here are the latest graphics:
+
+01.
+Sprites
+example
+sprites.png
+C:\GitHub\StevePro7\CandyKidSMSgraphics\GraphicsDraw\13_tilesAll\gfx\raw
+
+source
+sprites.png
+C:\GitHub\StevePro7\CandyKidSMSgraphics\Images2\_sprites\Vert
+
+Bosses found in directory "32" and "64"
+
+
+02.
+Tiles
+example
+game_tiles.png
+C:\GitHub\StevePro7\CandyKidSMSgraphics\GraphicsDraw\11_level02\gfx\raw
+
+source
+C:\GitHub\StevePro7\CandyKidSMSgraphics\Images2\_tiles
+
+as there are currently not finished there are 4x variations:
+AllTilesB12_C06
+AllTilesB12_C08
+AllTilesB14_C06
+AllTilesB14_C08
+
+These are built using the utility program
+C:\GitHub\StevePro7\CandyKidSMSgraphics\GraphicsLoad_tiles_02
+
+However, the death candy and oneup candy are not finished
+neither are all the colors confirmed
+
+Plus did I want to have arrows tiles??
