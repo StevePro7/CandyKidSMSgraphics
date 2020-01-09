@@ -3,10 +3,10 @@
 
 typedef struct tag_struct_command_object
 {
-	unsigned char frame;
-	unsigned char command_type;
-	unsigned char delta;
-	unsigned char timer;
+	//unsigned char frame;
+	//unsigned char command_type;
+	unsigned char args1;
+	unsigned char args2;
 
 } struct_command_object;
 

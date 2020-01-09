@@ -2,23 +2,29 @@
 #include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\frame_manager.h"
 #include "..\engine\input_manager.h"
 
 void screen_demo_screen_load()
 {
 	engine_command_manager_init();
-	engine_font_manager_draw_text( "DEMO SCREEN!", 2, 4 );
+	engine_frame_manager_init();
+
+	engine_font_manager_draw_text( "DEMO SCREEN!!!!", 2, 4 );
 }
 
 void screen_demo_screen_update( unsigned char *screen_type )
 {
+	struct_frame_object *fo = &global_frame_object;
 	unsigned char input;
+	unsigned char frame = fo->frame_count = 0;
 
 	input = engine_input_manager_hold_down();
 	if( input )
 	{
 		engine_font_manager_draw_text( "HOLD DOWN", 2, 6 );
-		engine_command_manager_add( 0, command_type_move, 10, 20 );
+		engine_command_manager_add( frame, command_type_move, 10, 20 );
+		
 		engine_font_manager_draw_text( "HOLD END", 22, 6 );
 	}
 	/*input = engine_input_manager_hold_left();

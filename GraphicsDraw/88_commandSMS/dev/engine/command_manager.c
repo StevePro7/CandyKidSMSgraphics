@@ -3,22 +3,23 @@
 #include "actor_manager.h"
 
 // Global variable.
-struct_command_object global_command_object;
+//struct_command_object global_command_object;
 struct_command_object global_command_objects[ MAX_COMMANDS ];
 
 #define TYPE_COMMANDS	4
 
-static void( *execute[ TYPE_COMMANDS ] )( );
-static void( *undo[ TYPE_COMMANDS ] )( );
+static void( *execute[ TYPE_COMMANDS ] )( unsigned int index );
+static void( *undo[ TYPE_COMMANDS ] )( unsigned int index );
 
 static unsigned char command_index;
 static unsigned char command_count;
 
 static unsigned char counter;
+static unsigned int frames[ MAX_COMMANDS ];
 static unsigned char commands[ MAX_COMMANDS ];
 
-static void empty_exec_command();
-static void empty_undo_command();
+static void empty_exec_command( unsigned int index );
+static void empty_undo_command( unsigned int index );
 
 // Public methods.
 void engine_command_manager_init()
@@ -26,12 +27,14 @@ void engine_command_manager_init()
 	// IMPORTANT execute + undo must be same order!!
 	execute[ command_type_empty ] = empty_exec_command;
 	execute[ command_type_fire ] = engine_actor_manager_exec_fire;
-	execute[ command_type_jump ] = engine_actor_manager_exec_jump;
+	//execute[ command_type_jump ] = engine_actor_manager_exec_jump;
+	execute[ command_type_jump ] = engine_actor_manager_exec_fire;
 	execute[ command_type_move ] = engine_actor_manager_exec_move;
 
 	undo[ command_type_empty ] = empty_undo_command;
 	undo[ command_type_fire ] = engine_actor_manager_undo_fire;
-	undo[ command_type_jump ] = engine_actor_manager_undo_jump;
+	//undo[ command_type_jump ] = engine_actor_manager_undo_jump;
+	undo[ command_type_jump ] = engine_actor_manager_undo_fire;
 	undo[ command_type_move ] = engine_actor_manager_undo_move;
 
 	command_index = 0;
@@ -39,19 +42,23 @@ void engine_command_manager_init()
 	counter = 0;
 }
 
-void engine_command_manager_add( unsigned char index, unsigned char command, unsigned char delta, unsigned char timer )
+void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned char args1, unsigned char args2 )
 {
-	struct_command_object *co = &global_command_object;
-	struct_command_object *co2;
+	//struct_command_object *co = &global_command_object;
+	struct_command_object *co;
 
-	co->delta = delta;
-	co->timer = timer;
+	//co->delta = delta;
+	//co->timer = timer;
 
-	commands[ index ] = command;
+	//commands[ index ] = command;
 	//commands[ 1 ] = 0;
 	//commands[ 2 ] = 1;
+	frames[ command_index ] = frame;
+	commands[ command_index ] = command_type;
 
-	co2 = &global_command_objects[ command_index ];
+	co = &global_command_objects[ command_index ];
+	co->args1 = args1;
+	co->args2 = args2;
 
 	command_index++;
 	command_count++;
@@ -60,14 +67,18 @@ void engine_command_manager_add( unsigned char index, unsigned char command, uns
 
 void engine_command_manager_execute()
 {
-	unsigned char idx;
+	unsigned int idx;
 	unsigned char cmd;
 
-	for( idx = 0; idx < counter; idx++ )
-	{
-		cmd = commands[ idx ];
-		execute[ cmd ]();
-	}
+	//for( idx = 0; idx < counter; idx++ )
+	//{
+	//	cmd = commands[ idx ];
+	//	execute[ cmd ]();
+	//}
+
+	idx = 0;
+	cmd = commands[ idx ];
+	execute[ cmd ]( idx );
 }
 
 void engine_command_manager_undo()
@@ -75,16 +86,22 @@ void engine_command_manager_undo()
 	unsigned char idx;
 	unsigned char cmd;
 
-	for( idx = 0; idx < counter; idx++ )
-	{
-		cmd = commands[ idx ];
-		undo[ cmd ]();
-	}
+	//for( idx = 0; idx < counter; idx++ )
+	//{
+	//	cmd = commands[ idx ];
+	//	undo[ cmd ]();
+	//}
+
+	idx = 0;
+	cmd = commands[ idx ];
+	undo[ cmd ]( idx );
 }
 
-static void empty_exec_command()
+static void empty_exec_command( unsigned int index )
 {
+	index = 0;
 }
-static void empty_undo_command()
+static void empty_undo_command( unsigned int index )
 {
+	index = 0;
 }

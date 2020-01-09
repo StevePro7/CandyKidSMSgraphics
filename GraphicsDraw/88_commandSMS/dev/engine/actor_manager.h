@@ -5,13 +5,18 @@
 void engine_actor_manager_update();
 
 // Execute commands.
-void engine_actor_manager_exec_fire();
-void engine_actor_manager_exec_jump();
-void engine_actor_manager_exec_move();
+//void engine_actor_manager_exec_fire();
+void engine_actor_manager_exec_fire( unsigned int index );
+//void engine_actor_manager_exec_jump();
+//void engine_actor_manager_exec_move();
+void engine_actor_manager_exec_move( unsigned int index );
 
 // Undo commands.
-void engine_actor_manager_undo_fire();
-void engine_actor_manager_undo_jump();
-void engine_actor_manager_undo_move();
+//void engine_actor_manager_undo_fire();
+void engine_actor_manager_undo_fire( unsigned int index );
+//void engine_actor_manager_undo_jump();
+//void engine_actor_manager_undo_move();
+void engine_actor_manager_undo_move( unsigned int index );
+
 
 #endif//_ACTOR_MANAGER_H_
