@@ -15,10 +15,10 @@ void screen_test_screen_load()
 	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
 
 	engine_font_manager_draw_text( "HELLO STEVEPRO SCREEN", 2, 1 );
-	engine_tile_manager_draw_tree( 2, 2 );
-	engine_tile_manager_draw_tree( 4, 2 );
-	engine_tile_manager_draw_tree( 6, 2 );
-	engine_tile_manager_draw_tree( 8, 2 );
+	engine_tile_manager_draw_tree( tree_type_avoid, 2, 2 );
+	engine_tile_manager_draw_tree( tree_type_avoid, 4, 2 );
+	engine_tile_manager_draw_tree( tree_type_avoid, 6, 2 );
+	engine_tile_manager_draw_tree( tree_type_avoid, 8, 2 );
 
 	count = 0;
 	timer = 0;

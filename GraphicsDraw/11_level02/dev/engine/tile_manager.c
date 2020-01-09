@@ -2,7 +2,6 @@
 #include "enum_manager.h"
 #include "font_manager.h"
 #include "global_manager.h"
-#include "..\banks\bank2.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\gfx.h"
 #include <stdlib.h>

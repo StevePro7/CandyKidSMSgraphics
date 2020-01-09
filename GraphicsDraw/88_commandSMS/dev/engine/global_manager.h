@@ -30,4 +30,6 @@
 #define MAX_MOVES_COUNT			10	//1000
 #define MAX_SPEED_COUNT			1	//100
 
+#define MAX_BLOCK_TILES			12
+
 #endif//_GLOBAL_MANAGER_H_

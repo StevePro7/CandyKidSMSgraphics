@@ -34,9 +34,9 @@ void screen_func_screen_load()
 
 	engine_font_manager_draw_data( frame, 30, 0 );
 
-	engine_tile_manager_draw_tree( 20, 14 );
-	engine_tile_manager_draw_tree( 20, 16 );
-	engine_tile_manager_draw_tree( 20, 18 );
+	engine_tile_manager_draw_tree( tree_type_avoid,  20, 14 );
+	engine_tile_manager_draw_tree( tree_type_avoid,  20, 16 );
+	engine_tile_manager_draw_tree( tree_type_avoid,  20, 18 );
 }
 
 void screen_func_screen_update( unsigned char *screen_type )
