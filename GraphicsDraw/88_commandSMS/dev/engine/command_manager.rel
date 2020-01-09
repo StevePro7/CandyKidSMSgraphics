@@ -1,5 +1,5 @@
 XL2
-H 9 areas B global symbols
+H 9 areas C global symbols
 M command_manager
 O -mz80
 S _engine_actor_manager_exec_fire Ref0000
@@ -8,11 +8,12 @@ S _engine_actor_manager_exec_move Ref0000
 S _engine_actor_manager_undo_fire Ref0000
 S ___sdcc_call_hl Ref0000
 S _engine_actor_manager_undo_move Ref0000
-A _CODE size B9 flags 0 addr 0
+A _CODE size FD flags 0 addr 0
 S _engine_command_manager_add Def003A
 S _engine_command_manager_execute Def0087
 S _engine_command_manager_init Def0000
 S _engine_command_manager_undo Def009F
+S _engine_command_manager_setframes Def00B7
 A _DATA size 45 flags 0 addr 0
 S _global_command_objects Def0000
 A _INITIALIZED size 0 flags 0 addr 0
@@ -56,11 +57,11 @@ T 3B 00
 R 00 00 01 00
 T 00 00
 R 00 00 00 00
-T 00 00 21 B7 00 22 14 00 21 00 00 22
+T 00 00 21 FB 00 22 14 00 21 00 00 22
 R 00 00 00 00 00 03 00 00 00 06 01 00 02 09 00 00
 T 0A 00 16 00 22 18 00 21 00 00 22
 R 00 00 00 00 00 02 01 00 00 05 01 00 02 08 02 00
-T 13 00 1A 00 21 B8 00 22 1C 00 21
+T 13 00 1A 00 21 FC 00 22 1C 00 21
 R 00 00 00 00 00 02 01 00 00 05 00 00 00 08 01 00
 T 1C 00 00 00 22 1E 00 22 20 00 21
 R 00 00 00 00 02 02 03 00 00 05 01 00 00 08 01 00
@@ -96,9 +97,29 @@ T AD 00 11 00 00 D5 69 CD 00 00 F1 C9
 R 00 00 00 00 02 08 04 00
 T B7 00
 R 00 00 00 00
-T B7 00 C9
+T B7 00 DD E5 DD 21 00 00 DD 39 F5 21 00 00 E3
 R 00 00 00 00
-T B8 00
+T C4 00
 R 00 00 00 00
-T B8 00 C9
+T C4 00 C1 C5 CB 21 CB 10 DD 6E 04 DD 66 05 09 7E
+R 00 00 00 00
+T D2 00 23 66 6F 5D 7C 57 B5 28 1B 21 27 00 09 73
+R 00 00 00 00 00 0C 01 00
+T E0 00 23 72 DD 34 FE 20 03 DD 34 FF
+R 00 00 00 00
+T EA 00
+R 00 00 00 00
+T EA 00 DD 7E FE D6 0A DD 7E FF DE 00 38 CE
+R 00 00 00 00
+T F6 00
+R 00 00 00 00
+T F6 00 DD F9 DD E1 C9
+R 00 00 00 00
+T FB 00
+R 00 00 00 00
+T FB 00 C9
+R 00 00 00 00
+T FC 00
+R 00 00 00 00
+T FC 00 C9
 R 00 00 00 00

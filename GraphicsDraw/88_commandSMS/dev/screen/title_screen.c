@@ -9,6 +9,9 @@
 
 void screen_title_screen_load()
 {
+	unsigned int frames[ MAX_COMMANDS ] = { 1, 1, 4, 0, 0, 0, 0, 0, 0, 0 };
+	unsigned int commands[ MAX_COMMANDS ] = { 2, 3, 2,  0, 0, 0, 0, 0, 0, 0 };		// TODO add commands
+
 	//unsigned long max = 99999;
 	//int min = ( unsigned int ) 0 >> 1;
 	//unsigned char size;
@@ -22,12 +25,14 @@ void screen_title_screen_load()
 	engine_delay_manager_load( 60 );
 	engine_frame_manager_init();
 	engine_frame_manager_draw();
+
+	engine_command_manager_setframes( frames );									// TODO add commands
 }
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
-	unsigned char input;
+//	unsigned char input;
 	unsigned char proceed = engine_delay_manager_update();
 	if( !proceed )
 	{
@@ -35,7 +40,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 		return;
 	}
 
-	if( 0 == fo->frame_delta )
+	/*if( 0 == fo->frame_delta )
 	{
 
 	}
@@ -45,7 +50,7 @@ void screen_title_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		engine_font_manager_draw_text( "FIRE!", 10, 10 );
-	}
+	}*/
 
 	engine_frame_manager_update();
 	engine_frame_manager_draw();

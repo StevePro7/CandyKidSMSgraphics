@@ -65,6 +65,7 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	counter++;
 }
 
+//void engine_command_manager_execute(unsigned int frame )
 void engine_command_manager_execute()
 {
 	unsigned int idx;
@@ -81,6 +82,7 @@ void engine_command_manager_execute()
 	execute[ cmd ]( idx );
 }
 
+//void engine_command_manager_undo( unsigned int frame )
 void engine_command_manager_undo()
 {
 	unsigned char idx;
@@ -97,6 +99,23 @@ void engine_command_manager_undo()
 	undo[ cmd ]( idx );
 }
 
+void engine_command_manager_setframes( unsigned int* input )
+{
+	unsigned int idx;
+	unsigned int frm;
+
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	{
+		frm = input[ idx ];
+		if( !frm )
+		{
+			break;
+		}
+
+		frames[ idx ] = frm;
+	}
+}
+
 static void empty_exec_command( unsigned int index )
 {
 	index = 0;
@@ -105,3 +124,4 @@ static void empty_undo_command( unsigned int index )
 {
 	index = 0;
 }
+
