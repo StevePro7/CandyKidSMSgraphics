@@ -40,5 +40,5 @@ void engine_frame_manager_draw()
 {
 	struct_frame_object *fo = &global_frame_object;
 	engine_font_manager_draw_data( fo->frame_count, 31, 0 );
-	engine_font_manager_draw_data( fo->frame_delta, 31, 1 );
+//	engine_font_manager_draw_data( fo->frame_delta, 31, 1 );
 }

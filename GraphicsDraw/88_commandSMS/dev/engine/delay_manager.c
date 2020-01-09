@@ -1,4 +1,5 @@
 #include "delay_manager.h"
+#include "font_manager.h"
 #include "hack_manager.h"
 
 // Global variable.
@@ -28,12 +29,18 @@ unsigned char engine_delay_manager_update()
 	struct_delay_object *dObj = &global_delay_object;
 	unsigned char proceed;
 
-	dObj->delay_timer++;
 	proceed = dObj->delay_timer >= dObj->delay_value;
 	if( proceed )
 	{
 		dObj->delay_timer = 0;
 	}
 
+	dObj->delay_timer++;
 	return proceed;
+}
+
+void engine_delay_manager_draw()
+{
+	struct_delay_object *dObj = &global_delay_object;
+	engine_font_manager_draw_data( dObj->delay_timer, 31, 1 );
 }
