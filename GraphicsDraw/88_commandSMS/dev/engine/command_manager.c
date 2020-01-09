@@ -4,22 +4,26 @@
 
 // Global variable.
 struct_command_object global_command_object;
+struct_command_object global_command_objects[ MAX_COMMANDS ];
 
-#define MAX_COMMANDS	4
+#define TYPE_COMMANDS	4
 
-static void( *execute[ MAX_COMMANDS ] )( );
-static void( *undo[ MAX_COMMANDS ] )( );
+static void( *execute[ TYPE_COMMANDS ] )( );
+static void( *undo[ TYPE_COMMANDS ] )( );
+
+static unsigned char command_index;
+static unsigned char command_count;
 
 static unsigned char counter;
-static unsigned char commands[ 10 ];
+static unsigned char commands[ MAX_COMMANDS ];
 
 static void empty_exec_command();
 static void empty_undo_command();
 
-// Public method.
+// Public methods.
 void engine_command_manager_init()
 {
-	// IMPORTANT execute + undo must be same order.
+	// IMPORTANT execute + undo must be same order!!
 	execute[ command_type_empty ] = empty_exec_command;
 	execute[ command_type_fire ] = engine_actor_manager_exec_fire;
 	execute[ command_type_jump ] = engine_actor_manager_exec_jump;
@@ -30,12 +34,16 @@ void engine_command_manager_init()
 	undo[ command_type_jump ] = engine_actor_manager_undo_jump;
 	undo[ command_type_move ] = engine_actor_manager_undo_move;
 
+	command_index = 0;
+	command_count = 0;
 	counter = 0;
 }
 
 void engine_command_manager_add( unsigned char index, unsigned char command, unsigned char delta, unsigned char timer )
 {
 	struct_command_object *co = &global_command_object;
+	struct_command_object *co2;
+
 	co->delta = delta;
 	co->timer = timer;
 
@@ -43,6 +51,10 @@ void engine_command_manager_add( unsigned char index, unsigned char command, uns
 	//commands[ 1 ] = 0;
 	//commands[ 2 ] = 1;
 
+	co2 = &global_command_objects[ command_index ];
+
+	command_index++;
+	command_count++;
 	counter++;
 }
 
