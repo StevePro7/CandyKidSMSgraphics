@@ -1,6 +1,12 @@
 #ifndef _COMMAND_OBJECT_H_
 #define _COMMAND_OBJECT_H_
 
+typedef struct tag_struct_command_master
+{
+	unsigned int save_frames[ 3 ];
+
+} struct_command_master;
+
 typedef struct tag_struct_command_object
 {
 	//unsigned char frame;

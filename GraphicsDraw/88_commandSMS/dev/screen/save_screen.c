@@ -1,5 +1,6 @@
 #include "save_screen.h"
 #include "..\engine\board_manager.h"
+#include "..\engine\command_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\input_manager.h"
@@ -12,41 +13,36 @@ static void draw_trees();
 void screen_save_screen_load()
 {
 	struct_board_object *bo = &global_board_object;
-	//bool test = isSaveGamePresent();
+	struct_command_master *co = &global_command_master;
 	unsigned char save_available;
 
 	engine_board_manager_init();
+	engine_command_manager_init();
 
 	save_available = engine_storage_manager_available();
 	engine_font_manager_draw_data( save_available, 2, 2 );
-	/*engine_font_manager_draw_text( "HELLO", 2, 0 );
-	engine_font_manager_draw_text( "THERE", 20, 2 );*/
 
 	if( save_available )
 	{
 		engine_font_manager_draw_text( "READ DATA", 12, 4 );
-		//readSaveGame();
 		engine_storage_manager_read();
-		
-		//engine_font_manager_draw_data( getPoints(), 12, 5 );
-		//incPoints();
-		//engine_font_manager_draw_data( getPoints(), 12, 6 );
 	}
 
-	//writeSaveGame();
-	//engine_storage_manager_write();
 
 	engine_font_manager_draw_text( "LEFT  = EXITS", 6, 18 );
 	engine_font_manager_draw_text( "RIGHT = TREES", 6, 19 );
 
 	draw_trees();
+	engine_font_manager_draw_data( co->save_frames[ 2 ], 30, 16 );
 	engine_font_manager_draw_text( "SAVE SCREEN!!", 4, 1 );
 }
 
 void screen_save_screen_update( unsigned char *screen_type )
 {
 	struct_board_object *bo = &global_board_object;
+	struct_command_master *co = &global_command_master;
 	unsigned char input;
+	unsigned int* frames;
 
 	input = engine_input_manager_hold_left();
 	if( input )
@@ -59,6 +55,14 @@ void screen_save_screen_update( unsigned char *screen_type )
 	{
 		engine_board_manager_set_tree_type( 1 - bo->save_tree_type );
 		draw_trees();
+	}
+	input = engine_input_manager_hold_down();
+	if( input )
+	{
+		frames = co->save_frames;
+		frames[ 2 ] += 100;
+		engine_command_manager_set_save_frames( frames );
+		engine_font_manager_draw_data( co->save_frames[ 2 ], 30, 16 );
 	}
 
 	input = engine_input_manager_hold_fire1();

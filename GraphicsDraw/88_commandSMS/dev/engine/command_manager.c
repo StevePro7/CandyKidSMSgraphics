@@ -3,7 +3,7 @@
 #include "actor_manager.h"
 
 // Global variable.
-//struct_command_object global_command_object;
+struct_command_master global_command_master;
 struct_command_object global_command_objects[ MAX_COMMANDS ];
 
 #define TYPE_COMMANDS	4
@@ -29,6 +29,8 @@ static void empty_undo_command( unsigned int index );
 // Public methods.
 void engine_command_manager_init()
 {
+	struct_command_master *co = &global_command_master;
+
 	// IMPORTANT execute + undo must be same order!!
 	execute[ command_type_empty ] = empty_exec_command;
 	execute[ command_type_fire ] = engine_actor_manager_exec_fire;
@@ -43,6 +45,10 @@ void engine_command_manager_init()
 	command_index = 1;
 	//command_count = 0;
 	counter = 0;
+
+	co->save_frames[ 0 ] = 0;
+	co->save_frames[ 1 ] = 0;
+	co->save_frames[ 2 ] = 0;
 }
 
 void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned char args1, unsigned char args2 )
@@ -154,6 +160,19 @@ void engine_command_manager_setframes( unsigned int* input )
 		}
 
 		frames[ idx ] = frm;
+	}
+}
+
+void engine_command_manager_set_save_frames( unsigned int* frames )
+{
+	struct_command_master *co = &global_command_master;
+	unsigned int idx;
+	unsigned int frm;
+
+	for( idx = 0; idx < 3; idx++ )
+	{
+		frm = frames[ idx ];
+		co->save_frames[ idx ] = frm;
 	}
 }
 
