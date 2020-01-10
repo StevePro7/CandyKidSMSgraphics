@@ -87,49 +87,16 @@ sdcc -o output.ihx --Werror --opt-code-speed -mz80 --no-std-crt0 --data-loc 0xC0
 ..\crt0\crt0_sms.rel main.rel ^
 ..\lib\SMSlib.lib ^
 ..\lib\PSGlib.rel ^
-devkit\_sms_manager.rel ^
-devkit\_snd_manager.rel ^
-engine\asm_manager.rel ^
-engine\actor_manager.rel ^
-engine\board_manager.rel ^
-engine\command_manager.rel ^
-engine\content_manager.rel ^
-engine\delay_manager.rel ^
-engine\enemy_manager.rel ^
-engine\enum_manager.rel ^
-engine\event_manager.rel ^
-engine\font_manager.rel ^
-engine\frame_manager.rel ^
-engine\gamer_manager.rel ^
-engine\global_manager.rel ^
-engine\hack_manager.rel ^
-engine\input_manager.rel ^
-engine\mask_manager.rel ^
-engine\move_manager.rel ^
-engine\screen_manager.rel ^
-engine\sprite_manager.rel ^
-engine\state_manager.rel ^
-engine\storage_manager.rel ^
-engine\tile_manager.rel ^
-object\board_object.rel ^
-object\command_object.rel ^
-object\delay_object.rel ^
-object\enemy_object.rel ^
-object\frame_object.rel ^
-object\gamer_object.rel ^
-object\hack_object.rel ^
-object\state_object.rel ^
-object\savegame_object.rel ^
-screen\none_screen.rel ^
-screen\splash_screen.rel ^
-screen\intro_screen.rel ^
-screen\title_screen.rel ^
-screen\load_screen.rel ^
-screen\demo_screen.rel ^
-screen\play_screen.rel ^
-screen\record_screen.rel ^
-screen\save_screen.rel ^
-screen\test_screen.rel ^
+devkit\_sms_manager.rel devkit\_snd_manager.rel ^
+engine\asm_manager.rel engine\actor_manager.rel engine\board_manager.rel engine\command_manager.rel engine\content_manager.rel ^
+engine\delay_manager.rel engine\enemy_manager.rel engine\enum_manager.rel engine\event_manager.rel engine\font_manager.rel ^
+engine\frame_manager.rel engine\gamer_manager.rel engine\global_manager.rel engine\hack_manager.rel engine\input_manager.rel ^
+engine\mask_manager.rel engine\move_manager.rel engine\screen_manager.rel engine\sprite_manager.rel engine\state_manager.rel ^
+engine\storage_manager.rel engine\tile_manager.rel ^
+object\board_object.rel object\command_object.rel object\delay_object.rel object\enemy_object.rel object\frame_object.rel ^
+object\gamer_object.rel object\hack_object.rel object\state_object.rel object\savegame_object.rel ^
+screen\none_screen.rel screen\splash_screen.rel screen\intro_screen.rel screen\title_screen.rel screen\load_screen.rel ^
+screen\demo_screen.rel screen\play_screen.rel screen\record_screen.rel screen\save_screen.rel screen\test_screen.rel ^
 screen\func_screen.rel ^
 gfx.rel
 
@@ -171,6 +138,6 @@ if exist "*.noi" del "*.noi" > nul
 if exist "*.sym" del "*.sym" > nul
 
 :: Run
-::java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
+java -jar C:\SEGA\Emulicious\Emulicious.jar output.sms
 ::C:\SEGA\meka\mekaw.exe output.sms
-output.sms
+::output.sms
