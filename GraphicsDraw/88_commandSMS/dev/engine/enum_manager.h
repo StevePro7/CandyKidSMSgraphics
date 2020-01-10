@@ -10,8 +10,10 @@ typedef enum tag_enum_screen_type
 	screen_type_load = 4,
 	screen_type_demo = 5,
 	screen_type_play = 6,
-	screen_type_test = 7,
-	screen_type_func = 8,
+	screen_type_record = 7,
+	screen_type_save = 8,
+	screen_type_test = 9,
+	screen_type_func = 10,
 
 } enum_screen_type;
 

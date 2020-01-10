@@ -43,7 +43,6 @@ unsigned char* devkit_SMS_SRAM()
 }
 
 
-
 void devkit_SMS_setSpriteMode( unsigned char mode )
 {
 	SMS_setSpriteMode( mode );
@@ -96,6 +95,13 @@ void devkit_SMS_setTile( const unsigned char tile )
 void devkit_SMS_addSprite( unsigned char x, unsigned char y, int tile )
 {
 	SMS_addSprite( x, y, tile );
+}
+void devkit_SMS_addSprite_bulk4( unsigned char x, unsigned char y, int tile )
+{
+	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
+	devkit_SMS_addSprite( x + 8, y + 0, tile + 1 );
+	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
+	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 }
 void devkit_SMS_addSprite_bulk8( unsigned char x, unsigned char y, int tile )
 {
@@ -160,7 +166,13 @@ void devkit_SMS_resetPauseRequest()
 	SMS_resetPauseRequest();
 }
 
-// Input.
+// collision
+unsigned char devkit_isCollisionDetected()
+{
+	return ( SMS_VDPFlags & VDPFLAG_SPRITECOLLISION );
+}
+
+// input
 unsigned int devkit_SMS_getKeysStatus()
 {
 	return SMS_getKeysStatus();

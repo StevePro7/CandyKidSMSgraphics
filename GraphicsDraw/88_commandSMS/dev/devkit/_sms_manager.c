@@ -1,6 +1,5 @@
 #include "_sms_manager.h"
 #include "..\game.h"
-
 #include <stdbool.h>
 
 #ifdef _CONSOLE
@@ -37,6 +36,10 @@ void devkit_SMS_enableSRAMBank( unsigned char n )
 void devkit_SMS_disableSRAM()
 {
 	SMS_disableSRAM();
+}
+unsigned char* devkit_SMS_SRAM()
+{
+	return SMS_SRAM;
 }
 
 
@@ -100,7 +103,6 @@ void devkit_SMS_addSprite_bulk4( unsigned char x, unsigned char y, int tile )
 	devkit_SMS_addSprite( x + 0, y + 8, tile + 2 );
 	devkit_SMS_addSprite( x + 8, y + 8, tile + 3 );
 }
-
 void devkit_SMS_addSprite_bulk8( unsigned char x, unsigned char y, int tile )
 {
 	devkit_SMS_addSprite( x + 0, y + 0, tile + 0 );
@@ -164,12 +166,13 @@ void devkit_SMS_resetPauseRequest()
 	SMS_resetPauseRequest();
 }
 
+// collision
 unsigned char devkit_isCollisionDetected()
 {
 	return ( SMS_VDPFlags & VDPFLAG_SPRITECOLLISION );
 }
 
-// Input.
+// input
 unsigned int devkit_SMS_getKeysStatus()
 {
 	return SMS_getKeysStatus();
