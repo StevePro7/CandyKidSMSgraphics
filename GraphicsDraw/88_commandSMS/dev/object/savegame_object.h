@@ -4,9 +4,9 @@
 // Reference: http://www.smspower.org/forums/16013-DevkitSMSSMSlibMissingRequestingFeatures#91899
 typedef struct tag_struct_savegame_object
 {
-	unsigned long Magic;   // this is here to check if the SRAM contains a savegame or not
-	unsigned char lives;   // your hero lives counter
-	unsigned int points;   // your hero points
+	unsigned long Magic;
+	unsigned char save_tree_type;
+	unsigned char save_exit_type;
 
 } struct_savegame_object;
 

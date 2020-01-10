@@ -1,4 +1,5 @@
 #include "board_manager.h"
+#include "enum_manager.h"
 #include "global_manager.h"
 #include "tile_manager.h"
 
@@ -13,12 +14,28 @@ void engine_board_manager_init()
 	unsigned char data;
 	unsigned char left = SCREEN_TILE_LEFT * TILE_HALF;
 
+	bo->save_tree_type = tree_type_avoid;
+	//bo->save_exit_type = exit_type_closed;
+	bo->save_exit_type = exit_type_public;
+
 	for( loop = 0; loop < TREE_ROWS; loop++ )
 	{
 		data = loop * TILE_SIZE;
 		bo->posnX[ loop ] = data + left;
 		bo->posnY[ loop ] = data;
 	}
+}
+
+void engine_board_manager_set_exit_type( unsigned char exit_type )
+{
+	struct_board_object *bo = &global_board_object;
+	bo->save_exit_type = exit_type;
+}
+
+void engine_board_manager_set_tree_type( unsigned char tree_type )
+{
+	struct_board_object *bo = &global_board_object;
+	bo->save_tree_type = tree_type;
 }
 
 void engine_board_manager_draw_edge()
