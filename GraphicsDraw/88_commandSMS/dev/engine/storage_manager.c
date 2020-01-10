@@ -7,17 +7,6 @@
 // Global variable.
 struct_savegame_object global_savegame_object;
 
-//struct my_savegame
-//{
-//	unsigned long Magic;   // this is here to check if the SRAM contains a savegame or not
-//	unsigned char lives;   // your hero lives counter
-//	unsigned int points;   // your hero points
-//};
-
-//static unsigned char save_exit_type = 5;
-//static unsigned char save_tree_type = 0;
-
-
 unsigned char engine_storage_manager_available()
 {
 	struct_savegame_object *savegame = ( struct_savegame_object* ) ( devkit_SMS_SRAM() );
@@ -49,15 +38,6 @@ void engine_storage_manager_write()
 	savegame->Magic = MAGIC;
 	savegame->save_tree_type = bo->save_tree_type;
 	savegame->save_exit_type = bo->save_exit_type;
+	//savegame->commands[ 9 ] = 8;
 	devkit_SMS_disableSRAM();
 }
-
-//unsigned char getPoints()
-//{
-//	return save_tree_type;
-//}
-//
-//void incPoints()
-//{
-//	save_tree_type++;
-//}
