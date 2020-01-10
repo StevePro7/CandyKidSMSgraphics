@@ -1,0 +1,11 @@
+Dictionary
+10/01/2020
+
+or do I want set?
+
+http://www.cs.yale.edu/homes/aspnes/pinewiki/C(2f)HashTables.html?highlight=%28CategoryAlgorithmNotes%29
+
+
+
+Section 6.6 of The C Programming Language
+Table lookup

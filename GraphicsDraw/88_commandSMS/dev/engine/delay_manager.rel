@@ -4,7 +4,7 @@ M delay_manager
 O -mz80
 S .__.ABS. Def0000
 S _engine_font_manager_draw_data Ref0000
-A _CODE size 5D flags 0 addr 0
+A _CODE size 5E flags 0 addr 0
 S _engine_delay_manager_draw Def0048
 S _engine_delay_manager_init Def0000
 S _engine_delay_manager_update Def0022
@@ -44,7 +44,7 @@ T 3D 00 ED 5B 02 00 13 ED 53 02 00 68 C9
 R 00 00 00 00 00 04 01 00 00 09 01 00
 T 48 00
 R 00 00 00 00
-T 48 00 2A 02 00 01 00 00 11 1F 01 D5 C5 E5 CD
-R 00 00 00 00 00 03 01 00
-T 55 00 00 00 21 06 00 39 F9 C9
+T 48 00 ED 4B 02 00 11 00 00 21 1F 01 E5 D5 C5 CD
+R 00 00 00 00 00 04 01 00
+T 56 00 00 00 21 06 00 39 F9 C9
 R 00 00 00 00 02 02 01 00
