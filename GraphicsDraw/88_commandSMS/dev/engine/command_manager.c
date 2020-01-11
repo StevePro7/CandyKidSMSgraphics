@@ -19,9 +19,9 @@ static unsigned char counter;
 static unsigned int frames[ MAX_COMMANDS ];
 static unsigned char commands[ MAX_COMMANDS ];
 
-static unsigned int wip_frame[ MAX_COMMANDS ];
-static unsigned char wip_count[ MAX_COMMANDS ];
-static unsigned char wip_command[ MAX_COMMANDS ];
+//static unsigned int wip_frame[ MAX_COMMANDS ];
+//static unsigned char wip_count[ MAX_COMMANDS ];
+//static unsigned char wip_command[ MAX_COMMANDS ];
 
 static unsigned char new_frame[ MAX_COMMANDS ];
 static unsigned char new_count[ MAX_COMMANDS ];
@@ -75,13 +75,13 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	co->args1 = args1;
 	co->args2 = args2;
 
-	if( 0 == wip_count[ frame ] )
+	/*if( 0 == wip_count[ frame ] )
 	{
 		wip_frame[ frame ] = command_index;
 	}
 
 	wip_count[ frame ]++;
-	wip_command[ command_index ] = command_type;
+	wip_command[ command_index ] = command_type;*/
 
 
 	new_frame[ frame_index ] = frame;
@@ -126,6 +126,13 @@ void engine_command_manager_execute( unsigned int frame )
 		return;
 	}*/
 
+	// If we are not on the correct frame to execute then simply return.
+	if( frame != new_frame[ frame_index ] )
+	{
+		return;
+	}
+
+	// Maybe now not required
 	// If there are no commands to execute this frame then simply return.
 	if( 0 == new_count[ frame_index ] )
 	{
