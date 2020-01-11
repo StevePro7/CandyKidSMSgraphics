@@ -83,11 +83,8 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	wip_count[ frame ]++;
 	wip_command[ command_index ] = command_type;
 
-	if( 0 == new_count[ frame_index ] )
-	{
-		new_frame[ frame_index ] = frame;
-	}
 
+	new_frame[ frame_index ] = frame;
 	new_count[ frame_index ]++;
 	new_command[ command_index ] = command_type;
 	new_args[ command_index ] = args1;					// TODO combine the args
@@ -117,26 +114,53 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 void engine_command_manager_execute( unsigned int frame )
 {
 	unsigned int index;
-	unsigned int cmd_idx;
+	unsigned char exec_index;
+	//unsigned int cmd_idx;
 	unsigned char count;
 	unsigned char command;
 	unsigned char loop;
 
-	index = wip_frame[ frame ];
+	/*index = wip_frame[ frame ];
 	if( command_type_empty == index )
+	{
+		return;
+	}*/
+
+	// If there are no commands to execute this frame then simply return.
+	if( 0 == new_count[ frame_index ] )
 	{
 		return;
 	}
 
-	count = wip_count[ frame ];
+	// If we add and execute frame(s) then increment frame index.
+	/*if( 0 != new_count[ frame ] )
+	{
+		frame_index++;
+	}*/
 
-	for( loop = 0; loop < count; loop++ )
+	
+	//assert(frame == new_frame[frame])
+	//count = wip_count[ frame ];
+	count = new_count[ frame_index ];
+	exec_index = command_index  - count;
+
+	/*for( loop = 0; loop < count; loop++ )
 	{
 		cmd_idx = index + loop;
 		command = wip_command[ cmd_idx ];
 
 		execute[ command ]( cmd_idx );
+	}*/
+
+	for( loop = 0; loop < count; loop++ )
+	{
+		index = exec_index + loop;
+		command = new_command[ index ];
+		execute[ command ]( 0 );
 	}
+
+	// Execute all commands this frame thus increment frame index.
+	frame_index++;
 }
 
 //void engine_command_manager_undo()

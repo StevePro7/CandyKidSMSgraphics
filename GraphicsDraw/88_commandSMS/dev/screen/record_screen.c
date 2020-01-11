@@ -22,6 +22,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 	struct_frame_object *fo = &global_frame_object;
 	unsigned char proceed;
 	unsigned char input;
+	unsigned char input2;
 	unsigned int frame = fo->frame_count;
 
 	engine_frame_manager_draw();
@@ -34,12 +35,21 @@ void screen_record_screen_update( unsigned char *screen_type )
 		return;
 	}
 
-	input = 3 == frame;
+	input = 0 == frame;
 	if( input )
 	{
-		engine_font_manager_draw_text( "ADD COMMANDS #3", 2, 1 );
+//		engine_font_manager_draw_text( "ADD COMMANDS #3", 2, 1 );
 		engine_command_manager_add( frame, command_type_jump, 22, 33 );
+		engine_command_manager_add( frame, command_type_move, 22, 33 );
 	}
+
+	input2 = 3 == frame;
+	if( input2 )
+	{
+		engine_command_manager_add( frame, command_type_fire, 22, 33 );
+	}
+
+	engine_command_manager_execute( frame );
 
 	engine_frame_manager_update();
 	*screen_type = screen_type_record;
