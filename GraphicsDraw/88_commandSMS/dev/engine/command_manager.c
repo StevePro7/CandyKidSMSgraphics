@@ -11,6 +11,7 @@ struct_command_object global_command_objects[ MAX_COMMANDS ];
 static void( *execute[ TYPE_COMMANDS ] )( unsigned int index );
 static void( *undo[ TYPE_COMMANDS ] )( unsigned int index );
 
+static unsigned char frame_index;
 static unsigned char command_index;
 //static unsigned char command_count;
 
@@ -22,6 +23,10 @@ static unsigned int wip_frame[ MAX_COMMANDS ];
 static unsigned char wip_count[ MAX_COMMANDS ];
 static unsigned char wip_command[ MAX_COMMANDS ];
 
+static unsigned char new_frame[ MAX_COMMANDS ];
+static unsigned char new_count[ MAX_COMMANDS ];
+static unsigned char new_command[ MAX_COMMANDS ];
+static unsigned char new_args[ MAX_COMMANDS ];
 
 static void empty_exec_command( unsigned int index );
 static void empty_undo_command( unsigned int index );
@@ -42,7 +47,8 @@ void engine_command_manager_init()
 	undo[ command_type_jump ] = engine_actor_manager_undo_jump;
 	undo[ command_type_move ] = engine_actor_manager_undo_move;
 
-	command_index = 1;
+	frame_index = 0;
+	command_index = 0;
 	//command_count = 0;
 	counter = 0;
 
@@ -77,11 +83,18 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	wip_count[ frame ]++;
 	wip_command[ command_index ] = command_type;
 
+	if( 0 == new_count[ frame_index ] )
+	{
+		new_frame[ frame_index ] = frame;
+	}
+
+	new_count[ frame_index ]++;
+	new_command[ command_index ] = command_type;
+	new_args[ command_index ] = args1;					// TODO combine the args
+
 	command_index++;
 	//command_count++;
 	counter++;
-
-	
 }
 
 // OLD hardcoded method

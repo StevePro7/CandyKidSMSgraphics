@@ -27,15 +27,12 @@ void screen_demo_screen_update( unsigned char *screen_type )
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 
-	
-
 	proceed = engine_delay_manager_update();
 	if( !proceed )
 	{
 		*screen_type = screen_type_demo;
 		return;
 	}
-
 
 	input = 3 == frame;
 	if( input )
@@ -74,9 +71,6 @@ void screen_demo_screen_update( unsigned char *screen_type )
 		engine_font_manager_draw_text( "FIRE2 END", 22, 10 );
 	}*/
 
-	
-
 	engine_frame_manager_update();
-
 	*screen_type = screen_type_demo;
 }

@@ -3,7 +3,7 @@
 
 #include "..\object\command_object.h"
 
-#define MAX_COMMANDS	100
+#define MAX_COMMANDS	10
 
 // Global variable.
 extern struct_command_master global_command_master;
