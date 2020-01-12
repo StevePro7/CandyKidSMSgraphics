@@ -27,7 +27,7 @@ void screen_title_screen_load()
 
 	engine_command_manager_init();
 	engine_delay_manager_init();
-	engine_delay_manager_load( 60 );
+	engine_delay_manager_load( 50 );
 	engine_frame_manager_init();
 	engine_frame_manager_draw();
 
