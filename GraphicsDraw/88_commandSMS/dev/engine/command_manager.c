@@ -13,15 +13,11 @@ static void( *undo[ TYPE_COMMANDS ] )( unsigned int index );
 
 static unsigned char frame_index;
 static unsigned char command_index;
-//static unsigned char command_count;
 
 static unsigned char counter;
 static unsigned int frames[ MAX_COMMANDS ];
 static unsigned char commands[ MAX_COMMANDS ];
 
-//static unsigned int wip_frame[ MAX_COMMANDS ];
-//static unsigned char wip_count[ MAX_COMMANDS ];
-//static unsigned char wip_command[ MAX_COMMANDS ];
 
 static unsigned char new_frame[ MAX_COMMANDS ];
 static unsigned char new_count[ MAX_COMMANDS ];
@@ -49,7 +45,6 @@ void engine_command_manager_init()
 
 	frame_index = 0;
 	command_index = 0;
-	//command_count = 0;
 	counter = 0;
 
 	co->save_frames[ 0 ] = 0;
@@ -94,37 +89,15 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	counter++;
 }
 
-// OLD hardcoded method
-//void engine_command_manager_execute()
-//{
-	//unsigned int idx;
-	//unsigned char cmd;
-
-	//for( idx = 0; idx < counter; idx++ )
-	//{
-	//	cmd = commands[ idx ];
-	//	execute[ cmd ]();
-	//}
-
-	//idx = 0;
-	//cmd = commands[ idx ];
-	//execute[ cmd ]( idx );
-//}
 
 void engine_command_manager_execute( unsigned int frame )
 {
 	unsigned int index;
 	unsigned char exec_index;
-	//unsigned int cmd_idx;
 	unsigned char count;
 	unsigned char command;
 	unsigned char loop;
 
-	/*index = wip_frame[ frame ];
-	if( command_type_empty == index )
-	{
-		return;
-	}*/
 
 	// If we are not on the correct frame to execute then simply return.
 	if( frame != new_frame[ frame_index ] )
@@ -139,25 +112,10 @@ void engine_command_manager_execute( unsigned int frame )
 		return;
 	}
 
-	// If we add and execute frame(s) then increment frame index.
-	/*if( 0 != new_count[ frame ] )
-	{
-		frame_index++;
-	}*/
-
 	
-	//assert(frame == new_frame[frame])
-	//count = wip_count[ frame ];
 	count = new_count[ frame_index ];
 	exec_index = command_index  - count;
 
-	/*for( loop = 0; loop < count; loop++ )
-	{
-		cmd_idx = index + loop;
-		command = wip_command[ cmd_idx ];
-
-		execute[ command ]( cmd_idx );
-	}*/
 
 	for( loop = 0; loop < count; loop++ )
 	{
@@ -170,24 +128,41 @@ void engine_command_manager_execute( unsigned int frame )
 	frame_index++;
 }
 
-//void engine_command_manager_undo()
-//{
-//	unsigned char idx;
-//	unsigned char cmd;
-//
-//	//for( idx = 0; idx < counter; idx++ )
-//	//{
-//	//	cmd = commands[ idx ];
-//	//	undo[ cmd ]();
-//	//}
-//
-//	idx = 0;
-//	cmd = commands[ idx ];
-//	undo[ cmd ]( idx );
-//}
 void engine_command_manager_undo( unsigned int frame )
 {
-	frame += 32;
+	unsigned int index;
+	unsigned char exec_index;
+	unsigned char count;
+	unsigned char command;
+	unsigned char loop;
+
+
+	// If we are not on the correct frame to execute then simply return.
+	if( frame != new_frame[ frame_index ] )
+	{
+		return;
+	}
+
+	// Maybe now not required
+	// If there are no commands to execute this frame then simply return.
+	if( 0 == new_count[ frame_index ] )
+	{
+		return;
+	}
+
+
+	count = new_count[ frame_index ];
+	exec_index = command_index - count;
+
+
+	for( loop = count; loop >= 0; loop-- )
+	{
+		index = exec_index + loop;
+		command = new_command[ index ];
+		undo[ command ]( 0 );
+	}
+
+	frame_index--;
 }
 
 void engine_command_manager_setframes( unsigned int* input )

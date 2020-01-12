@@ -51,6 +51,11 @@ void screen_record_screen_update( unsigned char *screen_type )
 
 	engine_command_manager_execute( frame );
 
+	/*if( input2 )
+	{
+		engine_command_manager_undo( frame );
+	}*/
+
 	engine_frame_manager_update();
 	*screen_type = screen_type_record;
 }
