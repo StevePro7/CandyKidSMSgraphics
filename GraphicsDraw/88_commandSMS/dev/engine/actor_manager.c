@@ -18,14 +18,16 @@ void engine_actor_manager_exec_fire( unsigned int index )
 void engine_actor_manager_exec_jump( unsigned int index )
 {
 	struct_command_object *co = &global_command_objects[ index ];
-	print( "EXEC JUMP", index, co->args1, co->args2 );
+	engine_font_manager_draw_text( "EXEC JUMP", 2, 13 );
+	//engine_font_manager_draw_data( co->args1, 17, 14 );
+	//engine_font_manager_draw_data( co->args2, 27, 14 );
 }
 void engine_actor_manager_exec_move( unsigned int index )
 {
 	struct_command_object *co = &global_command_objects[ index ];
 	engine_font_manager_draw_text( "EXEC MOVE", 2, 14 );
-	engine_font_manager_draw_data( co->args1, 17, 14 );
-	engine_font_manager_draw_data( co->args2, 27, 14 );
+	//engine_font_manager_draw_data( co->args1, 17, 14 );
+	//engine_font_manager_draw_data( co->args2, 27, 14 );
 }
 
 // Undo commands.

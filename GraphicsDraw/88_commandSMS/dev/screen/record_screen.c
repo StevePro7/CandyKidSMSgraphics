@@ -9,10 +9,10 @@
 void screen_record_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 5 );
+	engine_delay_manager_load( 50 );
 	engine_frame_manager_init();
 
-	engine_font_manager_draw_text( "RECORD SCREEN.!!", 4, 8 );
+	engine_font_manager_draw_text( "RECORD SCREEN.!!", 4, 0 );
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 }
@@ -35,7 +35,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 		return;
 	}
 
-	input = 0 == frame;
+	input = 1 == frame;
 	if( input )
 	{
 //		engine_font_manager_draw_text( "ADD COMMANDS #3", 2, 1 );
