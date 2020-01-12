@@ -39,6 +39,26 @@ unsigned char engine_delay_manager_update()
 	return proceed;
 }
 
+unsigned char engine_delay_manager_updateX()
+{
+	struct_delay_object *dObj = &global_delay_object;
+	unsigned char proceed;
+
+	proceed = dObj->delay_timer >= dObj->delay_value;
+	if( proceed )
+	{
+		return proceed;
+	}
+
+	dObj->delay_timer--;
+	if( dObj->delay_timer <= 0 )
+	{
+		dObj->delay_timer = dObj->delay_value;
+	}
+
+	return proceed;
+}
+
 void engine_delay_manager_draw()
 {
 	struct_delay_object *dObj = &global_delay_object;
