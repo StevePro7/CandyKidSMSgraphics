@@ -15,6 +15,9 @@
 #define TREE_ROWS				12
 #define TREE_COLS				12
 
+#define MAZE_ROWS				14
+#define MAZE_COLS				14
+
 #define TILE_WIDE				16
 #define TILE_HIGH				16
 

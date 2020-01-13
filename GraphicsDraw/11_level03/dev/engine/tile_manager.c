@@ -49,7 +49,7 @@ void engine_tile_manager_load_tile( unsigned char *tile_type, unsigned char tile
 
 void engine_tile_manager_load_coll( unsigned char *coll_type, unsigned char tile_data )
 {
-	if( '2' == tile_data )
+	if( '1' == tile_data )
 	{
 		*coll_type = coll_type_block;
 		return;
