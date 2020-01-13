@@ -65,7 +65,7 @@ void engine_tile_manager_draw_tile( unsigned char index, unsigned char x, unsign
 
 	if( tile_type_trees == index )
 	{
-		engine_tile_manager_draw_tree( tree_type_death, x, y );
+		engine_tile_manager_draw_tree( tree_type_avoid, x, y );			// TODO don't hardcode here - get from board manager
 	}
 	else if( index >= tile_type_bonusA  && index <= tile_type_bonusD )
 	{
@@ -76,7 +76,7 @@ void engine_tile_manager_draw_tile( unsigned char index, unsigned char x, unsign
 		unsigned char type = 0;
 		//while( 1 )
 		//{
-			type = rand() % MAX_BLOCK_TILES;
+			type = rand() % MAX_BLOCK_TILES;				// TODO pre-calc this then render
 			//if( type == 0 )
 			//{
 			//	break;
