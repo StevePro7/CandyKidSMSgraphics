@@ -6,6 +6,8 @@
 #include "..\engine\frame_manager.h"
 #include "..\engine\input_manager.h"
 
+static unsigned char first_time;
+
 void screen_record_screen_load()
 {
 	engine_command_manager_init();
@@ -15,6 +17,7 @@ void screen_record_screen_load()
 	engine_font_manager_draw_text( "RECORD SCREEN.!!", 4, 0 );
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
+	first_time = 1;
 }
 
 void screen_record_screen_update( unsigned char *screen_type )
@@ -23,18 +26,25 @@ void screen_record_screen_update( unsigned char *screen_type )
 	unsigned char proceed;
 	unsigned char input;
 	unsigned char input2;
-	unsigned int frame = fo->frame_count;
+	unsigned int frame;
+	frame = fo->frame_count;
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
-
-	proceed = engine_delay_manager_update();
-	if( !proceed )
+	if( !first_time )
 	{
-		*screen_type = screen_type_record;
-		return;
+		proceed = engine_delay_manager_update();
+		if( !proceed )
+		{
+			*screen_type = screen_type_record;
+			return;
+		}
+
+		engine_frame_manager_update();
+		first_time = 1;
 	}
 
+	frame = fo->frame_count;
 	input = 1 == frame;
 	if( input )
 	{
@@ -56,6 +66,6 @@ void screen_record_screen_update( unsigned char *screen_type )
 		engine_command_manager_undo( frame );
 	}*/
 
-	engine_frame_manager_update();
+	first_time = 0;
 	*screen_type = screen_type_record;
 }

@@ -5,7 +5,8 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
 #include "..\engine\input_manager.h"
-//#include <limits.h>
+
+static unsigned char first_time;
 
 void screen_title_screen_load()
 {
@@ -33,27 +34,35 @@ void screen_title_screen_load()
 
 	//engine_command_manager_setframes( frames );									// TODO add commands
 	engine_command_manager_set_playback( frames, counts, commands, args );
+	first_time = 1;
 }
 
 void screen_title_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	unsigned char proceed;
-	unsigned int frame = fo->frame_count;
+	unsigned int frame;
+	frame = fo->frame_count;
 
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 
-	proceed = engine_delay_manager_update();
-	if( !proceed )
+	if( !first_time )
 	{
-		*screen_type = screen_type_title;
-		return;
+		proceed = engine_delay_manager_update();
+		if( !proceed )
+		{
+			*screen_type = screen_type_title;
+			return;
+		}
+
+		engine_frame_manager_update();
+		first_time = 1;
 	}
+	frame = fo->frame_count;
 
 	engine_command_manager_execute( frame );
 
-	engine_frame_manager_update();
-
+	first_time = 0;
 	*screen_type = screen_type_title;
 }
