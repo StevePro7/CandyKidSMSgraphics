@@ -27,7 +27,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	unsigned char proceed;
-	unsigned char input;
+	//unsigned char input;
 	unsigned int frame;
 	frame = fo->frame_count;
 
