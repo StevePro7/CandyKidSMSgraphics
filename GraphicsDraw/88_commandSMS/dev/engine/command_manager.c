@@ -15,11 +15,12 @@ static unsigned char frame_index;
 static unsigned char command_index;
 
 static unsigned char add_index;
+static unsigned char exec_index;
 static unsigned char undo_index;
 
-static unsigned char counter;
-static unsigned int frames[ MAX_COMMANDS ];
-static unsigned char commands[ MAX_COMMANDS ];
+//static unsigned char counter;
+//static unsigned int frames[ MAX_COMMANDS ];
+//static unsigned char commands[ MAX_COMMANDS ];
 
 
 static unsigned char new_frame[ MAX_COMMANDS ];
@@ -50,7 +51,6 @@ void engine_command_manager_init()
 	command_index = 0;
 	add_index = 0;
 	undo_index = 0;
-	counter = 0;
 
 	co->save_frames[ 0 ] = 0;
 	co->save_frames[ 1 ] = 0;
@@ -68,8 +68,8 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	//commands[ index ] = command;
 	//commands[ 1 ] = 0;
 	//commands[ 2 ] = 1;
-	frames[ command_index ] = frame;
-	commands[ command_index ] = command_type;
+	//frames[ command_index ] = frame;
+	//commands[ command_index ] = command_type;
 
 	co = &global_command_objects[ command_index ];
 	co->args1 = args1;
@@ -92,18 +92,15 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	//command_index++;
 	add_index++;
 	//command_count++;
-	counter++;
+	//counter++;
 }
 
 
 void engine_command_manager_execute( unsigned int frame )
 {
-	//unsigned int index;
-	//unsigned char exec_index;
 	unsigned char count;
 	unsigned char command;
 	unsigned char loop;
-
 
 	// If we are not on the correct frame to execute then simply return.
 	if( frame != new_frame[ frame_index ] )
@@ -117,36 +114,24 @@ void engine_command_manager_execute( unsigned int frame )
 		return;
 	}
 
-	
 	count = new_count[ frame_index ];
-	//exec_index = command_index  - count;
-
-	/*for( loop = 0; loop < count; loop++ )
-	{
-		index = exec_index + loop;
-		command = new_command[ index ];
-		execute[ command ]( 0 );
-	}*/
-
 	for( loop = 0; loop < count; loop++ )
 	{
-		//index = exec_index + loop;
+		exec_index = command_index;
 		command = new_command[ command_index++ ];
-		execute[ command ]( 0 );
+		execute[ command ]( 0 );						// TODO add args!
 	}
 
 	// Execute all commands this frame thus increment frame index.
+	undo_index = frame_index;
 	frame_index++;
 }
 
 void engine_command_manager_undo( unsigned int frame )
 {
-	//unsigned int index;
-	unsigned int exec_index;
 	unsigned char count;
-	//unsigned char command;
-	//unsigned int loop;
-
+	unsigned char command;
+	unsigned int loop;
 
 	// If we are not on the correct frame to execute then simply return.
 	if( frame != new_frame[ frame_index ] )
@@ -161,37 +146,35 @@ void engine_command_manager_undo( unsigned int frame )
 		return;
 	}
 
-
 	count = new_count[ frame_index ];
-	exec_index = command_index - count;
-
-
-	/*for( loop = count; loop >= 0; loop-- )
+	for( loop = 0; loop < count; loop++ )
 	{
-		index = exec_index + loop;
-		command = new_command[ index ];
-		undo[ command ]( 0 );
+		command = new_command[ command_index-- ];
+		undo[ command ]( 0 );						// TODO add args!
 	}
-*/
-	frame_index--;
-}
 
-void engine_command_manager_setframes( unsigned int* input )
-{
-	unsigned int idx;
-	unsigned int frm;
-
-	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	if( frame_index > 0 )
 	{
-		frm = input[ idx ];
-		if( !frm )
-		{
-			break;
-		}
-
-		frames[ idx ] = frm;
+		frame_index--;
 	}
 }
+
+//void engine_command_manager_setframes( unsigned int* input )
+//{
+//	unsigned int idx;
+//	unsigned int frm;
+//
+//	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+//	{
+//		frm = input[ idx ];
+//		if( !frm )
+//		{
+//			break;
+//		}
+//
+//		frames[ idx ] = frm;
+//	}
+//}
 
 void engine_command_manager_set_save_frames( unsigned int* frames )
 {
@@ -224,6 +207,13 @@ void engine_command_manager_set_playback( unsigned char* frames, unsigned char* 
 		new_command[ idx ] = commands[ idx ];
 		new_args[ idx ] = args[ idx ];
 	}
+}
+
+unsigned char engine_command_manager_align_undo()
+{
+	frame_index = undo_index;
+	command_index = exec_index;
+	return new_frame[ undo_index ];
 }
 
 static void empty_exec_command( unsigned int index )

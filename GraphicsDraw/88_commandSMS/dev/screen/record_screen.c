@@ -11,10 +11,10 @@ static unsigned char first_time;
 void screen_record_screen_load()
 {
 	engine_command_manager_init();
-	engine_delay_manager_load( 50 );
+	engine_delay_manager_load( 5 );
 	engine_frame_manager_init();
 
-	engine_font_manager_draw_text( "RECORD SCREEN.!!", 4, 0 );
+	engine_font_manager_draw_text( "RECORD SCREEN!!", 4, 0 );
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 	first_time = 1;
@@ -26,6 +26,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 	unsigned char proceed;
 	unsigned char input;
 	unsigned char input2;
+	unsigned char input3;
 	unsigned int frame;
 	frame = fo->frame_count;
 
@@ -45,7 +46,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 	}
 
 	frame = fo->frame_count;
-	input = 1 == frame;
+	input = 0 == frame;
 	if( input )
 	{
 //		engine_font_manager_draw_text( "ADD COMMANDS #3", 2, 1 );
@@ -61,10 +62,13 @@ void screen_record_screen_update( unsigned char *screen_type )
 
 	engine_command_manager_execute( frame );
 
-	/*if( input2 )
+	input3 = 5 == frame;
+	if( input3 )
 	{
-		engine_command_manager_undo( frame );
-	}*/
+		engine_frame_manager_draw();
+		*screen_type = screen_type_test;
+		return;
+	}
 
 	first_time = 0;
 	*screen_type = screen_type_record;

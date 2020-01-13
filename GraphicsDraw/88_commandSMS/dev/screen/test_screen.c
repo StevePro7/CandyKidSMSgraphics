@@ -1,65 +1,65 @@
 #include "test_screen.h"
 #include "..\engine\board_manager.h"
-//#include "..\engine\command_manager.h"
+#include "..\engine\command_manager.h"
+#include "..\engine\delay_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
-#include "..\engine\gamer_manager.h"
+#include "..\engine\frame_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\tile_manager.h"
 
-static unsigned char count;
-static unsigned char timer;
+//static unsigned char count;
+//static unsigned char timer;
+static unsigned char first_time;
+static unsigned char undo_frame;
 
 void screen_test_screen_load()
 {
-	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
+	engine_font_manager_draw_text( "TESTER SCREEN!!", 4, 0 );
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
 
-	engine_font_manager_draw_text( "HELLO STEVEPRO SCREEN", 2, 1 );
-	engine_tile_manager_draw_tree( tree_type_avoid, 2, 2 );
-	engine_tile_manager_draw_tree( tree_type_avoid, 4, 2 );
-	engine_tile_manager_draw_tree( tree_type_avoid, 6, 2 );
-	engine_tile_manager_draw_tree( tree_type_avoid, 8, 2 );
-
-	count = 0;
-	timer = 0;
+	undo_frame = engine_command_manager_align_undo();
+	first_time = 1;
 }
 
 void screen_test_screen_update( unsigned char *screen_type )
 {
+	struct_frame_object *fo = &global_frame_object;
+	unsigned char proceed;
 	unsigned char input;
-	engine_gamer_manager_draw();
+	unsigned int frame;
+	frame = fo->frame_count;
 
-	input = engine_input_manager_move_up();
-	if( input )
+	engine_frame_manager_draw();
+	engine_delay_manager_draw();
+	if( !first_time )
 	{
-		//engine_command_move_up();
-	}
-	input = engine_input_manager_move_down();
-	if( input )
-	{
-		//engine_command_move_down();
-	}
-	input = engine_input_manager_move_left();
-	if( input )
-	{
-		//engine_command_move_left();
-	}
-	input = engine_input_manager_move_right();
-	if( input )
-	{
-		//engine_command_move_right();
-	}
+		proceed = engine_delay_manager_update();
+		if( !proceed )
+		{
+			*screen_type = screen_type_test;
+			return;
+		}
 
-	//engine_gamer_manager_update();
-	//engine_gamer_manager_text();
+		engine_frame_manager_update();
 
-	count++;
-	if( count >= timer )
-	{
-		engine_gamer_manager_update();
-		//engine_gamer_manager_text();
-		count = 0;
+		if( 0 == undo_frame )
+		{
+			*screen_type = screen_type_func;
+			return;
+		}
+
+		undo_frame--;
+		first_time = 1;
 	}
 
+	//input = engine_input_manager_hold_fire1();
+	//if( input )
+	//{
+		engine_command_manager_undo( undo_frame );
+	//}
+
+	first_time = 0;
 	*screen_type = screen_type_test;
 }
