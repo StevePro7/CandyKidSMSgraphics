@@ -36,24 +36,24 @@ void engine_level_manager_init_level()
 
 	for( col = 0; col < TREE_COLS; col++ )
 	{
-		idx = (1 + TREE_ROWS) * 1 + (col + 1);
+		idx = MAZE_ROWS * 1 + (col + 1);
 		lo->drawtiles_array[ idx ] = tile_type_trees;
 		lo->collision_array[ idx ] = coll_type_block;
 
-		/*idx = TREE_ROWS * ( TREE_ROWS - 1 ) + col;
+		idx = MAZE_ROWS * ( MAZE_ROWS - 2 ) + ( col + 1 );
 		lo->drawtiles_array[ idx ] = tile_type_trees;
-		lo->collision_array[ idx ] = coll_type_block;*/
+		lo->collision_array[ idx ] = coll_type_block;
 	}
-	/*for( row = 1; row < TREE_ROWS - 1; row++ )
+	for( row = 1; row < TREE_ROWS - 1; row++ )
 	{
-		idx = row * TREE_COLS + 0;
+		idx = ( row + 1 ) * MAZE_COLS + 1;
 		lo->drawtiles_array[ idx ] = tile_type_trees;
 		lo->collision_array[ idx ] = coll_type_block;
 
-		idx = row * TREE_COLS + ( TREE_COLS - 1 );
+		idx = (row + 1) * MAZE_COLS + ( MAZE_COLS - 2 );
 		lo->drawtiles_array[ idx ] = tile_type_trees;
 		lo->collision_array[ idx ] = coll_type_block;
-	}*/
+	}
 }
 
 void engine_level_manager_load_level( const unsigned char world, const unsigned char round )
@@ -137,7 +137,6 @@ static void load_level( const unsigned char *data, const unsigned char bank, con
 				idx = ( row + 2 ) * MAZE_COLS + ( col + 2 );
 
 				lo->drawtiles_array[ idx ] = tile_type;
-				lo->drawtiles_array[ idx ] = 0;
 				
 				if( tile_type_candy == tile_type )
 				{

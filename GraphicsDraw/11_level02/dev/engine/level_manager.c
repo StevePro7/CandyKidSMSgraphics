@@ -36,9 +36,9 @@ void engine_level_manager_init_level()
 
 	for( col = 0; col < TREE_COLS; col++ )
 	{
-		/*idx = TREE_ROWS * 0 + col;
+		idx = TREE_ROWS * 0 + col;
 		lo->drawtiles_array[ idx ] = tile_type_trees;
-		lo->collision_array[ idx ] = coll_type_block;*/
+		lo->collision_array[ idx ] = coll_type_block;
 
 		idx = TREE_ROWS * ( TREE_ROWS  - 1 ) + col;
 		lo->drawtiles_array[ idx ] = tile_type_trees;
