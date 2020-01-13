@@ -36,15 +36,15 @@ void engine_level_manager_init_level()
 
 	for( col = 0; col < TREE_COLS; col++ )
 	{
-		idx = TREE_ROWS * 0 + col;
+		/*idx = TREE_ROWS * 0 + col;
 		lo->drawtiles_array[ idx ] = tile_type_trees;
-		lo->collision_array[ idx ] = coll_type_block;
+		lo->collision_array[ idx ] = coll_type_block;*/
 
 		idx = TREE_ROWS * ( TREE_ROWS  - 1 ) + col;
 		lo->drawtiles_array[ idx ] = tile_type_trees;
 		lo->collision_array[ idx ] = coll_type_block;
 	}
-	for( row = 1; row < TREE_ROWS - 1; row++ )
+	/*for( row = 1; row < TREE_ROWS - 1; row++ )
 	{
 		idx = row * TREE_COLS + 0;
 		lo->drawtiles_array[ idx ] = tile_type_trees;
@@ -53,7 +53,7 @@ void engine_level_manager_init_level()
 		idx = row * TREE_COLS + ( TREE_COLS - 1 );
 		lo->drawtiles_array[ idx ] = tile_type_trees;
 		lo->collision_array[ idx ] = coll_type_block;
-	}
+	}*/
 }
 
 void engine_level_manager_load_level( const unsigned char world, const unsigned char round )
