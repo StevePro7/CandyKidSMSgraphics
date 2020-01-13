@@ -23,6 +23,7 @@ void engine_level_manager_init_level()
 	struct_level_object *lo = &global_level_object;
 	unsigned char idx, row, col;
 
+	// Initialize 14x14 maze.
 	for( row = 0; row < MAZE_ROWS; row++ )
 	{
 		for( col = 0; col < MAZE_COLS; col++ )
@@ -34,6 +35,7 @@ void engine_level_manager_init_level()
 		}
 	}
 
+	// Calculate 12x12 outside tree border.
 	for( col = 0; col < TREE_COLS; col++ )
 	{
 		idx = MAZE_ROWS * 1 + (col + 1);
@@ -96,15 +98,29 @@ void engine_level_manager_draw_level()
 	struct_level_object *lo = &global_level_object;
 	unsigned char row, col;
 
-	for( row = 0; row < TREE_ROWS; row++ )
+	for( row = 0; row < MAX_ROWS; row++ )
 	{
-		for( col = 0; col < TREE_COLS; col++ )
+		for( col = 0; col < MAX_COLS; col++ )
 		{
 			draw_tiles( col, row );
 		}
 	}
 }
 
+// Assumes call to draw 12x12 i.e. include tree border.
+//void engine_level_manager_draw_level_12()
+//{
+//	struct_level_object *lo = &global_level_object;
+//	unsigned char row, col;
+//
+//	for( row = 0; row < TREE_ROWS; row++ )
+//	{
+//		for( col = 0; col < TREE_COLS; col++ )
+//		{
+//			draw_tiles_12( col, row );
+//		}
+//	}
+//}
 
 static void load_level( const unsigned char *data, const unsigned char bank, const unsigned char size )
 {
@@ -163,8 +179,21 @@ static void draw_tiles( unsigned char x, unsigned char y )
 	unsigned char tile;
 	unsigned int idx;
 
-	idx = ( y + 1 ) * MAZE_COLS + ( x + 1 );
+	idx = ( y + 2 ) * MAZE_COLS + ( x + 2 );
 	tile = lo->drawtiles_array[ idx ];
 
-	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + x * 2, y * 2 );
+	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + ( x + 1 ) * 2, ( y + 1 ) * 2 );
 }
+
+// Assumes call to draw 12x12 i.e. include tree border.
+//static void draw_tiles_12( unsigned char x, unsigned char y )
+//{
+//	struct_level_object *lo = &global_level_object;
+//	unsigned char tile;
+//	unsigned int idx;
+//
+//	idx = ( y + 1 ) * MAZE_COLS + ( x + 1 );
+//	tile = lo->drawtiles_array[ idx ];
+//
+//	engine_tile_manager_draw_tile( tile, SCREEN_TILE_LEFT + x * 2, y * 2 );
+//}
