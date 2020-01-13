@@ -15,12 +15,12 @@ void engine_tile_manager_load_tile( unsigned char *tile_type, unsigned char tile
 {
 	if( '1' == tile_data )
 	{
-		*tile_type = tile_type_candy;
+		*tile_type = tile_type_trees;
 		return;
 	}
 	if( '2' == tile_data )
 	{
-		*tile_type = tile_type_trees;
+		*tile_type = tile_type_candy;
 		return;
 	}
 	if( '3' == tile_data )

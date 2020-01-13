@@ -8,8 +8,8 @@ set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
 
 
 :: Content
-folder2c ..\gfx gfx
-sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 gfx.c
+::folder2c ..\gfx gfx
+::sdcc -c -mz80 --opt-code-speed --peep-file peep-rules.txt --std-c99 gfx.c
 
 :: Compile
 ::cd devkit
