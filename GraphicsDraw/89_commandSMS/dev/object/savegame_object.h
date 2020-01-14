@@ -18,6 +18,8 @@ typedef struct tag_struct_savegame_object
 	unsigned int commands[ MAX_COMMANDS ];
 	unsigned int args[ MAX_COMMANDS ];
 
+	unsigned char terminal;
+
 } struct_savegame_object;
 
 #endif//_SAVEGAME_OBJECT_H_

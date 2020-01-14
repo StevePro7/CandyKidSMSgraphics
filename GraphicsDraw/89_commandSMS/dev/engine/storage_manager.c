@@ -2,6 +2,7 @@
 #include "..\devkit\_sms_manager.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
+#include "..\engine\font_manager.h"
 
 #define MAGIC			0xACE0B004
 
@@ -27,7 +28,7 @@ void engine_storage_manager_read()
 	devkit_SMS_enableSRAM();
 	engine_board_manager_set_tree_type( savegame->save_tree_type );
 	engine_board_manager_set_exit_type( savegame->save_exit_type );
-	engine_command_manager_set_load( savegame->no_frames, savegame->no_commands, savegame->frames, savegame->counts, savegame->commands, savegame->args );
+	engine_command_manager_load( savegame->no_frames, savegame->no_commands, savegame->frames, savegame->counts, savegame->commands, savegame->args );
 	devkit_SMS_disableSRAM();
 }
 
@@ -40,7 +41,7 @@ void engine_storage_manager_write()
 
 	devkit_SMS_enableSRAM();
 	savegame->Magic = MAGIC;
-	savegame->save_tree_type = 1;// bo->save_tree_type;
+	savegame->save_tree_type = 0;// bo->save_tree_type;
 	savegame->save_exit_type = 1;// bo->save_exit_type;
 
 	// Commands.
@@ -50,10 +51,15 @@ void engine_storage_manager_write()
 	for( idx = 0; idx < co->no_frames; idx++ )
 	{
 		savegame->frames[ idx ] = co->frames[ idx ];
-		/*savegame->counts[ idx ] = co->counts[ idx ];
-		savegame->commands[ idx ] = co->commands[ idx ];
-		savegame->args[ idx ] = co->args[ idx ];*/
+		savegame->counts[ idx ] = co->counts[ idx ];
 	}
 
+	for( idx = 0; idx < co->no_commands; idx++ )
+	{
+		savegame->commands[ idx ] = co->commands[ idx ];
+		savegame->args[ idx ] = co->args[ idx ];
+	}
+
+	savegame->terminal = 0xFE;
 	devkit_SMS_disableSRAM();
 }

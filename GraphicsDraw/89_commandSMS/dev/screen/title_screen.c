@@ -24,7 +24,7 @@ void screen_title_screen_load()
 	engine_frame_manager_init();
 	engine_frame_manager_draw();
 
-	engine_command_manager_set_load( 2, 3, frames, counts, commands, args );
+	engine_command_manager_load( 2, 3, frames, counts, commands, args );
 	first_time = 1;
 }
 

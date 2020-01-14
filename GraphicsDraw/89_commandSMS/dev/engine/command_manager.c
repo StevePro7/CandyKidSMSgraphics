@@ -1,6 +1,7 @@
 #include "command_manager.h"
 #include "actor_manager.h"
 #include "enum_manager.h"
+#include "font_manager.h"
 #include "global_manager.h"
 
 struct_command_object global_command_object;
@@ -139,21 +140,23 @@ void engine_command_manager_undo( unsigned int frame )
 	}
 }
 
-void engine_command_manager_set_load( unsigned char in_frames, unsigned char in_commands, unsigned int* frames, unsigned int* counts, unsigned int* commands, unsigned int* args )
+void engine_command_manager_load( unsigned char in_frames, unsigned char in_commands, unsigned int* frames, unsigned int* counts, unsigned int* commands, unsigned int* args )
 {
 	unsigned char idx;
-	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	/*for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		new_frame[ idx ] = 0;
 		new_count[ idx ] = 0;
 		new_command[ idx ] = 0;
 		new_args[ idx ] = 0;
-	}
+	}*/
 
 	no_frames = in_frames;
-	no_commands = in_commands;
+	//no_commands = in_commands;
 
-	for( idx = 0; idx < no_frames; idx++ )
+	engine_font_manager_draw_data( no_frames, 10, 18 );
+
+	/*for( idx = 0; idx < no_frames; idx++ )
 	{
 		new_frame[ idx ] = frames[ idx ];
 		new_count[ idx ] = counts[ idx ];
@@ -163,7 +166,7 @@ void engine_command_manager_set_load( unsigned char in_frames, unsigned char in_
 	{
 		new_command[ idx ] = commands[ idx ];
 		new_args[ idx ] = args[ idx ];
-	}
+	}*/
 }
 
 void engine_command_manager_save()
@@ -171,9 +174,13 @@ void engine_command_manager_save()
 	struct_command_object *co = &global_command_object;
 	unsigned int idx;
 
-	co->no_frames = frame_index;
-	co->no_commands = command_index;
-	
+	no_frames = frame_index;
+	no_commands = command_index;
+	co->no_frames = no_frames;
+	co->no_commands = no_commands;
+
+	engine_font_manager_draw_data( no_frames, 10, 19 );
+
 	for( idx = 0; idx < no_frames; idx++ )
 	{
 		co->frames[ idx ] = new_frame[ idx ];
