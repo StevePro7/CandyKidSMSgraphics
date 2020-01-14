@@ -173,11 +173,15 @@ void engine_command_manager_save()
 
 	co->no_frames = frame_index;
 	co->no_commands = command_index;
-
-	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	
+	for( idx = 0; idx < no_frames; idx++ )
 	{
 		co->frames[ idx ] = new_frame[ idx ];
 		co->counts[ idx ] = new_count[ idx ];
+	}
+
+	for( idx = 0; idx < no_commands; idx++ )
+	{
 		co->commands[ idx ] = new_command[ idx ];
 		co->args[ idx ] = new_args[ idx ];
 	}

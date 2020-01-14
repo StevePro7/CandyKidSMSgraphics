@@ -47,13 +47,13 @@ void engine_storage_manager_write()
 	savegame->no_frames = co->no_frames;
 	savegame->no_commands = co->no_commands;
 
-	/*for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	for( idx = 0; idx < co->no_frames; idx++ )
 	{
 		savegame->frames[ idx ] = co->frames[ idx ];
-		savegame->counts[ idx ] = co->counts[ idx ];
+		/*savegame->counts[ idx ] = co->counts[ idx ];
 		savegame->commands[ idx ] = co->commands[ idx ];
-		savegame->args[ idx ] = co->args[ idx ];
-	}*/
+		savegame->args[ idx ] = co->args[ idx ];*/
+	}
 
 	devkit_SMS_disableSRAM();
 }
