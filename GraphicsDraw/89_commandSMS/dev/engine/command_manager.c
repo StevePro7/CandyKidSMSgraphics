@@ -18,7 +18,7 @@ static unsigned char undo_index;
 
 static unsigned int new_frame[ MAX_COMMANDS ];
 static unsigned int new_count[ MAX_COMMANDS ];
-static unsigned int  new_command[ MAX_COMMANDS ];
+static unsigned int new_command[ MAX_COMMANDS ];
 static unsigned int new_args[ MAX_COMMANDS ];
 
 static void start_exec_command( unsigned int index );
@@ -141,6 +141,20 @@ void engine_command_manager_set_playback( unsigned int* frames, unsigned int* co
 		new_count[ idx ] = counts[ idx ];
 		new_command[ idx ] = commands[ idx ];
 		new_args[ idx ] = args[ idx ];
+	}
+}
+
+void engine_command_manager_save()
+{
+	struct_command_object *co = &global_command_object;
+	unsigned int idx;
+
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	{
+		co->frames[ idx ] = new_frame[ idx ];
+		co->counts[ idx ] = new_count[ idx ];
+		co->commands[ idx ] = new_command[ idx ];
+		co->args[ idx ] = new_args[ idx ];
 	}
 }
 

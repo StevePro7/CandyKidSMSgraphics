@@ -21,6 +21,7 @@ void engine_command_manager_undo( unsigned int frame );
 //void engine_command_manager_set_save_frames( unsigned int* frames );
 
 void engine_command_manager_set_playback( unsigned int* frames, unsigned int* counts, unsigned int* commands, unsigned int* args );
+void engine_command_manager_save();
 unsigned char engine_command_manager_align_undo();
 
 #endif//_COMMAND_MANAGER_H_

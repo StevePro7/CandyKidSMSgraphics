@@ -9,18 +9,12 @@
 #include "..\engine\move_manager.h"
 #include "..\engine\sprite_manager.h"
 
-static unsigned int frameCount;
-
-static unsigned char count, timer;
-
 void screen_intro_screen_load()
 {
-	engine_font_manager_draw_text( "INTRO SCREEN!!", 2, 0 );
-
+	engine_font_manager_draw_text( "INTRO SCREEN...!!", 2, 0 );
 }
 
 void screen_intro_screen_update( unsigned char *screen_type )
 {
-
 	*screen_type = screen_type_intro;
 }
