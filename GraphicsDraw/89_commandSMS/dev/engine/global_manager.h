@@ -32,4 +32,6 @@
 
 #define MAX_BLOCK_TILES			12
 
+#define MAX_COMMANDS	10
+
 #endif//_GLOBAL_MANAGER_H_

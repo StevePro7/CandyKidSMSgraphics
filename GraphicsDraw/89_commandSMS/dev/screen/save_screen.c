@@ -18,7 +18,7 @@ void screen_save_screen_update( unsigned char *screen_type )
 {
 	struct_board_object *bo = &global_board_object;
 	unsigned char input;
-	unsigned int* frames;
+	//unsigned int* frames;
 
 	input = engine_input_manager_hold_left();
 	if( input )

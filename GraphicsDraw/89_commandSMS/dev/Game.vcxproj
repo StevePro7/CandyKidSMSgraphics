@@ -172,6 +172,7 @@
     <ClCompile Include="gfx.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="object\board_object.c" />
+    <ClCompile Include="object\command_object.c" />
     <ClCompile Include="object\delay_object.c" />
     <ClCompile Include="object\enemy_object.c" />
     <ClCompile Include="object\event_object.c" />
@@ -224,6 +225,7 @@
     <ClInclude Include="gfx.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="object\board_object.h" />
+    <ClInclude Include="object\command_object.h" />
     <ClInclude Include="object\delay_object.h" />
     <ClInclude Include="object\enemy_object.h" />
     <ClInclude Include="object\event_object.h" />

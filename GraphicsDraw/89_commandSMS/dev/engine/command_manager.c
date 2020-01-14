@@ -1,6 +1,9 @@
 #include "command_manager.h"
-#include "enum_manager.h"
 #include "actor_manager.h"
+#include "enum_manager.h"
+#include "global_manager.h"
+
+struct_command_object global_command_object;
 
 #define TYPE_COMMANDS	4
 
@@ -118,7 +121,7 @@ void engine_command_manager_undo( unsigned int frame )
 	}
 }
 
-void engine_command_manager_set_playback( unsigned char* frames, unsigned char* counts, unsigned char* commands, unsigned char* args )
+void engine_command_manager_set_playback( unsigned int* frames, unsigned int* counts, unsigned int* commands, unsigned int* args )
 {
 	unsigned char idx;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )

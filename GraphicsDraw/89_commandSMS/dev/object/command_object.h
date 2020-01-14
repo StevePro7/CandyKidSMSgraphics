@@ -1,18 +1,14 @@
 #ifndef _COMMAND_OBJECT_H_
 #define _COMMAND_OBJECT_H_
 
-typedef struct tag_struct_command_master
-{
-	unsigned int save_frames[ 3 ];
-
-} struct_command_master;
+#include "..\engine\global_manager.h"
 
 typedef struct tag_struct_command_object
 {
-	//unsigned char frame;
-	//unsigned char command_type;
-	unsigned char args1;
-	unsigned char args2;
+	unsigned int frames[ MAX_COMMANDS ];
+	unsigned int counts[ MAX_COMMANDS ];
+	unsigned int commands[ MAX_COMMANDS ];
+	unsigned int args[ MAX_COMMANDS ];
 
 } struct_command_object;
 
