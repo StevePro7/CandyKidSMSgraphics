@@ -152,21 +152,21 @@ void engine_command_manager_load( unsigned char in_frames, unsigned char in_comm
 	}*/
 
 	no_frames = in_frames;
-	//no_commands = in_commands;
+	no_commands = in_commands;
 
 	engine_font_manager_draw_data( no_frames, 10, 18 );
 
-	/*for( idx = 0; idx < no_frames; idx++ )
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		new_frame[ idx ] = frames[ idx ];
 		new_count[ idx ] = counts[ idx ];
 	}
 
-	for( idx = 0; idx < no_commands; idx++ )
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		new_command[ idx ] = commands[ idx ];
 		new_args[ idx ] = args[ idx ];
-	}*/
+	}
 }
 
 void engine_command_manager_save()

@@ -41,25 +41,25 @@ void engine_storage_manager_write()
 
 	devkit_SMS_enableSRAM();
 	savegame->Magic = MAGIC;
-	savegame->save_tree_type = 0;// bo->save_tree_type;
-	savegame->save_exit_type = 1;// bo->save_exit_type;
+	savegame->save_tree_type = bo->save_tree_type;
+	savegame->save_exit_type = bo->save_exit_type;
 
 	// Commands.
 	savegame->no_frames = co->no_frames;
 	savegame->no_commands = co->no_commands;
 
-	for( idx = 0; idx < co->no_frames; idx++ )
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		savegame->frames[ idx ] = co->frames[ idx ];
 		savegame->counts[ idx ] = co->counts[ idx ];
 	}
 
-	for( idx = 0; idx < co->no_commands; idx++ )
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		savegame->commands[ idx ] = co->commands[ idx ];
 		savegame->args[ idx ] = co->args[ idx ];
 	}
 
-	savegame->terminal = 0xFE;
+	savegame->terminal = 0xFF;
 	devkit_SMS_disableSRAM();
 }
