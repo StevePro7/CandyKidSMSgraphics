@@ -24,6 +24,10 @@ void screen_record_screen_load()
 	engine_command_manager_add( 0, command_type_start, 0 );
 
 	test = engine_storage_manager_available();
+	if( test )
+	{
+		engine_storage_manager_read();
+	}
 	engine_font_manager_draw_data( test, 22, 7 );
 }
 
@@ -62,6 +66,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 	if( input[1] )
 	{
 		engine_command_manager_add( frame, command_type_fire, 13 );
+		engine_command_manager_add( frame, command_type_fire, 14 );
 	}
 
 	input[ 2 ] = 5 == frame;

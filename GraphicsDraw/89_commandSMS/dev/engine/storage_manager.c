@@ -27,7 +27,7 @@ void engine_storage_manager_read()
 	devkit_SMS_enableSRAM();
 	engine_board_manager_set_tree_type( savegame->save_tree_type );
 	engine_board_manager_set_exit_type( savegame->save_exit_type );
-	engine_command_manager_set_playback( savegame->frames, savegame->counts, savegame->commands, savegame->args );
+	engine_command_manager_set_load( savegame->no_frames, savegame->no_commands, savegame->frames, savegame->counts, savegame->commands, savegame->args );
 	devkit_SMS_disableSRAM();
 }
 
@@ -43,6 +43,9 @@ void engine_storage_manager_write()
 	savegame->save_tree_type = bo->save_tree_type;
 	savegame->save_exit_type = bo->save_exit_type;
 
+	// Commands.
+	savegame->no_frames = co->no_frames;
+	savegame->no_commands = co->no_commands;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
 		savegame->frames[ idx ] = co->frames[ idx ];

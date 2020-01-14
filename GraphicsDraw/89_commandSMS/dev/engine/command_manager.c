@@ -10,6 +10,9 @@ struct_command_object global_command_object;
 static void( *execute[ TYPE_COMMANDS ] )( unsigned int index );
 static void( *undo[ TYPE_COMMANDS ] )( unsigned int index );
 
+static unsigned char no_frames;
+static unsigned char no_commands;
+
 static unsigned char frame_index;
 static unsigned char command_index;
 static unsigned char add_index;
@@ -29,6 +32,15 @@ static void finish_undo_command( unsigned int index );
 // Public methods.
 void engine_command_manager_init()
 {
+	unsigned int idx;
+	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	{
+		new_frame[ idx ] = 0;
+		new_count[ idx ] = 0;
+		new_command[ idx ] = 0;
+		new_args[ idx ] = 0;
+	}
+
 	// IMPORTANT execute + undo must be same order!!
 	execute[ command_type_start ] = start_exec_command;
 	execute[ command_type_fire ] = engine_actor_manager_exec_fire;
@@ -41,6 +53,9 @@ void engine_command_manager_init()
 	undo[ command_type_jump ] = engine_actor_manager_undo_jump;
 	undo[ command_type_move ] = engine_actor_manager_undo_move;
 	undo[ command_type_finish ] = finish_undo_command;
+
+	no_frames = 0;
+	no_commands = 0;
 
 	frame_index = 0;
 	command_index = 0;
@@ -124,7 +139,7 @@ void engine_command_manager_undo( unsigned int frame )
 	}
 }
 
-void engine_command_manager_set_playback( unsigned int* frames, unsigned int* counts, unsigned int* commands, unsigned int* args )
+void engine_command_manager_set_load( unsigned char in_frames, unsigned char in_commands, unsigned int* frames, unsigned int* counts, unsigned int* commands, unsigned int* args )
 {
 	unsigned char idx;
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
@@ -135,10 +150,17 @@ void engine_command_manager_set_playback( unsigned int* frames, unsigned int* co
 		new_args[ idx ] = 0;
 	}
 
-	for( idx = 0; idx < MAX_COMMANDS; idx++ )
+	no_frames = in_frames;
+	no_commands = in_commands;
+
+	for( idx = 0; idx < no_frames; idx++ )
 	{
 		new_frame[ idx ] = frames[ idx ];
 		new_count[ idx ] = counts[ idx ];
+	}
+
+	for( idx = 0; idx < no_commands; idx++ )
+	{
 		new_command[ idx ] = commands[ idx ];
 		new_args[ idx ] = args[ idx ];
 	}
@@ -148,6 +170,9 @@ void engine_command_manager_save()
 {
 	struct_command_object *co = &global_command_object;
 	unsigned int idx;
+
+	co->no_frames = frame_index;
+	co->no_commands = command_index;
 
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
