@@ -13,14 +13,13 @@ namespace GraphicsSave_BinaryFile
 
         private static void DisplayValues(string fileName)
         {
-            float aspectRatio;
-
             if(File.Exists(fileName))
             {
-                using(var reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
-                {
-                    aspectRatio = reader.ReadByte();
-                }
+                var bytes = File.ReadAllBytes(fileName);
+                //using(var reader = new BinaryReader(File.Open(fileName, FileMode.Open)))
+                //{
+                //    aspectRatio = reader.ReadByte();
+                //}
 
 
             }
