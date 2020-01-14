@@ -50,14 +50,14 @@ void screen_record_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 //		engine_font_manager_draw_text( "ADD COMMANDS #3", 2, 1 );
-		engine_command_manager_add( frame, command_type_jump, 22, 33 );
-		engine_command_manager_add( frame, command_type_move, 22, 33 );
+		engine_command_manager_add( frame, command_type_jump, 22 );
+		engine_command_manager_add( frame, command_type_move, 22 );
 	}
 
 	input2 = 5 == frame;
 	if( input2 )
 	{
-		engine_command_manager_add( frame, command_type_fire, 22, 33 );
+		engine_command_manager_add( frame, command_type_fire, 22 );
 	}
 
 	engine_command_manager_execute( frame );

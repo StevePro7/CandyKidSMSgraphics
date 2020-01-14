@@ -5,7 +5,7 @@
 
 struct_command_object global_command_object;
 
-#define TYPE_COMMANDS	4
+#define TYPE_COMMANDS	5
 
 static void( *execute[ TYPE_COMMANDS ] )( unsigned int index );
 static void( *undo[ TYPE_COMMANDS ] )( unsigned int index );

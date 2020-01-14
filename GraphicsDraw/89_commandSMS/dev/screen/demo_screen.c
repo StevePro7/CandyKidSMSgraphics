@@ -7,6 +7,7 @@
 #include "..\engine\input_manager.h"
 
 static unsigned char first_time;
+
 void screen_demo_screen_load()
 {
 	engine_command_manager_init();
@@ -39,14 +40,8 @@ void screen_demo_screen_update( unsigned char *screen_type )
 	if( input )
 	{
 		engine_font_manager_draw_text( "ADD COMMANDS #3", 2, 1 );
-		engine_command_manager_add( frame, command_type_jump, 22, 33 );
-		//engine_command_manager_add( frame, command_type_move, 10, 20 );
-
-		//engine_font_manager_draw_text( "HOLD END", 22, 6 );
+		engine_command_manager_add( frame, command_type_jump, 22 );
 	}
-
-
-	
 
 	engine_frame_manager_update();
 	*screen_type = screen_type_demo;

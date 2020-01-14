@@ -10,7 +10,7 @@ S _engine_font_manager_draw_data Ref0000
 S _engine_input_manager_move_right Ref0000
 S _engine_input_manager_move_up Ref0000
 S _engine_input_manager_move_left Ref0000
-A _CODE size 43A flags 0 addr 0
+A _CODE size 43F flags 0 addr 0
 S _engine_gamer_manager_draw Def034C
 S _engine_gamer_manager_init Def0000
 S _engine_gamer_manager_move Def03A5
@@ -266,9 +266,11 @@ T 0C 04 44 ED 43 10 00 C9
 R 00 00 00 00 00 05 01 00
 T 12 04
 R 00 00 00 00
-T 12 04 21 06 00 4E 21 00 00 06 00 09 4E 06 00 ED
-R 00 00 00 00 00 03 01 00 02 07 01 00
-T 20 04 43 00 00 01 0C 00 21 00 00 11 07 00 19 5E
-R 00 00 00 00 00 03 01 00 02 06 01 00 00 09 01 00
-T 2E 04 6B 26 00 09 4E 06 00 ED 43 02 00 C9
-R 00 00 00 00 00 0B 01 00
+T 12 04 01 02 00 21 00 00 11 06 00 19 5E 6B 26 00
+R 00 00 00 00 02 03 01 00 00 06 01 00
+T 20 04 09 4E 06 00 ED 43 00 00 01 0E 00 21 00 00
+R 00 00 00 00 00 08 01 00 02 0B 01 00 00 0E 01 00
+T 2E 04 11 07 00 19 5E 6B 26 00 09 4E 06 00 ED 43
+R 00 00 00 00
+T 3C 04 02 00 C9
+R 00 00 00 00 00 02 01 00
