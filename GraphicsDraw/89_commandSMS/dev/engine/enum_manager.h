@@ -87,10 +87,12 @@ typedef enum tag_enum_mama_type
 
 typedef enum tag_enum_command_type
 {
-	command_type_empty = 0,
+	command_type_start = 0,
 	command_type_fire = 1,
 	command_type_jump = 2,
 	command_type_move = 3,
+
+	command_type_finish = 4,
 
 } enum_command_type;
 

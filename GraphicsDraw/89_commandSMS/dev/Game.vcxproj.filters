@@ -132,9 +132,6 @@
     <ClCompile Include="engine\enemy_manager.c">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
-    <ClCompile Include="object\command_object.c">
-      <Filter>Source Files\object</Filter>
-    </ClCompile>
     <ClCompile Include="engine\board_manager.c">
       <Filter>Source Files\engine</Filter>
     </ClCompile>
@@ -282,9 +279,6 @@
     </ClInclude>
     <ClInclude Include="engine\enemy_manager.h">
       <Filter>Header Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="object\command_object.h">
-      <Filter>Header Files\object</Filter>
     </ClInclude>
     <ClInclude Include="engine\board_manager.h">
       <Filter>Header Files\engine</Filter>
