@@ -5,10 +5,7 @@
 #include "..\engine\enemy_manager.h"
 #include "..\engine\event_manager.h"
 #include "..\engine\font_manager.h"
-#include "..\engine\gamer_manager.h"
-#include "..\engine\mask_manager.h"
-#include "..\engine\move_manager.h"
-#include "..\engine\state_manager.h"
+#include "..\engine\storage_manager.h"
 #include "..\engine\sprite_manager.h"
 
 // IMPORTANT disable compiler warning 110
@@ -19,7 +16,14 @@
 
 void screen_play_screen_load()
 {
-	
+	unsigned char test;
+
+	test = engine_storage_manager_available();
+	engine_font_manager_draw_data( test, 22, 7 );
+
+	engine_font_manager_draw_text( "PLAY SCREEN!!", 4, 0 );
+
+	engine_storage_manager_read();
 }
 
 void screen_play_screen_update( unsigned char *screen_type )

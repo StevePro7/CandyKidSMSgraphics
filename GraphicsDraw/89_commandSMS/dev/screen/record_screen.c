@@ -11,6 +11,8 @@ static unsigned char first_time;
 
 void screen_record_screen_load()
 {
+	unsigned char test;
+
 	engine_command_manager_init();
 	engine_delay_manager_load( 10 );
 
@@ -20,6 +22,9 @@ void screen_record_screen_load()
 	first_time = 1;
 
 	engine_command_manager_add( 0, command_type_start, 0 );
+
+	test = engine_storage_manager_available();
+	engine_font_manager_draw_data( test, 22, 7 );
 }
 
 void screen_record_screen_update( unsigned char *screen_type )
