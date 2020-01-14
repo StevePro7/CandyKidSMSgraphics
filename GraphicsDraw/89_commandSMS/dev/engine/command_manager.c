@@ -64,6 +64,7 @@ void engine_command_manager_execute( unsigned int frame )
 	unsigned char count;
 	unsigned char command;
 	unsigned char loop;
+	unsigned int args;
 
 	// If we are not on the correct frame to execute then simply return.
 	if( frame != new_frame[ frame_index ] )
@@ -81,8 +82,10 @@ void engine_command_manager_execute( unsigned int frame )
 	for( loop = 0; loop < count; loop++ )
 	{
 		exec_index = command_index;
-		command = new_command[ command_index++ ];
-		execute[ command ]( 0 );
+		command = new_command[ command_index ];
+		args = new_args[ command_index ];
+		execute[ command ]( args );
+		command_index++;
 	}
 
 	// Execute all commands this frame thus increment frame index.
