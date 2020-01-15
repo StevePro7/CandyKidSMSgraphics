@@ -6,12 +6,9 @@
 #include "..\engine\font_manager.h"
 #include "..\engine\tile_manager.h"
 
-
 void screen_func_screen_load()
 {
 	engine_font_manager_draw_text( "FUNCTN SCREEN", 4, 0 );
-
-
 }
 
 void screen_func_screen_update( unsigned char *screen_type )
