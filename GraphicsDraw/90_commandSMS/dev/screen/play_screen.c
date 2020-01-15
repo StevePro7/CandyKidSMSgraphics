@@ -47,8 +47,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 	// Draw sprites first.
 	engine_gamer_manager_draw();
 
-	engine_frame_manager_draw();
-	engine_delay_manager_draw();
+	/*engine_frame_manager_draw();
+	engine_delay_manager_draw();*/
 	if( !first_time )
 	{
 		proceed = engine_delay_manager_update();
@@ -73,13 +73,16 @@ void screen_play_screen_update( unsigned char *screen_type )
 		{
 			engine_command_manager_add( frame, command_type_move, direction_type_rght );
 		}
-
 		input[ 1 ] = 24 == frame;
 		if( input[ 1 ] )
 		{
 			engine_command_manager_add( frame, command_type_move, direction_type_rght );
 		}
-
+		input[ 2 ] = 84 == frame;
+		if( input[ 2 ] )
+		{
+			engine_command_manager_add( frame, command_type_move, direction_type_down );
+		}
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{
