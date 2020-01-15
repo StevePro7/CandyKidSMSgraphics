@@ -6,7 +6,7 @@
 #include "input_manager.h"
 #include "sprite_manager.h"
 
-#define SPRITE_TILES_KID	256 + 48
+#define SPRITE_TILES_KID	256 + 96
 
 // Global variable.
 struct_gamer_object global_gamer_object;

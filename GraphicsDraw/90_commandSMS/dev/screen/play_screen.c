@@ -5,6 +5,7 @@
 #include "..\engine\enemy_manager.h"
 #include "..\engine\event_manager.h"
 #include "..\engine\font_manager.h"
+#include "..\engine\gamer_manager.h"
 #include "..\engine\storage_manager.h"
 #include "..\engine\sprite_manager.h"
 
@@ -16,19 +17,17 @@
 
 void screen_play_screen_load()
 {
-	unsigned char test;
+	engine_board_manager_init();
+	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
+	engine_command_manager_init();
 
-	test = engine_storage_manager_available();
-	engine_font_manager_draw_data( test, 22, 7 );
-
-	engine_font_manager_draw_text( "PLAY SCREEN!!", 4, 0 );
-
-	engine_storage_manager_read();
+	engine_font_manager_draw_text( "PLAY SCREEN!!!!", 4, 0 );
 }
 
 void screen_play_screen_update( unsigned char *screen_type )
 {
-	
+	// Draw sprites first.
+	engine_gamer_manager_draw();
 
 	*screen_type = screen_type_play;
 }
