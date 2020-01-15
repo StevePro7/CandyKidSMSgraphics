@@ -1,5 +1,6 @@
 #include "actor_manager.h"
 #include "font_manager.h"
+#include "gamer_manager.h"
 
 static void print( char *text, unsigned int idx, unsigned intx );
 // Public method.
@@ -22,6 +23,7 @@ void engine_actor_manager_exec_move( unsigned int args )
 {
 	engine_font_manager_draw_text( "EXEC MOVE", 2, 14 );
 	engine_font_manager_draw_data( args, 17, 14 );
+	engine_gamer_manager_move( args );
 }
 
 // Undo commands.

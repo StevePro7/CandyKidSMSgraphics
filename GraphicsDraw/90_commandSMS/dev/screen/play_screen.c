@@ -71,7 +71,8 @@ void screen_play_screen_update( unsigned char *screen_type )
 		input[ 0 ] = 4 == frame;
 		if( input[ 0 ] )
 		{
-			engine_gamer_manager_move( direction_type_rght );
+			//engine_gamer_manager_move( direction_type_rght );
+			engine_command_manager_add( frame, command_type_move, direction_type_rght );
 		}
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
