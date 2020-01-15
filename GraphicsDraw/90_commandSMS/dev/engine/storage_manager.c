@@ -52,6 +52,6 @@ void engine_storage_manager_write()
 		savegame->args[ idx ] = co->args[ idx ];
 	}
 
-	savegame->terminal = 0xFF;
+	savegame->terminal = 0xFE;
 	devkit_SMS_disableSRAM();
 }
