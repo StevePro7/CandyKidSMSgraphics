@@ -25,7 +25,7 @@ void screen_play_screen_load()
 	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
 
 	engine_command_manager_init();
-	engine_delay_manager_load( 10 );
+	engine_delay_manager_load( 0 );
 
 	engine_font_manager_draw_text( "PLAY SCREEN!!!!", 4, 0 );
 	engine_frame_manager_draw();
@@ -71,9 +71,15 @@ void screen_play_screen_update( unsigned char *screen_type )
 		input[ 0 ] = 4 == frame;
 		if( input[ 0 ] )
 		{
-			//engine_gamer_manager_move( direction_type_rght );
 			engine_command_manager_add( frame, command_type_move, direction_type_rght );
 		}
+
+		input[ 1 ] = 24 == frame;
+		if( input[ 1 ] )
+		{
+			engine_command_manager_add( frame, command_type_move, direction_type_rght );
+		}
+
 	}
 	else if( direction_type_none != go->direction && lifecycle_type_move == go->lifecycle )
 	{

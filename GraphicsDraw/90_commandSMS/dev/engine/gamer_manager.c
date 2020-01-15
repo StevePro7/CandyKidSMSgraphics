@@ -173,7 +173,7 @@ unsigned char engine_gamer_manager_direction()
 static void calcd_frame()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	go->calcd = SPRITE_TILES_KID + go->image * 8 + go->frame * 4;
+	go->calcd = SPRITE_TILES_KID + go->image * 8 + go->frame * 2;
 }
 static void calcd_spots()
 {
