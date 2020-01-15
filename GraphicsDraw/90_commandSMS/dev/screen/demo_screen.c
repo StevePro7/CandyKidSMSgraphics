@@ -4,6 +4,7 @@
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\frame_manager.h"
+#include "..\engine\gamer_manager.h"
 #include "..\engine\input_manager.h"
 #include "..\engine\storage_manager.h"
 

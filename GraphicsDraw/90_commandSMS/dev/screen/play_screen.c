@@ -28,7 +28,7 @@ void screen_play_screen_load()
 	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
 
 	engine_command_manager_init();
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 5 );
 
 	engine_font_manager_draw_text( "PLAY SCREEN!!!!", 4, 0 );
 	engine_frame_manager_draw();

@@ -19,8 +19,8 @@ void main( void )
 	engine_hack_manager_invert();
 
 	//open_screen_type = screen_type_test;
-	//open_screen_type = screen_type_func;
-	open_screen_type = screen_type_play;
+	open_screen_type = screen_type_func;
+	//open_screen_type = screen_type_play;
 	//open_screen_type = screen_type_intro;
 	//open_screen_type = screen_type_record;
 	//open_screen_type = screen_type_save;

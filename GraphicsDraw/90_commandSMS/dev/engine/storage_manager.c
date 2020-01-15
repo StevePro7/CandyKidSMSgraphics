@@ -12,8 +12,8 @@ struct_savegame_object global_savegame_object;
 unsigned char engine_storage_manager_available()
 {
 	struct_savegame_object *savegame = ( struct_savegame_object* ) ( devkit_SMS_SRAM() );
-
 	unsigned char foundMagic;
+
 	devkit_SMS_enableSRAM();
 	foundMagic = MAGIC == savegame->Magic;
 	devkit_SMS_disableSRAM();
@@ -23,7 +23,6 @@ unsigned char engine_storage_manager_available()
 void engine_storage_manager_read()
 {
 	struct_savegame_object *savegame = ( struct_savegame_object* ) ( devkit_SMS_SRAM() );
-	struct_board_object *bo = &global_board_object;
 
 	devkit_SMS_enableSRAM();
 	engine_board_manager_set_tree_type( savegame->save_tree_type );
