@@ -35,18 +35,20 @@ void engine_command_manager_init()
 		new_args[ idx ] = 0;
 	}
 
-	for( idx = 0; idx < MAX_CMD_TYPE; idx++ )
+	/*for( idx = 0; idx < MAX_CMD_TYPE; idx++ )
 	{
 		execute[ command_type_empty ] = empty_exec_command;
 		undo[ command_type_empty ] = empty_undo_command;
-	}
+	}*/
 
 	// IMPORTANT execute + undo must be same order!!
+	execute[ command_type_empty ] = empty_exec_command;
 	execute[ command_type_fire ] = engine_actor_manager_exec_fire;
 	execute[ command_type_jump ] = engine_actor_manager_exec_jump;
 	execute[ command_type_move ] = engine_actor_manager_exec_move;
 	execute[ command_type_session ] = session_exec_command;
 
+	undo[ command_type_empty ] = empty_undo_command;
 	undo[ command_type_fire ] = engine_actor_manager_undo_fire;
 	undo[ command_type_jump ] = engine_actor_manager_undo_jump;
 	undo[ command_type_move ] = engine_actor_manager_undo_move;
@@ -130,9 +132,12 @@ void engine_command_manager_undo( unsigned int frame )
 		{
 			break;
 		}
-	}
 
-	
+		if( 0 == command_index && 0 == undo_index )
+		{
+			break;
+		}
+	}
 
 	command_index = undo_index;
 }
