@@ -21,8 +21,6 @@ void screen_record_screen_load()
 	engine_delay_manager_draw();
 	first_time = 1;
 
-	engine_command_manager_add( 0, command_type_start, 0 );
-
 	test = engine_storage_manager_available();
 	if( test )
 	{
@@ -59,26 +57,27 @@ void screen_record_screen_update( unsigned char *screen_type )
 	input[ 0 ] = 2 == frame;
 	if( input[0] )
 	{
+		engine_command_manager_add( frame, command_type_fire, 2048 );
 		engine_command_manager_add( frame, command_type_jump, 1024 );
-		engine_command_manager_add( frame, command_type_move, 2048 );
 	}
 
 	input[ 1 ] = 4 == frame;
 	if( input[1] )
 	{
-		engine_command_manager_add( frame, command_type_fire, 13 );
-		engine_command_manager_add( frame, command_type_fire, 14 );
+		engine_command_manager_add( frame, command_type_move, 19 );
+		//engine_command_manager_add( frame, command_type_fire, 14 );
 	}
 
-	input[ 2 ] = 5 == frame;
+	input[ 2 ] = 8 == frame;
 	if( input[ 2 ] )
 	{
-		engine_command_manager_add( frame, command_type_finish, 0 );
+		engine_command_manager_add( frame, command_type_session, 0 );
 	}
 
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
 
+	// TODO - do I need to record and "end-of-session" command?
 	if( input[2] )
 	{
 		engine_frame_manager_draw();
@@ -88,8 +87,8 @@ void screen_record_screen_update( unsigned char *screen_type )
 		engine_storage_manager_write();
 		engine_font_manager_draw_text( "SAVED!!!!", 20, 19 );
 
-		//*screen_type = screen_type_test;
-		*screen_type = screen_type_intro;
+		*screen_type = screen_type_test;
+		//*screen_type = screen_type_intro;
 		return;
 	}
 

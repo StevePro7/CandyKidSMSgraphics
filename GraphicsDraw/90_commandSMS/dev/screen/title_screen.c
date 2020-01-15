@@ -11,10 +11,9 @@ static unsigned char first_time;
 
 void screen_title_screen_load()
 {
-	unsigned int frames[ MAX_COMMANDS ] = { 1, 3, 0, 0, 0, 0, 0, 0, 0, 0 };
-	unsigned int counts[ MAX_COMMANDS ] = { 2, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
-	unsigned int commands[ MAX_COMMANDS ] = { 2, 3, 1,  0, 0, 0, 0, 0, 0, 0 };
-	unsigned int args[ MAX_COMMANDS ] = { 12, 23, 34,  0, 0, 0, 0, 0, 0, 0 };
+	unsigned char frames[ MAX_COMMANDS ] = { 1, 3, 0, 0, 0, 0, 0, 0 };
+	unsigned char commands[ MAX_COMMANDS ] = { 2, 3, 1,  0, 0, 0, 0, 0 };
+	unsigned int args[ MAX_COMMANDS ] = { 12, 23, 34,  0, 0, 0, 0, 0 };
 
 	engine_font_manager_draw_text( "TITLE SCREEN!!!", 4, 0 );
 
@@ -24,7 +23,7 @@ void screen_title_screen_load()
 	engine_frame_manager_init();
 	engine_frame_manager_draw();
 
-	engine_command_manager_load( 2, 3, frames, counts, commands, args );
+	engine_command_manager_load( frames, commands, args );
 	first_time = 1;
 }
 

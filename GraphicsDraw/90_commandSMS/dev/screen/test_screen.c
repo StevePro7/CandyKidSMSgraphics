@@ -16,6 +16,7 @@ void screen_test_screen_load()
 	engine_delay_manager_load( 20 );
 
 	engine_font_manager_draw_text( "TESTER SCREEN!!", 4, 0 );
+	engine_frame_manager_load();
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 
