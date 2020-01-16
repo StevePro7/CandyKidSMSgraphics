@@ -1,6 +1,15 @@
 #ifndef _MASK_MANAGER_H_
 #define _MASK_MANAGER_H_
 
+#define FRAME_BANK_0	0x00		// Bank #0
+#define FRAME_BANK_1	0x20		// Bank #1
+#define FRAME_BANK_2	0x40		// Bank #2
+#define FRAME_BANK_3	0x60		// Bank #3
+#define FRAME_BANK_4	0x80		// Bank #4
+#define FRAME_BANK_5	0xA0		// Bank #5
+#define FRAME_BANK_6	0xC0		// Bank #6
+#define FRAME_BANK_7	0xE0		// Bank #7
+
 //#define IDENTITY_KID_MASK	0x80
 #define MOVEMENT_ALL_NONE_MASK	0x00
 

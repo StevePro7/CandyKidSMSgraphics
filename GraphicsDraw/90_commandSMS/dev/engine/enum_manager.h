@@ -1,6 +1,8 @@
 #ifndef _ENUM_MANAGER_H_
 #define _ENUM_MANAGER_H_
 
+#include "global_manager.h"
+
 typedef enum tag_enum_screen_type
 {
 	screen_type_none = 0,
@@ -92,7 +94,7 @@ typedef enum tag_enum_command_type
 	command_type_jump = 2,
 	command_type_move = 3,
 
-	command_type_session = 63,
+	command_type_session = MAX_CMD_TYPE - 1,
 
 } enum_command_type;
 

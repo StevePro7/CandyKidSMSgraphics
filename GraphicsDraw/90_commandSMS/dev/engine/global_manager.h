@@ -32,7 +32,8 @@
 
 #define MAX_BLOCK_TILES			12
 
-#define MAX_CMD_TYPE	64	// 255
+#define MAX_BYTE_SIZE			256
+#define MAX_CMD_TYPE	32	// 255
 #define MAX_COMMANDS	8	// 64
 
 #endif//_GLOBAL_MANAGER_H_
