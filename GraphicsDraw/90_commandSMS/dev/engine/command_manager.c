@@ -4,6 +4,8 @@
 #include "font_manager.h"
 #include "global_manager.h"
 
+#define FRAME_BANK_SHIFT	5
+
 struct_command_object global_command_object;
 
 static void( *execute[ MAX_CMD_TYPE ] )( unsigned int index );
@@ -61,31 +63,70 @@ void engine_command_manager_init()
 	undo_index = 0;
 }
 
-void engine_command_manager_add( unsigned char frame, unsigned char command_type, unsigned int args )
+void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned int args )
 {
-	new_frame[ add_index ] = frame;
-	new_command[ add_index ] = command_type;
+	unsigned char frame_bank;
+	unsigned char frame_main;
+	unsigned char shift_bank;
+	unsigned char an_command;
+
+	frame_bank = frame / MAX_BYTE_SIZE;
+	frame_main = frame % MAX_BYTE_SIZE;
+	shift_bank = frame_bank << FRAME_BANK_SHIFT;
+	an_command = shift_bank | command_type;
+
+	new_frame[ add_index ] = frame_main;
+	new_command[ add_index ] = an_command;
 	new_args[ add_index ] = args;
 	add_index++;
 }
 
 void engine_command_manager_execute( unsigned int frame )
 {
+	unsigned char frame_bank;
+	unsigned char frame_main;
+	unsigned char check_main;
+	unsigned char shift_bank;
+	unsigned char an_command;
+	unsigned char diff;
+
 	unsigned char command;
 	unsigned int args;
 
+	frame_main = frame % MAX_BYTE_SIZE;
+	check_main = new_frame[ exec_index ];
+
 	// If we are not on the correct frame to execute then simply return.
-	if( frame != new_frame[ exec_index ] )
+	if( frame_main != check_main )
 	{
 		return;
 	}
+
+	frame_bank = frame / MAX_BYTE_SIZE;
+	shift_bank = frame_bank << FRAME_BANK_SHIFT;
+
+	command_index = exec_index;
+	command = new_command[ command_index ];
+
+	diff = command - shift_bank;
+	if( diff != frame_bank )
+	{
+		return;
+	}
+	//an_command = shift_bank | command;
+
+	// If we are not on the correct frame to execute then simply return.
+	/*if( frame != new_frame[ exec_index ] )
+	{
+		return;
+	}*/
 
 	while( 1 )
 	{
 		command_index = exec_index;
 		command = new_command[ command_index ];
 
-		if( command_type_empty == command )
+		if( command_type_empty == diff )
 		{
 			break;
 		}

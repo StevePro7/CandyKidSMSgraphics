@@ -54,21 +54,21 @@ void screen_record_screen_update( unsigned char *screen_type )
 	}
 
 	frame = fo->frame_count;
-	input[ 0 ] = 200 == frame;
+	input[ 0 ] = 260 == frame;
 	if( input[0] )
 	{
 		engine_command_manager_add( frame, command_type_fire, 2048 );
 		engine_command_manager_add( frame, command_type_jump, 1024 );
 	}
 
-	input[ 1 ] = 255 == frame;
+	input[ 1 ] = 285 == frame;
 	if( input[1] )
 	{
 		engine_command_manager_add( frame, command_type_move, 19 );
 		//engine_command_manager_add( frame, command_type_fire, 14 );
 	}
 
-	input[ 2 ] = 257 == frame;
+	input[ 2 ] = 289 == frame;
 	if( input[ 2 ] )
 	{
 		engine_command_manager_add( frame, command_type_session, 0 );
