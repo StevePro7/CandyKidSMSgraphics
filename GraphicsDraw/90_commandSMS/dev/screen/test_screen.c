@@ -49,7 +49,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 
 		if( 0 == undo_frame )
 		{
-			*screen_type = screen_type_func;
+			*screen_type = screen_type_intro;
 			return;
 		}
 

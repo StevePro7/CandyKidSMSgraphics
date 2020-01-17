@@ -148,11 +148,28 @@ void engine_command_manager_execute( unsigned int frame )
 
 void engine_command_manager_undo( unsigned int frame )
 {
+	unsigned char frame_bank;
+	unsigned char frame_main;
+	unsigned char check_main;
+	unsigned char shift_bank;
+
+	unsigned char command_main;
 	unsigned char command;
 	unsigned int args;
 
+	frame_main = frame % MAX_BYTE_SIZE;
+	check_main = new_frame[ undo_index ];
+
 	// If we are not on the correct frame to execute then simply return.
-	if( frame != new_frame[ undo_index ] )
+	if( frame_main != check_main )
+	{
+		return;
+	}
+
+	frame_bank = frame / MAX_BYTE_SIZE;
+	command_main = new_command[ undo_index ];
+	shift_bank = command_main >> FRAME_BANK_SHIFT;
+	if( frame_bank != shift_bank )
 	{
 		return;
 	}
@@ -160,21 +177,37 @@ void engine_command_manager_undo( unsigned int frame )
 	while( 1 )
 	{
 		command_index = undo_index;
-		command = new_command[ command_index ];
-		args = new_args[ command_index ];
-		undo[ command ]( args );
+		command_main = new_command[ command_index ];
+		command = command_main & FRAME_MASK_SHIFT;
 
-		if( undo_index > 0 )
-		{
-			undo_index--;
-		}
-
-		if( frame != new_frame[ undo_index ] )
+		if( command_type_empty == command )
 		{
 			break;
 		}
 
+		args = new_args[ command_index ];
+		undo[ command ]( args );
+
+		// Decrement undo index and break if at the end...
+		if( undo_index > 0 )
+		{
+			undo_index--;
+		}
 		if( 0 == command_index && 0 == undo_index )
+		{
+			break;
+		}
+
+		// If we are not on the correct frame to execute then simply return.
+		check_main = new_frame[ undo_index ];
+		if( frame_main != check_main )
+		{
+			break;
+		}
+
+		command_main = new_command[ undo_index ];
+		shift_bank = command_main >> FRAME_BANK_SHIFT;
+		if( frame_bank != shift_bank )
 		{
 			break;
 		}
