@@ -14,6 +14,7 @@ void screen_record_screen_load()
 	unsigned char test;
 
 	engine_command_manager_init();
+	engine_frame_manager_init();
 	engine_delay_manager_load( 0 );
 
 	engine_font_manager_draw_text( "RECORD SCREEN!!", 4, 0 );
@@ -55,13 +56,16 @@ void screen_record_screen_update( unsigned char *screen_type )
 
 	frame = fo->frame_count;
 	input[ 0 ] = 260 == frame;
+	//input[ 0 ] = 0 == frame;
 	if( input[0] )
 	{
+		//engine_font_manager_draw_text( "FRAME 0", 15, 10 );
 		engine_command_manager_add( frame, command_type_fire, 2020 );
 		engine_command_manager_add( frame, command_type_jump, 1010 );
 	}
 
 	input[ 1 ] = 285 == frame;
+	//input[ 1 ] = 4 == frame;
 	if( input[1] )
 	{
 		engine_command_manager_add( frame, command_type_move, 19 );
@@ -69,6 +73,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 	}
 
 	input[ 2 ] = 289 == frame;
+	//input[ 2 ] = 14 == frame;
 	if( input[ 2 ] )
 	{
 		engine_command_manager_add( frame, command_type_session, 0 );
@@ -84,7 +89,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 
 		engine_font_manager_draw_text( "SAVING", 20, 18 );
 		engine_command_manager_save();
-		engine_storage_manager_write();
+		//engine_storage_manager_write();
 		engine_font_manager_draw_text( "SAVED!!!!", 20, 19 );
 
 		*screen_type = screen_type_test;

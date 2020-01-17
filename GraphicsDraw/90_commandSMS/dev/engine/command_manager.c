@@ -69,7 +69,9 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	unsigned char frame_bank;
 	unsigned char frame_main;
 	unsigned char shift_bank;
-	unsigned char an_command;
+
+	// IMPORTANT if an_command is an unsigned char then this new code will fail!
+	unsigned int an_command;
 
 	frame_bank = frame / MAX_BYTE_SIZE;
 	frame_main = frame % MAX_BYTE_SIZE;
@@ -80,6 +82,16 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	new_command[ add_index ] = an_command;
 	new_args[ add_index ] = args;
 	add_index++;
+
+
+	//new_frame[ add_index ] = frame_main;
+
+	////engine_font_manager_draw_data( new_command[ add_index ], 15, 9 );
+	//new_command[ add_index ] = an_command;
+	////engine_font_manager_draw_data( new_command[ add_index ], 15, 10 );
+
+	//new_args[ add_index ] = args;
+	//add_index++;
 }
 
 void engine_command_manager_execute( unsigned int frame )
@@ -110,6 +122,7 @@ void engine_command_manager_execute( unsigned int frame )
 		return;
 	}
 
+	//engine_font_manager_draw_data( new_command[ 0 ], 15, 11 );
 	while( 1 )
 	{
 		command_index = exec_index;
@@ -120,6 +133,9 @@ void engine_command_manager_execute( unsigned int frame )
 		{
 			break;
 		}
+		
+		
+		//engine_font_manager_draw_text( "EXECUTE...!!!", 15, 10 );
 
 		args = new_args[ command_index ];
 		execute[ command ]( args );

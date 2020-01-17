@@ -30,19 +30,19 @@ void engine_actor_manager_exec_move( unsigned int args )
 void engine_actor_manager_undo_fire( unsigned int args )
 {
 	//engine_font_manager_draw_text( "UNDO FIRE", 2, 12 );
-	engine_font_manager_draw_text( "         ", 2, 12 );
+	engine_font_manager_draw_text( "                            ", 2, 12 );
 	args = 0;
 }
 void engine_actor_manager_undo_jump( unsigned int args )
 {
 	//engine_font_manager_draw_text( "UNDO JUMP", 2, 13 );
-	engine_font_manager_draw_text( "         ", 2, 13 );
+	engine_font_manager_draw_text( "                            ", 2, 13 );
 	args = 0;
 }
 void engine_actor_manager_undo_move( unsigned int args )
 {
 	//engine_font_manager_draw_text( "UNDO MOVE", 2, 14 );
-	engine_font_manager_draw_text( "         ", 2, 14 );
+	engine_font_manager_draw_text( "                            ", 2, 14 );
 	args = 0;
 }
 
