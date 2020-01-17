@@ -90,6 +90,7 @@ void engine_command_manager_execute( unsigned int frame )
 	unsigned char an_command;
 	unsigned char diff;
 
+	unsigned char command_main;
 	unsigned char command;
 	unsigned int args;
 
@@ -103,16 +104,21 @@ void engine_command_manager_execute( unsigned int frame )
 	}
 
 	frame_bank = frame / MAX_BYTE_SIZE;
-	shift_bank = frame_bank << FRAME_BANK_SHIFT;
-
-	command_index = exec_index;
-	command = new_command[ command_index ];
-
-	diff = command - shift_bank;
-	if( diff != frame_bank )
+	command_main = new_command[ exec_index ];
+	shift_bank = command_main >> FRAME_BANK_SHIFT;
+	if( frame_bank != shift_bank )
 	{
 		return;
 	}
+
+	/*command_index = exec_index;
+	command_main = new_command[ command_index ];
+
+	command = command_main - shift_bank;
+	if( diff != frame_bank )
+	{
+		return;
+	}*/
 	//an_command = shift_bank | command;
 
 	// If we are not on the correct frame to execute then simply return.
@@ -123,10 +129,14 @@ void engine_command_manager_execute( unsigned int frame )
 
 	while( 1 )
 	{
-		command_index = exec_index;
-		command = new_command[ command_index ];
+		/*command_index = exec_index;
+		command = new_command[ command_index ];*/
 
-		if( command_type_empty == diff )
+		command_index = exec_index;
+		command_main = new_command[ command_index ];
+		command = command_main & 0x1F;
+
+		if( command_type_empty == command )
 		{
 			break;
 		}
@@ -136,10 +146,24 @@ void engine_command_manager_execute( unsigned int frame )
 
 		// TODO edge case if greater than the length of the array
 		exec_index++;
-		if( frame != new_frame[ exec_index ] )
+		check_main = new_frame[ exec_index ];
+
+		// If we are not on the correct frame to execute then simply return.
+		if( frame_main != check_main )
+		{
+			return;
+		}
+
+		command_main = new_command[ exec_index ];
+		shift_bank = command_main >> FRAME_BANK_SHIFT;
+		if( frame_bank != shift_bank )
+		{
+			return;
+		}
+		/*if( frame != new_frame[ exec_index ] )
 		{
 			break;
-		}
+		}*/
 	}
 
 	// Execute all commands this frame thus increment frame index.
