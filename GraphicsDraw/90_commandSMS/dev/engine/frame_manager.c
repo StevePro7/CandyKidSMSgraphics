@@ -9,7 +9,7 @@ struct_frame_object global_frame_object;
 void engine_frame_manager_init()
 {
 	struct_frame_object *fo = &global_frame_object;
-	fo->frame_count = 257;
+	fo->frame_count = 0;
 	fo->frame_delta = 0;
 }
 
