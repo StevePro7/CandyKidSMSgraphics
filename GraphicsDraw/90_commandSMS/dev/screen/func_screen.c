@@ -15,9 +15,10 @@ static unsigned char first_time;
 void screen_func_screen_load()
 {
 	unsigned char test;
+	unsigned char images[] = { 0, 1, 2, 3 };
 
 	engine_board_manager_init();
-	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
+	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y, images );
 
 	engine_command_manager_init();
 	engine_delay_manager_load( 10 );

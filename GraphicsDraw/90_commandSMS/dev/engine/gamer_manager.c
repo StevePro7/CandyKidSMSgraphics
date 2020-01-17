@@ -14,7 +14,7 @@ struct_gamer_object global_gamer_object;
 static void calcd_frame();
 static void calcd_spots();
 
-void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
+void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY, unsigned char *images )
 {
 	struct_gamer_object *go = &global_gamer_object;
 
@@ -31,6 +31,10 @@ void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
 
 	go->image = 0;
 	go->frame = 0;
+	go->images[ 0 ][ 0 ] = images[ 0 ];
+	go->images[ 0 ][ 1 ] = images[ 1 ];
+	go->images[ 1 ][ 0 ] = images[ 2 ];
+	go->images[ 1 ][ 1 ] = images[ 3 ];
 	calcd_frame();
 	calcd_spots();
 
@@ -173,7 +177,7 @@ unsigned char engine_gamer_manager_direction()
 static void calcd_frame()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	go->calcd = SPRITE_TILES_KID + go->image * 8 + go->frame * 2;
+	go->calcd = SPRITE_TILES_KID + go->images[ go->image ][ go->frame ];
 }
 static void calcd_spots()
 {
