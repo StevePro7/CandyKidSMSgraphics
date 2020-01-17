@@ -14,7 +14,7 @@ void screen_record_screen_load()
 	unsigned char test;
 
 	engine_command_manager_init();
-	engine_delay_manager_load( 10 );
+	engine_delay_manager_load( 0 );
 
 	engine_font_manager_draw_text( "RECORD SCREEN!!", 4, 0 );
 	engine_frame_manager_draw();
@@ -57,8 +57,8 @@ void screen_record_screen_update( unsigned char *screen_type )
 	input[ 0 ] = 260 == frame;
 	if( input[0] )
 	{
-		engine_command_manager_add( frame, command_type_fire, 2048 );
-		engine_command_manager_add( frame, command_type_jump, 1024 );
+		engine_command_manager_add( frame, command_type_fire, 2020 );
+		engine_command_manager_add( frame, command_type_jump, 1010 );
 	}
 
 	input[ 1 ] = 285 == frame;
