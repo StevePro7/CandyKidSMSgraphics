@@ -5,6 +5,7 @@
 #include "global_manager.h"
 
 #define FRAME_BANK_SHIFT	5
+#define FRAME_MASK_SHIFT	0x1F;
 
 struct_command_object global_command_object;
 
@@ -87,8 +88,6 @@ void engine_command_manager_execute( unsigned int frame )
 	unsigned char frame_main;
 	unsigned char check_main;
 	unsigned char shift_bank;
-	unsigned char an_command;
-	unsigned char diff;
 
 	unsigned char command_main;
 	unsigned char command;
@@ -111,30 +110,11 @@ void engine_command_manager_execute( unsigned int frame )
 		return;
 	}
 
-	/*command_index = exec_index;
-	command_main = new_command[ command_index ];
-
-	command = command_main - shift_bank;
-	if( diff != frame_bank )
-	{
-		return;
-	}*/
-	//an_command = shift_bank | command;
-
-	// If we are not on the correct frame to execute then simply return.
-	/*if( frame != new_frame[ exec_index ] )
-	{
-		return;
-	}*/
-
 	while( 1 )
 	{
-		/*command_index = exec_index;
-		command = new_command[ command_index ];*/
-
 		command_index = exec_index;
 		command_main = new_command[ command_index ];
-		command = command_main & 0x1F;
+		command = command_main & FRAME_MASK_SHIFT;
 
 		if( command_type_empty == command )
 		{
@@ -144,26 +124,22 @@ void engine_command_manager_execute( unsigned int frame )
 		args = new_args[ command_index ];
 		execute[ command ]( args );
 
-		// TODO edge case if greater than the length of the array
+		// TODO edge case if greater than the length of the array...
 		exec_index++;
 		check_main = new_frame[ exec_index ];
 
 		// If we are not on the correct frame to execute then simply return.
 		if( frame_main != check_main )
 		{
-			return;
+			break;
 		}
 
 		command_main = new_command[ exec_index ];
 		shift_bank = command_main >> FRAME_BANK_SHIFT;
 		if( frame_bank != shift_bank )
 		{
-			return;
-		}
-		/*if( frame != new_frame[ exec_index ] )
-		{
 			break;
-		}*/
+		}
 	}
 
 	// Execute all commands this frame thus increment frame index.
@@ -232,10 +208,21 @@ void engine_command_manager_save()
 	}
 }
 
-unsigned char engine_command_manager_align_undo()
+unsigned int engine_command_manager_align_undo()
 {
+	unsigned int undo_frame;
+	unsigned char frame_main;
+	unsigned char command_main;
+	unsigned char shift_bank;
+
 	exec_index = command_index;
-	return new_frame[ undo_index ];
+	frame_main = new_frame[ undo_index ];
+	command_main = new_command[ undo_index ];
+	shift_bank = command_main >> FRAME_BANK_SHIFT;
+
+	undo_frame = shift_bank * MAX_BYTE_SIZE;
+	undo_frame += frame_main;
+	return undo_frame;
 }
 
 static void empty_exec_command( unsigned int index )

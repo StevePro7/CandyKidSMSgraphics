@@ -9,7 +9,7 @@
 #include "..\engine\tile_manager.h"
 
 static unsigned char first_time;
-static unsigned char undo_frame;
+static unsigned int undo_frame;
 
 void screen_test_screen_load()
 {
