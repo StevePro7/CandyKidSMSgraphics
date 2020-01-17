@@ -1,6 +1,7 @@
 #include "save_screen.h"
 #include "..\engine\board_manager.h"
 #include "..\engine\command_manager.h"
+#include "..\engine\enemy_manager.h"
 #include "..\engine\enum_manager.h"
 #include "..\engine\font_manager.h"
 #include "..\engine\gamer_manager.h"
@@ -12,10 +13,8 @@
 
 void screen_save_screen_load()
 {
-	unsigned char images[] = { 48, 50, 52, 54 };
-
 	engine_board_manager_init();
-	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y, images );
+	engine_gamer_manager_init( KID_HOME_X, KID_HOME_Y );
 
 	engine_font_manager_draw_text( "SAVE SCREEN!!!!", 4, 1 );
 }
