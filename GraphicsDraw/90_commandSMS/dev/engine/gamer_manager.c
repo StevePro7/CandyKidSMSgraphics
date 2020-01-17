@@ -17,6 +17,8 @@ static void calcd_spots();
 void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
 {
 	struct_gamer_object *go = &global_gamer_object;
+
+	// Kid images.
 	unsigned char images[] = { 0, 2, 4, 12 };
 
 	go->homeX = homeX;
