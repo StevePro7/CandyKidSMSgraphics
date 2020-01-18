@@ -1,5 +1,4 @@
 #include "boss_object.h"
-
 #include "..\banks\bank4.h"
 
 // Boss32.
