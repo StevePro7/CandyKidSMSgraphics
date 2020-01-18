@@ -19,6 +19,7 @@ set /a _started=_hours*60*60*100+_min*60*100+_sec*100+_cs
 
 cd engine
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 asm_manager.c
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 boss_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 content_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 enum_manager.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 font_manager.c
@@ -32,8 +33,9 @@ sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 tile_mana
 cd ..
 
 cd object
+sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 boss_object.c
 ::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 hack_object.c
-sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_object.c
+::sdcc -c -mz80 --opt-code-speed --peep-file ..\peep-rules.txt --std-c99 level_object.c
 cd ..
 
 cd screen
@@ -72,6 +74,7 @@ banks\bank4.rel ^
 devkit\_sms_manager.rel ^
 devkit\_snd_manager.rel ^
 engine\asm_manager.rel ^
+engine\boss_manager.rel ^
 engine\content_manager.rel ^
 engine\enum_manager.rel ^
 engine\font_manager.rel ^
@@ -82,6 +85,7 @@ engine\level_manager.rel ^
 engine\screen_manager.rel ^
 engine\sprite_manager.rel ^
 engine\tile_manager.rel ^
+object\boss_object.rel ^
 object\hack_object.rel ^
 object\level_object.rel ^
 screen\none_screen.rel ^
