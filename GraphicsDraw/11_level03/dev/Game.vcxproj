@@ -150,6 +150,7 @@
     <ClCompile Include="devkit\_sms_manager.c" />
     <ClCompile Include="devkit\_snd_manager.c" />
     <ClCompile Include="engine\asm_manager.c" />
+    <ClCompile Include="engine\audio_manager.c" />
     <ClCompile Include="engine\boss_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
     <ClCompile Include="engine\enum_manager.c" />
@@ -184,6 +185,7 @@
     <ClInclude Include="devkit\_sms_manager.h" />
     <ClInclude Include="devkit\_snd_manager.h" />
     <ClInclude Include="engine\asm_manager.h" />
+    <ClInclude Include="engine\audio_manager.h" />
     <ClInclude Include="engine\boss_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
     <ClInclude Include="engine\enum_manager.h" />

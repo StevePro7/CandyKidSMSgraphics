@@ -14,6 +14,7 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000000  l__DABS                         
      00000000  l__HEADER                       
      00000000  l__HEAP                         
+     00000000  l__HOME                         
      00000000  s__CABS                         
      00000000  s__CABS0                        
      00000000  s__CABS1                        
@@ -43,16 +44,15 @@ Area                                    Addr        Size        Decimal Bytes (A
      000000F8  l__INITIALIZED                  
      000000F8  l__INITIALIZER                  
      0000012A  l__HEADER5                      
-     00000182  l__HOME                         
      00000200  s__CODE                         
      000002BC  l__DATA                         
      00001770  l__BANK2                        
      00001770  l__BANK3                        
-     00002C27  l__CODE                         
-     00002E27  s__HOME                         
-     00002FA9  s__INITIALIZER                  
-     000030A1  s__GSINIT                       
-     000030B0  s__GSFINAL                      
+     00002C7A  l__CODE                         
+     00002E7A  s__HOME                         
+     00002E7A  s__INITIALIZER                  
+     00002F72  s__GSINIT                       
+     00002F81  s__GSFINAL                      
      000034F4  l__BANK4                        
      00008000  _SMS_SRAM                          SMSlib_PSGaiden
      00008000  s__BANK2                        
@@ -80,7 +80,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    00002C27 =       11303. bytes (REL,CON)
+_CODE                               00000200    00002C7A =       11386. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -139,7 +139,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    00002C27 =       11303. bytes (REL,CON)
+_CODE                               00000200    00002C7A =       11386. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -199,7 +199,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    00002C27 =       11303. bytes (REL,CON)
+_CODE                               00000200    00002C7A =       11386. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -259,7 +259,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_CODE                               00000200    00002C27 =       11303. bytes (REL,CON)
+_CODE                               00000200    00002C7A =       11386. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -292,23 +292,20 @@ _CODE                               00000200    00002C27 =       11303. bytes (R
      00002A1B  _SMS_isr                           SMSlib
      00002A51  _SMS_nmi_isr                       SMSlib
      00002A64  _rand                              rand
-     00002AB4  _srand                             rand
-     00002AD1  _SMS_loadSTMcompressedTileMapAre   SMSlib_STMcomp
-     00002CB2  ___sdcc_call_hl                    
-     00002CB3  _SMS_loadPSGaidencompressedTiles   SMSlib_PSGaiden
-     00002D95  __modschar                         
-     00002DA2  __modsint                          
-     00002DAE  __moduchar                         
-     00002DBA  __moduint                          
-     00002DC5  __divsint                          
-     00002DCE  __divschar                         
-     00002DD5  __div8                             
-     00002DD9  __div_signexte                     
-     00002DDD  __div16                            
-     00002E03  __get_remainder                    
-     00002E0D  __mulint                           
-     00002E13  __mul16                            
-
+     00002B20  _srand                             rand
+     00002B3E  _SMS_loadSTMcompressedTileMapAre   SMSlib_STMcomp
+     00002D1F  ___sdcc_call_hl                    
+     00002D20  _SMS_loadPSGaidencompressedTiles   SMSlib_PSGaiden
+     00002E02  __modschar                         
+     00002E0F  __modsint                          
+     00002E1B  __moduchar                         
+     00002E27  __moduint                          
+     00002E32  __divsint                          
+     00002E3B  __divschar                         
+     00002E42  __div8                             
+     00002E46  __div_signexte                     
+     00002E4A  __div16                            
+     00002E70  __get_remainder                    
 ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
 Hexadecimal  [32-Bits]
 
@@ -377,42 +374,31 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_HOME                               00002E27    00000182 =         386. bytes (REL,CON)
+_INITIALIZER                        00002E7A    000000F8 =         248. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00002E27  __mullong                          _mullong
-
 ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_INITIALIZER                        00002FA9    000000F8 =         248. bytes (REL,CON)
+_GSINIT                             00002F72    0000000F =          15. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
+     00002F72  gsinit                             crt0
+
 ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-_GSINIT                             000030A1    0000000F =          15. bytes (REL,CON)
+_GSFINAL                            00002F81    00000001 =           1. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000030A1  gsinit                             crt0
-
 ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
-Hexadecimal  [32-Bits]
-
-Area                                    Addr        Size        Decimal Bytes (Attributes)
---------------------------------        ----        ----        ------- ----- ------------
-_GSFINAL                            000030B0    00000001 =           1. bytes (REL,CON)
-
-      Value  Global                              Global Defined In Module
-      -----  --------------------------------   ------------------------
-ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -463,7 +449,7 @@ _DATA                               0000C000    000002BC =         700. bytes (R
      0000C299  _SpriteNextFree                    SMSlib
      0000C29A  _SMS_theLineInterruptHandler       SMSlib
      0000C29C  _decompBuffer                      SMSlib_PSGaiden
-ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -481,7 +467,7 @@ _INITIALIZED                        0000C2BC    000000F8 =         248. bytes (R
      0000C3AC  _VDPReg                            SMSlib
      0000C3AE  _spritesHeight                     SMSlib
      0000C3AF  _spritesWidth                      SMSlib
-ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -541,7 +527,7 @@ _BANK2                              00008000    00001770 =        6000. bytes (R
      00009680  _level0509_txt                     bank2
      000096F8  _level0510_txt                     bank2
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -601,7 +587,7 @@ _BANK3                              00008000    00001770 =        6000. bytes (R
      00009680  _level1009_txt                     bank3
      000096F8  _level1010_txt                     bank3
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 21.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -628,7 +614,7 @@ _BANK4                              00008000    000034F4 =       13556. bytes (R
      0000A9BA  _boss64_04__tiles__psgcompr        bank4
      0000AF94  _boss64_05__palette__bin           bank4
      0000AFA4  _boss64_05__tiles__psgcompr        bank4
-ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 21.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -639,7 +625,7 @@ _CABS0                              00000000    00000010 =          16. bytes (A
       -----  --------------------------------   ------------------------
      00007FF0  ___SMS__SEGA_signature             _sms_manager
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -650,7 +636,7 @@ _CABS1                              00000000    0000000E =          14. bytes (A
       -----  --------------------------------   ------------------------
      00007FD2  ___SMS__SDSC_author                _sms_manager
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -661,7 +647,7 @@ _CABS2                              00000000    0000000E =          14. bytes (A
       -----  --------------------------------   ------------------------
      00007FC4  ___SMS__SDSC_name                  _sms_manager
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 25.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -672,7 +658,7 @@ _CABS3                              00000000    00000038 =          56. bytes (A
       -----  --------------------------------   ------------------------
      00007F8C  ___SMS__SDSC_descr                 _sms_manager
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 25.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
@@ -683,7 +669,7 @@ _CABS4                              00000000    00000010 =          16. bytes (A
       -----  --------------------------------   ------------------------
      00007FE0  ___SMS__SDSC_signature             _sms_manager
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
 
 Files Linked                              [ module(s) ]
 
@@ -732,17 +718,13 @@ C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
                                           [ __sdcc_call_hl.rel ]
 ..\lib\SMSlib.lib                         [ SMSlib_PSGaiden.rel ]
 C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
-                                          [ _mullong.rel ]
-C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
                                           [ modsigned.rel ]
 C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
                                           [ modunsigned.rel ]
 C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
                                           [ divsigned.rel ]
-C:\Program Files\SDCC\bin\..\lib\z80/z80.lib
-                                          [ mul.rel ]
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
 
 User Base Address Definitions
 
