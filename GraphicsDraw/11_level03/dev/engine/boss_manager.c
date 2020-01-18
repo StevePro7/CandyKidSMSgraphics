@@ -5,7 +5,7 @@
 
 void engine_boss_manager_load()
 {
-	unsigned char index = 1;
+	unsigned char index = 3;
 
 	const unsigned char *image = ( const unsigned char * ) boss_64_image[ index ];
 	const unsigned char *color = ( const unsigned char * ) boss_64_color[ index ];
