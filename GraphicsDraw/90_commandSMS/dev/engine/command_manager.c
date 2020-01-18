@@ -43,12 +43,21 @@ void engine_command_manager_init()
 	execute[ command_type_fire ] = engine_actor_manager_exec_fire;
 	execute[ command_type_jump ] = engine_actor_manager_exec_jump;
 	execute[ command_type_move ] = engine_actor_manager_exec_move;
+	execute[ command_type_bank4 ] = engine_actor_manager_exec_bank4;
+	execute[ command_type_bank5 ] = engine_actor_manager_exec_bank5;
+	execute[ command_type_bank6 ] = engine_actor_manager_exec_bank6;
+	execute[ command_type_bank7 ] = engine_actor_manager_exec_bank7;
+
 	execute[ command_type_session ] = session_exec_command;
 
 	undo[ command_type_empty ] = empty_undo_command;
 	undo[ command_type_fire ] = engine_actor_manager_undo_fire;
 	undo[ command_type_jump ] = engine_actor_manager_undo_jump;
 	undo[ command_type_move ] = engine_actor_manager_undo_move;
+	undo[ command_type_bank4 ] = engine_actor_manager_undo_bank4;
+	undo[ command_type_bank5 ] = engine_actor_manager_undo_bank5;
+	undo[ command_type_bank6 ] = engine_actor_manager_undo_bank6;
+	undo[ command_type_bank7 ] = engine_actor_manager_undo_bank7;
 	undo[ command_type_session ] = session_undo_command;
 
 	//frame_index = 0;
@@ -117,9 +126,6 @@ void engine_command_manager_execute( unsigned int frame )
 		{
 			break;
 		}
-		
-		
-		//engine_font_manager_draw_text( "EXECUTE...!!!", 15, 10 );
 
 		args = new_args[ command_index ];
 		execute[ command ]( args );
@@ -218,7 +224,7 @@ void engine_command_manager_undo( unsigned int frame )
 
 void engine_command_manager_load( unsigned char* frames, unsigned char* commands, unsigned int* args )
 {
-	unsigned char idx;
+	unsigned int idx;
 
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
 	{
