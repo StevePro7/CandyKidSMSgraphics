@@ -13,7 +13,7 @@ void main( void )
 	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
 
 	engine_content_manager_load_tiles();
-	engine_content_manager_load_sprites();
+	//engine_content_manager_load_sprites();
 
 	engine_hack_manager_init();
 	engine_hack_manager_invert();
