@@ -1,0 +1,53 @@
+XL2
+H 9 areas E global symbols
+M boss_object
+O -mz80
+S _boss32_00__tiles__psgcompr Ref0000
+S _boss32_01__tiles__psgcompr Ref0000
+S _boss32_02__tiles__psgcompr Ref0000
+S _boss64_00__tiles__psgcompr Ref0000
+S _boss64_01__tiles__psgcompr Ref0000
+S _boss64_02__tiles__psgcompr Ref0000
+S _boss64_03__tiles__psgcompr Ref0000
+S _boss64_04__tiles__psgcompr Ref0000
+S _boss64_05__tiles__psgcompr Ref0000
+S .__.ABS. Def0000
+A _CODE size 9 flags 0 addr 0
+S _boss_32_bank Def0000
+S _boss_64_bank Def0003
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 12 flags 0 addr 0
+S _boss_32_data Def0000
+S _boss_64_data Def0006
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 12 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 02 00
+T 00 00
+R 00 00 02 00
+T 06 00
+R 00 00 02 00
+T 06 00
+R 00 00 02 00
+T 00 00
+R 00 00 00 00
+T 00 00 04 04 04
+R 00 00 00 00
+T 03 00
+R 00 00 00 00
+T 03 00 04 04 04 04 04 04
+R 00 00 00 00
+T 00 00
+R 00 00 07 00
+T 00 00 00 00 00 00 00 00
+R 00 00 07 00 02 02 00 00 02 04 01 00 02 06 02 00
+T 06 00
+R 00 00 07 00
+T 06 00 00 00 00 00 00 00
+R 00 00 07 00 02 02 03 00 02 04 04 00 02 06 05 00
+T 0C 00 00 00 00 00 00 00
+R 00 00 07 00 02 02 06 00 02 04 07 00 02 06 08 00
