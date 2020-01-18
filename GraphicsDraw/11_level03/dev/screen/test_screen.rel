@@ -5,9 +5,9 @@ O -mz80
 S _engine_font_manager_draw_text Ref0000
 S .__.ABS. Def0000
 S _engine_boss_manager_load Ref0000
-A _CODE size 29 flags 0 addr 0
+A _CODE size 28 flags 0 addr 0
 S _screen_test_screen_load Def0000
-S _screen_test_screen_update Def0022
+S _screen_test_screen_update Def0021
 A _DATA size 0 flags 0 addr 0
 A _INITIALIZED size 0 flags 0 addr 0
 A _DABS size 0 flags 8 addr 0
@@ -24,11 +24,11 @@ T 0E 00 F1 F1 C9
 R 00 00 00 00
 T 11 00
 R 00 00 00 00
-T 11 00 54 45 53 54 20 53 43 52 45 45 4E 2E 2E 2E
+T 11 00 54 45 53 54 20 53 43 52 45 45 4E 21 21 21
 R 00 00 00 00
-T 1F 00 21 21 00
+T 1F 00 21 00
 R 00 00 00 00
-T 22 00
+T 21 00
 R 00 00 00 00
-T 22 00 C1 E1 E5 C5 36 04 C9
+T 21 00 C1 E1 E5 C5 36 04 C9
 R 00 00 00 00
