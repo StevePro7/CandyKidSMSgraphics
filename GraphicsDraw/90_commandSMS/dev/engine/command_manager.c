@@ -38,12 +38,6 @@ void engine_command_manager_init()
 		new_args[ idx ] = 0;
 	}
 
-	/*for( idx = 0; idx < MAX_CMD_TYPE; idx++ )
-	{
-		execute[ command_type_empty ] = empty_exec_command;
-		undo[ command_type_empty ] = empty_undo_command;
-	}*/
-
 	// IMPORTANT execute + undo must be same order!!
 	execute[ command_type_empty ] = empty_exec_command;
 	execute[ command_type_fire ] = engine_actor_manager_exec_fire;
@@ -82,16 +76,6 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 	new_command[ add_index ] = an_command;
 	new_args[ add_index ] = args;
 	add_index++;
-
-
-	//new_frame[ add_index ] = frame_main;
-
-	////engine_font_manager_draw_data( new_command[ add_index ], 15, 9 );
-	//new_command[ add_index ] = an_command;
-	////engine_font_manager_draw_data( new_command[ add_index ], 15, 10 );
-
-	//new_args[ add_index ] = args;
-	//add_index++;
 }
 
 void engine_command_manager_execute( unsigned int frame )
