@@ -1,10 +1,10 @@
 #include "content_manager.h"
+#include "global_manager.h"
 #include "..\devkit\_sms_manager.h"
 #include "..\gfx.h"
 
 #define FONT_TILES		0
 #define GAME_TITLE		64
-#define SPRITE_TILES	256
 
 void engine_content_manager_load_tiles()
 {

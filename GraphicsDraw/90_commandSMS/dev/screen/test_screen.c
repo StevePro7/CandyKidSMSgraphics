@@ -9,11 +9,11 @@
 #include "..\engine\tile_manager.h"
 
 static unsigned char first_time;
-static unsigned char undo_frame;
+static unsigned int undo_frame;
 
 void screen_test_screen_load()
 {
-	engine_delay_manager_load( 20 );
+	engine_delay_manager_load( 0 );
 
 	engine_font_manager_draw_text( "TESTER SCREEN!!", 4, 0 );
 	engine_frame_manager_load();
@@ -49,7 +49,7 @@ void screen_test_screen_update( unsigned char *screen_type )
 
 		if( 0 == undo_frame )
 		{
-			*screen_type = screen_type_func;
+			*screen_type = screen_type_intro;
 			return;
 		}
 
