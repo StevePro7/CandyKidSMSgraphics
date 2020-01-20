@@ -98,7 +98,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 		engine_command_manager_add( frame, command_type_bank7, 70 );
 	}
 
-	input[ 8 ] = 2047 == frame;
+	input[ 8 ] = 20 == frame;// 2047 == frame;
 	if( input[ 8 ] )
 	{
 		engine_command_manager_add( frame, command_type_session, 0 );

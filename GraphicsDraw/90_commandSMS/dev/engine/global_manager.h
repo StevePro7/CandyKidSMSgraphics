@@ -34,6 +34,6 @@
 
 #define MAX_BYTE_SIZE			256
 #define MAX_CMD_TYPE			32
-#define MAX_COMMANDS			10		// 255
+#define MAX_COMMANDS			4		// 255
 
 #endif//_GLOBAL_MANAGER_H_

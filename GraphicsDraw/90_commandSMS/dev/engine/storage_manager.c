@@ -23,11 +23,22 @@ unsigned char engine_storage_manager_available()
 void engine_storage_manager_read()
 {
 	struct_savegame_object *savegame = ( struct_savegame_object* ) ( devkit_SMS_SRAM() );
+	unsigned char world_no;
+	unsigned char level_no;
+	unsigned char padding[ 8 ];
+	unsigned char idx;
 
 	devkit_SMS_enableSRAM();
-	//TODO revert saving game state during command manager testing.
-	//engine_board_manager_set_tree_type( savegame->save_tree_type );
-	//engine_board_manager_set_exit_type( savegame->save_exit_type );
+	engine_board_manager_set_tree_type( savegame->save_tree_type );
+	engine_board_manager_set_exit_type( savegame->save_exit_type );
+
+	world_no = savegame->save_world_no;
+	level_no = savegame->save_level_no;
+	for( idx = 0; idx < 8; idx++ )
+	{
+		padding[ idx ] = savegame->save_padding[ idx ];
+	}
+
 	engine_command_manager_load( savegame->frames, savegame->commands, savegame->args );
 	devkit_SMS_disableSRAM();
 }
@@ -41,9 +52,15 @@ void engine_storage_manager_write()
 
 	devkit_SMS_enableSRAM();
 	savegame->Magic = MAGIC;
-	//TODO revert saving game state during command manager testing.
-	//savegame->save_tree_type = bo->save_tree_type;
-	//savegame->save_exit_type = bo->save_exit_type;
+
+	savegame->save_tree_type = bo->save_tree_type;
+	savegame->save_exit_type = bo->save_exit_type;
+	savegame->save_world_no = 7;//world_no
+	savegame->save_level_no = 8;//level_no;
+	for( idx = 0; idx < 8; idx++ )
+	{
+		savegame->save_padding[ idx ] = idx + 1;
+	}
 
 	// Commands.
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )
