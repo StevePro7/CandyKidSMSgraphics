@@ -146,9 +146,13 @@
   <ItemGroup>
     <ClCompile Include="banks\bank2.c" />
     <ClCompile Include="banks\bank3.c" />
+    <ClCompile Include="banks\bank4.c" />
+    <ClCompile Include="banks\bank5.c" />
     <ClCompile Include="devkit\_sms_manager.c" />
     <ClCompile Include="devkit\_snd_manager.c" />
     <ClCompile Include="engine\asm_manager.c" />
+    <ClCompile Include="engine\audio_manager.c" />
+    <ClCompile Include="engine\boss_manager.c" />
     <ClCompile Include="engine\content_manager.c" />
     <ClCompile Include="engine\enum_manager.c" />
     <ClCompile Include="engine\font_manager.c" />
@@ -162,6 +166,8 @@
     <ClCompile Include="game.c" />
     <ClCompile Include="gfx.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="object\audio_object.c" />
+    <ClCompile Include="object\boss_object.c" />
     <ClCompile Include="object\hack_object.c" />
     <ClCompile Include="object\level_object.c" />
     <ClCompile Include="screen\func_screen.c" />
@@ -177,9 +183,13 @@
   <ItemGroup>
     <ClInclude Include="banks\bank2.h" />
     <ClInclude Include="banks\bank3.h" />
+    <ClInclude Include="banks\bank4.h" />
+    <ClInclude Include="banks\bank5.h" />
     <ClInclude Include="devkit\_sms_manager.h" />
     <ClInclude Include="devkit\_snd_manager.h" />
     <ClInclude Include="engine\asm_manager.h" />
+    <ClInclude Include="engine\audio_manager.h" />
+    <ClInclude Include="engine\boss_manager.h" />
     <ClInclude Include="engine\content_manager.h" />
     <ClInclude Include="engine\enum_manager.h" />
     <ClInclude Include="engine\font_manager.h" />
@@ -193,6 +203,8 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gfx.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="object\audio_object.h" />
+    <ClInclude Include="object\boss_object.h" />
     <ClInclude Include="object\hack_object.h" />
     <ClInclude Include="object\level_object.h" />
     <ClInclude Include="screen\func_screen.h" />

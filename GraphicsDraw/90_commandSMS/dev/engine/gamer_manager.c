@@ -18,6 +18,9 @@ void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
 {
 	struct_gamer_object *go = &global_gamer_object;
 
+	// Kid images.
+	unsigned char images[] = { 0, 2, 4, 12 };
+
 	go->homeX = homeX;
 	go->homeY = homeY;
 	go->tileX = homeX;
@@ -31,6 +34,11 @@ void engine_gamer_manager_init( unsigned char homeX, unsigned char homeY )
 
 	go->image = 0;
 	go->frame = 0;
+	go->images[ 0 ][ 0 ] = images[ 0 ];
+	go->images[ 0 ][ 1 ] = images[ 1 ];
+	go->images[ 1 ][ 0 ] = images[ 2 ];
+	go->images[ 1 ][ 1 ] = images[ 3 ];
+
 	calcd_frame();
 	calcd_spots();
 
@@ -112,6 +120,7 @@ void engine_gamer_manager_stop()
 void engine_gamer_manager_draw()
 {
 	struct_gamer_object *go = &global_gamer_object;
+	engine_font_manager_draw_data( go->calcd, 20, 10 );
 	engine_sprite_manager_draw( go->posnX, go->posnY, go->calcd );
 }
 
@@ -173,7 +182,7 @@ unsigned char engine_gamer_manager_direction()
 static void calcd_frame()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	go->calcd = SPRITE_TILES_KID + go->image * 8 + go->frame * 2;
+	go->calcd = SPRITE_TILES_KID + go->images[ go->image ][ go->frame ];
 }
 static void calcd_spots()
 {

@@ -5,7 +5,7 @@
 #include "global_manager.h"
 #include "sprite_manager.h"
 
-#define SPRITE_TILES_PRO	256 + 0
+#define SPRITE_TILES_PRO	256 + 48
 
 // Global variables.
 struct_enemy_object global_enemy_objects[ MAX_ENEMIES ];
@@ -16,6 +16,14 @@ static void calcd_spots( unsigned char index );
 // Methods.
 void engine_enemy_manager_init( unsigned char *homeX, unsigned char *homeY )
 {
+	// Pro images.
+	//unsigned char images[] = { 0, 2, 4, 12 };
+	// Adi images.
+	//unsigned char images[] = { 14, 16, 24, 26 };
+	// Suz images.
+	//unsigned char images[] = { 28, 36, 38, 40 };
+
+
 	struct_enemy_object *eo;
 	unsigned char idx;
 	for( idx = 0; idx < MAX_ENEMIES; idx++ )

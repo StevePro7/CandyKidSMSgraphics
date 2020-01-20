@@ -13,13 +13,14 @@ void main( void )
 	devkit_SMS_VDPturnOnFeature( devkit_VDPFEATURE_HIDEFIRSTCOL() );
 
 	engine_content_manager_load_tiles();
-	engine_content_manager_load_sprites();
+	//engine_content_manager_load_sprites();
 
 	engine_hack_manager_init();
 	engine_hack_manager_invert();
 
-	open_screen_type = screen_type_load;
+	//open_screen_type = screen_type_load;
 	//open_screen_type = screen_type_func;
+	open_screen_type = screen_type_test;
 	engine_screen_manager_init( open_screen_type );
 	devkit_SMS_displayOn();
 	for( ;; )

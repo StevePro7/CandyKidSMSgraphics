@@ -14,9 +14,10 @@ void screen_record_screen_load()
 	unsigned char test;
 
 	engine_command_manager_init();
-	engine_delay_manager_load( 10 );
+	engine_frame_manager_init();
+	engine_delay_manager_load( 0 );
 
-	engine_font_manager_draw_text( "RECORD SCREEN!!", 4, 0 );
+	engine_font_manager_draw_text( "RECORD SCREEN...!!", 4, 0 );
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 	first_time = 1;
@@ -34,7 +35,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 {
 	struct_frame_object *fo = &global_frame_object;
 	unsigned char proceed;
-	unsigned char input[5];
+	unsigned char input[9];
 	unsigned int frame;
 	frame = fo->frame_count;
 
@@ -54,31 +55,61 @@ void screen_record_screen_update( unsigned char *screen_type )
 	}
 
 	frame = fo->frame_count;
-	input[ 0 ] = 2 == frame;
-	if( input[0] )
+	input[ 0 ] = 16 == frame;
+	if( input[ 0 ] )
 	{
-		engine_command_manager_add( frame, command_type_fire, 2048 );
-		engine_command_manager_add( frame, command_type_jump, 1024 );
+		//engine_command_manager_add( frame, command_type_empty, 5 );
+		engine_command_manager_add( frame, command_type_jump, 05 );
 	}
-
-	input[ 1 ] = 4 == frame;
+	input[ 1 ] = 300 == frame;
 	if( input[1] )
 	{
-		engine_command_manager_add( frame, command_type_move, 19 );
-		//engine_command_manager_add( frame, command_type_fire, 14 );
+		engine_command_manager_add( frame, command_type_fire, 10 );
+		//engine_command_manager_add( frame, command_type_jump, 1010 );
+	}
+	input[ 2 ] = 604 == frame;
+	if( input[2] )
+	{
+		engine_command_manager_add( frame, command_type_jump, 20 );
+	}
+	input[ 3 ] = 768 == frame;
+	if( input[ 3 ] )
+	{
+		engine_command_manager_add( frame, command_type_move, 30 );
+	}
+	input[ 4 ] = 1049 == frame;
+	if( input[ 4 ] )
+	{
+		engine_command_manager_add( frame, command_type_bank4, 40 );
+	}
+	input[ 5 ] = 1400 == frame;
+	if( input[ 5 ] )
+	{
+		engine_command_manager_add( frame, command_type_bank5, 50 );
+	}
+	input[ 6 ] = 1729 == frame;
+	if( input[ 6 ] )
+	{
+		engine_command_manager_add( frame, command_type_bank6, 60 );
+	}
+	input[ 7 ] = 2001 == frame;
+	if( input[ 7 ] )
+	{
+		engine_command_manager_add( frame, command_type_bank7, 70 );
 	}
 
-	input[ 2 ] = 8 == frame;
-	if( input[ 2 ] )
+	input[ 8 ] = 2047 == frame;
+	if( input[ 8 ] )
 	{
 		engine_command_manager_add( frame, command_type_session, 0 );
 	}
 
+
 	// Execute all commands for this frame.
 	engine_command_manager_execute( frame );
 
-	// TODO - do I need to record and "end-of-session" command?
-	if( input[2] )
+
+	if( input[8] )
 	{
 		engine_frame_manager_draw();
 

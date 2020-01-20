@@ -25,8 +25,9 @@ void engine_storage_manager_read()
 	struct_savegame_object *savegame = ( struct_savegame_object* ) ( devkit_SMS_SRAM() );
 
 	devkit_SMS_enableSRAM();
-	engine_board_manager_set_tree_type( savegame->save_tree_type );
-	engine_board_manager_set_exit_type( savegame->save_exit_type );
+	//TODO revert saving game state during command manager testing.
+	//engine_board_manager_set_tree_type( savegame->save_tree_type );
+	//engine_board_manager_set_exit_type( savegame->save_exit_type );
 	engine_command_manager_load( savegame->frames, savegame->commands, savegame->args );
 	devkit_SMS_disableSRAM();
 }
@@ -40,8 +41,9 @@ void engine_storage_manager_write()
 
 	devkit_SMS_enableSRAM();
 	savegame->Magic = MAGIC;
-	savegame->save_tree_type = bo->save_tree_type;
-	savegame->save_exit_type = bo->save_exit_type;
+	//TODO revert saving game state during command manager testing.
+	//savegame->save_tree_type = bo->save_tree_type;
+	//savegame->save_exit_type = bo->save_exit_type;
 
 	// Commands.
 	for( idx = 0; idx < MAX_COMMANDS; idx++ )

@@ -17,6 +17,7 @@ typedef struct tag_struct_gamer_object
 	unsigned int image;
 	unsigned char frame;
 	unsigned int calcd;
+	unsigned char images[ 2 ][ 2 ];
 
 } struct_gamer_object;
 

@@ -28,6 +28,7 @@
 #define SCREEN_TILE_HIGH		24
 #define SCREEN_TILE_LEFT		2
 
+#define SPRITE_TILES			256
 #define MAX_BLOCK_TILES			12
 
 #endif//_GLOBAL_MANAGER_H_
