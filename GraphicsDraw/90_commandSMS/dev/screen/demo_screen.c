@@ -15,7 +15,7 @@ void screen_demo_screen_load()
 	unsigned char test;
 
 	engine_command_manager_init();
-	engine_delay_manager_load( 0 );
+	engine_delay_manager_load( 2 );
 	engine_frame_manager_init();
 
 	engine_font_manager_draw_text( "DEMO SCREEN!!!!!!", 2, 0 );
