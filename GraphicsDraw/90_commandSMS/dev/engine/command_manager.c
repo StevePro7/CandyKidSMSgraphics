@@ -47,6 +47,7 @@ void engine_command_manager_init()
 	execute[ command_type_bank5 ] = engine_actor_manager_exec_bank5;
 	execute[ command_type_bank6 ] = engine_actor_manager_exec_bank6;
 	execute[ command_type_bank7 ] = engine_actor_manager_exec_bank7;
+	execute[ command_type_speed ] = engine_actor_manager_exec_speed;
 
 	execute[ command_type_session ] = session_exec_command;
 
@@ -58,6 +59,7 @@ void engine_command_manager_init()
 	undo[ command_type_bank5 ] = engine_actor_manager_undo_bank5;
 	undo[ command_type_bank6 ] = engine_actor_manager_undo_bank6;
 	undo[ command_type_bank7 ] = engine_actor_manager_undo_bank7;
+	undo[ command_type_speed ] = engine_actor_manager_undo_speed;
 	undo[ command_type_session ] = session_undo_command;
 
 	//frame_index = 0;

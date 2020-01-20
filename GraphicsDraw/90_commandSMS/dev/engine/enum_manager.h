@@ -97,6 +97,7 @@ typedef enum tag_enum_command_type
 	command_type_bank5 = 5,
 	command_type_bank6 = 6,
 	command_type_bank7 = 7,
+	command_type_speed = 8,
 
 	command_type_session = MAX_CMD_TYPE - 1,
 

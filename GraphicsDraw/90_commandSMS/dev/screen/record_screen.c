@@ -8,6 +8,7 @@
 #include "..\engine\storage_manager.h"
 
 static unsigned char first_time;
+static unsigned char my_command;
 
 void screen_record_screen_load()
 {
@@ -29,6 +30,7 @@ void screen_record_screen_load()
 	}
 
 	engine_font_manager_draw_data( test, 22, 7 );
+	my_command = 1;
 }
 
 void screen_record_screen_update( unsigned char *screen_type )
@@ -55,53 +57,62 @@ void screen_record_screen_update( unsigned char *screen_type )
 	}
 
 	frame = fo->frame_count;
-	input[ 0 ] = 16 == frame;
-	if( input[ 0 ] )
+	if( frame < 255 )
 	{
-		//engine_command_manager_add( frame, command_type_empty, 5 );
-		engine_command_manager_add( frame, command_type_jump, 05 );
+		engine_command_manager_add( frame, my_command, 256 + frame );
+		my_command++;
+		if( my_command > 8 )
+		{
+			my_command = 1;
+		}
 	}
-	input[ 1 ] = 300 == frame;
-	if( input[1] )
-	{
-		engine_command_manager_add( frame, command_type_fire, 10 );
-		//engine_command_manager_add( frame, command_type_jump, 1010 );
-	}
-	input[ 2 ] = 604 == frame;
-	if( input[2] )
-	{
-		engine_command_manager_add( frame, command_type_jump, 20 );
-	}
-	input[ 3 ] = 768 == frame;
-	if( input[ 3 ] )
-	{
-		engine_command_manager_add( frame, command_type_move, 30 );
-	}
-	input[ 4 ] = 1049 == frame;
-	if( input[ 4 ] )
-	{
-		engine_command_manager_add( frame, command_type_bank4, 40 );
-	}
-	input[ 5 ] = 1400 == frame;
-	if( input[ 5 ] )
-	{
-		engine_command_manager_add( frame, command_type_bank5, 50 );
-	}
-	input[ 6 ] = 1729 == frame;
-	if( input[ 6 ] )
-	{
-		engine_command_manager_add( frame, command_type_bank6, 60 );
-	}
-	input[ 7 ] = 2001 == frame;
-	if( input[ 7 ] )
-	{
-		engine_command_manager_add( frame, command_type_bank7, 70 );
-	}
+	//input[ 0 ] = 16 == frame;
+	//if( input[ 0 ] )
+	//{
+	//	//engine_command_manager_add( frame, command_type_empty, 5 );
+	//	engine_command_manager_add( frame, command_type_jump, 05 );
+	//}
+	//input[ 1 ] = 300 == frame;
+	//if( input[1] )
+	//{
+	//	engine_command_manager_add( frame, command_type_fire, 10 );
+	//	//engine_command_manager_add( frame, command_type_jump, 1010 );
+	//}
+	//input[ 2 ] = 604 == frame;
+	//if( input[2] )
+	//{
+	//	engine_command_manager_add( frame, command_type_jump, 20 );
+	//}
+	//input[ 3 ] = 768 == frame;
+	//if( input[ 3 ] )
+	//{
+	//	engine_command_manager_add( frame, command_type_move, 30 );
+	//}
+	//input[ 4 ] = 1049 == frame;
+	//if( input[ 4 ] )
+	//{
+	//	engine_command_manager_add( frame, command_type_bank4, 40 );
+	//}
+	//input[ 5 ] = 1400 == frame;
+	//if( input[ 5 ] )
+	//{
+	//	engine_command_manager_add( frame, command_type_bank5, 50 );
+	//}
+	//input[ 6 ] = 1729 == frame;
+	//if( input[ 6 ] )
+	//{
+	//	engine_command_manager_add( frame, command_type_bank6, 60 );
+	//}
+	//input[ 7 ] = 2001 == frame;
+	//if( input[ 7 ] )
+	//{
+	//	engine_command_manager_add( frame, command_type_bank7, 70 );
+	//}
 
-	input[ 8 ] = 20 == frame;// 2047 == frame;
+	input[ 8 ] = 255 == frame;// 2047 == frame;
 	if( input[ 8 ] )
 	{
-		engine_command_manager_add( frame, command_type_session, 0 );
+		engine_command_manager_add( frame, command_type_session, 4 );
 	}
 
 
@@ -118,8 +129,8 @@ void screen_record_screen_update( unsigned char *screen_type )
 		engine_storage_manager_write();
 		engine_font_manager_draw_text( "SAVED!!!!", 20, 19 );
 
-		*screen_type = screen_type_test;
-		//*screen_type = screen_type_intro;
+		//*screen_type = screen_type_test;
+		*screen_type = screen_type_intro;
 		return;
 	}
 

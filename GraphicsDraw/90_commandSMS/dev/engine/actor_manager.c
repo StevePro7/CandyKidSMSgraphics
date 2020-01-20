@@ -44,6 +44,11 @@ void engine_actor_manager_exec_bank7( unsigned int args )
 	engine_font_manager_draw_text( "EXEC BANK7", 2, 18 );
 	engine_font_manager_draw_data( args, 17, 18 );
 }
+void engine_actor_manager_exec_speed( unsigned int args )
+{
+	engine_font_manager_draw_text( "EXEC SPEED", 2, 19 );
+	engine_font_manager_draw_data( args, 17, 19 );
+}
 
 
 // Undo commands.
@@ -82,9 +87,8 @@ void engine_actor_manager_undo_bank7( unsigned int args )
 	engine_font_manager_draw_text( "                            ", 2, 18 );
 	args = 0;
 }
-
-static void print( char *text, unsigned int idx, unsigned int args1 )
+void engine_actor_manager_undo_speed( unsigned int args )
 {
-	engine_font_manager_draw_text( text, 2, idx + 4 );
-	engine_font_manager_draw_data( args1, 17, idx + 4 );
+	engine_font_manager_draw_text( "                            ", 2, 19 );
+	args = 0;
 }
