@@ -3,6 +3,12 @@
 #include "..\devkit\_snd_manager.h"
 #include "..\object\audio_object.h"
 
+// IMPORTANT disable compiler warning 110
+#ifdef _CONSOLE
+#else
+#pragma disable_warning 196
+#endif
+
 // Private helper functions.
 static void play_music( unsigned char *music, unsigned char bank );
 static void play_music_norepeat( unsigned char *music, unsigned char bank );
