@@ -57,7 +57,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 	}
 
 	frame = fo->frame_count;
-	if( frame < 255 )
+	if( frame < 248 )
 	{
 		engine_command_manager_add( frame, my_command, 256 + frame );
 		my_command++;
@@ -72,44 +72,44 @@ void screen_record_screen_update( unsigned char *screen_type )
 	//	//engine_command_manager_add( frame, command_type_empty, 5 );
 	//	engine_command_manager_add( frame, command_type_jump, 05 );
 	//}
-	//input[ 1 ] = 300 == frame;
-	//if( input[1] )
-	//{
-	//	engine_command_manager_add( frame, command_type_fire, 10 );
-	//	//engine_command_manager_add( frame, command_type_jump, 1010 );
-	//}
-	//input[ 2 ] = 604 == frame;
-	//if( input[2] )
-	//{
-	//	engine_command_manager_add( frame, command_type_jump, 20 );
-	//}
-	//input[ 3 ] = 768 == frame;
-	//if( input[ 3 ] )
-	//{
-	//	engine_command_manager_add( frame, command_type_move, 30 );
-	//}
-	//input[ 4 ] = 1049 == frame;
-	//if( input[ 4 ] )
-	//{
-	//	engine_command_manager_add( frame, command_type_bank4, 40 );
-	//}
-	//input[ 5 ] = 1400 == frame;
-	//if( input[ 5 ] )
-	//{
-	//	engine_command_manager_add( frame, command_type_bank5, 50 );
-	//}
-	//input[ 6 ] = 1729 == frame;
-	//if( input[ 6 ] )
-	//{
-	//	engine_command_manager_add( frame, command_type_bank6, 60 );
-	//}
-	//input[ 7 ] = 2001 == frame;
-	//if( input[ 7 ] )
-	//{
-	//	engine_command_manager_add( frame, command_type_bank7, 70 );
-	//}
+	input[ 1 ] = 300 == frame;
+	if( input[1] )
+	{
+		engine_command_manager_add( frame, command_type_fire, 10 );
+		//engine_command_manager_add( frame, command_type_jump, 1010 );
+	}
+	input[ 2 ] = 604 == frame;
+	if( input[2] )
+	{
+		engine_command_manager_add( frame, command_type_jump, 20 );
+	}
+	input[ 3 ] = 768 == frame;
+	if( input[ 3 ] )
+	{
+		engine_command_manager_add( frame, command_type_move, 30 );
+	}
+	input[ 4 ] = 1049 == frame;
+	if( input[ 4 ] )
+	{
+		engine_command_manager_add( frame, command_type_bank4, 40 );
+	}
+	input[ 5 ] = 1400 == frame;
+	if( input[ 5 ] )
+	{
+		engine_command_manager_add( frame, command_type_bank5, 50 );
+	}
+	input[ 6 ] = 1729 == frame;
+	if( input[ 6 ] )
+	{
+		engine_command_manager_add( frame, command_type_bank6, 60 );
+	}
+	input[ 7 ] = 2001 == frame;
+	if( input[ 7 ] )
+	{
+		engine_command_manager_add( frame, command_type_bank7, 70 );
+	}
 
-	input[ 8 ] = 255 == frame;// 2047 == frame;
+	input[ 8 ] = 2047 == frame;
 	if( input[ 8 ] )
 	{
 		engine_command_manager_add( frame, command_type_session, 4 );
