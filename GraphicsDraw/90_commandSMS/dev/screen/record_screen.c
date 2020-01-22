@@ -18,7 +18,7 @@ void screen_record_screen_load()
 	engine_frame_manager_init();
 	engine_delay_manager_load( 0 );
 
-	engine_font_manager_draw_text( "RECORD SCREEN...!!", 4, 0 );
+	engine_font_manager_draw_text( "RECORD SCREEN!!", 4, 0 );
 	engine_frame_manager_draw();
 	engine_delay_manager_draw();
 	first_time = 1;

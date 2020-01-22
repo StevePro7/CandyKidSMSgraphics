@@ -34,7 +34,7 @@ void screen_intro_screen_load()
 	//unsigned char bin = cmd | FRAME_BANK_7;
 	//unsigned char sht = bin >> 5;				// TOO magic number to define
 
-	engine_font_manager_draw_text( "INTRO SCREEN!!", 2, 0 );
+	engine_font_manager_draw_text( "INTRO  SCREEN!!", 4, 0 );
 	/*engine_font_manager_draw_data( frame, 10, 1 );
 	engine_font_manager_draw_data( div, 10, 2 );
 	engine_font_manager_draw_data( mod, 10, 3 );
