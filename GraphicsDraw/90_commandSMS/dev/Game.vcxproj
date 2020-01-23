@@ -181,6 +181,7 @@
     <ClCompile Include="object\hack_object.c" />
     <ClCompile Include="object\savegame_object.c" />
     <ClCompile Include="object\state_object.c" />
+    <ClCompile Include="screen\beat_screen.c" />
     <ClCompile Include="screen\demo_screen.c" />
     <ClCompile Include="screen\func_screen.c" />
     <ClCompile Include="screen\intro_screen.c" />
@@ -234,6 +235,7 @@
     <ClInclude Include="object\hack_object.h" />
     <ClInclude Include="object\savegame_object.h" />
     <ClInclude Include="object\state_object.h" />
+    <ClInclude Include="screen\beat_screen.h" />
     <ClInclude Include="screen\demo_screen.h" />
     <ClInclude Include="screen\func_screen.h" />
     <ClInclude Include="screen\intro_screen.h" />
