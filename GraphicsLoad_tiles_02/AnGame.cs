@@ -44,7 +44,7 @@ namespace GraphicsLoad
 			//int y = most + 4;
 			int y = 4;
 			wide = 208;// (int)(size * scale);
-			high = 32;// (int)(y * size * scale);
+			high = 48;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -161,7 +161,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"game_tiles.png";
+				var file = $"main_tiles.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -177,7 +177,8 @@ namespace GraphicsLoad
 
 		private void Draw()
 		{
-			Draw_02lines();
+			//Draw_02lines();
+			Draw_03lines();
 		}
 
 		private void Draw_02lines()
@@ -288,7 +289,7 @@ namespace GraphicsLoad
 			//	spriteBatch.Draw(image, pos, Color.White);
 			//}
 
-			spriteBatch.Draw(candy[13], new Vector2(208 - 16, 0), Color.White);
+			spriteBatch.Draw(miscs[0], new Vector2(208 - 16, 0), Color.White);
 
 			//int[] arr = { 2, 3, 4, 5, 6, 7, 8, 10, 11, 13, 9, 12, 14, 15 };
 			//for (int idx = 0; idx < 14; idx++)
