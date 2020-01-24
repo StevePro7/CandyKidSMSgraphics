@@ -25,18 +25,6 @@
 /processorParam:TextureFormat=Color
 /build:Bonus/BlueSpiral.bmp
 
-#begin Bonus/BlueSpiral.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/BlueSpiral.bmp
-
 #begin Bonus/BlueSpiral_Flip.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -48,18 +36,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bonus/BlueSpiral_Flip.bmp
-
-#begin Bonus/CoolTriangle.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/CoolTriangle.bmp
 
 #begin Bonus/CoolTriangle.bmp
 /importer:TextureImporter
@@ -97,18 +73,6 @@
 /processorParam:TextureFormat=Color
 /build:Bonus/LoveHeart.bmp
 
-#begin Bonus/LoveHeart.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/LoveHeart.bmp
-
 #begin Bonus/LoveHeart_flip.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -120,18 +84,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Bonus/LoveHeart_flip.bmp
-
-#begin Bonus/PawPrint.bmp
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Bonus/PawPrint.bmp
 
 #begin Bonus/PawPrint.bmp
 /importer:TextureImporter
@@ -1045,6 +997,18 @@
 /processorParam:TextureFormat=Color
 /build:Candy04/Candy15.bmp
 
+#begin Candy05/Candy00.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy00.bmp
+
 #begin Candy05/Candy02.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1056,6 +1020,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy02.bmp
+
+#begin Candy05/Candy02.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy02.bmp
+
+#begin Candy05/Candy03.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy03.bmp
 
 #begin Candy05/Candy03.bmp
 /importer:TextureImporter
@@ -1081,6 +1069,18 @@
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy04.bmp
 
+#begin Candy05/Candy04.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy04.bmp
+
 #begin Candy05/Candy05.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1092,6 +1092,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy05.bmp
+
+#begin Candy05/Candy05.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy05.bmp
+
+#begin Candy05/Candy06.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy06.bmp
 
 #begin Candy05/Candy06.bmp
 /importer:TextureImporter
@@ -1117,6 +1141,18 @@
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy07.bmp
 
+#begin Candy05/Candy07.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy07.bmp
+
 #begin Candy05/Candy08.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1128,6 +1164,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy08.bmp
+
+#begin Candy05/Candy08.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy08.bmp
+
+#begin Candy05/Candy09.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy09.bmp
 
 #begin Candy05/Candy09.bmp
 /importer:TextureImporter
@@ -1153,6 +1213,18 @@
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy10.bmp
 
+#begin Candy05/Candy10.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy10.bmp
+
 #begin Candy05/Candy11.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1164,6 +1236,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy11.bmp
+
+#begin Candy05/Candy11.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy11.bmp
+
+#begin Candy05/Candy12.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy12.bmp
 
 #begin Candy05/Candy12.bmp
 /importer:TextureImporter
@@ -1189,6 +1285,30 @@
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy13.bmp
 
+#begin Candy05/Candy13.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy13.bmp
+
+#begin Candy05/Candy14.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy14.bmp
+
 #begin Candy05/Candy14.bmp
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -1212,6 +1332,30 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Candy05/Candy15.bmp
+
+#begin Candy05/Candy15.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy15.bmp
+
+#begin Candy05/Candy16.bmp
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Candy05/Candy16.bmp
 
 #begin game_title.bmp
 /importer:TextureImporter
