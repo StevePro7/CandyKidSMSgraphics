@@ -14,9 +14,10 @@ namespace GraphicsLoad
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-		Texture2D font;
+		//Texture2D font;
 		Texture2D[] bonus;
 		Texture2D[] candy;
+		Texture2D[] miscs;
 		Texture2D[] trees;
 		Texture2D[] titles;
 		Texture2D title;
@@ -98,6 +99,12 @@ namespace GraphicsLoad
 				candy[idx] = Content.Load<Texture2D>(text);
 			}
 
+			var root = $"{candyDirX}/Candy";
+			miscs = new Texture2D[3];
+			miscs[0] = Content.Load<Texture2D>(root + "00");
+			miscs[1] = Content.Load<Texture2D>(root + "15");
+			miscs[2] = Content.Load<Texture2D>(root + "16");
+
 			trees = new Texture2D[2];
 			trees[0] = Content.Load<Texture2D>("Trees/tree_avoid");
 			trees[1] = Content.Load<Texture2D>("Trees/tree_death");
@@ -154,7 +161,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"AllTilesB12_C06.png";
+				var file = $"game_tiles.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -187,11 +194,13 @@ namespace GraphicsLoad
 			spriteBatch.Draw(trees[1], new Vector2(16, 0), Color.White);
 
 			// bonus
+			Texture2D image;
+			Vector2 pos;
 			for(int idx = 0; idx < bonus.Length; idx++)
 			{
-				var image = bonus[idx];
+				image = bonus[idx];
 				//var image = bonus02[idx];
-				var pos = new Vector2(32 + idx * size, 0);
+				pos = new Vector2(32 + idx * size, 0);
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
@@ -204,24 +213,29 @@ namespace GraphicsLoad
 			//	spriteBatch.Draw(image, pos, Color.White);
 			//}
 
-			//candy
+			// miscellaneous candy
 			for(int idx = 0; idx < 3; idx++)
 			{
-				var image = candy[idx];
-				var pos = new Vector2(160 + idx * size, 0);
+				image = miscs[idx];
+				pos = new Vector2(160 + idx * size, 0);
 				spriteBatch.Draw(image, pos, Color.White);
 			}
 
-			for(int idx = 1; idx < 14; idx++)
+
+
+			// normal candy
+			for(int idx = 1; idx < 13; idx++)
 			{
-				var image = candy[idx];
-				var pos = new Vector2((idx - 1) * size, 16);
+				image = candy[idx];
+				pos = new Vector2((idx - 1) * size, 16);
 				spriteBatch.Draw(image, pos, Color.White);
 			}
+
+			// Last candy repeat
+			pos = new Vector2(192, 16);
+			spriteBatch.Draw(candy[2], pos, Color.White);
 
 			//spriteBatch.Draw(candy[13], new Vector2(208 - 16, 16), Color.White);
-
-
 
 			spriteBatch.Draw(title, new Vector2(0, 32), Color.White);
 
