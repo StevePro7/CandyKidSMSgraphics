@@ -69,6 +69,23 @@ void engine_command_manager_init()
 	undo_index = 0;
 }
 
+unsigned char engine_command_manager_type( unsigned int frame, unsigned char command_type )
+{
+	unsigned char frame_bank;
+	unsigned char frame_main;
+	unsigned char shift_bank;
+
+	// IMPORTANT if an_command is an unsigned char then this new code will fail!
+	unsigned int an_command;
+
+	frame_bank = frame / MAX_BYTE_SIZE;
+	frame_main = frame % MAX_BYTE_SIZE;
+	shift_bank = frame_bank << FRAME_BANK_SHIFT;
+	an_command = shift_bank | command_type;
+
+	return an_command;
+}
+
 void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned int args )
 {
 	unsigned char frame_bank;

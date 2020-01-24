@@ -67,8 +67,6 @@ void screen_func_screen_update( unsigned char *screen_type )
 		first_time = 1;
 	}
 
-	frame = fo->frame_count;
-
 	// Continue...
 	frame = fo->frame_count;
 

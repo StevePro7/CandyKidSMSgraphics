@@ -96,8 +96,8 @@ void engine_gamer_manager_update()
 		go->delta = 0;
 		go->total = 0;
 
-		engine_font_manager_draw_data( go->posnX, 20, 2 );
-		engine_font_manager_draw_data( go->posnY, 20, 3 );
+		//engine_font_manager_draw_data( go->posnX, 20, 2 );
+		//engine_font_manager_draw_data( go->posnY, 20, 3 );
 	}
 
 	// Swap frame half way.
@@ -120,7 +120,6 @@ void engine_gamer_manager_stop()
 void engine_gamer_manager_draw()
 {
 	struct_gamer_object *go = &global_gamer_object;
-	engine_font_manager_draw_data( go->calcd, 20, 10 );
 	engine_sprite_manager_draw( go->posnX, go->posnY, go->calcd );
 }
 

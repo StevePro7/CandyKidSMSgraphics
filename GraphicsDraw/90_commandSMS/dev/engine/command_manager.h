@@ -9,6 +9,7 @@ extern struct_command_object global_command_object;
 
 // Public methods.
 void engine_command_manager_init();
+unsigned char engine_command_manager_type( unsigned int frame, unsigned char command_type );
 void engine_command_manager_add( unsigned int frame, unsigned char command_type, unsigned int args );
 
 void engine_command_manager_execute( unsigned int frame );
