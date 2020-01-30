@@ -1,7 +1,6 @@
 #ifndef _COMMAND_MANAGER_H_
 #define _COMMAND_MANAGER_H_
 
-
 #include "..\object\command_object.h"
 
 // Global variable.
@@ -14,8 +13,6 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 //void engine_command_manager_addX( unsigned int frame, unsigned char command_type, unsigned int args );
 
 void engine_command_manager_execute( unsigned int frame );
-
-//void engine_command_manager_undo();
 void engine_command_manager_undo( unsigned int frame );
 
 void engine_command_manager_load( unsigned int* frames, unsigned char* commands, unsigned char* args );

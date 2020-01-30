@@ -4,6 +4,7 @@
 #include "font_manager.h"
 #include "global_manager.h"
 
+// TODO clean up as won't be necc.
 #define FRAME_BANK_SHIFT	5
 #define FRAME_MASK_SHIFT	0x1F;
 
@@ -12,15 +13,14 @@ struct_command_object global_command_object;
 static void( *execute[ MAX_CMD_TYPE ] )( unsigned char args );
 static void( *undo[ MAX_CMD_TYPE ] )( unsigned char args );
 
-//static unsigned char frame_index;
 static unsigned char command_index;
 static unsigned char add_index;
 static unsigned char exec_index;
 static unsigned char undo_index;
 
 static unsigned int new_frame[ MAX_COMMANDS ];
-static unsigned int new_command[ MAX_COMMANDS ];
-static unsigned int new_args[ MAX_COMMANDS ];
+static unsigned char new_command[ MAX_COMMANDS ];
+static unsigned char new_args[ MAX_COMMANDS ];
 
 static void empty_exec_command( unsigned char args );
 static void empty_undo_command( unsigned char args );
@@ -49,7 +49,6 @@ void engine_command_manager_init()
 	execute[ command_type_bank7 ] = engine_actor_manager_exec_bank7;
 	execute[ command_type_speed ] = engine_actor_manager_exec_speed;
 	execute[ command_type_steve ] = engine_actor_manager_exec_steve;
-
 	execute[ command_type_session ] = session_exec_command;
 
 	undo[ command_type_empty ] = empty_undo_command;
@@ -115,44 +114,21 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 
 void engine_command_manager_execute( unsigned int frame )
 {
-	//unsigned char frame_bank;
-	//unsigned char frame_main;
 	unsigned int check;
-	//unsigned char shift_bank;
-
-	//unsigned char command_main;
 	unsigned char command;
 	unsigned int args;
 
-	//frame_main = frame % MAX_BYTE_SIZE;
-	check = new_frame[ exec_index ];
-
 	// If we are not on the correct frame to execute then simply return.
+	check = new_frame[ exec_index ];
 	if( frame != check )
 	{
 		return;
 	}
 
-	//frame_bank = frame / MAX_BYTE_SIZE;
-	//command_main = new_command[ exec_index ];
-	//shift_bank = command_main >> FRAME_BANK_SHIFT;
-	/*if( frame_bank != shift_bank )
-	{
-		return;
-	}*/
-
-	//engine_font_manager_draw_data( new_command[ 0 ], 15, 11 );
 	while( 1 )
 	{
 		command_index = exec_index;
-		//command_main = new_command[ command_index ];
 		command = new_command[ command_index ];
-		//command = command_main & FRAME_MASK_SHIFT;
-
-		/*if( command_type_empty == command )
-		{
-			break;
-		}*/
 
 		args = new_args[ command_index ];
 		execute[ command ]( args );
@@ -172,17 +148,11 @@ void engine_command_manager_execute( unsigned int frame )
 			break;
 		}
 
-		//command_main = new_command[ exec_index ];
 		command = new_command[ exec_index ];
 		if( ( unsigned char ) INVALID_INDEX == command )
 		{
 			break;
 		}
-		/*shift_bank = command_main >> FRAME_BANK_SHIFT;
-		if( frame_bank != shift_bank )
-		{
-			break;
-		}*/
 	}
 
 	// Execute all commands this frame thus increment frame index.
