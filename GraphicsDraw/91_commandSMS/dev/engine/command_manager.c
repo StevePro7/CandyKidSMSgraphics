@@ -20,7 +20,7 @@ static unsigned char undo_index;
 
 static unsigned int new_frame[ MAX_COMMANDS ];
 static unsigned int new_command[ MAX_COMMANDS ];
-static unsigned int new_index[ MAX_COMMANDS ];
+static unsigned int new_args[ MAX_COMMANDS ];
 
 static void empty_exec_command( unsigned char args );
 static void empty_undo_command( unsigned char args );
@@ -35,7 +35,7 @@ void engine_command_manager_init()
 	{
 		new_frame[ idx ] = 0;
 		new_command[ idx ] = ( unsigned char ) INVALID_INDEX;
-		new_index[ idx ] = 0;
+		new_args[ idx ] = 0;
 	}
 
 	// IMPORTANT execute + undo must be same order!!
@@ -91,7 +91,7 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 {
 	new_frame[ add_index ] = frame;
 	new_command[ add_index ] = command_type;
-	new_index[ add_index ] = args;
+	new_args[ add_index ] = args;
 	add_index++;
 
 	// The index will wrap from 255 to 0 naturally.
@@ -109,7 +109,7 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 //
 //	new_frame[ add_index ] = frame % MAX_BYTE_SIZE; ;// frame_main;
 //	new_command[ add_index ] = an_command;
-//	new_index[ add_index ] = args;
+//	new_args[ add_index ] = args;
 //	add_index++;
 //}
 
@@ -154,7 +154,7 @@ void engine_command_manager_execute( unsigned int frame )
 			break;
 		}*/
 
-		args = new_index[ command_index ];
+		args = new_args[ command_index ];
 		execute[ command ]( args );
 
 		// The index will wrap from 255 to 0 naturally.
@@ -228,7 +228,7 @@ void engine_command_manager_undo( unsigned int frame )
 			break;
 		}
 
-		args = new_index[ command_index ];
+		args = new_args[ command_index ];
 		undo[ command ]( args );
 
 		// Decrement undo index and break if at the end...
@@ -267,7 +267,7 @@ void engine_command_manager_load( unsigned int* frames, unsigned char* commands,
 	{
 		new_frame[ idx ] = frames[ idx ];
 		new_command[ idx ] = commands[ idx ];
-		new_index[ idx ] = args[ idx ];
+		new_args[ idx ] = args[ idx ];
 	}
 }
 
@@ -280,7 +280,7 @@ void engine_command_manager_save()
 	{
 		co->frames[ idx ] = new_frame[ idx ];
 		co->commands[ idx ] = new_command[ idx ];
-		co->args[ idx ] = new_index[ idx ];
+		co->args[ idx ] = new_args[ idx ];
 	}
 }
 
