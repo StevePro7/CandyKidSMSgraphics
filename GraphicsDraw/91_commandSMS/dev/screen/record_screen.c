@@ -13,6 +13,7 @@ static unsigned char my_command;
 void screen_record_screen_load()
 {
 	unsigned char test;
+	unsigned char loop;
 
 	engine_command_manager_init();
 	engine_frame_manager_init();
@@ -30,6 +31,15 @@ void screen_record_screen_load()
 	}
 
 	engine_font_manager_draw_data( test, 22, 7 );
+
+	// Signal the start of the command collection:
+	engine_command_manager_add( 0, command_type_empty, 0 );
+
+	for( loop = 1; loop < 253; loop++ )
+	{
+		engine_command_manager_add( loop, command_type_speed, loop );
+	}
+
 	my_command = 1;
 }
 
@@ -57,7 +67,14 @@ void screen_record_screen_update( unsigned char *screen_type )
 	}
 
 	frame = fo->frame_count;
-	if( frame < 248 )
+	input[ 0 ] = 254 == frame;
+	if( input[ 0 ] )
+	{
+		//engine_command_manager_add( frame, command_type_empty, 5 );
+		engine_command_manager_add( frame, command_type_jump, 05 );
+	}
+
+	/*if( frame > 0 && frame < 248 )
 	{
 		engine_command_manager_add( frame, my_command, 256 + frame );
 		my_command++;
@@ -65,13 +82,8 @@ void screen_record_screen_update( unsigned char *screen_type )
 		{
 			my_command = 1;
 		}
-	}
-	//input[ 0 ] = 16 == frame;
-	//if( input[ 0 ] )
-	//{
-	//	//engine_command_manager_add( frame, command_type_empty, 5 );
-	//	engine_command_manager_add( frame, command_type_jump, 05 );
-	//}
+	}*/
+	
 	input[ 1 ] = 300 == frame;
 	if( input[1] )
 	{
