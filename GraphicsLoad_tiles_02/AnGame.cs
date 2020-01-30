@@ -21,13 +21,14 @@ namespace GraphicsLoad
 		Texture2D[] trees;
 		Texture2D[] titles;
 		Texture2D title;
+		Texture2D blank;
 
 		RenderTarget2D renderTarget;
 
 		const int size = 16;
 		const int most = 12;
 		//int index = 0;
-		float scale = 1.0f;
+		//float scale = 1.0f;
 		bool saves = false;
 
 		int wide;
@@ -44,7 +45,7 @@ namespace GraphicsLoad
 			//int y = most + 4;
 			int y = 4;
 			wide = 208;// (int)(size * scale);
-			high = 48;// (int)(y * size * scale);
+			high = 32;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -114,6 +115,8 @@ namespace GraphicsLoad
 			titles[0] = Content.Load<Texture2D>("title_Candy");
 			titles[1] = Content.Load<Texture2D>("title_Kid");
 
+			blank = Content.Load<Texture2D>("blank_rect");
+
 			PresentationParameters pp = GraphicsDevice.PresentationParameters;
 			wide = pp.BackBufferWidth;
 			high = pp.BackBufferHeight;
@@ -161,7 +164,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"main_tiles.png";
+				var file = $"_game_tiles.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -177,8 +180,8 @@ namespace GraphicsLoad
 
 		private void Draw()
 		{
-			//Draw_02lines();
-			Draw_03lines();
+			Draw_02lines();
+			//Draw_03lines();
 		}
 
 		private void Draw_02lines()
@@ -234,11 +237,11 @@ namespace GraphicsLoad
 
 			// Last candy repeat
 			pos = new Vector2(192, 16);
-			spriteBatch.Draw(candy[2], pos, Color.White);
+			//spriteBatch.Draw(candy[2], pos, Color.White);
+			spriteBatch.Draw(blank, pos, Color.White);
 
 			//spriteBatch.Draw(candy[13], new Vector2(208 - 16, 16), Color.White);
-
-			spriteBatch.Draw(title, new Vector2(0, 32), Color.White);
+			//spriteBatch.Draw(title, new Vector2(0, 32), Color.White);
 
 			spriteBatch.End();
 		}
