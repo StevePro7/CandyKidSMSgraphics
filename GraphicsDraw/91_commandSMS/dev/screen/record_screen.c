@@ -37,7 +37,7 @@ void screen_record_screen_load()
 
 	for( loop = 1; loop < 253; loop++ )
 	{
-		engine_command_manager_add( loop, command_type_speed, loop );
+		engine_command_manager_add( loop, command_type_steve, loop );
 	}
 
 	my_command = 1;
@@ -121,7 +121,7 @@ void screen_record_screen_update( unsigned char *screen_type )
 		engine_command_manager_add( frame, command_type_bank7, 70 );
 	}
 
-	input[ 8 ] = 2047 == frame;
+	input[ 8 ] = 3000 == frame;
 	if( input[ 8 ] )
 	{
 		engine_command_manager_add( frame, command_type_session, 4 );

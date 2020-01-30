@@ -9,8 +9,8 @@
 
 struct_command_object global_command_object;
 
-static void( *execute[ MAX_CMD_TYPE ] )( unsigned int index );
-static void( *undo[ MAX_CMD_TYPE ] )( unsigned int index );
+static void( *execute[ MAX_CMD_TYPE ] )( unsigned char args );
+static void( *undo[ MAX_CMD_TYPE ] )( unsigned char args );
 
 //static unsigned char frame_index;
 static unsigned char command_index;
@@ -20,12 +20,12 @@ static unsigned char undo_index;
 
 static unsigned int new_frame[ MAX_COMMANDS ];
 static unsigned int new_command[ MAX_COMMANDS ];
-static unsigned int new_args[ MAX_COMMANDS ];
+static unsigned int new_index[ MAX_COMMANDS ];
 
-static void empty_exec_command( unsigned int index );
-static void empty_undo_command( unsigned int index );
-static void session_exec_command( unsigned int index );
-static void session_undo_command( unsigned int index );
+static void empty_exec_command( unsigned char args );
+static void empty_undo_command( unsigned char args );
+static void session_exec_command( unsigned char args );
+static void session_undo_command( unsigned char args );
 
 // Public methods.
 void engine_command_manager_init()
@@ -35,7 +35,7 @@ void engine_command_manager_init()
 	{
 		new_frame[ idx ] = 0;
 		new_command[ idx ] = ( unsigned char ) INVALID_INDEX;
-		new_args[ idx ] = 0;
+		new_index[ idx ] = 0;
 	}
 
 	// IMPORTANT execute + undo must be same order!!
@@ -48,6 +48,7 @@ void engine_command_manager_init()
 	execute[ command_type_bank6 ] = engine_actor_manager_exec_bank6;
 	execute[ command_type_bank7 ] = engine_actor_manager_exec_bank7;
 	execute[ command_type_speed ] = engine_actor_manager_exec_speed;
+	execute[ command_type_steve ] = engine_actor_manager_exec_steve;
 
 	execute[ command_type_session ] = session_exec_command;
 
@@ -60,9 +61,9 @@ void engine_command_manager_init()
 	undo[ command_type_bank6 ] = engine_actor_manager_undo_bank6;
 	undo[ command_type_bank7 ] = engine_actor_manager_undo_bank7;
 	undo[ command_type_speed ] = engine_actor_manager_undo_speed;
+	undo[ command_type_steve ] = engine_actor_manager_undo_steve;
 	undo[ command_type_session ] = session_undo_command;
 
-	//frame_index = 0;
 	command_index = 0;
 	add_index = 0;
 	exec_index = 0;
@@ -90,13 +91,13 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 {
 	new_frame[ add_index ] = frame;
 	new_command[ add_index ] = command_type;
-	new_args[ add_index ] = args;
+	new_index[ add_index ] = args;
 	add_index++;
 
 	// The index will wrap from 255 to 0 naturally.
 	//if( add_index >= ( MAX_COMMANDS - 1 ) )
 	//{
-	//	add_index = 0;
+	//	add_index = 0
 	//}
 }
 
@@ -108,7 +109,7 @@ void engine_command_manager_add( unsigned int frame, unsigned char command_type,
 //
 //	new_frame[ add_index ] = frame % MAX_BYTE_SIZE; ;// frame_main;
 //	new_command[ add_index ] = an_command;
-//	new_args[ add_index ] = args;
+//	new_index[ add_index ] = args;
 //	add_index++;
 //}
 
@@ -153,14 +154,14 @@ void engine_command_manager_execute( unsigned int frame )
 			break;
 		}*/
 
-		args = new_args[ command_index ];
+		args = new_index[ command_index ];
 		execute[ command ]( args );
 
 		// The index will wrap from 255 to 0 naturally.
 		exec_index++;
 		//if( exec_index >= ( MAX_COMMANDS - 1 ) )
 		//{
-		//	exec_index = 0;
+		//	exec_index = 0
 		//}
 
 		check = new_frame[ exec_index ];
@@ -227,7 +228,7 @@ void engine_command_manager_undo( unsigned int frame )
 			break;
 		}
 
-		args = new_args[ command_index ];
+		args = new_index[ command_index ];
 		undo[ command ]( args );
 
 		// Decrement undo index and break if at the end...
@@ -266,7 +267,7 @@ void engine_command_manager_load( unsigned int* frames, unsigned char* commands,
 	{
 		new_frame[ idx ] = frames[ idx ];
 		new_command[ idx ] = commands[ idx ];
-		new_args[ idx ] = args[ idx ];
+		new_index[ idx ] = args[ idx ];
 	}
 }
 
@@ -279,7 +280,7 @@ void engine_command_manager_save()
 	{
 		co->frames[ idx ] = new_frame[ idx ];
 		co->commands[ idx ] = new_command[ idx ];
-		co->args[ idx ] = new_args[ idx ];
+		co->args[ idx ] = new_index[ idx ];
 	}
 }
 
@@ -300,19 +301,19 @@ unsigned int engine_command_manager_align_undo()
 	return undo_frame;
 }
 
-static void empty_exec_command( unsigned int index )
+static void empty_exec_command( unsigned char args )
 {
-	index = 0;
+	args = 0;
 }
-static void empty_undo_command( unsigned int index )
+static void empty_undo_command( unsigned char args )
 {
-	index = 0;
+	args = 0;
 }
-static void session_exec_command( unsigned int index )
+static void session_exec_command( unsigned char args )
 {
-	index = 0;
+	args = 0;
 }
-static void session_undo_command( unsigned int index )
+static void session_undo_command( unsigned char args )
 {
-	index = 0;
+	args = 0;
 }
