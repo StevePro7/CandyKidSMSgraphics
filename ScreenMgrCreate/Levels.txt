@@ -1,2 +1,6 @@
 None
 Splash
+Intro,
+Diff,
+Level
+Play

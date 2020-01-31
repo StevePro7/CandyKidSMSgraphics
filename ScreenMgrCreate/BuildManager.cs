@@ -21,10 +21,36 @@ namespace ScreenMgrCreate
 			lines.Add("");
 			lines.Add("");
 
-			foreach(var screen in screens)
+			var index = 0;
+			var count = 0;
+			var line = "";
+
+			while(true)
 			{
-				lines.Add($"screen\\{screen.ToLower()}_screen.rel ^");
+				var screen = screens[index];
+				line += $"screen\\{screen.ToLower()}_screen.rel ";
+
+				count++;
+				if(count >= screens.Length)
+				{
+					line += "^";
+					lines.Add(line);
+					break;
+				}
+
+				index++;
+				if(index >= 5)
+				{
+					line += "^";
+					lines.Add(line);
+					line = "";
+				}
 			}
+
+			//foreach(var screen in screens)
+			//{
+			//	lines.Add($"screen\\{screen.ToLower()}_screen.rel ^");
+			//}
 
 
 			File.WriteAllLines("build.bat", lines.ToArray());
