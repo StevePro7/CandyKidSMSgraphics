@@ -20,11 +20,11 @@ namespace ScreenMgrCreate
 			var index = 0;
 			foreach(var screen in screens)
 			{
-				lines.Add($"	screen_type_{screen} = {index++},");
+				lines.Add($"	screen_type_{screen.ToLower()} = {index++},");
 			}
 
 			lines.Add("");
-			lines.Add("}");
+			lines.Add("} enum_screen_type;");
 
 			lines.Add("");
 			lines.Add("#endif//_ENUM_MANAGER_H_");
