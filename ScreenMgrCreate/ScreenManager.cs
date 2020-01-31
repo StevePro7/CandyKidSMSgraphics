@@ -72,5 +72,52 @@ namespace ScreenMgrCreate
 
 			File.WriteAllLines("Managers/screen_manager.c", lines.ToArray());
 		}
+
+		public void Construct(string[] screens)
+		{
+			var screen = screens[0];
+			ConstructH(screen);
+			ConstructC(screen);
+		}
+
+		private void ConstructH(string screen)
+		{
+			var lines = new List<string>
+			{
+				"#ifndef _NONE_SCREEN_H_",
+				"#define _NONE_SCREEN_H_",
+				"",
+
+				$"void screen_{screen.ToLower()}_screen_load();",
+				$"void screen_{screen.ToLower()}_screen_update( unsigned char *screen_type );",
+
+				"",
+				"#endif//_NONE_SCREEN_H_",
+			};
+
+			var path = $"Screens/{screen.ToLower()}_screen.h";
+			File.WriteAllLines(path, lines.ToArray());
+		}
+
+		private void ConstructC(string screen)
+		{
+			var lines = new List<string>
+			{
+				$"#include \"{screen.ToLower()}_screen.h\"",
+				"#include \"..\\engine\\enum_manager.h\"",
+				"",
+				$"void screen_{screen.ToLower()}_screen_load()",
+				"{",
+				"}",
+				"",
+				$"void screen_{screen.ToLower()}_screen_update( unsigned char *screen_type )",
+				"{",
+				$"	*screen_type = screen_type_{screen.ToLower()};",
+				"}",
+			};
+
+			var path = $"Screens/{screen.ToLower()}_screen.c";
+			File.WriteAllLines(path, lines.ToArray());
+		}
 	}
 }
