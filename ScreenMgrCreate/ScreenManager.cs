@@ -75,24 +75,26 @@ namespace ScreenMgrCreate
 
 		public void Construct(string[] screens)
 		{
-			var screen = screens[0];
-			ConstructH(screen);
-			ConstructC(screen);
+			foreach (var screen in screens)
+			{
+				ConstructH(screen);
+				ConstructC(screen);
+			}
 		}
 
 		private void ConstructH(string screen)
 		{
 			var lines = new List<string>
 			{
-				"#ifndef _NONE_SCREEN_H_",
-				"#define _NONE_SCREEN_H_",
+				$"#ifndef _{screen.ToUpper()}_SCREEN_H_",
+				$"#define _{screen.ToUpper()}_SCREEN_H_",
 				"",
 
 				$"void screen_{screen.ToLower()}_screen_load();",
 				$"void screen_{screen.ToLower()}_screen_update( unsigned char *screen_type );",
 
 				"",
-				"#endif//_NONE_SCREEN_H_",
+				$"#endif//_{screen.ToUpper()}_SCREEN_H_",
 			};
 
 			var path = $"Screens/{screen.ToLower()}_screen.h";
@@ -105,9 +107,11 @@ namespace ScreenMgrCreate
 			{
 				$"#include \"{screen.ToLower()}_screen.h\"",
 				"#include \"..\\engine\\enum_manager.h\"",
+				"#include \"..\\engine\\font_manager.h\"",
 				"",
 				$"void screen_{screen.ToLower()}_screen_load()",
 				"{",
+				$"	engine_font_manager_draw_text( \"{screen.ToUpper()} SCREEN!!\", 2, 10 );",
 				"}",
 				"",
 				$"void screen_{screen.ToLower()}_screen_update( unsigned char *screen_type )",

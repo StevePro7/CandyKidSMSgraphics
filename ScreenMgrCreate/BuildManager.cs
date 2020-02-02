@@ -44,6 +44,7 @@ namespace ScreenMgrCreate
 					line += "^";
 					lines.Add(line);
 					line = "";
+					index = 0;
 				}
 			}
 
