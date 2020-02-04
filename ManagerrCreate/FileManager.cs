@@ -56,7 +56,6 @@ namespace ScreenMgrCreate
 			lines.Add($"void engine_{manager.ToLower()}_manager_update()");
 			lines.Add("{");
 			lines.Add("}");
-			lines.Add("");
 
 			var path = $"Managers/{manager.ToLower()}_manager.c";
 			File.WriteAllLines(path, lines.ToArray());
