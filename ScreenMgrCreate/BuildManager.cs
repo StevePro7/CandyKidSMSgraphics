@@ -22,6 +22,7 @@ namespace ScreenMgrCreate
 			lines.Add("");
 
 			var index = 0;
+			var halve = 0;
 			var count = 0;
 			var line = "";
 
@@ -39,20 +40,15 @@ namespace ScreenMgrCreate
 				}
 
 				index++;
-				if(index >= 5)
+				halve++;
+				if(halve >= 5)
 				{
 					line += "^";
 					lines.Add(line);
 					line = "";
-					index = 0;
+					halve = 0;
 				}
 			}
-
-			//foreach(var screen in screens)
-			//{
-			//	lines.Add($"screen\\{screen.ToLower()}_screen.rel ^");
-			//}
-
 
 			File.WriteAllLines("build.bat", lines.ToArray());
 		}
