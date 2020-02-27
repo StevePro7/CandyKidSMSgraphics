@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ScreenMgrCreate
 {
@@ -16,6 +18,7 @@ namespace ScreenMgrCreate
 			var screenManager = new ScreenManager();
 
 			var screens = File.ReadAllLines("Levels.txt");
+			screens = GetScreens(screens);
 
 			buildManager.Compile(screens);
 			enumManager.Build(screens);
@@ -32,6 +35,22 @@ namespace ScreenMgrCreate
 			{
 				Directory.CreateDirectory(directory);
 			}
+		}
+
+		private static string[] GetScreens(string[] screens)
+		{
+			IList<string> newScreens = new List<string>();
+			foreach (var screen in screens)
+			{
+				if (screen.StartsWith("--"))
+				{
+					continue;
+				}
+
+				newScreens.Add(screen);
+			}
+
+			return newScreens.ToArray();
 		}
 	}
 }
