@@ -14,7 +14,8 @@ namespace LevelModification
 
 	public class ScoreManager
 	{
-		private int[] values = new[] { 0, 10, 0, 100, 200, 400, 800 };
+		//private int[] values = new[] { 0, 0, 10, 100, 200, 400, 800 };
+		private int[] values = new[] { 0, 0, 10, 50, 100, 200, 400 };
 
 		public ScoreManager()
 		{
