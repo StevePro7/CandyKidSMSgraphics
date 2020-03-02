@@ -1,0 +1,25 @@
+anINSTRUCTIONS
+02/03/2020
+
+
+Update levels.txt
+i.e. update all the screens required in the order that you need
+
+Back up the previous work folders files etc.
+
+Run the code and produce the latest artifacts
+
+Copy n' paste the new screens across and skip the existing files
+
+Manually update enum mgr and global mgr
+Copy screen mgr across verbatim
+
+Open DEV program
+Include all the new screens into the project
+Build to ensure all compiles + links OK
+
+Update the build.bat
+F1
+but will most probably be "glitchy"
+
+Therefore, manually build entire project and try again
