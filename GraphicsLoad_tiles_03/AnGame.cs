@@ -43,10 +43,12 @@ namespace GraphicsLoad
 
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
-			int y = 2;
-			wide = 208;// (int)(size * scale);
-			high = y * 16;// (int)(y * size * scale);
+			//int y = 2;
+			//wide = 208;// (int)(size * scale);
+			//high = y * 16;// (int)(y * size * scale);
 
+			wide = 256;
+			high = 192;
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
 			graphics.PreferredBackBufferHeight = high;
@@ -180,8 +182,9 @@ namespace GraphicsLoad
 
 		private void Draw()
 		{
-			Draw_02lines();
+			//Draw_02lines();
 			//Draw_03lines();
+			Draw_04Border();
 		}
 
 		private void Draw_02lines()
@@ -264,6 +267,27 @@ namespace GraphicsLoad
 
 			//spriteBatch.Draw(candy[13], new Vector2(208 - 16, 16), Color.White);
 			//spriteBatch.Draw(title, new Vector2(0, 32), Color.White);
+
+			spriteBatch.End();
+		}
+
+		private void Draw_04Border()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			int i = 1;
+			for (int x = 16; x < 256; x+=16)
+			{
+				spriteBatch.Draw(trees[i], new Vector2(x, 0), Color.White);
+				spriteBatch.Draw(trees[i], new Vector2(x, 176), Color.White);
+			}
+
+			for (int y = 16; y < 176; y += 16)
+			{
+				spriteBatch.Draw(trees[i], new Vector2(16, y), Color.White);
+				spriteBatch.Draw(trees[i], new Vector2(240, y), Color.White);
+			}
 
 			spriteBatch.End();
 		}
