@@ -43,9 +43,9 @@ namespace GraphicsLoad
 
 			//int y = twice ? 2 : 1;
 			//int y = most + 4;
-			int y = 4;
+			int y = 2;
 			wide = 208;// (int)(size * scale);
-			high = 32;// (int)(y * size * scale);
+			high = y * 16;// (int)(y * size * scale);
 
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
@@ -164,7 +164,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"_game_tiles.png";
+				var file = $"_game_tilesORG.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -185,6 +185,153 @@ namespace GraphicsLoad
 		}
 
 		private void Draw_02lines()
+		{
+			Texture2D image;
+			Vector2 pos;
+
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			spriteBatch.Draw(trees[0], new Vector2(0, 0), Color.White);
+			spriteBatch.Draw(trees[1], new Vector2(16, 0), Color.White);
+
+			// cross
+			for (int idx = 1; idx < 3; idx++)
+			{
+				image = miscs[idx];
+				pos = new Vector2(0 + (idx -1)* size, 16);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			// bonus
+			
+			for (int idx = 0; idx < bonus.Length/2; idx++)
+			{
+				image = bonus[idx];
+				//var image = bonus02[idx];
+				pos = new Vector2(32 + idx * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+			for (int idx = 4; idx < bonus.Length; idx++)
+			{
+				image = bonus[idx];
+				//var image = bonus02[idx];
+				pos = new Vector2(32 + (idx - 4) * size, 16);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			// bonusflip
+			//for(int idx = 0; idx < bonus.Length; idx++)
+			//{
+			//	//var image = bonus[idx];
+			//	var image = bonus[idx + 4];
+			//	var pos = new Vector2(96 + idx * size, 0);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
+
+			// miscellaneous candy
+			//for (int idx = 0; idx < 3; idx++)
+			//{
+			//	image = miscs[idx];
+			//	pos = new Vector2(160 + idx * size, 0);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
+
+
+			// normal candy
+			for (int idx = 1; idx < 7; idx++)
+			{
+				image = candy[idx];
+				pos = new Vector2(96 + (idx - 1) * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+			for (int idx = 7; idx < 13; idx++)
+			{
+				image = candy[idx];
+				pos = new Vector2(96 + (idx - 7) * size, 16);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			// Free man candy
+			image = miscs[0];
+			pos = new Vector2(160 + 2 * size, 0);
+			spriteBatch.Draw(image, pos, Color.White);
+
+			// Last candy repeat
+			pos = new Vector2(192, 16);
+			//spriteBatch.Draw(candy[2], pos, Color.White);
+			spriteBatch.Draw(blank, pos, Color.White);
+
+			//spriteBatch.Draw(candy[13], new Vector2(208 - 16, 16), Color.White);
+			//spriteBatch.Draw(title, new Vector2(0, 32), Color.White);
+
+			spriteBatch.End();
+		}
+
+		private void Draw_03lines()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			//spriteBatch.Draw(font, new Vector2(8, 0), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 8), new Rectangle(200, 0, 512, 8), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 16), new Rectangle(408, 0, 48, 8), Color.White);
+			//spriteBatch.Draw(font, new Vector2(0, 24), new Rectangle(456, 0, 48, 8), Color.White);
+
+			spriteBatch.Draw(trees[0], new Vector2(0, 0), Color.White);
+			spriteBatch.Draw(trees[1], new Vector2(16, 0), Color.White);
+
+			// bonus
+			for (int idx = 0; idx < bonus.Length; idx++)
+			{
+				var image = bonus[idx];
+				//var image = bonus02[idx];
+				var pos = new Vector2(32 + idx * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			// bonusflip
+			//for (int idx = 0; idx < bonus.Length; idx++)
+			//{
+			//	//var image = bonus[idx];
+			//	var image = bonus[idx + 4];
+			//	var pos = new Vector2(96 + idx * size, 0);
+			//	//spriteBatch.Draw(image, pos, Color.White);
+			//}
+
+			//candy
+			for (int idx = 0; idx < 6; idx++)
+			{
+				var image = candy[idx];
+				var pos = new Vector2(96 + idx * size, 0);
+				spriteBatch.Draw(image, pos, Color.White);
+			}
+
+			//for (int idx = 2; idx < 13; idx++)
+			//{
+			//	var image = candy[idx];
+			//	var pos = new Vector2((idx - 2) * size, 16);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
+
+			spriteBatch.Draw(miscs[0], new Vector2(208 - 16, 0), Color.White);
+
+			//int[] arr = { 2, 3, 4, 5, 6, 7, 8, 10, 11, 13, 9, 12, 14, 15 };
+			//for (int idx = 0; idx < 14; idx++)
+			//{
+			//	int bob = arr[idx];
+			//	bob -= 2;
+			//	var image = candy[bob];
+			//	var pos = new Vector2(0, 128 + 64 + idx * size);
+			//	spriteBatch.Draw(image, pos, Color.White);
+			//}
+
+			spriteBatch.Draw(title, new Vector2(0, 16), Color.White);
+
+			spriteBatch.End();
+		}
+
+		private void oldDraw_02lines()
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
@@ -246,7 +393,7 @@ namespace GraphicsLoad
 			spriteBatch.End();
 		}
 
-		private void Draw_03lines()
+		private void oldDraw_03lines()
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
