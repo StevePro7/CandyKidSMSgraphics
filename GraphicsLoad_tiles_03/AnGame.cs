@@ -166,7 +166,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"_game_tilesORG.png";
+				var file = $"border.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -277,16 +277,24 @@ namespace GraphicsLoad
 			spriteBatch.Begin();
 
 			int i = 1;
-			for (int x = 16; x < 256; x+=16)
+			for (int x = 16; x <= 256 - 64; x+=16)
 			{
+				if (x == 64 || x == 144)
+				{
+					continue;
+				}
 				spriteBatch.Draw(trees[i], new Vector2(x, 0), Color.White);
 				spriteBatch.Draw(trees[i], new Vector2(x, 176), Color.White);
 			}
 
 			for (int y = 16; y < 176; y += 16)
 			{
+				if (y == 48 || y == 128)
+				{
+					continue;
+				}
 				spriteBatch.Draw(trees[i], new Vector2(16, y), Color.White);
-				spriteBatch.Draw(trees[i], new Vector2(240, y), Color.White);
+				spriteBatch.Draw(trees[i], new Vector2(224 - 32, y), Color.White);
 			}
 
 			spriteBatch.End();
