@@ -47,8 +47,8 @@ namespace GraphicsLoad
 			//wide = 208;// (int)(size * scale);
 			//high = y * 16;// (int)(y * size * scale);
 
-			wide = 256;
-			high = 192;
+			wide = 160;
+			high = 160;
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = wide;
 			graphics.PreferredBackBufferHeight = high;
@@ -166,7 +166,7 @@ namespace GraphicsLoad
 				GraphicsDevice.SetRenderTarget(null);
 				Texture2D resolvedTexture = (Texture2D)renderTarget;
 
-				var file = $"border.png";
+				var file = $"inside.png";
 				//var file = $"Candy{yy}.bmp";
 				Stream stream = File.Create("Images/" + file);
 
@@ -184,7 +184,12 @@ namespace GraphicsLoad
 		{
 			//Draw_02lines();
 			//Draw_03lines();
-			Draw_04Border();
+			//Draw_04Border();
+			Draw_05Inside();
+		}
+		private void Draw_05Inside()
+		{
+			GraphicsDevice.Clear(Color.White);
 		}
 
 		private void Draw_02lines()
@@ -271,35 +276,6 @@ namespace GraphicsLoad
 			spriteBatch.End();
 		}
 
-		private void Draw_04Border()
-		{
-			GraphicsDevice.Clear(Color.Black);
-			spriteBatch.Begin();
-
-			int i = 1;
-			for (int x = 16; x <= 256 - 64; x+=16)
-			{
-				if (x == 64 || x == 144)
-				{
-					continue;
-				}
-				spriteBatch.Draw(trees[i], new Vector2(x, 0), Color.White);
-				spriteBatch.Draw(trees[i], new Vector2(x, 176), Color.White);
-			}
-
-			for (int y = 16; y < 176; y += 16)
-			{
-				if (y == 48 || y == 128)
-				{
-					continue;
-				}
-				spriteBatch.Draw(trees[i], new Vector2(16, y), Color.White);
-				spriteBatch.Draw(trees[i], new Vector2(224 - 32, y), Color.White);
-			}
-
-			spriteBatch.End();
-		}
-
 		private void Draw_03lines()
 		{
 			GraphicsDevice.Clear(Color.Black);
@@ -362,6 +338,36 @@ namespace GraphicsLoad
 
 			spriteBatch.End();
 		}
+
+		private void Draw_04Border()
+		{
+			GraphicsDevice.Clear(Color.Black);
+			spriteBatch.Begin();
+
+			int i = 1;
+			for (int x = 16; x <= 256 - 64; x += 16)
+			{
+				if (x == 64 || x == 144)
+				{
+					continue;
+				}
+				spriteBatch.Draw(trees[i], new Vector2(x, 0), Color.White);
+				spriteBatch.Draw(trees[i], new Vector2(x, 176), Color.White);
+			}
+
+			for (int y = 16; y < 176; y += 16)
+			{
+				if (y == 48 || y == 128)
+				{
+					continue;
+				}
+				spriteBatch.Draw(trees[i], new Vector2(16, y), Color.White);
+				spriteBatch.Draw(trees[i], new Vector2(224 - 32, y), Color.White);
+			}
+
+			spriteBatch.End();
+		}
+
 
 		private void oldDraw_02lines()
 		{
