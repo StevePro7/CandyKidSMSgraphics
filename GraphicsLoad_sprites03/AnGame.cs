@@ -50,6 +50,7 @@ namespace GraphicsLoad
 			int y = 1;
 
 			root = 64;
+			root = 0;
 			wide = 3 * 16;// (int)(y * size * scale);
 			high = root + 6 * 16;// (int)(y * size * scale);
 
@@ -190,8 +191,8 @@ namespace GraphicsLoad
 		{
 			GraphicsDevice.Clear(Color.Black);
 			spriteBatch.Begin();
-			//DrawVert64();
-			DrawVert32();
+			DrawVert64();
+			//DrawVert32();
 			spriteBatch.End();
 		}
 
@@ -219,7 +220,7 @@ namespace GraphicsLoad
 
 		private void DrawVert64()
 		{
-			spriteBatch.Draw(boss48[index], Vector2.Zero, Color.White);
+			//spriteBatch.Draw(boss48[index], Vector2.Zero, Color.White);
 
 			Vector2 pos;
 			int z = 0;
