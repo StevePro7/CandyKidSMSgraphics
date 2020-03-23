@@ -5,6 +5,29 @@ namespace ScreenMgrCreate
 {
 	public class ScreenManager
 	{
+		public void Switch(string[] screens)
+		{
+			var lines = new List<string>();
+			foreach (var screen in screens)
+			{
+				lines.Add($"case screen_type_{screen.ToLower()}:");
+				lines.Add($"	screen_{screen.ToLower()}_screen_load();");
+				lines.Add("	break;");
+			}
+
+			lines.Add("");
+			lines.Add("");
+
+			foreach (var screen in screens)
+			{
+				lines.Add($"case screen_type_{screen.ToLower()}:");
+				lines.Add($"	screen_{screen.ToLower()}_screen_update( &next_screen_type );");
+				lines.Add("	break;");
+			}
+
+			File.WriteAllLines("Managers/screen_manager2.c", lines.ToArray());
+		}
+
 		public void Build(string[] screens)
 		{
 			var lines = new List<string>

@@ -17,14 +17,15 @@ namespace ScreenMgrCreate
 			var globalManager = new GlobalManager();
 			var screenManager = new ScreenManager();
 
-			var screens = File.ReadAllLines("Levels.txt");
+			var screens = File.ReadAllLines("Levels_BAK.txt");
 			screens = GetScreens(screens);
 
-			buildManager.Compile(screens);
-			enumManager.Build(screens);
-			globalManager.Build(screens);
-			screenManager.Build(screens);
-			screenManager.Construct(screens);
+			//buildManager.Compile(screens);
+			//enumManager.Build(screens);
+			//globalManager.Build(screens);
+			//screenManager.Build(screens);
+			//screenManager.Construct(screens);
+			screenManager.Switch(screens);
 
 			Console.WriteLine();
 		}
