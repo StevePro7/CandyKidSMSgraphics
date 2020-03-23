@@ -29,11 +29,12 @@ namespace LevelModification
 					int level = (world - 1) * 10 + round;
 					var fileName = String.Format("level{0}{1}.txt", world.ToString().PadLeft(2, '0'), round.ToString().PadLeft(2, '0'));
 
-					//levelManager.UpdateLevel("bank2", fileName);
-					levelManager.SetData("bank2", fileName);
-					var tiles = levelManager.Tiles;
+					levelManager.UpdateHomes("bank2", fileName);
 
-					scoreManager.Process(tiles, fileName, level);
+					//levelManager.UpdateLevel("bank2", fileName);
+					//levelManager.SetData("bank2", fileName);
+					//var tiles = levelManager.Tiles;
+					//scoreManager.Process(tiles, fileName, level);
 				}
 			}
 
