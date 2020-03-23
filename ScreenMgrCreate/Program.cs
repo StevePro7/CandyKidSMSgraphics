@@ -20,12 +20,12 @@ namespace ScreenMgrCreate
 			var screens = File.ReadAllLines("Levels_BAK.txt");
 			screens = GetScreens(screens);
 
-			//buildManager.Compile(screens);
-			//enumManager.Build(screens);
-			//globalManager.Build(screens);
-			//screenManager.Build(screens);
-			//screenManager.Construct(screens);
-			screenManager.Switch(screens);
+			buildManager.Compile(screens);
+			enumManager.Build(screens);
+			globalManager.Build(screens);
+			screenManager.Build(screens);
+			screenManager.Construct(screens);
+			//screenManager.Switch(screens);
 
 			Console.WriteLine();
 		}

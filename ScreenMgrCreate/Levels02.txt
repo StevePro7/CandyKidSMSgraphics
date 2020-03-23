@@ -1,9 +1,7 @@
 none
 splash
 begin
-intro
 title
-start
 init
 load
 ready
@@ -13,6 +11,6 @@ dead
 cont
 over
 beat
-option
-credit
+save
 test
+func
