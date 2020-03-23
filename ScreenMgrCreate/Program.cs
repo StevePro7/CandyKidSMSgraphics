@@ -17,7 +17,7 @@ namespace ScreenMgrCreate
 			var globalManager = new GlobalManager();
 			var screenManager = new ScreenManager();
 
-			var screens = File.ReadAllLines("Levels_BAK.txt");
+			var screens = File.ReadAllLines("Levels.txt");
 			screens = GetScreens(screens);
 
 			buildManager.Compile(screens);
