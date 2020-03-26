@@ -29,7 +29,7 @@ namespace LevelModification
 					int level = (world - 1) * 10 + round;
 					var fileName = String.Format("level{0}{1}.txt", world.ToString().PadLeft(2, '0'), round.ToString().PadLeft(2, '0'));
 
-					levelManager.UpdateHomes("bank2", fileName);
+					//levelManager.UpdateHomes("bank2", fileName);
 
 					//levelManager.UpdateLevel("bank2", fileName);
 					//levelManager.SetData("bank2", fileName);
@@ -38,21 +38,22 @@ namespace LevelModification
 				}
 			}
 
-			//// bank3
-			//for(int world = 11; world <= 20; world++)
-			//{
-			//	for(int round = 1; round <= 10; round++)
-			//	{
-			//		int level = (world - 1) * 10 + round;
-			//		var fileName = String.Format("level{0}{1}.txt", world.ToString().PadLeft(2, '0'), round.ToString().PadLeft(2, '0'));
+			// bank3
+			for (int world = 11; world <= 20; world++)
+			{
+				for (int round = 1; round <= 10; round++)
+				{
+					int level = (world - 1) * 10 + round;
+					var fileName = String.Format("level{0}{1}.txt", world.ToString().PadLeft(2, '0'), round.ToString().PadLeft(2, '0'));
 
-			//		//levelManager.UpdateLevel("bank3", fileName);
-			//		levelManager.SetData("bank3", fileName);
-			//		var tiles = levelManager.Tiles;
+					levelManager.UpdateHomes("bank3", fileName);
 
-			//		scoreManager.Process(tiles, fileName, level);
-			//	}
-			//}
+					//levelManager.UpdateLevel("bank2", fileName);
+					//levelManager.SetData("bank2", fileName);
+					//var tiles = levelManager.Tiles;
+					//scoreManager.Process(tiles, fileName, level);
+				}
+			}
 
 			var scores = scoreManager.Scores;
 			scoreManager.CalcHiScore(scores);

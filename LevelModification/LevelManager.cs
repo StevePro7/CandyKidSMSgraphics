@@ -115,7 +115,7 @@ namespace LevelModification
 			outLines[1] = GetLine(outLines[1]);
 			outLines[8] = GetLine(outLines[8]);
 
-			//fileManager.Write(outputName, outLines.ToArray());
+			fileManager.Write(outputName, outLines.ToArray());
 		}
 
 		private string GetLine(string inpLine)
