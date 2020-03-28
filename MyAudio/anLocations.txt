@@ -1,4 +1,14 @@
 Locations
+
+
+VMGs
+28/03/2020
+https://www.smspower.org/Music/VGMs
+
+https://www.smspower.org/forums/15362-VGMPacksMasterSystemMegaCollection
+
+
+
 22/03/2020
 E:\Steven\INSTALLATIONSEGA\z88dk2\GalacticRevenge\sfx
 
@@ -12,3 +22,4 @@ E:\Steven\roms\SegaStuff\SMSpower\MusicSteve\MrPepsi
 
 
 E:\Steven\roms\SegaStuff\SMSpower\MusicGOOD\space-harrier-sms-[VGM-ID5969]
+
