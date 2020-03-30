@@ -12,6 +12,9 @@ pass
 dead
 cont
 over
+prep
+fight
+boss
 beat
 option
 credit

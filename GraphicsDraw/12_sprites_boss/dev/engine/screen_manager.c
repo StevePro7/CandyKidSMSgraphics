@@ -19,9 +19,9 @@ void engine_screen_manager_update()
 {
 	//unsigned char input;
 
-	//unsigned char idx = 6;
-	//draw_sprites( 48, 32, idx + 0 );
-	//draw_sprites( 80, 32, idx + 1 );
+	unsigned char idx = 6;
+	draw_sprites( 48, 32, idx + 0 );
+	draw_sprites( 80, 32, idx + 1 );
 
 	/*draw_sprites( 48, 64, idx + 2 );
 	draw_sprites( 80, 64, idx + 3 );
