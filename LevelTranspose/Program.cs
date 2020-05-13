@@ -7,61 +7,23 @@ namespace LevelModification
 		static void Main(string[] args)
 		{
 			var fileManager = new FileManager();
-			var levelManager = new LevelManager(fileManager);
-			var scoreManager = new ScoreManager();
 
-			//int world = 1;
-			//int round = 1;
-
-			//int level = (world - 1) * 10 + round;
-			//var fileName = String.Format("level{0}{1}.txt", world.ToString().PadLeft(2, '0'), round.ToString().PadLeft(2, '0'));
-
-			//levelManager.UpdateLevel("bank2", fileName);
-			////levelManager.SetData("bank2", fileName);
-			//var tiles = levelManager.Tiles;
-
-
-			// bank2
 			for(int world = 1; world <= 10; world++)
 			{
 				for(int round = 1; round <= 10; round++)
 				{
-					int level = (world - 1) * 10 + round;
-					var fileName = String.Format("level{0}{1}.txt", world.ToString().PadLeft(2, '0'), round.ToString().PadLeft(2, '0'));
+					string w = world.ToString().PadLeft(2, '0');
+					string r = round.ToString().PadLeft(2, '0');
+					var inpFileName = String.Format("Levels/old/level{0}{1}.txt", w, r);
+					
+					fileManager.Read(inpFileName);
+					var contents = fileManager.Contents;
 
-					//levelManager.UpdateHomes("bank2", fileName);
-
-					//levelManager.UpdateLevel("bank2", fileName);
-					//levelManager.SetData("bank2", fileName);
-					//var tiles = levelManager.Tiles;
-					//scoreManager.Process(tiles, fileName, level);
+					var outFileName = String.Format("Levels/new/level{0}{1}.txt", r, w);
+					fileManager.Write(outFileName, contents);
 				}
 			}
 
-			// bank3
-			for (int world = 11; world <= 20; world++)
-			{
-				for (int round = 1; round <= 10; round++)
-				{
-					int level = (world - 1) * 10 + round;
-					var fileName = String.Format("level{0}{1}.txt", world.ToString().PadLeft(2, '0'), round.ToString().PadLeft(2, '0'));
-
-					levelManager.UpdateHomes("bank3", fileName);
-
-					//levelManager.UpdateLevel("bank2", fileName);
-					//levelManager.SetData("bank2", fileName);
-					//var tiles = levelManager.Tiles;
-					//scoreManager.Process(tiles, fileName, level);
-				}
-			}
-
-			var scores = scoreManager.Scores;
-			scoreManager.CalcHiScore(scores);
-			var hiScore = scoreManager.HiScore;
-
-			// hiScore = 828,070 points
-			// Bonuses = 5k * 100 levels = 500,000
-			Console.WriteLine("Hi Score : " + hiScore);
 			Console.WriteLine();
 		}
 	}
