@@ -50,8 +50,8 @@ namespace ScreenMgrCreate
 			lines.Add("static unsigned char next_screen_type;");
 
 			lines.Add("");
-			lines.Add("//static void( *load_method[ MAX_SCREEENS ] )( );");
-			lines.Add("//static void( *update_method[ MAX_SCREEENS ] )( unsigned char *screen_type );");
+			lines.Add("static void( *load_method[ MAX_SCREEENS ] )( );");
+			lines.Add("static void( *update_method[ MAX_SCREEENS ] )( unsigned char *screen_type );");
 
 			lines.Add("");
 			lines.Add("void engine_screen_manager_init( unsigned char open_screen_type )");
@@ -64,14 +64,14 @@ namespace ScreenMgrCreate
 			lines.Add("	// Set load methods.");
 			foreach(var screen in screens)
 			{
-				lines.Add($"	//load_method[ screen_type_{screen.ToLower()} ] = screen_{screen.ToLower()}_screen_load;");
+				lines.Add($"	load_method[ screen_type_{screen.ToLower()} ] = screen_{screen.ToLower()}_screen_load;");
 			}
 
 			lines.Add("");
 			lines.Add("	// Set update methods.");
 			foreach(var screen in screens)
 			{
-				lines.Add($"	//update_method[ screen_type_{screen.ToLower()} ] = screen_{screen.ToLower()}_screen_update;");
+				lines.Add($"	update_method[ screen_type_{screen.ToLower()} ] = screen_{screen.ToLower()}_screen_update;");
 			}
 			lines.Add("}");
 
@@ -84,10 +84,10 @@ namespace ScreenMgrCreate
 			lines.Add("	if( curr_screen_type != next_screen_type )");
 			lines.Add("	{");
 			lines.Add("		curr_screen_type = next_screen_type;");
-			lines.Add("		//load_method[ curr_screen_type ]();");
+			lines.Add("		load_method[ curr_screen_type ]();");
 
 			lines.Add("");
-			lines.Add("		/**/");
+			lines.Add("		/*");
 			lines.Add("		switch( curr_screen_type )");
 			lines.Add("		{");
 
@@ -99,15 +99,15 @@ namespace ScreenMgrCreate
 			}
 
 			lines.Add("		}");
-			lines.Add("		/**/");
+			lines.Add("		*/");
 			lines.Add("	}");
 
 			lines.Add("");
 			lines.Add("");
-			lines.Add("	//update_method[ curr_screen_type ]( &next_screen_type );");
+			lines.Add("	update_method[ curr_screen_type ]( &next_screen_type );");
 			lines.Add("");
 
-			lines.Add("	/**/");
+			lines.Add("	/*");
 			lines.Add("	switch( curr_screen_type )");
 			lines.Add("	{");
 			foreach (var screen in screens)
@@ -118,7 +118,7 @@ namespace ScreenMgrCreate
 			}
 
 			lines.Add("	}");
-			lines.Add("	/**/");
+			lines.Add("	/*");
 			lines.Add("}");
 
 			File.WriteAllLines("Managers/screen_manager.c", lines.ToArray());
@@ -153,6 +153,29 @@ namespace ScreenMgrCreate
 		}
 
 		private void ConstructC(string screen)
+		{
+			var lines = new List<string>
+			{
+				$"#include \"{screen.ToLower()}_screen.h\"",
+				"#include \"enum_manager.h\"",
+				"#include \"font_manager.h\"",
+				"",
+				$"void screen_{screen.ToLower()}_screen_load()",
+				"{",
+				$"	engine_font_manager_text( \"{screen.ToUpper()} SCREEN!!\", 2, 10 );",
+				"}",
+				"",
+				$"void screen_{screen.ToLower()}_screen_update( unsigned char *screen_type )",
+				"{",
+				$"	*screen_type = screen_type_{screen.ToLower()};",
+				"}",
+			};
+
+			var path = $"Screens/{screen.ToLower()}_screen.c";
+			File.WriteAllLines(path, lines.ToArray());
+		}
+
+		private void ConstructCX(string screen)
 		{
 			var lines = new List<string>
 			{
