@@ -1,0 +1,113 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.6.9 #9960 (MINGW64)
+                              4 ;--------------------------------------------------------
+                              5 	.module input_manager
+                              6 	.optsdcc -mz80
+                              7 	
+                              8 ;--------------------------------------------------------
+                              9 ; Public variables in this module
+                             10 ;--------------------------------------------------------
+                             11 	.globl _devkit_SMS_getKeysStatus
+                             12 	.globl _engine_input_manager_update
+                             13 	.globl _engine_input_manager_hold
+                             14 	.globl _engine_input_manager_move
+                             15 ;--------------------------------------------------------
+                             16 ; special function registers
+                             17 ;--------------------------------------------------------
+                             18 ;--------------------------------------------------------
+                             19 ; ram data
+                             20 ;--------------------------------------------------------
+                             21 	.area _DATA
+                             22 ;--------------------------------------------------------
+                             23 ; ram data
+                             24 ;--------------------------------------------------------
+                             25 	.area _INITIALIZED
+   0000                      26 _curr_joypad1:
+   0000                      27 	.ds 2
+   0002                      28 _prev_joypad1:
+   0002                      29 	.ds 2
+                             30 ;--------------------------------------------------------
+                             31 ; absolute external ram data
+                             32 ;--------------------------------------------------------
+                             33 	.area _DABS (ABS)
+                             34 ;--------------------------------------------------------
+                             35 ; global & static initialisations
+                             36 ;--------------------------------------------------------
+                             37 	.area _HOME
+                             38 	.area _GSINIT
+                             39 	.area _GSFINAL
+                             40 	.area _GSINIT
+                             41 ;--------------------------------------------------------
+                             42 ; Home
+                             43 ;--------------------------------------------------------
+                             44 	.area _HOME
+                             45 	.area _HOME
+                             46 ;--------------------------------------------------------
+                             47 ; code
+                             48 ;--------------------------------------------------------
+                             49 	.area _CODE
+                             50 ;input_manager.c:10: void engine_input_manager_update()
+                             51 ;	---------------------------------
+                             52 ; Function engine_input_manager_update
+                             53 ; ---------------------------------
+   0000                      54 _engine_input_manager_update::
+                             55 ;input_manager.c:12: prev_joypad1 = curr_joypad1;
+   0000 2Ar00r00      [16]   56 	ld	hl, (_curr_joypad1)
+   0003 22r02r00      [16]   57 	ld	(_prev_joypad1), hl
+                             58 ;input_manager.c:13: curr_joypad1 = devkit_SMS_getKeysStatus();
+   0006 CDr00r00      [17]   59 	call	_devkit_SMS_getKeysStatus
+   0009 22r00r00      [16]   60 	ld	(_curr_joypad1), hl
+   000C C9            [10]   61 	ret
+                             62 ;input_manager.c:17: unsigned char engine_input_manager_hold( unsigned char data )
+                             63 ;	---------------------------------
+                             64 ; Function engine_input_manager_hold
+                             65 ; ---------------------------------
+   000D                      66 _engine_input_manager_hold::
+                             67 ;input_manager.c:19: return curr_joypad1 & data && !( prev_joypad1 & data );
+   000D 21 02 00      [10]   68 	ld	hl, #2+0
+   0010 39            [11]   69 	add	hl, sp
+   0011 4E            [ 7]   70 	ld	c, (hl)
+   0012 06 00         [ 7]   71 	ld	b, #0x00
+   0014 FD 21r00r00   [14]   72 	ld	iy, #_curr_joypad1
+   0018 FD 7E 00      [19]   73 	ld	a, 0 (iy)
+   001B A1            [ 4]   74 	and	a, c
+   001C 5F            [ 4]   75 	ld	e, a
+   001D FD 7E 01      [19]   76 	ld	a, 1 (iy)
+   0020 A0            [ 4]   77 	and	a, b
+   0021 B3            [ 4]   78 	or	a,e
+   0022 28 10         [12]   79 	jr	Z,00103$
+   0024 79            [ 4]   80 	ld	a, c
+   0025 FD 21r02r00   [14]   81 	ld	iy, #_prev_joypad1
+   0029 FD A6 00      [19]   82 	and	a, 0 (iy)
+   002C 4F            [ 4]   83 	ld	c, a
+   002D 78            [ 4]   84 	ld	a, b
+   002E FD A6 01      [19]   85 	and	a, 1 (iy)
+   0031 B1            [ 4]   86 	or	a,c
+   0032 28 03         [12]   87 	jr	Z,00104$
+   0034                      88 00103$:
+   0034 2E 00         [ 7]   89 	ld	l, #0x00
+   0036 C9            [10]   90 	ret
+   0037                      91 00104$:
+   0037 2E 01         [ 7]   92 	ld	l, #0x01
+   0039 C9            [10]   93 	ret
+                             94 ;input_manager.c:22: unsigned char engine_input_manager_move( unsigned char data )
+                             95 ;	---------------------------------
+                             96 ; Function engine_input_manager_move
+                             97 ; ---------------------------------
+   003A                      98 _engine_input_manager_move::
+                             99 ;input_manager.c:24: return curr_joypad1 & data;
+   003A 21 02 00      [10]  100 	ld	hl, #2+0
+   003D 39            [11]  101 	add	hl, sp
+   003E 4E            [ 7]  102 	ld	c, (hl)
+   003F 3Ar00r00      [13]  103 	ld	a,(#_curr_joypad1 + 0)
+   0042 A1            [ 4]  104 	and	a, c
+   0043 6F            [ 4]  105 	ld	l, a
+   0044 C9            [10]  106 	ret
+                            107 	.area _CODE
+                            108 	.area _INITIALIZER
+   0000                     109 __xinit__curr_joypad1:
+   0000 00 00               110 	.dw #0x0000
+   0002                     111 __xinit__prev_joypad1:
+   0002 00 00               112 	.dw #0x0000
+                            113 	.area _CABS (ABS)
