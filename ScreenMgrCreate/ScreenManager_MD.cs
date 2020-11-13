@@ -3,8 +3,8 @@ using System.IO;
 
 namespace ScreenMgrCreate
 {
-	// Sega MegaDrive
-	public class ScreenManager
+	// Sega  MegaDrive
+	public class ScreenManager_MD
 	{
 		public void Build(string[] screens)
 		{

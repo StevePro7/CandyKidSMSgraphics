@@ -3,8 +3,8 @@ using System.IO;
 
 namespace ScreenMgrCreate
 {
-	// Sega MegaDrive
-	public class ScreenManager
+	// Sega Master System
+	public class ScreenManager_SMS
 	{
 		public void Build(string[] screens)
 		{
@@ -18,9 +18,9 @@ namespace ScreenMgrCreate
 				"// Screens"
 			};
 
-			foreach (var screen in screens)
+			foreach(var screen in screens)
 			{
-				lines.Add($"#include \"{screen.ToLower()}_screen.h\"");
+				lines.Add($"#include \"..\\screen\\{screen.ToLower()}_screen.h\"");
 			}
 
 			lines.Add("");
@@ -40,14 +40,14 @@ namespace ScreenMgrCreate
 
 			lines.Add("");
 			lines.Add("	// Set load methods.");
-			foreach (var screen in screens)
+			foreach(var screen in screens)
 			{
 				lines.Add($"	load_method[ screen_type_{screen.ToLower()} ] = screen_{screen.ToLower()}_screen_load;");
 			}
 
 			lines.Add("");
 			lines.Add("	// Set update methods.");
-			foreach (var screen in screens)
+			foreach(var screen in screens)
 			{
 				lines.Add($"	update_method[ screen_type_{screen.ToLower()} ] = screen_{screen.ToLower()}_screen_update;");
 			}
@@ -69,7 +69,7 @@ namespace ScreenMgrCreate
 			lines.Add("		switch( curr_screen_type )");
 			lines.Add("		{");
 
-			foreach (var screen in screens)
+						foreach (var screen in screens)
 			{
 				lines.Add($"		case screen_type_{screen.ToLower()}:");
 				lines.Add($"			screen_{screen.ToLower()}_screen_load();");
@@ -113,7 +113,7 @@ namespace ScreenMgrCreate
 
 		private void ConstructH(string screen)
 		{
-			var underscore = "__";
+			var underscore = "_";
 			var lines = new List<string>
 			{
 				$"#ifndef {underscore}{screen.ToUpper()}_SCREEN_H{underscore}",
@@ -136,8 +136,8 @@ namespace ScreenMgrCreate
 			var lines = new List<string>
 			{
 				$"#include \"{screen.ToLower()}_screen.h\"",
-				"#include \"enum_manager.h\"",
-				"#include \"font_manager.h\"",
+				"#include \"..\\engine\\enum_manager.h\"",
+				"#include \"..\\engine\\font_manager.h\"",
 				"",
 				$"void screen_{screen.ToLower()}_screen_load()",
 				"{",
@@ -159,8 +159,8 @@ namespace ScreenMgrCreate
 			var lines = new List<string>
 			{
 				$"#include \"{screen.ToLower()}_screen.h\"",
-				"#include \"enum_manager.h\"",
-				"#include \"font_manager.h\"",
+				"#include \"..\\engine\\enum_manager.h\"",
+				"#include \"..\\engine\\font_manager.h\"",
 				"",
 				$"void screen_{screen.ToLower()}_screen_load()",
 				"{",
