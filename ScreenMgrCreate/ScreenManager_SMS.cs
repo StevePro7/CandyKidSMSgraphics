@@ -124,7 +124,7 @@ namespace ScreenMgrCreate
 				$"void screen_{screen.ToLower()}_screen_update( unsigned char *screen_type );",
 
 				"",
-				$"#endif//_{screen.ToUpper()}{underscore}SCREEN_H{underscore}",
+				$"#endif//{underscore}{screen.ToUpper()}_SCREEN_H{underscore}",
 			};
 
 			var path = $"Screens/{screen.ToLower()}_screen.h";
