@@ -27,14 +27,13 @@ namespace ScreenMgrCreate
 
 			objectManager.Build(managers);
 
-			/*
 			buildManager.Compile(screens);
 			enumManager.Build(screens);
 			globalManager.Build(screens);
 			screenManager.Build(screens);
 			screenManager.Construct(screens);
 			//screenManager.Switch(screens);
-			*/
+
 			Console.WriteLine();
 		}
 

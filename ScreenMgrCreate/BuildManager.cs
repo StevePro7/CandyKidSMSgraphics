@@ -13,7 +13,7 @@ namespace ScreenMgrCreate
 			};
 			foreach(var screen in screens)
 			{
-				lines.Add($"sdcc -c -mz80 --opt-code-speed --peep-file ..\\peep-rules.txt --std-c99 {screen.ToLower()}_screen.c");
+				lines.Add($"sdcc --debug -c -mz80 --opt-code-speed --peep-file ..\\peep-rules.txt --std-c99 {screen.ToLower()}_screen.c");
 			}
 			lines.Add("cd ..");
 
