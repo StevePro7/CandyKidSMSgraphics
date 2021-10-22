@@ -10,6 +10,7 @@ namespace ScreenMgrCreate
 		private static void Main(string[] args)
 		{
 			CreateDirectory("Managers");
+			CreateDirectory("ManagersX");
 			CreateDirectory("Objects");
 			CreateDirectory("Screens");
 
@@ -27,7 +28,7 @@ namespace ScreenMgrCreate
 
 			objectManager.Build(managers);
 
-			buildManager.Compile(screens);
+			buildManager.Compile(managers, screens);
 			enumManager.Build(screens);
 			globalManager.Build(screens);
 			screenManager.Build(screens);

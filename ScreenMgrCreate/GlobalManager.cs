@@ -17,7 +17,7 @@ namespace ScreenMgrCreate
 				"",
 			};
 
-			File.WriteAllLines("Managers/global_manager.h", lines.ToArray());
+			File.WriteAllLines("ManagersX/global_manager.h", lines.ToArray());
 		}
 
 	}

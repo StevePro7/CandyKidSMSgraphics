@@ -99,7 +99,7 @@ namespace ScreenMgrCreate
 			//lines.Add("	*/");
 			lines.Add("}");
 
-			File.WriteAllLines("Managers/screen_manager.c", lines.ToArray());
+			File.WriteAllLines("ManagersX/screen_manager.c", lines.ToArray());
 		}
 
 		public void Construct(string[] screens)
