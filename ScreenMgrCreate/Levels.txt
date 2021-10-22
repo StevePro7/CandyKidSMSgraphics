@@ -17,4 +17,4 @@ wait
 score
 over
 test
-func!
+func
