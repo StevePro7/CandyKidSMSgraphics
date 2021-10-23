@@ -20,7 +20,7 @@ namespace ScreenMgrCreate
 
 			foreach (var screen in screens)
 			{
-				lines.Add($"#include \"..\\screen\\{screen.ToLower()}_screen.h\"");
+				lines.Add($"#include \"../screen/{screen.ToLower()}_screen.h\"");
 			}
 
 			lines.Add("");
@@ -136,8 +136,8 @@ namespace ScreenMgrCreate
 			var lines = new List<string>
 			{
 				$"#include \"{screen.ToLower()}_screen.h\"",
-				"#include \"..\\engine\\enum_manager.h\"",
-				"#include \"..\\engine\\font_manager.h\"",
+				"#include \"../engine/enum_manager.h\"",
+				"#include \"../engine/font_manager.h\"",
 				"",
 				$"void screen_{screen.ToLower()}_screen_load()",
 				"{",
@@ -159,8 +159,8 @@ namespace ScreenMgrCreate
 			var lines = new List<string>
 			{
 				$"#include \"{screen.ToLower()}_screen.h\"",
-				"#include \"..\\engine\\enum_manager.h\"",
-				"#include \"..\\engine\\font_manager.h\"",
+				"#include \"../engine/enum_manager.h\"",
+				"#include \"../engine/font_manager.h\"",
 				"",
 				$"void screen_{screen.ToLower()}_screen_load()",
 				"{",
