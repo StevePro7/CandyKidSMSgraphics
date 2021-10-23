@@ -13,7 +13,7 @@ namespace ScreenMgrCreate
 				// Managers.
 				var file1 = manager.ToLower() + "_manager";
 
-				var header1 = $"_{manager.ToUpper()}_MANAGER_H_";
+				var header1 = $"_{manager.ToUpper()}_OBJECT_H_";
 				var lines = new List<string>
 			{
 				"#ifndef " + header1,

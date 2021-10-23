@@ -4,7 +4,7 @@ using System.IO;
 namespace ScreenMgrCreate
 {
 	// Sega Master System
-	public class ScreenManager_SMS
+	public class ScreenManagerSMS
 	{
 		public void Build(string[] screens)
 		{
@@ -18,7 +18,7 @@ namespace ScreenMgrCreate
 				"// Screens"
 			};
 
-			foreach(var screen in screens)
+			foreach (var screen in screens)
 			{
 				lines.Add($"#include \"../screen/{screen.ToLower()}_screen.h\"");
 			}
@@ -40,14 +40,14 @@ namespace ScreenMgrCreate
 
 			lines.Add("");
 			lines.Add("	// Set load methods.");
-			foreach(var screen in screens)
+			foreach (var screen in screens)
 			{
 				lines.Add($"	load_method[ screen_type_{screen.ToLower()} ] = screen_{screen.ToLower()}_screen_load;");
 			}
 
 			lines.Add("");
 			lines.Add("	// Set update methods.");
-			foreach(var screen in screens)
+			foreach (var screen in screens)
 			{
 				lines.Add($"	update_method[ screen_type_{screen.ToLower()} ] = screen_{screen.ToLower()}_screen_update;");
 			}
