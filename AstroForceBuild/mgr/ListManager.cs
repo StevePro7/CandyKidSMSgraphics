@@ -13,9 +13,6 @@ namespace AstroForceBuild
 
 		public void Process(string[] dirs)
 		{
-			//const string list_root = "dev";
-			//const string save_root = "out";
-
 			//var dir = dirs[0];
 			foreach (var dir in dirs)
 			{
@@ -27,7 +24,6 @@ namespace AstroForceBuild
 					ProcessLines(list_file);
 				}
 			}
-			
 		}
 
 		public void ProcessLines(string list_file)

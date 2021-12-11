@@ -26,6 +26,11 @@ namespace AstroForceBuild
 
 		public void Process(string[] dirs)
 		{
+			//string dir = dirs[0];
+			foreach (var dir in dirs)
+			{
+				Save(dir);
+			}
 		}
 
 		public void Save(string dir)
