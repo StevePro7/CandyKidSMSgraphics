@@ -6,6 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="dev\base\funcs.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="dev\base\vars.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="dev\Enemies\enemy.h">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -288,6 +294,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="dev\base\" />
     <Folder Include="out\" />
   </ItemGroup>
 
