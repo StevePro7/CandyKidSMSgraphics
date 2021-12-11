@@ -4,20 +4,4 @@ readme
 
 "Enemies", "Fortresses", "General", "Intros", "Monsters", "Players", "Spaces", "Stages", "Vulcans", "Wars"
 
-
-Unique character
-/
-u
-{
-}
-v
-s
-c
-#
-t
-
-
-
-u
-v
-t
+E:\GitHub\StevePro7\CandyKidSMSgraphics\AstroForceBuild
