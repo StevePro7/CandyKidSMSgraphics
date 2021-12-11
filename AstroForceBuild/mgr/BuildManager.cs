@@ -11,8 +11,10 @@ namespace AstroForceBuild
 
 		public BuildManager()
 		{
-			OutLines = new List<string>();
-			skip = false;
+			OutLinesH = new List<string>();
+			OutLinesC = new List<string>();
+			//skip = false;
+			skip = true;
 		}
 		public void Initialize()
 		{
@@ -43,10 +45,14 @@ namespace AstroForceBuild
 			var head_type = head_file.Replace(".", "_");
 			head_type = $"_{head_type.ToUpper()}_";
 
-			OutLines.Clear();
-			OutLines.Add($"#ifndef {head_type}");
-			OutLines.Add($"#define {head_type}");
-			OutLines.Add(String.Empty);
+			OutLinesC.Clear();
+			OutLinesC.Add($"#include \"{head_file}\"");
+			OutLinesC.Add(String.Empty);
+
+			OutLinesH.Clear();
+			OutLinesH.Add($"#ifndef {head_type}");
+			OutLinesH.Add($"#define {head_type}");
+			OutLinesH.Add(String.Empty);
 
 			// Process file contents.
 			var open_lines = File.ReadAllLines(list_file);
@@ -79,27 +85,34 @@ namespace AstroForceBuild
 					text_line = "//" + text_line;
 					if (!skip)
 					{
-						OutLines.Add(text_line);
+						OutLinesH.Add(text_line);
 					}
 				}
 				else
 				{
 					text_line = text_line + ";";
-					OutLines.Add(text_line);
+					OutLinesH.Add(text_line);
 				}
+
+				OutLinesC.Add(open_line);
 			}
 
-			OutLines.Add(String.Empty);
-			OutLines.Add($"#endif//{head_type}");
+			OutLinesH.Add(String.Empty);
+			OutLinesH.Add($"#endif//{head_type}");
 
-			var save_path = $"{Constants.SAVE_ROOT}/{dir}/{head_file}";
-			var contents = OutLines.ToArray();
-			if (File.Exists(save_path))
+			var saveH_path = $"{Constants.SAVE_ROOT}/{dir}/{head_file}";
+			var saveC_path = $"{Constants.SAVE_ROOT}/{dir}/{impl_file}";
+			if (File.Exists(saveH_path))
 			{
-				File.Delete(save_path);
+				File.Delete(saveH_path);
+			}
+			if (File.Exists(saveC_path))
+			{
+				File.Delete(saveC_path);
 			}
 
-			File.WriteAllLines(save_path, contents);
+			File.WriteAllLines(saveH_path, OutLinesH.ToArray());
+			File.WriteAllLines(saveC_path, OutLinesC.ToArray());
 		}
 
 		public void SaveC(string dir, string list_path, string list_file)
@@ -109,10 +122,11 @@ namespace AstroForceBuild
 			var head_type = head_file.Replace(".", "_");
 			head_type = $"_{head_type.ToUpper()}_";
 
-			OutLines.Clear();
+			OutLinesH.Clear();
 
 		}
 
-		public IList<string> OutLines { get; private set; }
+		public IList<string> OutLinesH { get; private set; }
+		public IList<string> OutLinesC { get; private set; }
 	}
 }
