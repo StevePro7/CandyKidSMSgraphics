@@ -24,7 +24,7 @@ namespace AstroForceBuild
 			}
 		}
 
-		public void Process(string dir)
+		public void Process(string[] dirs)
 		{
 		}
 
@@ -37,7 +37,7 @@ namespace AstroForceBuild
 			}
 		}
 
-		public void SaveH(string dir, string list_file)
+		public void SaveFile(string dir, string list_file)
 		{
 			var list_path = $"{Constants.LIST_ROOT}/{dir}/";
 			var head_file = list_file.Replace(list_path, String.Empty);
@@ -56,9 +56,9 @@ namespace AstroForceBuild
 
 			// Process file contents.
 			var open_lines = File.ReadAllLines(list_file);
-			bool flag = false;
 			foreach (var open_line in open_lines)
 			{
+				bool flag = false;
 				if (open_line.Length == 0)
 				{
 					flag = true;
@@ -113,17 +113,6 @@ namespace AstroForceBuild
 
 			File.WriteAllLines(saveH_path, OutLinesH.ToArray());
 			File.WriteAllLines(saveC_path, OutLinesC.ToArray());
-		}
-
-		public void SaveC(string dir, string list_path, string list_file)
-		{
-			var head_file = list_file.Replace(list_path, String.Empty);
-			var impl_file = head_file.Replace(".h", ".c");
-			var head_type = head_file.Replace(".", "_");
-			head_type = $"_{head_type.ToUpper()}_";
-
-			OutLinesH.Clear();
-
 		}
 
 		public IList<string> OutLinesH { get; private set; }
