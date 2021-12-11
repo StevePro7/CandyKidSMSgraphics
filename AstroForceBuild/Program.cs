@@ -13,7 +13,7 @@ namespace AstroForceBuild
 			var bm = new BuildManager();
 			bm.Initialize();
 			bm.Save("Wars");
-			bm.SaveFile("Wars", "dev/Wars/ww2plane.h");
+			//bm.SaveFile("Wars", "dev/Wars/ww2plane.h");
 			var dirs = new string[] { "Enemies", "Fortresses", "General", "Intros", "Monsters", "Players", "Spaces", "Stages", "Vulcans", "Wars" };
 			
 			//lm.Process(dirs);

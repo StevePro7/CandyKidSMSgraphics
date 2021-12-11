@@ -30,10 +30,18 @@ namespace AstroForceBuild
 
 		public void Save(string dir)
 		{
-			var path = $"{Constants.SAVE_ROOT}/{dir}";
-			if (!Directory.Exists(path))
+			var save_path = $"{Constants.SAVE_ROOT}/{dir}";
+			if (!Directory.Exists(save_path))
 			{
-				Directory.CreateDirectory(path);
+				Directory.CreateDirectory(save_path);
+			}
+
+			string list_path = $"{Constants.LIST_ROOT}/{dir}/";
+			var list_files = Directory.GetFiles(list_path);
+			//var list_file = list_files[0];
+			foreach (var list_file in list_files)
+			{
+				SaveFile(dir, list_file);
 			}
 		}
 
