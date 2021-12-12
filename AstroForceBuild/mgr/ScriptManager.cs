@@ -21,8 +21,8 @@ namespace AstroForceBuild
 			Compile.Add(String.Empty);
 			Linking.Add(String.Empty);
 
-			string dir = dirs[0];
-			//foreach (var dir in dirs)
+			//string dir = dirs[0];
+			foreach (var dir in dirs)
 			{
 				Compile.Add($"cd {dir}");
 				Script(dir);
