@@ -15,13 +15,11 @@ namespace AstroForceBuild
 
 		public void Process(string[] dirs)
 		{
-			string dir = dirs[0];
-			//foreach (var dir in dirs)
+			//string dir = dirs[0];
+			foreach (var dir in dirs)
 			{
 				Comment(dir);
 			}
-
-			//SaveFiles();
 		}
 
 		public void Comment(string dir)
