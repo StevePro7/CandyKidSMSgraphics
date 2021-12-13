@@ -7,6 +7,7 @@ namespace AstroForceBuild
 	public static class Constants
 	{
 		public static String LIST_ROOT = "dev";
+		public static String TOOL_ROOT = "inp";
 		public static String SAVE_ROOT = "out";
 	}
 }
