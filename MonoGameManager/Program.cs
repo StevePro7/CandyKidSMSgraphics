@@ -15,11 +15,14 @@ namespace MonoGameManager
 
 			var myManager = new MyManager();
 			var newManager = new NewManager();
+			var gerManager = new GerManager();
 
 			var managers = File.ReadAllLines("managers.txt");
 			managers = GetManagers(managers);
 
+			myManager.ProcessAll(managers);
 			newManager.ProcessAll(managers);
+			gerManager.ProcessAll(managers);
 			Console.WriteLine();
 		}
 
