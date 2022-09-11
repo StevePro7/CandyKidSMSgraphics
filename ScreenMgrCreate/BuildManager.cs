@@ -73,7 +73,7 @@ namespace ScreenMgrCreate
 				line += $"engine/{manager.ToLower()}_manager.rel ";
 
 				count++;
-				if(count >= screens.Length)
+				if(count >= managers.Length)
 				{
 					line += "^";
 					lines.Add(line);
@@ -106,7 +106,7 @@ namespace ScreenMgrCreate
 				line += $"object/{manager.ToLower()}_object.rel ";
 
 				count++;
-				if (count >= screens.Length)
+				if (count >= managers.Length)
 				{
 					line += "^";
 					lines.Add(line);

@@ -29,6 +29,7 @@ namespace ScreenMgrCreate
 			lines.Add("");
 			lines.Add("#endif//_ENUM_MANAGER_H_");
 
+			File.WriteAllLines("Managers/enum_manager.h", lines.ToArray());
 			File.WriteAllLines("ManagersX/enum_manager.h", lines.ToArray());
 		}
 	}

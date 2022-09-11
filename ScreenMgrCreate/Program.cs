@@ -11,6 +11,7 @@ namespace ScreenMgrCreate
 		{
 			CreateDirectory("Managers");
 			CreateDirectory("ManagersX");
+			CreateDirectory("Managers2");
 			CreateDirectory("Objects");
 			CreateDirectory("Screens");
 
