@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace MonoGameManager
 {
@@ -11,6 +9,14 @@ namespace MonoGameManager
 		public MyManager()
 		{
 			lines = new List<string>();
+		}
+
+		public void ProcessAll(string[] managers)
+		{
+			foreach(var manager in managers)
+			{
+				Process(manager);
+			}
 		}
 
 		public void Process(string manager)

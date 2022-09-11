@@ -14,11 +14,12 @@ namespace MonoGameManager
 			CreateDirectory("TheGame");
 
 			var myManager = new MyManager();
+			var newManager = new NewManager();
 
 			var managers = File.ReadAllLines("managers.txt");
 			managers = GetManagers(managers);
 
-			myManager.Process("ConfigManager");
+			newManager.ProcessAll(managers);
 			Console.WriteLine();
 		}
 
@@ -55,7 +56,7 @@ namespace MonoGameManager
 					continue;
 				}
 
-				newManagers.Add(manager);
+				newManagers.Add(manager.Trim());
 			}
 
 			return newManagers.ToArray();
