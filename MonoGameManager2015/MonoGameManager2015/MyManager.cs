@@ -23,10 +23,10 @@ namespace MonoGameManager
 		{
 			lines.Clear();
 			lines.Add("using System;");
-			lines.Add("using WindowsGame.Common.Data;");
-			lines.Add("using WindowsGame.Common.Static;");
+			//lines.Add("using WindowsGame.Common.Data;");
+			//lines.Add("using WindowsGame.Common.Static;");
 			lines.Add("");
-			lines.Add("namespace WindowsGame.Common.Managers");
+			lines.Add("namespace WindowsGame.Common");
 			lines.Add("{");
 			lines.Add("	public interface I" + manager);
 			lines.Add("	{");

@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GerManager.cs" />
+    <Compile Include="IoCBinding.cs" />
     <Compile Include="MyManager.cs" />
-    <Compile Include="NewManager.cs" />
+    <Compile Include="GameManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

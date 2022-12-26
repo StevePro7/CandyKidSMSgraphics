@@ -2,11 +2,11 @@
 
 namespace MonoGameManager
 {
-	public class GerManager
+	public class IoCBinding
 	{
 		private List<string> lines;
 
-		public GerManager()
+		public IoCBinding()
 		{
 			lines = new List<string>();
 		}
@@ -14,7 +14,9 @@ namespace MonoGameManager
 		public void ProcessAll(string[] managers)
 		{
 			lines.Clear();
-			lines.Add("namespace WindowsGame.Common.Static");
+			lines.Add("using WindowsGame.Master;");
+			lines.Add("");
+			lines.Add("namespace WindowsGame.Common");
 			lines.Add("{");
 			lines.Add("	public static class Registration");
 			lines.Add("	{");
@@ -26,10 +28,12 @@ namespace MonoGameManager
 			{
 				lines.Add("			IoCContainer.Initialize<I" + manager + ", " + manager + ">();");
 			}
+			lines.Add("			IoCContainer.Initialize<IFileProxy, RealFileProxy>();");
+			lines.Add("			IoCContainer.Initialize<IFileManager, FileManager>();");
+			lines.Add("			IoCContainer.Initialize<ILogger, RealLogger>();");
 			lines.Add("		}");
 			lines.Add("");
 			lines.Add("	}");
-			lines.Add("");
 			lines.Add("}");
 
 			var path = "Registration.cs";

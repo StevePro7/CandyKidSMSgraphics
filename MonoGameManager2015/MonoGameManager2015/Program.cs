@@ -11,24 +11,34 @@ namespace MonoGameManager
 		private static void Main(string[] args)
 		{
 			CreateDirectory("Managers");
+			//CreateDirectory("Screens");
 			CreateDirectory("TheGame");
+			if (File.Exists("Registration.cs")) { File.Delete("Registration.cs"); }
 
 			var myManager = new MyManager();
-			var newManager = new NewManager();
-			var gerManager = new GerManager();
+			var newManager = new GameManager();
+			var iocBinding = new IoCBinding();
 
 			var managers = File.ReadAllLines("managers.txt");
 			managers = GetManagers(managers);
 
 			myManager.ProcessAll(managers);
 			newManager.ProcessAll(managers);
-			gerManager.ProcessAll(managers);
+			iocBinding.ProcessAll(managers);
 			Console.WriteLine();
 		}
 
 		private static void CreateDirectory(string directory)
 		{
-			if(!Directory.Exists(directory))
+			if (Directory.Exists(directory))
+			{
+				var files = Directory.GetFiles(directory);
+				foreach(var file in files)
+				{
+					File.Delete(file);
+				}
+			}
+			if (!Directory.Exists(directory))
 			{
 				Directory.CreateDirectory(directory);
 			}
